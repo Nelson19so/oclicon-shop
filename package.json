@@ -1,0 +1,26 @@
+{
+  "name": "oclicon-shop",
+  "version": "1.0.0",
+  "description": "Created and ecommerce web app using html, css, scss, Tailwindcss, javascript, jquery and django &amp; PosgresSQL. this webapp is an online store where users can be able to buy electronics online and access their profile/dashboard. this gave me a deep understanding on how to handle large dataset and manage extensive code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nelson19so/oclicon-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Nelson19so/oclicon-shop/issues"
+  },
+  "homepage": "https://github.com/Nelson19so/oclicon-shop#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.15",
+    "jquery": "^3.7.1",
+    "tailwindcss": "^4.0.15"
+  }
+}

@@ -3,6 +3,7 @@ django-crispy-forms  # Helps in styling Django forms easily
 crispy-bootstrap5  # Bootstrap 5 integration for crispy forms
 Pillow  # Handles image uploads
 django-allauth  # Authentication (optional, for social login)
+django-oauth-toolkit # django oauth toolkit
 django-widget-tweaks  # Helps customize form rendering
 django-debug-toolbar  # Debugging tool for development
 whitenoise  # Serves static files in production
