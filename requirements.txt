@@ -1,0 +1,11 @@
+Django  # The core web framework
+django-crispy-forms  # Helps in styling Django forms easily
+crispy-bootstrap5  # Bootstrap 5 integration for crispy forms
+Pillow  # Handles image uploads
+django-allauth  # Authentication (optional, for social login)
+django-widget-tweaks  # Helps customize form rendering
+django-debug-toolbar  # Debugging tool for development
+whitenoise  # Serves static files in production
+psycopg2-binary  # PostgreSQL database adapter (if using PostgreSQL)
+dj-database-url  # For handling database URLs (useful for deployment)
+gunicorn  # WSGI HTTP server (for production)
