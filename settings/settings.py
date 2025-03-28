@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +29,10 @@ SECRET_KEY = 'django-insecure-ng21m9fg9v-ew=q&*^84931uv_iq4oqc4s+$&pzky^u&gs-qv%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  "127.0.0.1",
+  "localhost"
+]
 
 
 # Application definition
@@ -38,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # installed apps
+    # installed apps    
     'django',  # Django framework (this is built-in)
     'crispy_forms',  # For Django crispy forms
     'crispy_bootstrap5',  # Bootstrap 5 integration for crispy forms
@@ -46,13 +53,20 @@ INSTALLED_APPS = [
     'allauth',  # Main authentication framework
     'allauth.account',  # Email/password authentication
     'allauth.socialaccount',  # Social authentication
-    'debug_toolbar',  # Debugging tool (only for development)
+   # 'debug_toolbar',  # Debugging tool (only for development)
     'oauth2_provider', # oauth toolkit
+    'apps.accounts', # user account app
+    'apps.cart', # cart product app
+    'apps.orders', # order product app
+    'apps.products' # product app
 
     # Add your own apps here
 ]
 
-# internet ip
+# Custom user model
+AUTH_USER_MODEL = 'accounts.User'
+
+# debugging toolbar
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -78,7 +92,9 @@ ROOT_URLCONF = 'settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+          BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,6 +157,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+  BASE_DIR / 'static'
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
+
+# media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -4,7 +4,9 @@
   "description": "Created and ecommerce web app using html, css, scss, Tailwindcss, javascript, jquery and django &amp; PosgresSQL. this webapp is an online store where users can be able to buy electronics online and access their profile/dashboard. this gave me a deep understanding on how to handle large dataset and manage extensive code.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwindcss": "npx tailwindcss -i ./static/styles/input.css -o ./static/styles/output.css --watch",
+    "scss": "sass --watch ./static/scss/main.scss:static/styles/clicon.css"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,8 @@
     "@tailwindcss/cli": "^4.0.15",
     "jquery": "^3.7.1",
     "tailwindcss": "^4.0.15"
+  },
+  "devDependencies": {
+    "sass": "^1.86.0"
   }
 }

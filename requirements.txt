@@ -7,6 +7,7 @@ django-oauth-toolkit # django oauth toolkit
 django-widget-tweaks  # Helps customize form rendering
 django-debug-toolbar  # Debugging tool for development
 whitenoise  # Serves static files in production
-psycopg2-binary  # PostgreSQL database adapter (if using PostgreSQL)
+psycopg2-binary  # PostgreSQL database adapter
 dj-database-url  # For handling database URLs (useful for deployment)
 gunicorn  # WSGI HTTP server (for production)
+python-dotenv # dotenv for secret keys

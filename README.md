@@ -19,7 +19,7 @@ Created and ecommerce web app using html, css, scss, Tailwindcss, javascript, jq
 
   <------------------------------------>
 
-# Needs
+# djang
 
 - django-widget-tweaks is a Django package that allows you to customize form field widgets dynamically in templates.
 
@@ -48,3 +48,7 @@ eg: "
 - django-widget-tweaks is a Django package that allows you to customize form field widgets dynamically in templates.
 
 - dj-database-url is a Django package that helps configure your database settings using a single environment variable. It's especially useful for deployment (e.g., on Heroku, Render, or Docker) where database URLs are provided dynamically.
+
+## to generate folder structure to look at
+
+- tree /F /A > structure.txt

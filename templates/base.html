@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} oclicon online shoping {% endblock %}</title>
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/Icon-favicon.png' %}"
+      type="image/x-icon"
+    />
+
+    <!-- linking to cascading stylesheet (css) -->
+    <link rel="stylesheet" href="{% sttic 'styles/input/output.css' %}" />
+    <link rel="stylesheet" href="{% sttic 'styles/input/oclicon.css' %}" />
+  </head>
+  <body>
+    <main>
+      {% block title %}
+      <!-- Default content -->
+      {% endblock %}
+    </main>
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
