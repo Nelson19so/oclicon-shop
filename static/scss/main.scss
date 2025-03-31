@@ -1,21 +1,21 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
+@use "abstracts/variables" as variables;
+@use "abstracts/mixins" as mixin;
 
-@import "base/reset";
-@import "base/typography";
-@import "base/global";
+@use "base/reset" as reset;
+@use "base/typography" as typography;
+@use "base/global" as global;
 
-@import "layouts/header";
-@import "layouts/footer";
-@import "layouts/grid";
-@import "layouts/sidebar";
+@use "layouts/header" as header;
+@use "layouts/footer" as footer;
+@use "layouts/grid" as grid;
+@use "layouts/sidebar" as sidebar;
 
-@import "components/buttons";
-@import "components/cards";
-@import "components/forms";
-@import "components/navbar";
+@use "components/buttons" as buttons;
+@use "components/cards" as cards;
+@use "components/forms" as forms;
+@use "components/navbar" as navbar;
 
-@import "pages/home";
-@import "pages/product";
-@import "pages/cart";
-@import "pages/checkout";
+@use "pages/home" as home;
+@use "pages/product" as products;
+@use "pages/cart" as cart;
+@use "pages/checkout" as checkout;

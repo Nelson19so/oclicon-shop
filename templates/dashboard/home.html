@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+<!------ extending to base Html template -------->
+
+{% load static %}
+
+<!-- ---- block title ----- -->
+
+{% block title %} oClicon Home page {% endblock %}
+
+<!-- ------- content goes here ------- -->
+
+{% block content %}
+<!-- content -->
+
+<div class="container--adds-one">
+  <div class="container-add-padder">
+    <!-- commerce adds -->
+    <div class="container-top-padder w-full flex justify-betwen gap-7">
+      <div
+        class="container-big-add-left w-full md:flex justify-between overflow-hidden hidden"
+      >
+        <div
+          class="container-inner-sm -container-articles w-1/2 h-full p-6 pt-25 xl:pl-10"
+        >
+          <h3>----THE BEST PLACE TO PLAY</h3>
+          <h1 class="text-white">Xbox Consoles</h1>
+          <p>
+            Save up to 50% on select Xbox games. Get 3 months of PC Game Pass
+            for $2 USD.
+          </p>
+          <button class="mt-4 w-1/2">Shop Now</button>
+        </div>
+
+        <div
+          class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
+        >
+          <img
+            src="{% static 'images/adds/image.png' %}"
+            alt="phone"
+            class="bottom-0"
+          />
+        </div>
+      </div>
+
+      <div class="container-small-add-right w-full flex gap-7">
+        <div
+          class="container-sm-add-sm w-full flex justify-between overflow-hidden"
+        >
+          <div class="container-inner-sm w-1/2 h-full p-6">
+            <p>Summer Sales</p>
+            <h2 class="text-white">New Google Pixel 6 Pro</h2>
+            <button class="mt-4">Shop Now</button>
+          </div>
+          <div
+            class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
+          >
+            <img
+              src="{% static 'images/adds/image 5.png' %}"
+              alt="phone"
+              class="bottom-0"
+            />
+          </div>
+        </div>
+
+        <div
+          class="container-sm-add-sm w-full flex justify-between overflow-hidden"
+        >
+          <div class="container-inner-sm w-1/2 h-ful pt-5">
+            <img
+              src="{% static 'images/adds/image 4.png' %}"
+              alt="phone"
+              class="bottom-0"
+            />
+          </div>
+          <div class="container-inner-sm w-1/2 h-full p-6">
+            <h2>Xiaomi FlipBuds Pro</h2>
+            <p>$299 USD</p>
+            <button class="mt-4">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="container-features w-full mt-8">
+      <div class="features-padder flex justify-evenly">
+        <div class="container-items flex justify-evenly">
+          <div class="container-- mr-2">
+            <img src="{% static 'images/svg/Package.svg' %}" alt="Package" />
+          </div>
+
+          <span
+            ><h2>Fastest Delivery</h2>
+            <p>Delivery in 24/H</p></span
+          >
+        </div>
+
+        <div class="container-items flex justify-evenly">
+          <div class="container-- mr-2">
+            <img src="{% static 'images/svg/Trophy.svg' %}" alt="Package" />
+          </div>
+
+          <span
+            ><h2>24 Hours Return</h2>
+            <p>100% money-back guarantee</p></span
+          >
+        </div>
+
+        <div class="container-items flex justify-evenly">
+          <div class="container-- mr-2">
+            <img src="{% static 'images/svg/CreditCard.svg' %}" alt="Package" />
+          </div>
+
+          <span
+            ><h2>Secure Payment</h2>
+            <p>Your money is safe</p></span
+          >
+        </div>
+
+        <div class="container-items flex justify-evenly">
+          <div class="container-- mr-2">
+            <img src="{% static 'images/svg/Headphones.svg' %}" alt="Package" />
+          </div>
+
+          <span>
+            <h2>Support 24/7</h2>
+            <p>Live contact/message</p></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Best deals -->
+    <div class="container-best-deals mt-10">
+      <div class="wrapper-best-deals">
+        <header class="header-best-deals flex justify-between">
+          <div class="container-header-items w-1/2 flex justify-start gap-5">
+            <h1>Best Deals</h1>
+            <p class="mt-1">Deals ends in</p>
+
+            <span><p>16d : 21h : 57m : 23s</p></span>
+          </div>
+
+          <div
+            class="container-header-items container-right--- flex justify-end w-1/2 gap-4"
+          >
+            <a href="#" class="flex justify-end w-1/2"
+              ><p>Browse All Product</p>
+              <img
+                src="{% static 'images/svg/ArrowRightBlue.svg' %}"
+                alt="Package"
+                width="20"
+              />
+            </a>
+          </div>
+        </header>
+
+        <!-- best deals product -->
+        <div class="container-best-deals-product"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

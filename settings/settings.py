@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ng21m9fg9v-ew=q&*^84931uv_iq4oqc4s+$&pzky^u&gs-qv%'
+SECRET_KEY = os.getenv('django-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'apps.accounts', # user account app
     'apps.cart', # cart product app
     'apps.orders', # order product app
-    'apps.products' # product app
+    'apps.products', # product app
+    'apps.public', # public urls
 
     # Add your own apps here
 ]
@@ -67,9 +68,9 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'accounts.User'
 
 # debugging toolbar
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this before other middleware
@@ -164,7 +165,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 
-# media files
+# media files/images conf
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

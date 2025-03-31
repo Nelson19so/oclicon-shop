@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-inner-sm {
+  button {
+    background-color: variables.$Primary-500;
+    color: variables.$White-100;
+    border-radius: 2px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: Public Sans;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: variables.$Primary-400;
+    }
+  }
+}

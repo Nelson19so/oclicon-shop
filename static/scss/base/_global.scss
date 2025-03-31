@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as variables;
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li,
+ol,
+a strong {
+  text-decoration: none;
+  list-style: none;
+  color: variables.$Gray-900;
+}

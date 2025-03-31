@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-right-bottom-nav {
+  p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    padding: 10px 0;
+    display: block;
+    color: variables.$Gray-900;
+  }
+}
+
+.container-left-bottom-nav {
+  ul {
+    li {
+      a {
+        // font-family: Public Sans;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0%;
+      }
+    }
+  }
+}
