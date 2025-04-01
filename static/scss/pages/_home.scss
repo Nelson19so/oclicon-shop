@@ -119,7 +119,7 @@
 
         .container-sm-add-sm:last-child {
           @media only screen and (max-width: 768px) {
-            // display: none;
+            display: none;
           }
 
           p {
@@ -174,7 +174,7 @@
 
           @media only screen and (max-width: 658px) {
             border-right: none;
-            border-bottom: 1.4px solid variables.$Gray-100;
+            border-bottom: 0.1px solid variables.$Gray-100;
           }
         }
 
