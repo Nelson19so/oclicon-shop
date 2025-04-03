@@ -1,0 +1,125 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-homepage-best-deals {
+  @media (max-width: 992px) {
+    display: block;
+  }
+
+  .price {
+    .normal-price {
+      text-decoration: line-through;
+      font-family: Public Sans;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 24px;
+      letter-spacing: 0%;
+      text-decoration: line-through;
+      color: variables.$Gray-300;
+    }
+
+    .discount-price {
+      font-family: Public Sans;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0%;
+      color: variables.$Secondary-500;
+    }
+  }
+
+  .description {
+    font-family: Public Sans;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+
+    color: variables.$Gray-600;
+  }
+
+  .description-2 {
+    font-family: Public Sans;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    color: variables.$Gray-600;
+    height: 40px;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .container-left-bg-product {
+    width: 30%;
+    border: 1px solid variables.$Gray-100;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    .container-product {
+      .padder-container- {
+        // .container-img{
+        //   img {
+
+        //   }
+        // }
+
+        .container-items {
+          strong {
+            font-size: 14px;
+
+            p {
+              height: 45px;
+              text-align: left;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container-main-product {
+    width: 70%;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    .product-grid {
+      display: grid;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (min-width: 992px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .container-product {
+        border: 0.1px solid variables.$Gray-100;
+
+        @media (max-width: 992px) {
+          border: 1px solid variables.$Gray-100;
+        }
+      }
+    }
+  }
+}

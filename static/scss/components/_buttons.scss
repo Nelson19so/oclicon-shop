@@ -19,3 +19,36 @@
     }
   }
 }
+
+.btn-love-product {
+  width: 48;
+  height: 48;
+  gap: 10px;
+  border-radius: 2px;
+  padding: 12px;
+  background-color: variables.$Primary-100;
+  cursor: pointer;
+}
+
+.add-to-cart_btn {
+  background-color: variables.$Primary-500;
+  padding-right: 15px;
+  padding-left: 15px;
+  gap: 4px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  width: 70%;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+
+  span {
+    padding-top: 5px;
+    color: variables.$White-100;
+  }
+}
