@@ -1,0 +1,678 @@
+{% load static %}
+
+<!-- main content -->
+{% block content %}
+<div class="conainer-left-container-items">
+  <div class="container-main-content w-full text-center">
+    <p>COMPUTER & ACCESSORIES</p>
+    <h1>32% Discount</h1>
+    <span>For all ellectronics products</span>
+
+    <div class="container-- flex justify-evenly w-full gap-1">
+      <span>Offers ends in:</span>
+      <p>ENDS OF CHRISTMAS</p>
+    </div>
+
+    <button class="mt-3">Shop now</button>
+  </div>
+  <img src="{% static 'images/Image.jpg' %}" alt="featured-img" />
+</div>
+
+<!-- products -->
+<div class="container-featured-products">
+  <div class="container-products-features-padder pl-8">
+    <header class="header-featured-product w-full flex justify-between">
+      <div class="container-left-container flex justify-items-start h-full">
+        <h1>Featured Products</h1>
+      </div>
+
+      <div class="container-right-header flex justify-end gap-5">
+        <ul class="flex justify-end gap-3">
+          <li><a href="#">All Product</a></li>
+          <li><a href="#">Smart Phone</a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Headphone</a></li>
+          <li><a href="#">TV</a></li>
+        </ul>
+
+        <a href="#" class="flex justify-end"
+          ><p>Browse All Product</p>
+          <img
+            src="{% static 'images/svg/ArrowRightBlue.svg' %}"
+            alt="Package"
+            width="15"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="container-products-container-- h-full mt-5">
+      <div class="product-grid gap-3">
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/droneImage.png' %}"
+              alt="droneImage"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-product-status">
+              <p class="sold-out">SOLD OUTs</p>
+            </div>
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$2,300</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/smartphoneImage.png' %}"
+              alt="product/smartphoneImage"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              Simple Mobile 4G LTE Prepaid Smartphone
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$220</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/p5controllerImage.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-product-status">
+              <p class="off-price">19% OFF</p>
+            </div>
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              4K UHD LED Smart TV with Chromecast Built-in
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$1,50</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/headsetImage.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              Sony DSCHX8 High Zoom Point & Shoot Camera
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$1,200</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/adnroid-3-Image.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              Dell Optiplex 7000x7480 All-in-One Computer Monitor
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$299</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/dronecontrolImage.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              Portable Wshing Machine, 11lbs capacity Model 18NMFIAM
+            </p>
+
+            <p class="price mt-2">
+              <span class="normal-price mr-3">$865.99</span
+              ><span class="discount-price">$70</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/desktopImage.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-product-status">
+              <p class="hot">HOT</p>
+            </div>
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              2-Barrel Carburetor Carb 2100 Engine Increase Horsepower
+            </p>
+
+            <p class="price mt-2"><span class="discount-price">$160</span></p>
+          </div>
+        </div>
+
+        <div class="container-product p-2">
+          <div class="container-product-img w-full">
+            <img
+              src="{% static 'images/product/cameraImage.png' %}"
+              alt="p5Image"
+              class="w-full"
+              width="100"
+            />
+
+            <div class="container-product-status">
+              <p class="off-price">32% OFF</p>
+            </div>
+
+            <div class="container-modal-product">
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Heart.svg' %}"
+                  alt="Heart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+              </button>
+
+              <button href="#">
+                <img
+                  src="{% static 'images/svg/Eye.svg' %}"
+                  alt="Eye"
+                  width="20"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="container-items p-1">
+            <span class="star-span flex justify-items-start">
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+              <img
+                src="{% static 'images/svg/Star.svg' %}"
+                alt="star"
+                width="15"
+              />
+
+              <p class="ml-2 review-">52,677</p>
+            </span>
+
+            <p class="description-2 mt-2">
+              JBL FLIP 4 - Waterproof Portable Bluetooth Speaker - Black
+            </p>
+
+            <p class="price mt-2">
+              <span class="normal-price mr-3">$360</span
+              ><span class="discount-price">$250</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- product-grid ends -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-shopping-category {
+  margin: 10% 0;
+
+  .container-shopping-cart-padder {
+    .container-shop-category-main {
+      .container-padder {
+        overflow-y: hidden;
+        padding: 0 20px;
+
+        .container-category {
+          border: 1px solid variables.$Gray-100;
+          background-color: variables.$White-100;
+          width: 140px;
+          height: 200px;
+          border-width: 1px;
+          gap: 16px;
+          border-radius: 4px;
+          padding-top: 15px;
+          padding-right: 12px;
+          padding-bottom: 15px;
+          padding-left: 12px;
+
+          .container-category-name {
+            p {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 24px;
+              letter-spacing: 0%;
+              text-align: center;
+              color: variables.$Gray-900;
+            }
+          }
+        }
+      }
+    }
+  }
+}

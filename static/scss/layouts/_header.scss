@@ -36,7 +36,7 @@ nav {
 
         .welcome-txt {
           font-size: 12px;
-          // font-family: Public Sans;
+          //
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
@@ -57,7 +57,7 @@ nav {
         }
 
         .container-media {
-          // font-family: Public Sans;
+          //
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
@@ -91,7 +91,7 @@ nav {
         }
 
         .container-lang {
-          // font-family: Public Sans;
+          //
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
@@ -156,7 +156,7 @@ nav {
           padding-left: 20px;
           border-radius: 2px;
           background-color: variables.$White-100;
-          // font-family: Public Sans;
+          //
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
@@ -280,9 +280,8 @@ nav {
 
     h1 {
       color: variables.$Gray-900;
-      font-family: Public Sans;
       font-weight: 600;
-      font-size: 24px;
+      font-size: 17px;
       line-height: 32px;
       letter-spacing: 0%;
 
@@ -293,6 +292,7 @@ nav {
 
     p {
       height: 100%;
+      font-size: 12px;
 
       @media only screen and (max-width: 420px) {
         font-size: 13px;
@@ -310,7 +310,7 @@ nav {
         padding-right: 12px;
         padding-bottom: 6px;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 13px;
         line-height: 20px;
         letter-spacing: 0%;
 
@@ -321,7 +321,7 @@ nav {
 
       img {
         @media only screen and (max-width: 420px) {
-          width: 10%;
+          width: 5%;
         }
       }
     }
@@ -334,9 +334,9 @@ nav {
       padding-bottom: 6px;
       padding-left: 12px;
       border-radius: 2px;
-      font-family: Public Sans;
+
       font-weight: 400;
-      font-size: 16px;
+      font-size: 13px;
       line-height: 24px;
       letter-spacing: 0%;
 
@@ -344,6 +344,102 @@ nav {
         font-size: 15px;
         padding-right: 8px;
         padding-left: 8px;
+      }
+    }
+  }
+}
+
+.container-shopping-category {
+  .header-shopping-cart {
+    h1 {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 40px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: variables.$Gray-900;
+    }
+  }
+}
+
+// header feature
+.header-featured-product {
+  height: 20px;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    display: block;
+  }
+
+  .container-left-container {
+    padding-bottom: 5px;
+    width: 20%;
+
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 32px;
+      letter-spacing: 0%;
+    }
+  }
+
+  .container-right-header {
+    width: 80%;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      display: flex;
+      margin-top: 10px;
+      justify-content: flex-start;
+    }
+
+    a {
+      @media (max-width: 992px) {
+        display: none;
+      }
+
+      p {
+        color: variables.$Primary-500;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: 0%;
+
+        @media (max-width: 992px) {
+          font-size: 10px;
+        }
+      }
+    }
+
+    ul {
+      float: right;
+      width: 70%;
+
+      @media (max-width: 992px) {
+        float: left;
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      li {
+        &:first-child {
+          border-bottom: 1.5px solid variables.$Primary-500;
+        }
+
+        a {
+          font-family: Public Sans;
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 20px;
+          letter-spacing: 0%;
+          color: variables.$Gray-600;
+          display: block;
+        }
       }
     }
   }

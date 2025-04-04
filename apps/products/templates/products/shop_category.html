@@ -1,0 +1,94 @@
+{% load static %}
+
+<!-- content -->
+{% block content %}
+<div class="container-shopping-category mt-10">
+  <div class="container-shopping-cart-padder">
+    <header class="header-shopping-cart">
+      <h1 class="text-center">Shop with Categorys</h1>
+    </header>
+
+    <div class="container-shop-category-main mt-5">
+      <div class="container-padder flex justify-between gap-5">
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/category-computer.png' %}"
+              alt="category-computer"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">Computer & Laptop</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/category-phone.png' %}"
+              alt="category-phone"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">SmartPhone</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/category-headphone.png' %}"
+              alt="category-headphone"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">Headphones</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/red-keaboard-Image.png' %}"
+              alt="red-keaboard-Image"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">Accessories</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/category-photo.png' %}"
+              alt="category-photo"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">Camera & Photo</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="container-category flex justify-between flex-col">
+            <img
+              src="{% static 'images/category/tvImage.png' %}"
+              alt="tvImage"
+            />
+
+            <div class="container-category-name">
+              <p class="text-center">TV & Homes</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

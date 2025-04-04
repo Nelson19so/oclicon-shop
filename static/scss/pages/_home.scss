@@ -37,39 +37,6 @@
           @media only screen and (max-width: 1216px) {
             padding-top: 10%;
           }
-
-          h1 {
-            color: variables.$Gray-900;
-            font-family: Public Sans;
-            font-weight: 600;
-            font-size: 48px;
-            line-height: 56px;
-            letter-spacing: 0%;
-
-            @media only screen and (max-width: 1216px) {
-              font-size: 35px;
-              margin: 0;
-              padding: 0;
-            }
-          }
-
-          h3 {
-            color: variables.$Secondary-700;
-            font-family: Public Sans;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 20px;
-            letter-spacing: 0%;
-          }
-
-          p {
-            color: variables.$Gray-700;
-            font-family: Public Sans;
-            font-weight: 400;
-            font-size: 17px;
-            line-height: 24px;
-            letter-spacing: 0%;
-          }
         }
       }
 
@@ -90,63 +57,23 @@
           width: 100%;
         }
 
+        // @media only screen and (max-width: 767px) {
+        //   overflow-y: hidden;
+        //   flex-direction: row;
+        // }
+
         .container-sm-add-sm {
           background-color: variables.$Gray-50;
           height: 50%;
           border-radius: 6px;
+
+          // @media only screen and (max-width: 767px) {
+          //   width: 360px !important;
+          // }
         }
 
         .container-sm-add-sm:first-child {
           background-color: variables.$Gray-900;
-
-          p {
-            color: variables.$Warning-500;
-          }
-
-          h2 {
-            color: variables.$White-100;
-            font-family: Public Sans;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 32px;
-            letter-spacing: 0%;
-
-            @media only screen and (max-width: 1216px) {
-              font-size: 18px;
-            }
-          }
-        }
-
-        .container-sm-add-sm:last-child {
-          @media only screen and (max-width: 768px) {
-            display: none;
-          }
-
-          p {
-            color: variables.$Secondary-500;
-            font-family: Public Sans;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 24px;
-            letter-spacing: 0%;
-          }
-
-          h2 {
-            color: variables.$Gray-900;
-            font-family: Public Sans;
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 32px;
-            letter-spacing: 0%;
-
-            @media only screen and (max-width: 1216px) {
-              font-size: 18px;
-            }
-
-            @media only screen and (max-width: 1116px) {
-              font-size: 19px;
-            }
-          }
         }
       }
     }
@@ -201,18 +128,16 @@
 
           h2 {
             color: variables.$Gray-900;
-            font-family: Public Sans;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 12px;
             line-height: 20px;
             letter-spacing: 0%;
             text-transform: uppercase;
           }
 
           p {
-            font-family: Public Sans;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 13px;
             line-height: 20px;
             letter-spacing: 0%;
             color: variables.$Gray-600;
@@ -230,6 +155,118 @@
 
         .header-best-deals {
           width: 100%;
+        }
+      }
+    }
+
+    // featured products
+    .container-featured-product {
+      width: 100%;
+
+      .container-featured-padder-product {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 992px) {
+          display: block;
+        }
+
+        .conainer-left-container-items {
+          width: 37%;
+          height: 100%;
+
+          @media (max-width: 992px) {
+            width: 100%;
+          }
+
+          .container-main-content {
+            background: variables.$Warning-300;
+            width: 100%;
+            padding: 30px 20px;
+            height: 50%;
+
+            .container-- {
+              p {
+                width: 173;
+                height: 32;
+                gap: 10px;
+                border-radius: 2px;
+                padding-top: 6px;
+                padding-right: 4px;
+                padding-bottom: 6px;
+                padding-left: 4px;
+                background: variables.$White-100;
+                font-family: Public Sans;
+                font-weight: 600;
+                font-size: 10px;
+                line-height: 20px;
+                letter-spacing: 0%;
+                color: variables.$Gray-900;
+              }
+
+              span {
+                font-family: Public Sans;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0%;
+                color: variables.$Gray-900;
+                padding-top: 6px;
+                padding-bottom: 6px;
+              }
+            }
+
+            span {
+              font-family: Public Sans;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 24px;
+              letter-spacing: 0%;
+              text-align: center;
+              color: variables.$Gray-700;
+            }
+
+            h1 {
+              font-family: Public Sans;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 40px;
+              letter-spacing: 0%;
+              text-align: center;
+              color: variables.$Gray-900;
+            }
+
+            p {
+              font-family: Public Sans;
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 20px;
+              letter-spacing: 0%;
+              text-align: center;
+              color: variables.$Danger-600;
+            }
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .container-featured-products {
+          width: 100%;
+
+          @media (max-width: 992px) {
+            width: 100%;
+          }
+
+          .container-products-features-padder {
+            width: 100%;
+
+            @media (max-width: 992px) {
+              padding: 0;
+            }
+          }
         }
       }
     }

@@ -8,9 +8,8 @@
     border-radius: 2px;
     padding: 8px 20px;
     cursor: pointer;
-    font-family: Public Sans;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
     transition: 0.5s;
 
@@ -37,11 +36,11 @@
   gap: 4px;
   border-radius: 2px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  width: 70%;
+  width: 80%;
 
   &:hover {
     background-color: variables.$Primary-400;
@@ -50,5 +49,58 @@
   span {
     padding-top: 5px;
     color: variables.$White-100;
+  }
+}
+
+.container-modal-product {
+  &:hover {
+    opacity: 1;
+
+    button {
+      opacity: 1;
+    }
+  }
+
+  button {
+    background-color: variables.$White-100;
+    border-radius: 100px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0;
+
+    &:first-child {
+      transition: 1s;
+      background-color: variables.$Primary-500;
+    }
+
+    &:nth-child(even) {
+      transition: 2s;
+    }
+
+    &:last-child {
+      transition: 3s;
+    }
+  }
+}
+
+.container-main-content {
+  button {
+    font-family: Public Sans;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    top: 216px;
+    left: 60px;
+    border-radius: 3px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+
+    &:hover {
+      background-color: variables.$Primary-400;
+    }
   }
 }
