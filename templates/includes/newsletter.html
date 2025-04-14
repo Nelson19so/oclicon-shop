@@ -1,0 +1,56 @@
+<!-- loads static files -->
+{% load static %}
+
+<!-- loads static -->
+{% block content %}
+<div class="container-newsletter-bottom bottom-0 w-full left-0">
+  <div class="container-bottom-newsletter-padder w-full">
+    <div class="container-top-article">
+      <h1 class="newsletter-sub">Subscribe to our newsletter</h1>
+      <p class="newsletter-article">
+        Praesent fringilla erat a lacinia egestas. Donec vehicula tempor libero
+        et cursus. Donec non quam urna. Quisque vitae porta ipsum.
+      </p>
+    </div>
+
+    <div class="container-middle-form mt-6 mb-6">
+      <form action="#" class="newsletter-form">
+        <div class="container-newsletter-form-">
+          <input
+            type="email"
+            placeholder="Email address"
+            name="email"
+            id="email"
+            class="email-newsletter"
+          />
+          <button class="btn-signup-newsletter">Subscribe</button>
+        </div>
+      </form>
+    </div>
+
+    <hr />
+
+    <div class="container-company-logo flex justify-between gap-7 mt-6">
+      <div class="container-img-logo">
+        <img src="{% static 'images/googleLogo.png' %}" alt="googleLogo" />
+      </div>
+
+      <div class="container-img-logo">
+        <img src="{% static 'images/amazon.png' %}" alt="amazon" />
+      </div>
+
+      <div class="container-img-logo">
+        <img src="{% static 'images/logo4Vector.png' %}" alt="philips" />
+      </div>
+
+      <div class="container-img-logo">
+        <img src="{% static 'images/toshiba-1 1.png' %}" alt="toshiba" />
+      </div>
+
+      <div class="container-img-logo">
+        <img src="{% static 'images/logoGroup.png' %}" alt="samsunlogo" />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

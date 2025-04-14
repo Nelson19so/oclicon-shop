@@ -5,7 +5,7 @@
 
 <!-- ---- block title ----- -->
 
-{% block title %} oClicon Home page {% endblock %}
+{% block title %} Clicon Home page {% endblock %}
 
 <!-- ------- content goes here ------- -->
 
@@ -177,6 +177,105 @@
         {% include 'products/partials/featured_products.html' %}
       </div>
     </div>
+
+    <!-- banner -->
+    <div class="container-banner mt-10 w-full flex justify-between gap-4">
+      <div class="container-benner-1 w-1/2 flex justify-between">
+        <div class="container-articles w-1/2">
+          <article>
+            <p class="introduction-banner-txt">INTRODUCING</p>
+            <h4 class="banner-product-name mt-3">New Apple Homepod Mini</h4>
+            <p class="banner-product-description">
+              Jam-packed with innovation, HomePod mini delivers unexpectedly.
+            </p>
+            <a href="#"
+              ><button class="visit-banner-product mt-5">Shop now</button></a
+            >
+          </article>
+        </div>
+
+        <div class="banner-product-img w-1/2">
+          <img src="{% static 'images/product/mp4.png' %}" alt="mp4" />
+        </div>
+      </div>
+
+      <!-- banner 2 -->
+      <div class="container-benner-2 w-1/2 flex justify-between">
+        <div class="container-articles w-1/2">
+          <article>
+            <p class="introduction-banner-txt">INTRODUCING NEW</p>
+            <h4 class="banner-product-name mt-3">
+              Xiaomi Mi 11 Ultra 12GB+256GB
+            </h4>
+            <p class="banner-product-description">
+              *Data provided by internal laboratories. Industry measurment.
+            </p>
+            <a href="#"
+              ><button class="visit-banner-product mt-5">Shop now</button></a
+            >
+          </article>
+        </div>
+
+        <div class="banner-product-img w-1/2 h-full pt-10">
+          <p class="banner-price">$590</p>
+          <img
+            src="{% static 'images/product/phone.png' %}"
+            alt="phone"
+            class="h-full"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- computer accessories -->
+    <div class="container-computer_accessories-product w-full mt-10">
+      <div
+        class="container-computer_accessories-padder-product w-full flex justify-between"
+      >
+        {% include 'products/partials/computer_accessories.html' %}
+      </div>
+    </div>
+
+    <!-- banner -->
+    <div class="container-last-banner-home mt-10">
+      <div class="container-left-banner">
+        <p class="title">SAVE UP TO $200.00</p>
+
+        <h1 class="mt-1">Macbook Pro</h1>
+        <p class="mt-1">
+          Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage
+        </p>
+
+        <button class="btn-shop-now mt-5">Shop now</button>
+      </div>
+
+      <div class="right-container-">
+        <img
+          src="{% static 'images/product/macbookImage.png' %}"
+          alt="macbookImage"
+          width="300"
+        />
+      </div>
+    </div>
+
+    <!-- product-list -->
+    <div class="container-product-list mt-10">
+      <div class="container-product-list-padder">
+        {% include 'products/product-list.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- news section -->
+<div class="container-latest-news">
+  <div class="container-padder-latest-news">
+    <header class="header-homepage-latest-news w-full text-center">
+      <h1>Latest News</h1>
+    </header>
+
+    <!-- -->
+    {% include 'public/news.html' %}
   </div>
 </div>
 

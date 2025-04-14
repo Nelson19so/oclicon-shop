@@ -1,0 +1,33 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.newsletter-form {
+  width: 50%;
+  align-self: center;
+  display: flex;
+  justify-self: center;
+
+  @media only screen and (max-width: 678px) {
+    width: 85%;
+  }
+
+  .container-newsletter-form- {
+    background-color: white;
+    gap: 16px;
+    border-radius: 3px;
+    padding: 5px 15px;
+    padding-right: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .email-newsletter {
+      background: transparent;
+      outline: none;
+      border: none;
+      width: 90%;
+      font-size: 14px;
+      color: variables.$Gray-500;
+    }
+  }
+}

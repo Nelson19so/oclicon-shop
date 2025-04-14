@@ -5,13 +5,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %} oclicon online shoping {% endblock %}</title>
+    <title>{% block title %} clicon online shoping {% endblock %}</title>
 
     <!-- favicon -->
     <link
       rel="shortcut icon"
-      href="{% static 'images/Icon-favicon.png' %}"
+      href="{% static 'images/logo-O.png' %}"
       type="image/x-icon"
+    />
+
+    <!-- external linkings -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
     />
 
     <!-- linking to cascading stylesheet (css) -->
@@ -19,96 +25,12 @@
     <link rel="stylesheet" href="{% static 'styles/clicon.css' %}" />
   </head>
   <body>
+    {% if 'show_extra' %}
+    <!-- top ads -->
+    {% endif %}
+
     <!-- Navbar -->
-    <nav class="w-full">
-      <div class="container-padder-nav">
-        <div class="top-container">
-          <div class="container-left">
-            <p class="welcome-txt">Welcome to Clicon online eCommerce store.</p>
-          </div>
-
-          <div class="container-items-right gap-5">
-            <div class="container-media">
-              <span class="flex justify-between gap-3"
-                ><p>Follow us:</p>
-                <a href="#"
-                  ><img
-                    src="{% static 'images/svg/Twitter.svg' %}"
-                    alt="twitter"
-                /></a>
-                <a href="#"
-                  ><img
-                    src="{% static 'images/svg/Facebook.svg' %}"
-                    alt="Facebook"
-                /></a>
-                <a href="#"
-                  ><img
-                    src="{% static 'images/svg/Pinterest.svg' %}"
-                    alt="Pinterest"
-                /></a>
-                <a href="#"
-                  ><img src="{% static 'images/svg/Reddit.svg' %}" alt="Reddit"
-                /></a>
-                <a href="#"
-                  ><img
-                    src="{% static 'images/svg/Youtube.svg' %}"
-                    alt="Youtube"
-                /></a>
-                <a href="#"
-                  ><img
-                    src="{% static 'images/svg/Instagram.svg' %}"
-                    alt="Instagram"
-                /></a>
-              </span>
-            </div>
-
-            <div class="container-lang flex justify-between gap-4">
-              <p>Eng</p>
-              <p>USD</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="Middle_Nav__">
-          <div class="container-logo">
-            <img src="{% static 'images/Logo.png' %}" alt="logo" width="120" />
-          </div>
-
-          <div class="container-search">
-            <input
-              type="text"
-              class="search-input-nav"
-              placeholder="Search for anything..."
-            />
-          </div>
-
-          <div class="container-icons-commerce flex justify-center gap-4">
-            <img
-              src="{% static 'images/svg/shoppingcart.svg' %}"
-              alt="shoppingcart"
-            />
-            <img src="{% static 'images/svg/Heart.svg' %}" alt="Heart" />
-            <img src="{% static 'images/svg/User.svg' %}" alt="User" />
-          </div>
-        </div>
-
-        <div class="bottom-Nav flex justify-between">
-          <div class="container-left-bottom-nav w-2/3">
-            <ul class="w-full flex justify-items-start gap-1">
-              <li><a href="#">All Category</a></li>
-              <li><a href="#">Track Order</a></li>
-              <li><a href="#">Compare</a></li>
-              <li><a href="#">Customer Support</a></li>
-              <li><a href="#">Need Help</a></li>
-            </ul>
-          </div>
-
-          <div class="container-right-bottom-nav w-50 flex justify-end">
-            <p>+1-202-555-0104</p>
-          </div>
-        </div>
-      </div>
-    </nav>
+    {% include 'includes/navbar.html' %}
     <!-- Navbar ends -->
 
     <main>
@@ -117,9 +39,12 @@
       {% endblock %}
     </main>
 
-    <footer>
-      <!-- footer items goes here -->
-    </footer>
+    <!-- news letter -->
+    {% include 'includes/newsletter.html' %}
+
+    <!-- footer items goes here -->
+    {% include 'includes/footer.html' %}
+    <!-- footer ends -->
 
     <script src="{% static 'js/main.js' %}"></script>
   </body>

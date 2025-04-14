@@ -104,3 +104,81 @@
     }
   }
 }
+
+.visit-banner-product {
+  padding: 8px 24px;
+  gap: 8px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.btn-acc {
+  padding: 8px 24px;
+  gap: 8px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Secondary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: 100%;
+}
+
+.btn-shop-now {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  top: 216px;
+  left: 60px;
+  border-radius: 3px;
+  padding: 8px 40px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.btn-read-more-news {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 8px 20px;
+  color: variables.$Primary-500;
+  border: 1px solid variables.$Primary-500;
+  transition: 1s;
+  margin-top: 5px;
+
+  &:hover {
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+  }
+}
+
+.btn-signup-newsletter {
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}

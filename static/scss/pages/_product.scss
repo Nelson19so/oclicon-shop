@@ -78,3 +78,42 @@
     width: 100%;
   }
 }
+
+// product list
+.container-main-product-list-wrapper {
+  width: 100%;
+
+  .container-product-list- {
+    width: 100%;
+
+    a {
+      display: block;
+      max-width: fit-content;
+
+      .container-product-main {
+        width: fit-content;
+        border: 1px solid variables.$Gray-100;
+        transition: 1s;
+
+        &:hover {
+          border: 1px solid variables.$Gray-100;
+
+          .articles-main {
+            background-color: rgb(244, 255, 255);
+            transition: 1s;
+          }
+        }
+
+        .container-img {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .articles-main {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

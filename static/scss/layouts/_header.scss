@@ -1,236 +1,6 @@
 @use "../abstracts/variables" as variables;
 @use "../abstracts/mixins" as mixin;
 
-nav {
-  top: 0;
-  margin: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-
-  .container-padder-nav {
-    width: 100%;
-
-    .top-container {
-      background-color: variables.$Secondary-700;
-      width: 100%;
-      height: 52;
-      justify-content: space-between;
-      display: flex;
-      justify-items: center;
-      border-bottom: 1px solid;
-      border-bottom: 0.1px solid variables.$Gray-500;
-      @include mixin.pagePadding;
-
-      @media only screen and (max-width: 1045px) {
-        display: block;
-      }
-
-      .container-left {
-        text-align: left;
-        width: 50%;
-
-        @media only screen and (max-width: 1045px) {
-          width: 100%;
-        }
-
-        .welcome-txt {
-          font-size: 12px;
-          //
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 20px;
-          letter-spacing: 0%;
-          color: variables.$White-100;
-        }
-      }
-
-      .container-items-right {
-        width: 50%;
-        display: flex;
-        justify-content: flex-end;
-
-        @media only screen and (max-width: 1045px) {
-          width: 100%;
-          display: flex;
-          justify-content: flex-start;
-        }
-
-        .container-media {
-          //
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 20px;
-          letter-spacing: 0%;
-
-          @media only screen and (max-width: 1045px) {
-            width: 40%;
-            margin-top: 10px;
-          }
-
-          @media only screen and (max-width: 968px) {
-            display: none;
-          }
-
-          @media only screen and (max-width: 631px) {
-            width: 60%;
-          }
-
-          @media only screen and (max-width: 472px) {
-            width: 100%;
-          }
-
-          p {
-            color: variables.$White-100;
-          }
-
-          img {
-            display: block;
-            height: 100%;
-          }
-        }
-
-        .container-lang {
-          //
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 20px;
-          letter-spacing: 0%;
-          border-left: 1px solid #ffffff;
-          padding-left: 10px;
-
-          @media only screen and (max-width: 1045px) {
-            width: 20%;
-            margin-top: 10px;
-            display: none;
-          }
-
-          p {
-            color: variables.$White-100;
-          }
-        }
-      }
-    }
-
-    .Middle_Nav__ {
-      background-color: variables.$Secondary-700;
-      width: 100%;
-      height: 52;
-      justify-content: space-between;
-      display: flex;
-      justify-items: center;
-      border-bottom: 1px solid;
-      border-bottom: 0.1px solid variables.$Gray-500;
-      @include mixin.pagePadding;
-
-      @media only screen and (max-width: 968px) {
-        position: sticky;
-      }
-
-      .container-logo {
-        padding-top: 5px;
-
-        @media only screen and (max-width: 1045px) {
-          width: 60%;
-          padding: 0;
-        }
-      }
-
-      .container-search {
-        width: 55%;
-        padding-top: 5px;
-        display: flex;
-        justify-items: center;
-
-        @media only screen and (max-width: 1045px) {
-          display: none;
-        }
-
-        .search-input-nav {
-          width: 100%;
-          gap: 8px;
-          padding-top: 14px;
-          padding-right: 20px;
-          outline: none;
-          padding-bottom: 14px;
-          padding-left: 20px;
-          border-radius: 2px;
-          background-color: variables.$White-100;
-          //
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 20px;
-          letter-spacing: 0%;
-          color: variables.$Gray-500;
-          height: 35px;
-        }
-      }
-
-      .container-icons-commerce {
-        padding-top: 10px;
-        display: flex;
-        justify-content: flex-end;
-
-        @media only screen and (max-width: 1045px) {
-          width: 40%;
-          padding-top: 5px;
-        }
-
-        img {
-          width: 22px;
-          height: 22px;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .bottom-Nav {
-      width: 100%;
-      height: 80;
-      justify-content: space-between;
-      box-shadow: 0px -1px 0px 0px #e4e7e9 inset;
-      @include mixin.pagePadding;
-
-      @media only screen and (max-width: 842px) {
-        display: none;
-      }
-
-      .container-left-bottom-nav {
-        ul {
-          li {
-            a {
-              width: 154;
-              height: 48;
-              gap: 8px;
-              padding: 10px 15px;
-              border-radius: 2px;
-              display: block;
-              color: variables.$Gray-500;
-              transition: 0.5s;
-
-              &:hover {
-                background-color: variables.$Gray-50;
-                width: fit-content;
-                color: variables.$Gray-900;
-              }
-            }
-
-            &:first-child {
-              a {
-                background-color: variables.$Gray-50;
-                width: fit-content;
-                color: variables.$Gray-900;
-              }
-            }
-          }
-        }
-      }
-
-      // .container-right-bottom-nav {typography}
-    }
-  }
-}
-
 // best-deals header
 .header-best-deals {
   width: 100%;
@@ -362,8 +132,9 @@ nav {
   }
 }
 
-// header feature
-.header-featured-product {
+// header feature & header acc product
+.header-featured-product,
+.header-acc-product {
   height: 20px;
   width: 100%;
 
@@ -373,7 +144,7 @@ nav {
 
   .container-left-container {
     padding-bottom: 5px;
-    width: 20%;
+    width: 30%;
 
     @media (max-width: 992px) {
       width: 100%;
@@ -393,7 +164,7 @@ nav {
     @media (max-width: 992px) {
       width: 100%;
       display: flex;
-      margin-top: 10px;
+      margin-top: 15px;
       justify-content: flex-start;
     }
 
@@ -405,7 +176,7 @@ nav {
       p {
         color: variables.$Primary-500;
         font-weight: 600;
-        font-size: 13px;
+        font-size: 11px;
         line-height: 20px;
         letter-spacing: 0%;
 
@@ -442,5 +213,21 @@ nav {
         }
       }
     }
+  }
+}
+
+.header- {
+  p {
+    color: variables.$Gray-900;
+    font-size: 12px;
+  }
+}
+
+.header-homepage-latest-news {
+  h1 {
+    color: variables.$Gray-900;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
   }
 }

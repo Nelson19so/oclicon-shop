@@ -4,11 +4,11 @@
 .container--adds-one {
   width: 100vw;
   height: auto;
-  padding-top: 3%;
+  padding-top: 1%;
 
   .container-add-padder {
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     @include mixin.pagePadding;
 
     .container-top-padder {
@@ -57,10 +57,12 @@
           width: 100%;
         }
 
-        // @media only screen and (max-width: 767px) {
-        //   overflow-y: hidden;
-        //   flex-direction: row;
-        // }
+        @media only screen and (max-width: 767px) {
+          // overflow-y: hidden;
+          // flex-direction: row;
+
+          gap: 15px;
+        }
 
         .container-sm-add-sm {
           background-color: variables.$Gray-50;
@@ -129,7 +131,7 @@
           h2 {
             color: variables.$Gray-900;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 13px;
             line-height: 20px;
             letter-spacing: 0%;
             text-transform: uppercase;
@@ -137,7 +139,7 @@
 
           p {
             font-weight: 400;
-            font-size: 13px;
+            font-size: 12px;
             line-height: 20px;
             letter-spacing: 0%;
             color: variables.$Gray-600;
@@ -178,6 +180,7 @@
 
           @media (max-width: 992px) {
             width: 100%;
+            margin-bottom: 5%;
           }
 
           .container-main-content {
@@ -185,71 +188,14 @@
             width: 100%;
             padding: 30px 20px;
             height: 50%;
-
-            .container-- {
-              p {
-                width: 173;
-                height: 32;
-                gap: 10px;
-                border-radius: 2px;
-                padding-top: 6px;
-                padding-right: 4px;
-                padding-bottom: 6px;
-                padding-left: 4px;
-                background: variables.$White-100;
-                font-family: Public Sans;
-                font-weight: 600;
-                font-size: 10px;
-                line-height: 20px;
-                letter-spacing: 0%;
-                color: variables.$Gray-900;
-              }
-
-              span {
-                font-family: Public Sans;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 20px;
-                letter-spacing: 0%;
-                color: variables.$Gray-900;
-                padding-top: 6px;
-                padding-bottom: 6px;
-              }
-            }
-
-            span {
-              font-family: Public Sans;
-              font-weight: 400;
-              font-size: 12px;
-              line-height: 24px;
-              letter-spacing: 0%;
-              text-align: center;
-              color: variables.$Gray-700;
-            }
-
-            h1 {
-              font-family: Public Sans;
-              font-weight: 600;
-              font-size: 20px;
-              line-height: 40px;
-              letter-spacing: 0%;
-              text-align: center;
-              color: variables.$Gray-900;
-            }
-
-            p {
-              font-family: Public Sans;
-              font-weight: 600;
-              font-size: 12px;
-              line-height: 20px;
-              letter-spacing: 0%;
-              text-align: center;
-              color: variables.$Danger-600;
-            }
           }
 
           img {
             width: 100%;
+
+            @media (max-width: 992px) {
+              height: 300px;
+            }
           }
         }
 
@@ -270,5 +216,158 @@
         }
       }
     }
+
+    // banner
+    .container-banner {
+      width: 100%;
+
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+
+      .container-benner-1 {
+        padding: 25px;
+        background-color: variables.$Gray-50;
+      }
+
+      .container-benner-2 {
+        background-color: variables.$Gray-900;
+      }
+
+      .container-benner-1,
+      .container-benner-2 {
+        gap: 40px;
+        border-radius: 4px;
+        position: relative;
+
+        @media (max-width: 992px) {
+          width: 100%;
+        }
+      }
+    }
+
+    // computer accessories
+    .container-computer_accessories-product {
+      width: 100%;
+
+      .container-computer_accessories-padder-product {
+        width: 100%;
+
+        @media (max-width: 992px) {
+          flex-direction: column-reverse;
+        }
+
+        .conainer-right-container-items {
+          width: 37%;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          gap: 10px;
+
+          @media (max-width: 992px) {
+            width: 80%;
+            margin-top: 5%;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            align-self: center;
+          }
+
+          .top-container {
+            gap: 24px;
+            border-radius: 4px;
+            padding: 10px;
+            height: 70%;
+            background: variables.$Warning-200;
+
+            img {
+              display: flex;
+              justify-self: center;
+
+              @media (max-width: 992px) {
+                width: 50%;
+              }
+            }
+          }
+
+          .bottom-container-computer-acc {
+            gap: 24px;
+            border-radius: 4px;
+            padding: 15px 10px;
+            background: #124261;
+            height: 30%;
+
+            @media (max-width: 992px) {
+              margin-top: 5%;
+              width: 100%;
+            }
+          }
+        }
+
+        .container-computer-acc-products {
+          width: 100%;
+
+          @media (max-width: 992px) {
+            width: 100%;
+            margin-top: 5%;
+          }
+
+          .container-products-acc-padder {
+            @media (max-width: 992px) {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+
+    // banner -
+    .container-last-banner-home {
+      background-color: variables.$Primary-100;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+
+      @media (max-width: 992px) {
+        display: block;
+      }
+
+      .container-left-banner {
+        width: 30%;
+        padding: 10px 10px;
+
+        @media (max-width: 992px) {
+          width: 100%;
+        }
+      }
+    }
+
+    // product list
+    .container-product-list {
+      width: 100%;
+
+      .container-product-list-padder {
+        width: 100%;
+        padding: 20px 40px;
+      }
+    }
+  }
+}
+
+// latest news
+.container-latest-news {
+  width: 100vw;
+  background-color: variables.$Gray-50;
+
+  .container-padder-latest-news {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    @include mixin.pagePadding;
+  }
+
+  .container-news {
+    width: 100%;
+    margin-top: 5%;
   }
 }

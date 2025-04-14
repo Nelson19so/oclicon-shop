@@ -7,7 +7,7 @@
 
 .container-products-container-- {
   @media (max-width: 992px) {
-    margin-top: 10%;
+    margin-top: 13%;
   }
 
   .product-grid {
@@ -49,6 +49,44 @@
 
     @media (max-width: 992px) {
       border: 1px solid variables.$Gray-100;
+    }
+  }
+}
+
+.container-main-product-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+  }
+}
+
+.container-latest-news {
+  .container-padder-latest-news {
+    .container-news {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      width: 100%;
+      gap: 34px;
+
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+      }
     }
   }
 }
