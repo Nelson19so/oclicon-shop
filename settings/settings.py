@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+from django.core.exceptions import ImproperlyConfigured
 
 load_dotenv()
 
@@ -25,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('django-secret-key')
+if SECRET_KEY is None:
+    raise ImproperlyConfigured("Please set the SECRET_KEY environment variable")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
