@@ -33,7 +33,27 @@
           <li><a href="#">Camera & Photo</a></li>
           <li><a href="#">TV & Homes</a></li>
 
-          <h4 class="mt-1"><a href="#">Browse All Product</a></h4>
+          <div class="flex justify-start">
+            <h4 class="mt-1">
+              <a href="#">Browse All Product</a>
+            </h4>
+
+            <svg
+              class="mt-2 ml-1"
+              width="14"
+              height="14"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="#efd33d"
+                />
+              </g>
+            </svg>
+          </div>
         </ul>
       </div>
 
@@ -62,7 +82,9 @@
             <div class="container-img-apple-store">
               <img src="{% static 'images/playstore.png' %}" alt="playstore" />
             </div>
-            <div class="articles">
+            <div
+              class="articles flex justify-items-start flex-col gap-1 align-middle"
+            >
               <p>Get it now</p>
               <h6>Google Play</h6>
             </div>
@@ -76,7 +98,9 @@
             <div class="container-img-apple-store">
               <img src="{% static 'images/applestore.png' %}" alt="Apple" />
             </div>
-            <div class="articles">
+            <div
+              class="articles flex justify-items-start flex-col gap-1 align-middle"
+            >
               <p>Get it now</p>
               <h6>App Store</h6>
             </div>

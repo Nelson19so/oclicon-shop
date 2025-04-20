@@ -14,7 +14,7 @@
       type="image/x-icon"
     />
 
-    <!-- external linkings -->
+    <!-- external linking -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
@@ -25,8 +25,10 @@
     <link rel="stylesheet" href="{% static 'styles/clicon.css' %}" />
   </head>
   <body>
-    {% if 'show_extra' %}
-    <!-- top ads -->
+    {% if show_extra %}
+    <!-- page header ads -->
+    {% include 'includes/page_header_ads.html' %}
+    <!-- end if statement for ads -->
     {% endif %}
 
     <!-- Navbar -->
@@ -40,12 +42,18 @@
     </main>
 
     <!-- news letter -->
+    {% if show_extra %}
+    <!-- includes -->
     {% include 'includes/newsletter.html' %}
+    <!-- ending if statement for the template -->
+    {% endif %}
 
     <!-- footer items goes here -->
     {% include 'includes/footer.html' %}
     <!-- footer ends -->
 
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/shop.js' %}"></script>
+    <script src="{% static 'js/api.js' %}"></script>
   </body>
 </html>

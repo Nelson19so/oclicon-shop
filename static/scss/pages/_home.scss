@@ -25,6 +25,10 @@
         height: 100%;
         border-radius: 6px;
 
+        .container-inner-sm {
+          position: relative;
+        }
+
         @media only screen and (max-width: 1216px) {
           width: 70%;
         }
@@ -58,20 +62,17 @@
         }
 
         @media only screen and (max-width: 767px) {
-          // overflow-y: hidden;
-          // flex-direction: row;
-
           gap: 15px;
+        }
+
+        .container-inner-sm {
+          position: relative;
         }
 
         .container-sm-add-sm {
           background-color: variables.$Gray-50;
           height: 50%;
           border-radius: 6px;
-
-          // @media only screen and (max-width: 767px) {
-          //   width: 360px !important;
-          // }
         }
 
         .container-sm-add-sm:first-child {
@@ -239,9 +240,20 @@
         gap: 40px;
         border-radius: 4px;
         position: relative;
+        display: flex;
+        justify-content: space-between;
 
-        @media (max-width: 992px) {
+        @media only screen and (max-width: 992px) {
           width: 100%;
+          flex-direction: column;
+
+          .container-articles {
+            width: 100%;
+          }
+
+          .banner-product-img {
+            width: 100%;
+          }
         }
       }
     }
@@ -340,6 +352,10 @@
         @media (max-width: 992px) {
           width: 100%;
         }
+      }
+
+      .right-container- {
+        position: relative;
       }
     }
 

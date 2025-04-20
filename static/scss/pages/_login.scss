@@ -1,0 +1,38 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+// login form
+.container-login_form-- {
+  padding: 0;
+  margin: 0;
+
+  .container-login-padding {
+    padding: 15px;
+
+    form {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      gap: 13px;
+
+      .input-container- {
+        width: 100%;
+
+        input {
+          margin-top: 5px;
+          width: 100%;
+          height: 36px;
+          border-radius: 2px;
+          border-width: 1px;
+          border: 1px solid #e4e7e9;
+          background: #ffffff;
+          outline: none;
+          padding: 0 10px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,13 @@
+<!-- extending to base Html template -->
 {% extends 'base.html' %}
-<!------ extending to base Html template -------->
 
+<!-- loading static data -->
 {% load static %}
 
-<!-- ---- block title ----- -->
-
+<!-- block title -->
 {% block title %} Clicon Home page {% endblock %}
 
-<!-- ------- content goes here ------- -->
+<!-- content goes here -->
 
 {% block content %}
 <!-- content -->
@@ -28,12 +28,29 @@
             Save up to 50% on select Xbox games. Get 3 months of PC Game Pass
             for $2 USD.
           </p>
-          <button class="mt-4 w-1/2">Shop Now</button>
+          <button class="mt-4 w-1/2 flex justify-between">
+            Shop now
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="white"
+                />
+              </g>
+            </svg>
+          </button>
         </div>
 
         <div
           class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
         >
+          <p class="huge-price">$590</p>
           <img
             src="{% static 'images/adds/image.png' %}"
             alt="phone"
@@ -49,12 +66,29 @@
           <div class="container-inner-sm w-1/2 h-full p-6">
             <p>Summer Sales</p>
             <h2 class="text-white">New Google Pixel 6 Pro</h2>
-            <button class="mt-4">Shop Now</button>
+            <button class="mt-4 w-full flex justify-between">
+              Shop now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
 
           <div
             class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
           >
+            <p class="off-percentage">29% OFF</p>
             <img
               src="{% static 'images/adds/image 5.png' %}"
               alt="phone"
@@ -77,7 +111,23 @@
           <div class="container-inner-sm w-1/2 h-full p-6">
             <h2>Xiaomi FlipBuds Pro</h2>
             <p>$299 USD</p>
-            <button class="mt-4">Shop Now</button>
+            <button class="mt-4 w-full flex justify-between">
+              Shop now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -148,13 +198,25 @@
           <div
             class="container-header-items container-right--- flex justify-end w-1/2 gap-2"
           >
-            <a href="#" class="flex justify-end w-1/2"
-              ><p>Browse All Product</p>
-              <img
-                src="{% static 'images/svg/ArrowRightBlue.svg' %}"
-                alt="Package"
-                width="15"
-              />
+            <a href="#" class="w-1/2">
+              <div class="flex justify-end">
+                <p>Browse All Product</p>
+                <svg
+                  class="mt-2"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g id="Shopicon">
+                    <polygon
+                      points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                      fill="#2da5f3"
+                    />
+                  </g>
+                </svg>
+              </div>
             </a>
           </div>
         </header>
@@ -188,9 +250,25 @@
             <p class="banner-product-description">
               Jam-packed with innovation, HomePod mini delivers unexpectedly.
             </p>
-            <a href="#"
-              ><button class="visit-banner-product mt-5">Shop now</button></a
-            >
+            <a href="#"><button class="">Shop now</button></a>
+
+            <button class="visit-banner-product mt-5 flex justify-between">
+              Shop now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
           </article>
         </div>
 
@@ -210,9 +288,23 @@
             <p class="banner-product-description">
               *Data provided by internal laboratories. Industry measurment.
             </p>
-            <a href="#"
-              ><button class="visit-banner-product mt-5">Shop now</button></a
-            >
+            <button class="visit-banner-product mt-5 flex justify-between">
+              Shop now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
           </article>
         </div>
 
@@ -246,10 +338,28 @@
           Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage
         </p>
 
-        <button class="btn-shop-now mt-5">Shop now</button>
+        <button class="btn-shop-now mt-5 flex justify-between">
+          Shop now
+          <svg
+            class="ml-2"
+            width="16"
+            height="16"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h48v48H0z" fill="none" />
+            <g id="Shopicon">
+              <polygon
+                points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                fill="white"
+              />
+            </g>
+          </svg>
+        </button>
       </div>
 
       <div class="right-container-">
+        <p class="huge-price-banner">$1999</p>
         <img
           src="{% static 'images/product/macbookImage.png' %}"
           alt="macbookImage"

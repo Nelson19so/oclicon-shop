@@ -132,3 +132,73 @@
     }
   }
 }
+
+.display-block {
+  display: block !important;
+}
+
+.container-ad {
+  background-color: variables.$Gray-900;
+
+  .container-ad-padding {
+    display: flex;
+    justify-content: space-between;
+    @include mixin.pagePadding;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    .left-container-- {
+      gap: 5px;
+      flex: 1;
+      align-items: center;
+
+      span {
+        font-weight: 600;
+        font-size: 17px;
+        color: variables.$White-100;
+      }
+
+      p {
+        top: 21.96px;
+        min-height: 30px;
+        max-height: 30px;
+        left: 299px;
+        gap: 10px;
+        transform: rotate(-3deg);
+        padding: 0 10px;
+        background-color: variables.$Warning-300;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 28px;
+        letter-spacing: 0%;
+        color: variables.$Gray-900;
+      }
+    }
+
+    .middle-container {
+      flex: 1;
+      gap: 5px;
+      align-items: center;
+
+      p {
+        color: variables.$White-100;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      span {
+        color: variables.$Warning-500;
+        font-weight: 600;
+        font-size: 25px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .right-container-header-ad {
+      flex: 1;
+      align-items: center;
+    }
+  }
+}

@@ -3,6 +3,9 @@
 
 .main-footer {
   width: 100vw;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: variables.$Gray-900;
 
   .container-padder-divider {
@@ -17,9 +20,22 @@
       padding-bottom: 50px !important;
       @include mixin.pagePadding;
 
+      @media only screen and (max-width: 999px) {
+        flex-direction: column;
+        padding-left: 30px;
+      }
+
       .container-footer-items-- {
         // width: 20%;
         gap: 10px;
+
+        @media only screen and (max-width: 999px) {
+          width: 100% !important;
+
+          &:not(:last-child) {
+            margin-bottom: 40px;
+          }
+        }
 
         &:last-child {
           width: 30%;
@@ -79,7 +95,7 @@
             a {
               color: variables.$Warning-500;
               font-weight: 500;
-              font-size: 14px;
+              font-size: 13px;
               line-height: 20px;
               letter-spacing: 0%;
             }
@@ -94,11 +110,12 @@
           padding-bottom: 16px;
           padding-left: 20px;
           border-radius: 3px;
+          width: 169px;
 
           &:hover {
-            background-color: transparent;
-            border: 1px solid variables.$Gray-800;
+            border: 1px solid #fff;
             transition: 1s;
+            width: 169px;
           }
 
           img {
@@ -119,6 +136,7 @@
             font-size: 14px;
             line-height: 20px;
             letter-spacing: 0%;
+            white-space: nowrap;
           }
         }
 

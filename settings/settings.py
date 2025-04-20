@@ -66,7 +66,7 @@ INSTALLED_APPS = [
 ]
 
 # Custom user model
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # debugging toolbar
 # INTERNAL_IPS = [
@@ -124,6 +124,18 @@ DATABASES = {
     }
 }
 
+# postGresSql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'your_db_name',         # Replace with your DB name
+#         'USER': 'postgres',        # Replace with your DB username
+#         'PASSWORD': 'Nelson19so',    # Replace with your DB password
+#         'HOST': 'localhost',
+#         'PORT': '5432',                 # Default PostgreSQL port
+#     }
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -141,6 +153,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Email settings (example for using Gmail's SMTP server)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'your-email-password'  # Replace with your email password
+DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Default sender email
+
 
 
 # Internationalization
