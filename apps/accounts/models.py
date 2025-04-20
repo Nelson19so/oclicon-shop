@@ -22,12 +22,12 @@ class BaseUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, max_length=200)
     phone_number = models.CharField(max_length=20, unique=True)
-    first_name = models.CharField(unique=True, max_length=20)
-    last_name = models.CharField(unique=True, max_length=20)
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
     terms_accepted = models.BooleanField(default=False)
     
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['phone_number']
+    REQUIRED_FIELDS = ['phone_number', 'first_name', 'last_name']
 
     objects = BaseUserManager()
 

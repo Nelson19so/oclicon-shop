@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',  # Required for django-allauth
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -50,12 +51,12 @@ INSTALLED_APPS = [
     'django',  # Django framework (this is built-in)
     'crispy_forms',  # For Django crispy forms
     'crispy_bootstrap5',  # Bootstrap 5 integration for crispy forms
-    'django.contrib.sites',  # Required for django-allauth
     'allauth',  # Main authentication framework
     'allauth.account',  # Email/password authentication
     'allauth.socialaccount',  # Social authentication
-   # 'debug_toolbar',  # Debugging tool (only for development)
-    'oauth2_provider', # oauth toolkit
+    'allauth.socialaccount.providers.google',  # Google login
+    'allauth.socialaccount.providers.apple',  # Apple login
+    
     'apps.accounts', # user account app
     'apps.cart', # cart product app
     'apps.orders', # order product app
@@ -65,8 +66,6 @@ INSTALLED_APPS = [
     # Add your own apps here
 ]
 
-# Custom user model
-AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # debugging toolbar
 # INTERNAL_IPS = [
@@ -82,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Must come before AccountMiddleware for allAuth
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "allauth.account.middleware.AccountMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -117,24 +117,24 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# postGresSql
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'your_db_name',         # Replace with your DB name
-#         'USER': 'postgres',        # Replace with your DB username
-#         'PASSWORD': 'Nelson19so',    # Replace with your DB password
-#         'HOST': 'localhost',
-#         'PORT': '5432',                 # Default PostgreSQL port
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+# postGresSql
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),         # Replace with your DB name
+        'USER': os.getenv('DB_USER'),        # Replace with your DB username
+        'PASSWORD': os.getenv('DB_PASSWORD'),    # Replace with your DB password
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),                 # Default PostgreSQL port
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -162,8 +162,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'your-email-password'  # Replace with your email password
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Default sender email
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -200,3 +198,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # crispy boostrap5 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+SITE_ID = 1
+
+# Custom user model
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Social Account Providers
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-google-client-id>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-google-client-secret>'
+
+SOCIAL_AUTH_APPLE_ID_KEY = '<your-apple-client-id>'
+SOCIAL_AUTH_APPLE_ID_SECRET = '<your-apple-client-secret>'
+
+# For Allauth configuration
+SOCIALACCOUNT_PROVIDERS = {
+    # https://console.developers.google.com
+    'google': {
+        'SCOPE': ['email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'OAUTH_PKCE_ENABLED': True,
+    },
+
+    # https://developer.apple.com/
+    'apple': {
+        'SCOPE': ['email'],
+    },
+}
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',  # Default backend
+)
+
+# Redirect URLs after login or signup
+LOGIN_REDIRECT_URL = '/'  # Redirect after successful login/signup
+LOGOUT_REDIRECT_URL = '/'
