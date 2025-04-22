@@ -7,7 +7,7 @@ from django.urls import path, include
 urlpatterns = [
     # admin
     path('admin/', admin.site.urls),    
-    path('accounts/', include('allauth.urls')),  # Add this for allauth URLs
+    path('accounts/', include('allauth.urls')),  # for allauth URLs
 
     # public pages
     path('', include('apps.public.urls')),

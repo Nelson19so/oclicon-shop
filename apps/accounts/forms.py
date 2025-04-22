@@ -2,18 +2,17 @@ from django.forms import Form
 from django import forms
 from .models import CustomUser
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 # user registration form
-class UserRegistrationForm(UserCreationForm):
-  email = forms.EmailField(required=True)
-  phone_number = forms.CharField(required=True)
-  first_name = forms.CharField(required=True)
-  last_name = forms.CharField(required=True)
-  terms_accepted = forms.BooleanField(required=True)
+class UserRegistrationForm(forms.ModelForm):
+  password1 = forms.CharField(widget=forms.PasswordInput)
+  password2 = forms.CharField(widget=forms.PasswordInput)
 
   class Meta:
-    model = CustomUser
+    model = User
     fields = ['email', 'phone_number', 'first_name', 'last_name', 'terms_accepted', 'password1', 'password2']
 
   def clean_email(self):
@@ -43,5 +42,5 @@ class UserLoginFrom(forms.Form):
 # profile update form
 class UserProfileUpdateForm(forms.ModelForm):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['email', 'phone_number', 'first_name', 'last_name', 'terms_accepted']

@@ -20,6 +20,7 @@ class BaseUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
+    username = None
     email = models.EmailField(unique=True, max_length=200)
     phone_number = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=20)
