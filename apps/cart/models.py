@@ -30,13 +30,14 @@ class CartItem(models.Model):
 
 # wishlist product model
 class WishlistProduct(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='wish_product')
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session_wish')
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session_wish', blank=True, null=True)
     added_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ('user', 'product')
+        ordering = ['-added_at']
 
     def __str__(self):
         return f"{self.user} - {self.product}"

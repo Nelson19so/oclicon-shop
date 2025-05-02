@@ -10,14 +10,14 @@ class Comments(models.Model):
     email = models.EmailField(max_length=50, blank=False, null=False)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='child')
     message = models.TextField(max_length=300, blank=False, null=False)
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=True)
 
     def __str__(self):
         return f"{self.full_name}"
 
 class NewsLetterSubscriber(models.Model):
     email = models.EmailField(unique=True)
-    subscribed_at = models.DateTimeField(default=timezone.now)
+    subscribed_at = models.DateTimeField(default=True)
 
     def __str__(self):
         return f"{self.email} subscribed at {self.subscribed_at}"

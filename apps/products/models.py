@@ -134,7 +134,6 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.variant}"
   
-
 # product comparison
 class ProductComparison(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
