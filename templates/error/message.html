@@ -1,0 +1,14 @@
+{% if messages %}
+
+<!-- looping through messages -->
+{% for message in messages %}
+<p class="error-message">
+  <!-- messages goes here -->
+  {{ message }}
+  <!-- messages ends -->
+</p>
+
+<!-- ending for loop -->
+{% endfor %}
+<!-- ending if statement -->
+{% endif %}

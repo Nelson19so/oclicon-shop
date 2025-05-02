@@ -1,0 +1,361 @@
+<!-- extends to base html template -->
+{% extends 'base.html' %}
+
+<!-- loads static data -->
+{% load static %}
+
+<!-- block content page title -->
+{% block title %} Wishlist {% endblock %}
+
+<!-- main content goes here -->
+{% block content %}
+<div class="container-wishlist-items-list">
+  <div class="container-wishlist-items-list-padding w-full">
+    <div class="container-items-in-wishlist w-full">
+      <div class="header-wishlist w-full">
+        <p>Wishlist</p>
+      </div>
+
+      <div class="items-list-display-table-header flex justify-between">
+        <div class="container-items-">
+          <p>Products</p>
+        </div>
+
+        <div class="container-items-">
+          <p>Price</p>
+        </div>
+
+        <div class="container-items-">
+          <p>Stock Status</p>
+        </div>
+
+        <div class="container-items-">
+          <p>Actions</p>
+        </div>
+      </div>
+
+      <div
+        class="container-main-product-items-list flex justify-between flex-col"
+      >
+        <div class="container-product-details-wishlist flex justify-between">
+          <div class="container-name-and-img items-compare">
+            <a href="#">
+              <div class="container-product-main flex justify-between mt-3">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/product/p5controllerImage.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="container-product-price flex justify-start gap-1 items-compare"
+          >
+            <p class="price">$999</p>
+          </div>
+
+          <div class="container-stock-in-product items-compare">
+            <p class="in-stock">IN STOCK</p>
+          </div>
+
+          <div
+            class="container-cart-btn-- items-compare flex justify-center gap-3"
+          >
+            <button class="p-2 add-to-cart_btn flex justify-center">
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to card</span>
+            </button>
+
+            <div class="container-btn-remove-cart">
+              <button class="cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                  />
+                  <path
+                    d="M15 9L9 15"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 15L9 9"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-product-details-wishlist flex justify-between">
+          <div class="container-name-and-img items-compare">
+            <a href="#">
+              <div class="container-product-main flex justify-between mt-3">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/product/p5controllerImage.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                    Ear...
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="container-product-price flex justify-start gap-1 items-compare"
+          >
+            <p class="discount-price-wishlist">$1299</p>
+            <p class="price">$999</p>
+          </div>
+
+          <div class="container-stock-in-product items-compare">
+            <p class="in-stock">IN STOCK</p>
+          </div>
+
+          <div
+            class="container-cart-btn-- items-compare flex justify-center gap-3"
+          >
+            <button
+              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
+            >
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to card</span>
+            </button>
+
+            <div class="container-btn-remove-wishlist">
+              <button class="cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                  />
+                  <path
+                    d="M15 9L9 15"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 15L9 9"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-product-details-wishlist flex justify-between">
+          <div class="container-name-and-img items-compare">
+            <a href="#">
+              <div class="container-product-main flex justify-between mt-3">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/product/p5controllerImage.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                    Ear...
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="container-product-price flex justify-start gap-1 items-compare"
+          >
+            <p class="price">$999</p>
+          </div>
+
+          <div class="container-stock-in-product items-compare">
+            <p class="out-stock">out stock</p>
+          </div>
+
+          <div
+            class="container-cart-btn-- items-compare flex justify-center gap-3"
+          >
+            <button class="p-2 add-to-cart_btn flex justify-center">
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to card</span>
+            </button>
+
+            <div class="container-btn-remove-wishlist">
+              <button class="cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                  />
+                  <path
+                    d="M15 9L9 15"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 15L9 9"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-product-details-wishlist flex justify-between">
+          <div class="container-name-and-img items-compare">
+            <a href="#">
+              <div class="container-product-main flex justify-between mt-3">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/product/p5controllerImage.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                    Ear...
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            class="container-product-price flex justify-start gap-1 items-compare"
+          >
+            <p class="discount-price-wishlist">$1299</p>
+            <p class="price">$999</p>
+          </div>
+
+          <div class="container-stock-in-product items-compare">
+            <p class="in-stock">IN STOCK</p>
+          </div>
+
+          <div
+            class="container-cart-btn-- items-compare flex justify-center gap-3"
+          >
+            <button
+              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
+            >
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to card</span>
+            </button>
+
+            <div class="container-btn-remove-wishlist">
+              <button class="cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                  />
+                  <path
+                    d="M15 9L9 15"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15 15L9 9"
+                    stroke="#929FA5"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

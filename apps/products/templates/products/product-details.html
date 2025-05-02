@@ -1,0 +1,495 @@
+<!-- extending to base Html template -->
+{% extends 'base.html' %}
+
+<!-- load static content -->
+{% load static %}
+
+<!-- block title for page -->
+{% block title %} Product Details || MacBook Pro Book {% endblock %}
+
+<!-- main content -->
+{% block content %}
+<div class="container-product-details- w-full">
+  <div class="container-product-details-padding w-full">
+    <div
+      class="container-product-details-main-container flex justify-between w-full gap-10"
+    >
+      <div class="container-left-img-product-details-- flex-1/2 h-1/5">
+        <div class="img-container-product- w-full">
+          <div class="img-big-top--" id="product-view">
+            <img src="" alt="MacBook" id="mainImg" />
+          </div>
+
+          <div class="container-imgs-product-details-list gap-2">
+            <div
+              class="img-list-container- img-list-container-activate"
+              id="product-img-Select"
+            >
+              <img
+                class="img-Select"
+                id="first-img"
+                src="{% static 'images/product/product-d-img.png' %}"
+                alt="MacBook"
+              />
+            </div>
+
+            <div class="img-list-container-" id="product-img-Select">
+              <img
+                class="img-Select"
+                src="{% static 'images/product/product-d-img-1.png' %}"
+                alt="MacBook"
+              />
+            </div>
+
+            <div class="img-list-container-" id="product-img-Select">
+              <img
+                class="img-Select"
+                src="{% static 'images/product/product-d-img-2.png' %}"
+                alt="MacBook"
+              />
+            </div>
+
+            <div class="img-list-container-" id="product-img-Select">
+              <img
+                class="img-Select"
+                src="{% static 'images/product/product-d-img-3.png' %}"
+                alt="MacBook"
+              />
+            </div>
+
+            <div class="img-list-container-" id="product-img-Select">
+              <img
+                class="img-Select"
+                src="{% static 'images/product/product-d-img-4.png' %}"
+                alt="MacBook"
+              />
+            </div>
+
+            <div class="img-list-container-" id="product-img-Select">
+              <img
+                class="img-Select"
+                src="{% static 'images/product/product-d-img-5.png' %}"
+                alt="MacBook"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-right-articles-product-details-- flex-1/2 h-1/5">
+        <article class="w-full">
+          <div class="container-top w-full flex justify-start gap-1">
+            <span class="flex justify-items-start">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3439 14.8985L14.2814 17.3985C14.7892 17.7188 15.4142 17.2422 15.2657 16.6563L14.1251 12.1719C14.0943 12.0476 14.0992 11.9171 14.1393 11.7955C14.1793 11.6738 14.253 11.566 14.3517 11.4844L17.8829 8.53908C18.3439 8.15627 18.1095 7.38283 17.5079 7.34377L12.8986 7.04689C12.7728 7.03958 12.6519 6.99578 12.5506 6.92086C12.4493 6.84594 12.372 6.74314 12.3282 6.62502L10.6095 2.29689C10.564 2.17182 10.4811 2.06377 10.3721 1.98742C10.2631 1.91107 10.1332 1.87012 10.0001 1.87012C9.86703 1.87012 9.73716 1.91107 9.62814 1.98742C9.51912 2.06377 9.43624 2.17182 9.39074 2.29689L7.67199 6.62502C7.62819 6.74314 7.55093 6.84594 7.44964 6.92086C7.34836 6.99578 7.22745 7.03958 7.10168 7.04689L2.49231 7.34377C1.89074 7.38283 1.65637 8.15627 2.11731 8.53908L5.64856 11.4844C5.74726 11.566 5.82089 11.6738 5.86097 11.7955C5.90106 11.9171 5.90596 12.0476 5.87512 12.1719L4.82043 16.3281C4.64074 17.0313 5.39074 17.6016 5.99231 17.2188L9.65637 14.8985C9.75912 14.8331 9.87836 14.7984 10.0001 14.7984C10.1219 14.7984 10.2411 14.8331 10.3439 14.8985Z"
+                  fill="#FA8232"
+                />
+              </svg>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3439 14.8985L14.2814 17.3985C14.7892 17.7188 15.4142 17.2422 15.2657 16.6563L14.1251 12.1719C14.0943 12.0476 14.0992 11.9171 14.1393 11.7955C14.1793 11.6738 14.253 11.566 14.3517 11.4844L17.8829 8.53908C18.3439 8.15627 18.1095 7.38283 17.5079 7.34377L12.8986 7.04689C12.7728 7.03958 12.6519 6.99578 12.5506 6.92086C12.4493 6.84594 12.372 6.74314 12.3282 6.62502L10.6095 2.29689C10.564 2.17182 10.4811 2.06377 10.3721 1.98742C10.2631 1.91107 10.1332 1.87012 10.0001 1.87012C9.86703 1.87012 9.73716 1.91107 9.62814 1.98742C9.51912 2.06377 9.43624 2.17182 9.39074 2.29689L7.67199 6.62502C7.62819 6.74314 7.55093 6.84594 7.44964 6.92086C7.34836 6.99578 7.22745 7.03958 7.10168 7.04689L2.49231 7.34377C1.89074 7.38283 1.65637 8.15627 2.11731 8.53908L5.64856 11.4844C5.74726 11.566 5.82089 11.6738 5.86097 11.7955C5.90106 11.9171 5.90596 12.0476 5.87512 12.1719L4.82043 16.3281C4.64074 17.0313 5.39074 17.6016 5.99231 17.2188L9.65637 14.8985C9.75912 14.8331 9.87836 14.7984 10.0001 14.7984C10.1219 14.7984 10.2411 14.8331 10.3439 14.8985Z"
+                  fill="#FA8232"
+                />
+              </svg>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3439 14.8985L14.2814 17.3985C14.7892 17.7188 15.4142 17.2422 15.2657 16.6563L14.1251 12.1719C14.0943 12.0476 14.0992 11.9171 14.1393 11.7955C14.1793 11.6738 14.253 11.566 14.3517 11.4844L17.8829 8.53908C18.3439 8.15627 18.1095 7.38283 17.5079 7.34377L12.8986 7.04689C12.7728 7.03958 12.6519 6.99578 12.5506 6.92086C12.4493 6.84594 12.372 6.74314 12.3282 6.62502L10.6095 2.29689C10.564 2.17182 10.4811 2.06377 10.3721 1.98742C10.2631 1.91107 10.1332 1.87012 10.0001 1.87012C9.86703 1.87012 9.73716 1.91107 9.62814 1.98742C9.51912 2.06377 9.43624 2.17182 9.39074 2.29689L7.67199 6.62502C7.62819 6.74314 7.55093 6.84594 7.44964 6.92086C7.34836 6.99578 7.22745 7.03958 7.10168 7.04689L2.49231 7.34377C1.89074 7.38283 1.65637 8.15627 2.11731 8.53908L5.64856 11.4844C5.74726 11.566 5.82089 11.6738 5.86097 11.7955C5.90106 11.9171 5.90596 12.0476 5.87512 12.1719L4.82043 16.3281C4.64074 17.0313 5.39074 17.6016 5.99231 17.2188L9.65637 14.8985C9.75912 14.8331 9.87836 14.7984 10.0001 14.7984C10.1219 14.7984 10.2411 14.8331 10.3439 14.8985Z"
+                  fill="#FA8232"
+                />
+              </svg>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.3439 14.8985L14.2814 17.3985C14.7892 17.7188 15.4142 17.2422 15.2657 16.6563L14.1251 12.1719C14.0943 12.0476 14.0992 11.9171 14.1393 11.7955C14.1793 11.6738 14.253 11.566 14.3517 11.4844L17.8829 8.53908C18.3439 8.15627 18.1095 7.38283 17.5079 7.34377L12.8986 7.04689C12.7728 7.03958 12.6519 6.99578 12.5506 6.92086C12.4493 6.84594 12.372 6.74314 12.3282 6.62502L10.6095 2.29689C10.564 2.17182 10.4811 2.06377 10.3721 1.98742C10.2631 1.91107 10.1332 1.87012 10.0001 1.87012C9.86703 1.87012 9.73716 1.91107 9.62814 1.98742C9.51912 2.06377 9.43624 2.17182 9.39074 2.29689L7.67199 6.62502C7.62819 6.74314 7.55093 6.84594 7.44964 6.92086C7.34836 6.99578 7.22745 7.03958 7.10168 7.04689L2.49231 7.34377C1.89074 7.38283 1.65637 8.15627 2.11731 8.53908L5.64856 11.4844C5.74726 11.566 5.82089 11.6738 5.86097 11.7955C5.90106 11.9171 5.90596 12.0476 5.87512 12.1719L4.82043 16.3281C4.64074 17.0313 5.39074 17.6016 5.99231 17.2188L9.65637 14.8985C9.75912 14.8331 9.87836 14.7984 10.0001 14.7984C10.1219 14.7984 10.2411 14.8331 10.3439 14.8985Z"
+                  fill="#FA8232"
+                />
+              </svg>
+            </span>
+
+            <span class="product-status">
+              <strong> 4.7 Star Rating </strong> (21,671 User feedback)
+            </span>
+          </div>
+
+          <div class="container-main-articles pb-7">
+            <p class="product-name">
+              2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB
+              SSD Storage) - Space Gray
+            </p>
+
+            <div class="container-product-details flex justify-between mt-5">
+              <div
+                class="container-left-container-- flex-1/2 text-left flex justify-between gap-3 flex-col"
+              >
+                <p>Sku: <span>A264671</span></p>
+                <p>Brand: <span>Apple</span></p>
+              </div>
+
+              <div
+                class="container-right- flex-1/2 text-left flex justify-between gap-3 flex-col"
+              >
+                <p>Availability: <span class="stock">In Stock</span></p>
+                <p>Category: <span>Electronics Devices</span></p>
+              </div>
+            </div>
+
+            <div class="container-prices-status mt-7 flex justf-start">
+              <p class="price">
+                <strong><span class="discount-price">$2,300</span></strong>
+                <span class="normal-price mr-3">$1999.00</span>
+              </p>
+              <p class="off-price-product-details">21% OFF</p>
+            </div>
+          </div>
+
+          <div class="container-product-select-type w-full">
+            <form action="#" class="w-full">
+              <div
+                class="container-input-select-p-t flex justify-between gap-10"
+              >
+                <div class="flex-1/2 flex justify-between flex-col gap-3">
+                  <div class="select-control w-full">
+                    <label class="block">Color</label>
+
+                    <div class="flex justify-start gap-4">
+                      <div class="color-input">
+                        <input
+                          type="color"
+                          name="product-color"
+                          id="product-color"
+                        />
+                      </div>
+
+                      <div class="color-input">
+                        <input
+                          type="color"
+                          name="product-color"
+                          id="product-color"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="select-control w-full">
+                    <label for="select-product" class="block">Memory</label>
+                    <select
+                      name="select-product"
+                      id="select-product"
+                      class="w-full"
+                    >
+                      <option value="Most Popular">16GB unified memory</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="flex-1/2 flex justify-between flex-col gap-3">
+                  <div class="select-control w-full">
+                    <label for="select-product" class="block">Size</label>
+                    <select
+                      name="select-product"
+                      id="select-product"
+                      class="w-full"
+                    >
+                      <option value="Most Popular">
+                        14-inch Liquid Retina XDR display
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="select-control w-full">
+                    <label for="select-product" class="block">Storage</label>
+                    <select
+                      name="select-product"
+                      id="select-product"
+                      class="w-full"
+                    >
+                      <option value="Most Popular">1TV SSD Storage</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="container-btn-product-details flex justify-between gap-2 mt-8"
+              >
+                <div class="container-product-amount flex justify-center">
+                  <button class="btn-decrement" id="btn-decrement">-</button>
+                  <input
+                    type="text"
+                    name="quantity"
+                    id="quantity-input"
+                    class="input-number outline-none"
+                    value="1"
+                    disabled
+                  />
+                  <button class="btn-increment" id="btn-increment">+</button>
+                </div>
+
+                <button class="p-2 add-to-cart_btn flex justify-center w-full">
+                  <img
+                    src="{% static 'images/svg/shoppingcart.svg' %}"
+                    alt="shoppingcart"
+                    width="20"
+                  />
+                  <span class="h-full">Add to card</span>
+                </button>
+
+                <button class="btn-by-now">Buy now</button>
+              </div>
+            </form>
+
+            <div
+              class="container-btn-wishlist-compare mt-5 w-full flex justify-between"
+            >
+              <div class="container-left-btn-p-l flex justify-start gap-5">
+                <div class="wishlist">
+                  <button
+                    class="w-full cursor-pointer flex justify-start gap-1"
+                  >
+                    <svg
+                      fill="#475156"
+                      width="23"
+                      height="23"
+                      viewBox="-2 -4 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMinYMin"
+                      class="jam jam-heart"
+                    >
+                      <path
+                        d="M3.636 7.208L10 13.572l6.364-6.364a3 3 0 1 0-4.243-4.243L10 5.086l-2.121-2.12a3 3 0 0 0-4.243 4.242zM9.293 1.55l.707.707.707-.707a5 5 0 1 1 7.071 7.071l-7.07 7.071a1 1 0 0 1-1.415 0l-7.071-7.07a5 5 0 1 1 7.07-7.071z"
+                      />
+                    </svg>
+                    Add to Wishlist
+                  </button>
+                </div>
+
+                <div class="wishlist">
+                  <button
+                    class="w-full cursor-pointer flex justify-start gap-1"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 6.25V10"
+                        stroke="#5F6C72"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M13.25 11.875L10 10"
+                        stroke="#5F6C72"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.3906 7.78906H17.5156V4.66406"
+                        stroke="#5F6C72"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.8594 14.8594C13.8982 15.8214 12.6732 16.4768 11.3394 16.7425C10.0056 17.0082 8.62301 16.8724 7.36644 16.3522C6.10987 15.832 5.03581 14.9508 4.28013 13.8201C3.52445 12.6894 3.12109 11.36 3.12109 10C3.12109 8.64002 3.52445 7.31058 4.28013 6.17988C5.03581 5.04917 6.10987 4.16798 7.36644 3.64779C8.62301 3.12761 10.0056 2.99179 11.3394 3.25752C12.6732 3.52324 13.8982 4.17858 14.8594 5.14063L17.5157 7.78907"
+                        stroke="#5F6C72"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    Add to Compare
+                  </button>
+                </div>
+              </div>
+
+              <div class="container-right-get-i-t- flex justify-end gap-2">
+                <span class="mr-2">Share product:</span>
+                <a href="#">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    fill="#FA8232"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_2579_3650)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M8 0C12.4183 0 16 3.58173 16 8C16 12.4183 12.4183 16 8 16C3.58173 16 0 12.4183 0 8C0 3.58173 3.58173 0 8 0Z"
+                        fill="#FA8232"
+                      />
+                      <path
+                        d="M9.04144 15.9328V9.75225H10.7849L11.016 7.57697H9.04144L9.04437 6.48815C9.04437 5.92079 9.0983 5.61693 9.91372 5.61693H11.0038V3.44128H9.25992C7.16524 3.44128 6.42808 4.49647 6.42808 6.27123V7.57714H5.12231V9.75261H6.42808V15.8452C6.93677 15.9465 7.46267 16 8.00114 16C8.34899 16 8.69648 15.9776 9.04144 15.9328Z"
+                        fill="#fff"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_2579_3650">
+                        <rect width="16" height="16" fill="#FA8232" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+
+                <a href="#">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 15 15"
+                    fill="#475156"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.23336 4.69629C7.23336 2.96884 8.63335 1.56857 10.36 1.56857C11.3736 1.56857 12.183 2.04804 12.7254 2.74385C13.3079 2.62467 13.8557 2.40913 14.3513 2.11508C14.1559 2.72598 13.7424 3.2396 13.2033 3.56463C13.2038 3.56568 13.2042 3.56674 13.2047 3.56779C13.7334 3.50361 14.2364 3.36302 14.7048 3.15546L14.7037 3.15715C14.3667 3.66183 13.9431 4.10736 13.4561 4.47034C13.4823 4.64672 13.4956 4.82427 13.4956 5.00079C13.4956 8.6871 10.6873 12.9746 5.52122 12.9746C3.93906 12.9746 2.46544 12.511 1.22505 11.7152C0.992632 11.5661 0.925108 11.2568 1.07423 11.0244C1.0874 11.0038 1.10183 10.9846 1.11734 10.9666C1.20582 10.8202 1.37438 10.7309 1.5554 10.7522C2.47066 10.8601 3.38568 10.7485 4.19219 10.3962C3.39226 10.0434 2.77129 9.35975 2.50204 8.51974C2.45359 8.3686 2.48835 8.20311 2.59351 8.08422C2.59716 8.0801 2.60087 8.07606 2.60464 8.0721C1.96391 7.50819 1.55973 6.68208 1.55973 5.76143V5.72759C1.55973 5.56814 1.64411 5.42059 1.78155 5.33974C1.82671 5.31317 1.87537 5.29511 1.92532 5.28558C1.70549 4.86154 1.58116 4.37984 1.58116 3.86958C1.58116 3.40165 1.58384 2.81192 1.91332 2.28081C1.98718 2.16175 2.10758 2.08915 2.2364 2.07195C2.42588 2.01237 2.64087 2.06969 2.77406 2.23302C3.86536 3.57126 5.44066 4.49583 7.23366 4.73961L7.23336 4.69629ZM5.52122 11.9746C4.73387 11.9746 3.97781 11.8435 3.27248 11.6023C4.13012 11.4538 4.95307 11.1159 5.66218 10.5602C5.81211 10.4427 5.87182 10.2435 5.81126 10.0629C5.7507 9.88234 5.583 9.75943 5.39255 9.75607C4.68968 9.74366 4.06712 9.39716 3.67793 8.86845C3.86828 8.85306 4.05428 8.82039 4.23445 8.77167C4.43603 8.71716 4.57363 8.53114 4.56674 8.32243C4.55985 8.11372 4.41029 7.93718 4.20555 7.89607C3.42694 7.73977 2.79883 7.16764 2.56169 6.42174C2.76255 6.47025 2.97102 6.4991 3.18482 6.5061C3.38563 6.51267 3.56646 6.38533 3.62795 6.19405C3.68943 6.00277 3.61666 5.79391 3.44963 5.68224C2.86523 5.29155 2.48116 4.62464 2.48116 3.86958C2.48116 3.70213 2.48352 3.55268 2.49355 3.41719C3.85115 4.79913 5.70873 5.68931 7.77588 5.79338C7.93225 5.80126 8.08328 5.73543 8.18395 5.61553C8.28463 5.49562 8.32332 5.33548 8.28851 5.18284C8.25255 5.02517 8.23336 4.86284 8.23336 4.69629C8.23336 3.52085 9.18591 2.56857 10.36 2.56857C11.5943 2.56857 12.4956 3.71208 12.4956 5.00079C12.4956 8.25709 10.0202 11.9746 5.52122 11.9746Z"
+                      fill="#475156"
+                    />
+                  </svg>
+                </a>
+
+                <a href="#">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="0" fill="none" width="20" height="20" />
+
+                    <g>
+                      <path
+                        d="M10.2 2C5.8 2 3.5 4.8 3.5 7.9c0 1.5.8 3 2.1 3.8.4.2.3 0 .6-1.2 0-.1 0-.2-.1-.3C4.3 8 5.8 3.7 10 3.7c6.1 0 4.9 8.4 1.1 8.4-.8.1-1.5-.5-1.5-1.3v-.4c.4-1.1.7-2.1.8-3.2 0-2.1-3.1-1.8-3.1 1 0 .5.1 1 .3 1.4 0 0-1 4.1-1.2 4.8-.2 1.2-.1 2.4.1 3.5-.1.1 0 .1 0 .1h.1c.7-1 1.3-2 1.7-3.1.1-.5.6-2.3.6-2.3.5.7 1.4 1.1 2.3 1.1 3.1 0 5.3-2.7 5.3-6S13.7 2 10.2 2z"
+                        fill="#475156"
+                      />
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="wrapper-guarantee mt-5">
+              <div class="container-top-guarantee">
+                100% Guarantee Safe Checkout
+              </div>
+              <div class="container-guarantee-img mt-3">
+                <img
+                  src="{% static 'images/Payment Method.png' %}"
+                  alt="Payment"
+                />
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="container-product-description-- w-full mt-13">
+      <div class="container-product-description-padding- w-full">
+        <header
+          class="container-product-description-header w-full flex justify-center gap-8"
+        >
+          <a href="#">Description</a>
+          <a href="#">Additional information</a>
+          <a href="#">Specification</a>
+          <a href="#">Review</a>
+        </header>
+
+        <div class="articles-product-description flex justify-between">
+          <div class="articles-wrapper">
+            <strong>Description</strong>
+            <p>
+              The most powerful MacBook Pro ever is here. With the blazing-fast
+              M1 Pro or M1 Max chip — the first Apple silicon designed for pros
+              — you get groundbreaking performance and amazing battery life. Add
+              to that a stunning Liquid Retina XDR display, the best camera and
+              audio ever in a Mac notebook, and all the ports you need. The
+              first notebook of its kind, this MacBook Pro is a beast. M1 Pro
+              takes the exceptional performance of the M1 architecture to a
+              whole new level for pro users.
+            </p>
+
+            <p>
+              Even the most ambitious projects are easily handled with up to 10
+              CPU cores, up to 16 GPU cores, a 16‑core Neural Engine, and
+              dedicated encode and decode media engines that support H.264,
+              HEVC, and ProRes codecs.
+            </p>
+          </div>
+
+          <div class="articles-wrapper">
+            <strong>Feature</strong>
+
+            <div class="flex justify-between flex-col gap-2 mt-2">
+              <span>Free 1 Year Warranty</span>
+              <span>Free Shipping & Fasted Delivery</span>
+              <span>100% Money-back guarantee</span>
+              <span>24/7 Customer support</span>
+              <span>Secure payment method</span>
+            </div>
+          </div>
+
+          <div class="articles-wrapper">
+            <strong>Shipping Information</strong>
+
+            <div class="flex justify-between flex-col gap-2 mt-2">
+              <span
+                >Courier:
+                <p>2 - 4 days, free shipping</p></span
+              >
+              <span
+                >Local Shipping:
+                <p>up to one week, $19.00</p></span
+              >
+              <span
+                >UPS Ground Shipping:
+                <p>4 - 6 days, $29.00</p></span
+              >
+              <span
+                >Unishop Global Export:
+                <p>3 - 4 days, $39.00</p></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="suggested-product mt-20">
+      {% include 'products/quick-product-list.html' %}
+    </div>
+  </div>
+</div>
+{% endblock %}

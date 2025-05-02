@@ -31,3 +31,20 @@
     }
   }
 }
+
+form {
+  .container-info {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3px;
+    color: variables.$Gray-600;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    align-items: center;
+    vertical-align: middle;
+  }
+}

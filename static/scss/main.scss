@@ -1,9 +1,9 @@
 @use "abstracts/variables" as variables;
 @use "abstracts/mixins" as mixin;
 
+@use "base/global" as global;
 @use "base/reset" as reset;
 @use "base/typography" as typography;
-@use "base/global" as global;
 
 @use "layouts/header" as header;
 @use "layouts/footer" as footer;
@@ -15,9 +15,14 @@
 @use "components/cards" as cards;
 @use "components/forms" as forms;
 @use "components/navbar" as navbar;
+@use "components/input" as input;
 
 @use "pages/home" as home;
 @use "pages/product" as products;
 @use "pages/cart" as cart;
 @use "pages/checkout" as checkout;
 @use "pages/login" as login;
+@use "pages/shop" as shop;
+@use "pages/order" as order;
+@use "pages/compare" as compare;
+@use "pages/wishlist" as wishlist;

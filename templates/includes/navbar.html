@@ -187,7 +187,7 @@
       </div>
     </div>
 
-    <div class="Middle_Nav__">
+    <div class="Middle_Nav__ w-full">
       <div class="container-logo">
         <a href="{% url 'home' %}"
           ><img src="{% static 'images/Logo.png' %}" alt="logo" width="120"
@@ -195,11 +195,13 @@
       </div>
 
       <div class="container-search">
-        <input
-          type="text"
-          class="search-input-nav"
-          placeholder="Search for anything..."
-        />
+        <form action="#" class="w-full">
+          <input
+            type="text"
+            class="search-input-nav"
+            placeholder="Search for anything..."
+          />
+        </form>
       </div>
 
       <div class="container-icons-commerce flex justify-center gap-4">
@@ -237,23 +239,25 @@
           </div>
         </div>
 
-        <a href="#">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 20.25C12 20.25 2.625 15 2.625 8.62501C2.625 7.49803 3.01546 6.40585 3.72996 5.53431C4.44445 4.66277 5.43884 4.0657 6.54393 3.84468C7.64903 3.62366 8.79657 3.79235 9.79131 4.32204C10.7861 4.85174 11.5665 5.70972 12 6.75001C12.4335 5.70972 13.2139 4.85174 14.2087 4.32204C15.2034 3.79235 16.351 3.62366 17.4561 3.84468C18.5612 4.0657 19.5555 4.66277 20.27 5.53431C20.9845 6.40585 21.375 7.49803 21.375 8.62501C21.375 15 12 20.25 12 20.25Z"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </a>
+        <div class="container-wishlist">
+          <a href="{% url 'wishlist' %}">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 20.25C12 20.25 2.625 15 2.625 8.62501C2.625 7.49803 3.01546 6.40585 3.72996 5.53431C4.44445 4.66277 5.43884 4.0657 6.54393 3.84468C7.64903 3.62366 8.79657 3.79235 9.79131 4.32204C10.7861 4.85174 11.5665 5.70972 12 6.75001C12.4335 5.70972 13.2139 4.85174 14.2087 4.32204C15.2034 3.79235 16.351 3.62366 17.4561 3.84468C18.5612 4.0657 19.5555 4.66277 20.27 5.53431C20.9845 6.40585 21.375 7.49803 21.375 8.62501C21.375 15 12 20.25 12 20.25Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
 
         <!-- account -->
         <div class="container-login">
@@ -304,149 +308,16 @@
       <div class="container-left-bottom-nav w-2/3">
         <ul class="main-ul w-full flex justify-items-start gap-1">
           <li id="mainLink--">
-            <a href="#" class="bottom-link">All Category </a>
+            <a href="{% url 'random_product' %}" class="bottom-link"
+              >All Category
+            </a>
 
-            <div class="container-menu">
-              <ul class="flex justify-between flex-col gap-2">
-                <li><a href="#" class="inner-link--">Computer & Laptop</a></li>
-                <li>
-                  <a href="#" class="inner-link--">Computer Accessories</a>
-                </li>
-                <li id="mainLink">
-                  <a href="#" class="inner-link--">SmartPhone</a>
-
-                  <div class="parent-container-nav-inner flex justify-between">
-                    <div class="container-another--">
-                      <div class="container-menu container-inner">
-                        <ul class="flex justify-between">
-                          <div
-                            class="container-inner-ul-li flex justify-between flex-col"
-                          >
-                            <li><a href="#" class="inner-link--">All</a></li>
-                            <li><a href="#" class="inner-link--">Iphone</a></li>
-                            <li>
-                              <a href="#" class="inner-link--">Samsung</a>
-                            </li>
-                            <li><a href="#" class="inner-link--">Huawei</a></li>
-                            <li><a href="#" class="inner-link--">Oppo</a></li>
-                            <li><a href="#" class="inner-link--">Redmi</a></li>
-                            <li><a href="#" class="inner-link--">Xiomi</a></li>
-                            <li><a href="#" class="inner-link--">Tecno</a></li>
-                            <li><a href="#" class="inner-link--">Itel</a></li>
-                            <li>
-                              <a href="#" class="inner-link--">Infinix</a>
-                            </li>
-                            <li><a href="#" class="inner-link--">Vivo</a></li>
-                          </div>
-
-                          <div class="container-main-inner-items-product">
-                            <div
-                              class="container-right-inner-container-- flex-col justify-between flex center"
-                            >
-                              <a href="#" class="mt-5">
-                                <div
-                                  class="container-product-main flex justify-between"
-                                >
-                                  <div class="container-img">
-                                    <img
-                                      src="{% static 'images/product/dronecontrolImage.png' %}"
-                                      alt="p5Image"
-                                      width="100"
-                                    />
-                                  </div>
-                                  <div class="articles-main">
-                                    <p>
-                                      Bose Sport Earbuds - Wireless Earphones -
-                                      Bluetooth In Ear...
-                                    </p>
-                                    <span class="price">$1,500</span>
-                                  </div>
-                                </div>
-                              </a>
-
-                              <a href="#" class="mt-5">
-                                <div
-                                  class="container-product-main flex justify-betwee"
-                                >
-                                  <div class="container-img">
-                                    <img
-                                      src="{% static 'images/product/dronecontrolImage.png' %}"
-                                      alt="p5Image"
-                                      width="100"
-                                    />
-                                  </div>
-                                  <div class="articles-main">
-                                    <p>
-                                      Bose Sport Earbuds - Wireless Earphones -
-                                      Bluetooth In Ear...
-                                    </p>
-                                    <span class="price">$1,500</span>
-                                  </div>
-                                </div>
-                              </a>
-
-                              <a href="#" class="mt-5">
-                                <div
-                                  class="container-product-main flex justify-between"
-                                >
-                                  <div class="container-img">
-                                    <img
-                                      src="{% static 'images/product/dronecontrolImage.png' %}"
-                                      alt="p5Image"
-                                      width="100"
-                                    />
-                                  </div>
-                                  <div class="articles-main">
-                                    <p>
-                                      Bose Sport Earbuds - Wireless Earphones -
-                                      Bluetooth In Ear...
-                                    </p>
-                                    <span class="price">$1,500</span>
-                                  </div>
-                                </div>
-                              </a>
-                            </div>
-                          </div>
-
-                          <!-- adds -->
-                          <div class="container-ads-navbar">
-                            <div class="container-ads-navbar-padder w-100 p-5">
-                              <span class="span-1"
-                                >21% <strong>Discount</strong></span
-                              >
-
-                              <p>
-                                Escape the noise, it's time to hear the magic
-                                with Xiaomi Earbuds
-                              </p>
-
-                              <span class="flex justify-center gap-5 span-2"
-                                ><p>Starting price:</p>
-                                <h5>$99 USD</h5></span
-                              >
-                            </div>
-                          </div>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li><a href="#" class="inner-link--">Headphone</a></li>
-                <li><a href="#" class="inner-link--">Mobile Accessories</a></li>
-                <li><a href="#" class="inner-link--">Gaming Console</a></li>
-                <li><a href="#" class="inner-link--">Camera & Photo</a></li>
-                <li>
-                  <a href="#" class="inner-link--">TV & Homes Appliances</a>
-                </li>
-                <li><a href="#" class="inner-link--">GPS & Navigation</a></li>
-                <li><a href="#" class="inner-link--">Warable Technology</a></li>
-              </ul>
-            </div>
+            <!-- drop down for all category here -->
+            {% include 'includes/nav_category_list.html' %}
           </li>
 
           <li>
-            <a href="#" class="bottom-link">
+            <a href="{% url 'track_order' %}" class="bottom-link">
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -485,7 +356,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="bottom-link">
+            <a href="{% url 'compare' %}" class="bottom-link" id="page_link">
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -531,7 +402,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="bottom-link"
+            <a href="{% url 'home' %}" class="bottom-link" id="page_link"
               ><div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -550,7 +421,7 @@
             >
           </li>
           <li>
-            <a href="#" class="bottom-link">
+            <a href="{% url 'home' %}" class="bottom-link" id="page_link">
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg

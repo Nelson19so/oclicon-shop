@@ -1,0 +1,28 @@
+<!-- extending to the base html templates -->
+{% extends 'base.html' %}
+
+<!-- loading static -->
+{% load static %}
+
+<!-- page block title -->
+{% block title %} Track Order {% endblock %}
+
+<!-- main content goes here -->
+{% block content %}
+<div class="container-track-orders- w-full">
+  <div class="container-track-orders-padding-wrapper">
+    <div class="divider-left">
+      <h1>Track Order</h1>
+      <p class="mt-5">
+        To track your order please enter your order ID in the input field below
+        and press the “Track Order” button. this was given to you on your
+        receipt and in the confirmation email you should have received.
+      </p>
+
+      <div class="container-form-track-order mt-5">
+        {% include 'orders/track_order_id.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

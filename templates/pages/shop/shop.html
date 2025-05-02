@@ -1,0 +1,25 @@
+<!-- extending template to the html file -->
+{% extends 'base.html' %}
+
+<!-- loads static data -->
+{% load static %}
+
+<!-- shop title -->
+{% block title %} Clicon Shop {% endblock %}
+
+<!-- main content -->
+{% block content %}
+<div class="shop-container-- w-full">
+  <div class="container-padding-shop-page">
+    <div class="container-shop-items w-full">
+      <div class="left-container-">
+        {% include 'includes/shop-asidebar.html' %}
+      </div>
+
+      <div class="product-container-shop">
+        {% include 'products/product-list.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

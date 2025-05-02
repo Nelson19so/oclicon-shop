@@ -1,0 +1,198 @@
+<!-- loads static data -->
+{% load static %}
+
+<!-- main content -->
+{% block content %}
+
+<div class="container-menu">
+  {% for category in categories %}
+  <ul class="flex justify-between flex-col gap-2">
+    <li>
+      <a href="{% url 'category_products' category.slug %}" class="inner-link--"
+        >Computer & Laptop</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Computer Accessories</a>
+    </li>
+    <li id="mainLink">
+      <a href="{% url 'home' %}" class="inner-link--">SmartPhone</a>
+
+      <div class="parent-container-nav-inner flex justify-between">
+        <div class="container-another--">
+          <div class="container-menu container-inner">
+            <!-- navbar drop down -->
+
+            <ul class="flex justify-between">
+              <div class="container-inner-ul-li flex justify-between flex-col">
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >All</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Iphone</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Samsung</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Huawei</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Oppo</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Redmi</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Xiomi</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Tecno</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Itel</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Infinix</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'random_product' %}" class="inner-link--"
+                    >Vivo</a
+                  >
+                </li>
+              </div>
+
+              <div class="container-main-inner-items-product">
+                <div
+                  class="container-right-inner-container-- flex-col justify-between flex center"
+                >
+                  <a href="{% url 'random_product' %}" class="mt-5">
+                    <div class="container-product-main flex justify-between">
+                      <div class="container-img">
+                        <img
+                          src="{% static 'images/product/dronecontrolImage.png' %}"
+                          alt="p5Image"
+                          width="100"
+                        />
+                      </div>
+                      <div class="articles-main">
+                        <p>
+                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                          Ear...
+                        </p>
+                        <span class="price">$1,500</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="{% url 'random_product' %}" class="mt-5">
+                    <div class="container-product-main flex justify-betwee">
+                      <div class="container-img">
+                        <img
+                          src="{% static 'images/product/dronecontrolImage.png' %}"
+                          alt="p5Image"
+                          width="100"
+                        />
+                      </div>
+                      <div class="articles-main">
+                        <p>
+                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                          Ear...
+                        </p>
+                        <span class="price">$1,500</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="{% url 'random_product' %}" class="mt-5">
+                    <div class="container-product-main flex justify-between">
+                      <div class="container-img">
+                        <img
+                          src="{% static 'images/product/dronecontrolImage.png' %}"
+                          alt="p5Image"
+                          width="100"
+                        />
+                      </div>
+                      <div class="articles-main">
+                        <p>
+                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
+                          Ear...
+                        </p>
+                        <span class="price">$1,500</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- adds -->
+              <div class="container-ads-navbar">
+                <div class="container-ads-navbar-padder w-100 p-5">
+                  <span class="span-1">21% <strong>Discount</strong></span>
+
+                  <p>
+                    Escape the noise, it's time to hear the magic with Xiaomi
+                    Earbuds
+                  </p>
+
+                  <span class="flex justify-center gap-5 span-2"
+                    ><p>Starting price:</p>
+                    <h5>$99 USD</h5></span
+                  >
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Headphone</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Mobile Accessories</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Gaming Console</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Camera & Photo</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">TV & Homes Appliances</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">GPS & Navigation</a>
+    </li>
+    <li>
+      <a href="{% url 'home' %}" class="inner-link--">Warable Technology</a>
+    </li>
+  </ul>
+  {% endfor %}
+</div>
+{% endblock %} {% if product.id in cart %}
+<button>add to cart</button>
+{% else %}
+<button>add to cart</button>
+{% endfor %}

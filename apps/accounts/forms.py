@@ -8,35 +8,35 @@ User = get_user_model()
 
 # user registration form
 class UserRegistrationForm(forms.ModelForm):
-  password1 = forms.CharField(widget=forms.PasswordInput)
-  password2 = forms.CharField(widget=forms.PasswordInput)
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
 
-  class Meta:
-    model = User
-    fields = ['email', 'phone_number', 'first_name', 'last_name', 'terms_accepted', 'password1', 'password2']
+    class Meta:
+        model = User
+        fields = ['email', 'phone_number', 'first_name', 'last_name', 'terms_accepted', 'password1', 'password2']
 
-  def clean_email(self):
-    email = self.cleaned_data.get("email")
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
 
-    if CustomUser.objects.filter(email=email).exists():
-      raise forms.ValidationError("Email already exist")
-    return email
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError("Email already exist")
+        return email
 
 
 # user login form
 class UserLoginFrom(forms.Form):
-  email = forms.EmailField()
-  password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
-  def clean(self):
-    email = self.clean_data.get("email")
-    password = self.clean_data.get("password")
+    def clean(self):
+        email = self.clean_data.get("email")
+        password = self.clean_data.get("password")
 
-    user = authenticate(email=email, password=password)
+        user = authenticate(email=email, password=password)
 
-    if not user:
-      raise forms.ValidationError("Invalid credentials")
-    return self.cleaned_data
+        if not user:
+            raise forms.ValidationError("Invalid credentials")
+        return self.cleaned_data
 
 
 # profile update form

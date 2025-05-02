@@ -28,7 +28,7 @@
             Save up to 50% on select Xbox games. Get 3 months of PC Game Pass
             for $2 USD.
           </p>
-          <button class="mt-4 w-1/2 flex justify-between">
+          <button class="mt-4 w-1/2 flex justify-center gap-1">
             Shop now
             <svg
               width="16"
@@ -66,7 +66,7 @@
           <div class="container-inner-sm w-1/2 h-full p-6">
             <p>Summer Sales</p>
             <h2 class="text-white">New Google Pixel 6 Pro</h2>
-            <button class="mt-4 w-full flex justify-between">
+            <button class="mt-4 w-full flex justify-center gap-1">
               Shop now
               <svg
                 width="16"
@@ -111,7 +111,7 @@
           <div class="container-inner-sm w-1/2 h-full p-6">
             <h2>Xiaomi FlipBuds Pro</h2>
             <p>$299 USD</p>
-            <button class="mt-4 w-full flex justify-between">
+            <button class="mt-4 w-full flex justify-center gap-1">
               Shop now
               <svg
                 width="16"
@@ -183,50 +183,52 @@
     </div>
 
     <!-- Best deals -->
-    <div class="container-best-deals mt-10">
-      <div class="wrapper-best-deals">
-        <header class="header-best-deals flex justify-between">
-          <div
-            class="container-header-items container-items-left--- w-1/2 flex justify-start gap-2 md:gap-5"
-          >
-            <h1>Best Deals</h1>
-            <p class="md:mt-2">Deals ends in</p>
+    <section class="section-best deals" id="section-best deals">
+      <div class="container-best-deals mt-10">
+        <div class="wrapper-best-deals">
+          <header class="header-best-deals flex justify-between">
+            <div
+              class="container-header-items container-items-left--- w-1/2 flex justify-start gap-2 md:gap-5"
+            >
+              <h1>Best Deals</h1>
+              <p class="md:mt-2">Deals ends in</p>
 
-            <span><p>16d : 21h : 57m : 23s</p></span>
+              <span><p>16d : 21h : 57m : 23s</p></span>
+            </div>
+
+            <div
+              class="container-header-items container-right--- flex justify-end w-1/2 gap-2"
+            >
+              <a href="#" class="w-1/2">
+                <div class="flex justify-end">
+                  <p>Browse All Product</p>
+                  <svg
+                    class="mt-2"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h48v48H0z" fill="none" />
+                    <g id="Shopicon">
+                      <polygon
+                        points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                        fill="#2da5f3"
+                      />
+                    </g>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </header>
+
+          <!-- best deals product -->
+          <div class="container-best-deals-product w-full">
+            {% include 'products/partials/best_deals.html' %}
           </div>
-
-          <div
-            class="container-header-items container-right--- flex justify-end w-1/2 gap-2"
-          >
-            <a href="#" class="w-1/2">
-              <div class="flex justify-end">
-                <p>Browse All Product</p>
-                <svg
-                  class="mt-2"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 48 48"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M0 0h48v48H0z" fill="none" />
-                  <g id="Shopicon">
-                    <polygon
-                      points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
-                      fill="#2da5f3"
-                    />
-                  </g>
-                </svg>
-              </div>
-            </a>
-          </div>
-        </header>
-
-        <!-- best deals product -->
-        <div class="container-best-deals-product w-full">
-          {% include 'products/partials/best_deals.html' %}
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- shop category  -->
     <div class="container-shopping-category w-full">
@@ -234,11 +236,13 @@
     </div>
 
     <!-- featured product -->
-    <div class="container-featured-product w-full mt-10">
-      <div class="container-featured-padder-product w-full">
-        {% include 'products/partials/featured_products.html' %}
+    <section class="featured-product" id="featured-product">
+      <div class="container-featured-product w-full mt-10">
+        <div class="container-featured-padder-product w-full">
+          {% include 'products/partials/featured_products.html' %}
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- banner -->
     <div class="container-banner mt-10 w-full flex justify-between gap-4">
@@ -252,7 +256,7 @@
             </p>
             <a href="#"><button class="">Shop now</button></a>
 
-            <button class="visit-banner-product mt-5 flex justify-between">
+            <button class="visit-banner-product mt-5 flex justify-center">
               Shop now
               <svg
                 width="16"
@@ -320,13 +324,18 @@
     </div>
 
     <!-- computer accessories -->
-    <div class="container-computer_accessories-product w-full mt-10">
-      <div
-        class="container-computer_accessories-padder-product w-full flex justify-between"
-      >
-        {% include 'products/partials/computer_accessories.html' %}
+    <section
+      class="section-computer-accessories"
+      id="section-computer-accessories"
+    >
+      <div class="container-computer_accessories-product w-full mt-10">
+        <div
+          class="container-computer_accessories-padder-product w-full flex justify-between"
+        >
+          {% include 'products/partials/computer_accessories.html' %}
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- banner -->
     <div class="container-last-banner-home mt-10">
@@ -338,7 +347,7 @@
           Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage
         </p>
 
-        <button class="btn-shop-now mt-5 flex justify-between">
+        <button class="btn-shop-now mt-5 flex justify-center">
           Shop now
           <svg
             class="ml-2"
@@ -369,24 +378,28 @@
     </div>
 
     <!-- product-list -->
-    <div class="container-product-list mt-10">
-      <div class="container-product-list-padder">
-        {% include 'products/product-list.html' %}
+    <section class="product-list" id="product-list">
+      <div class="container-product-list mt-10">
+        <div class="container-product-list-padder">
+          {% include 'products/quick-product-list.html' %}
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
 <!-- news section -->
-<div class="container-latest-news">
-  <div class="container-padder-latest-news">
-    <header class="header-homepage-latest-news w-full text-center">
-      <h1>Latest News</h1>
-    </header>
+<section class="section-news" id="section-news">
+  <div class="container-latest-news">
+    <div class="container-padder-latest-news">
+      <header class="header-homepage-latest-news w-full text-center">
+        <h1>Latest News</h1>
+      </header>
 
-    <!-- -->
-    {% include 'public/news.html' %}
+      <!-- -->
+      {% include 'public/news.html' %}
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock %}

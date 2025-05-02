@@ -5,17 +5,32 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
-    # admin
+    # admin url
     path('admin/', admin.site.urls),    
+
+    # google authentication
     path('accounts/', include('allauth.urls')),  # for allauth URLs
 
-    # public pages
+    # User account
+    path('home/user_account/', include('apps.accounts.urls')),
+
+    # public url conf
     path('', include('apps.public.urls')),
     path('home/', include('apps.public.urls')),
+
+    # product url conf
+    path('home/', include('apps.products.urls')),
+
+    # order url conf
+    path('home/pages/', include('apps.orders.urls')),
+
+    # cart url conf
+    path('home/cart/', include('apps.cart.urls')),
+    path('home/', include('apps.cart.urls'))
 ]
 
 # Add Debug Toolbar URLs in debug mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#     import debug_toolbar
-    # urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
+    import debug_toolbar
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]

@@ -8,24 +8,24 @@ from django.contrib import messages
 
 # registration view set
 def register_view(request):
-  if request.method == 'POST':
-    form = UserRegistrationForm(request.POST)
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
 
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      messages.success(request, "Account created successfully.")
-      return redirect('home')
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Account created successfully.")
+            return redirect('home')
 
-  else:
-    form = UserRegistrationForm()
+    else:
+        form = UserRegistrationForm()
 
-  context = {"form":form}
-  return render(request, 'accounts/authentication/register.html', context)
+    context = {"form":form}
+    return render(request, 'accounts/authentication/register.html', context)
 
 
 # logout view set 
-def logout(request):
-  logout(request)
-  messages.info(request, 'logged out successfully')
-  return redirect("home")
+def logout_view(request):
+    logout(request)
+    messages.info(request, 'logged out successfully')
+    return redirect("home")

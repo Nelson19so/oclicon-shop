@@ -20,56 +20,68 @@
         </ul>
       </div>
 
-      <div class="container-footer-items--">
-        <ul class="flex justify-between flex-col gap-1">
-          <p>Top Category</p>
+      <div
+        class="footer-links-wrapper flex justify-between mr-7 md:gap-0 gap-[50px]"
+      >
+        <div class="container-footer-items--">
+          <ul class="flex justify-between flex-col gap-1">
+            <p class="whitespace-nowrap">Top Category</p>
 
-          <li class="mt-1"><a href="#">Computer & Laptop</a></li>
-          <li><a href="#">SmartPhone</a></li>
-          <li><a href="#">Headphone</a></li>
+            <li class="mt-1 whitespace-nowrap">
+              <a href="#">Computer & Laptop</a>
+            </li>
+            <li class="whitespace-nowrap"><a href="#">SmartPhone</a></li>
+            <li class="whitespace-nowrap"><a href="#">Headphone</a></li>
 
-          <span class="mt-1 mb-1">Accessories</span>
+            <span class="mt-1 mb-1 whitespace-nowrap">Accessories</span>
 
-          <li><a href="#">Camera & Photo</a></li>
-          <li><a href="#">TV & Homes</a></li>
+            <li class="whitespace-nowrap"><a href="#">Camera & Photo</a></li>
+            <li class="whitespace-nowrap"><a href="#">TV & Homes</a></li>
 
-          <div class="flex justify-start">
-            <h4 class="mt-1">
-              <a href="#">Browse All Product</a>
-            </h4>
+            <div class="flex justify-start whitespace-nowrap">
+              <h4 class="mt-1">
+                <a href="{% url 'random_product' %}">Browse All Product</a>
+              </h4>
 
-            <svg
-              class="mt-2 ml-1"
-              width="14"
-              height="14"
-              viewBox="0 0 48 48"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0h48v48H0z" fill="none" />
-              <g id="Shopicon">
-                <polygon
-                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
-                  fill="#efd33d"
-                />
-              </g>
-            </svg>
-          </div>
-        </ul>
-      </div>
+              <svg
+                class="mt-2 ml-1"
+                width="14"
+                height="14"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="#efd33d"
+                  />
+                </g>
+              </svg>
+            </div>
+          </ul>
+        </div>
 
-      <div class="container-footer-items--">
-        <ul class="flex justify-between flex-col gap-1">
-          <p>Quick links</p>
+        <div class="container-footer-items--">
+          <ul class="flex justify-between flex-col gap-1">
+            <p class="whitespace-nowrap">Quick links</p>
 
-          <li class="mt-1"><a href="#">Shop Product</a></li>
-          <li><a href="#">Shoping Cart</a></li>
-          <li><a href="#">Headphone</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Compare</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Customer Help</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
+            <li class="mt-1 whitespace-nowrap">
+              <a href="{% url 'random_product' %}">Shop Product</a>
+            </li>
+            <li class="whitespace-nowrap"><a href="#">Shoping Cart</a></li>
+            <li class="whitespace-nowrap"><a href="#">Headphone</a></li>
+            <li class="whitespace-nowrap"><a href="#">Wishlist</a></li>
+            <li class="whitespace-nowrap">
+              <a href="{% url 'compare' %}">Compare</a>
+            </li>
+            <li class="whitespace-nowrap">
+              <a href="{% url 'track_order' %}">Track Order</a>
+            </li>
+            <li class="whitespace-nowrap"><a href="#">Customer Help</a></li>
+            <li class="whitespace-nowrap"><a href="#">About Us</a></li>
+          </ul>
+        </div>
       </div>
 
       <div class="container-footer-items--">

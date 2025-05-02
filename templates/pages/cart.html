@@ -1,0 +1,295 @@
+<!-- extends to the base template file -->
+{% extends 'base.html' %}
+
+<!-- loads static items from the static file -->
+{% load static %}
+
+<!-- block title for cart page -->
+{% block title %} Cart {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container-cart-product-list-display-">
+  <div class="container-cart-product-list-display-padding">
+    <div class="wrapper-cary-product-and-checkout flex justify-between gap-5">
+      <div class="cart-table-wrapper">
+        <div class="header-cart-items w-full">
+          <p>Shopping Cart</p>
+        </div>
+
+        <div class="items-list-display-table-header flex justify-between">
+          <div class="container-items-">
+            <p>Products</p>
+          </div>
+
+          <div class="container-items-">
+            <p>Price</p>
+          </div>
+
+          <div class="container-items-">
+            <p>Quantity</p>
+          </div>
+
+          <div class="container-items-">
+            <p>Sub-Total</p>
+          </div>
+        </div>
+
+        <div
+          class="container-main-product-items-list flex justify-between flex-col"
+        >
+          <div class="container-product-details-wishlist flex justify-between">
+            <div
+              class="container-name-and-img items-compare flex justify-start"
+            >
+              <div class="container-btn-remove-wishlist">
+                <button class="cursor-pointer">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                    />
+                    <path
+                      d="M15 9L9 15"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15 15L9 9"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <a href="#">
+                <div class="container-product-main flex justify-between mt-3">
+                  <div class="container-img min-w-[70px]">
+                    <img
+                      src="{% static 'images/product/p5controllerImage.png' %}"
+                      alt="p5Image"
+                      width="80"
+                    />
+                  </div>
+                  <div class="articles-main">
+                    <p class="h-[10px]">
+                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div
+              class="container-product-price flex justify-start gap-2 items-compare"
+            >
+              <i class="text-[12px] text-[#5F6C72]">Price: </i>
+              <p class="price">$999</p>
+            </div>
+
+            <div class="container-stock-in-product items-compare">
+              <div class="container-product-amount flex justify-center">
+                <button class="btn-decrement" id="btn-decrement">-</button>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity-input"
+                  class="input-number outline-none"
+                  value="1"
+                  disabled
+                />
+                <button class="btn-increment" id="btn-increment">+</button>
+              </div>
+            </div>
+
+            <div class="container-cart-btn-- items-compare">
+              <i class="text-[12px] text-[#5F6C72]">Total Price: </i>
+              <p class="price">$20</p>
+            </div>
+          </div>
+
+          <div class="container-product-details-wishlist flex justify-between">
+            <div
+              class="container-name-and-img items-compare flex justify-start"
+            >
+              <div class="container-btn-remove-wishlist">
+                <button class="cursor-pointer">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                    />
+                    <path
+                      d="M15 9L9 15"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15 15L9 9"
+                      stroke="#929FA5"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <a href="#">
+                <div class="container-product-main flex justify-between mt-3">
+                  <div class="container-img min-w-[70px]">
+                    <img
+                      src="{% static 'images/product/p5controllerImage.png' %}"
+                      alt="p5Image"
+                      width="80"
+                    />
+                  </div>
+                  <div class="articles-main">
+                    <p class="h-[10px]">
+                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div
+              class="container-product-price flex justify-start gap-2 items-compare"
+            >
+              <i class="text-[12px] text-[#5F6C72]">Price: </i>
+              <p class="price">$999</p>
+            </div>
+
+            <div class="container-stock-in-product items-compare">
+              <div class="container-product-amount flex justify-center">
+                <button class="btn-decrement" id="btn-decrement">-</button>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity-input"
+                  class="input-number outline-none"
+                  value="1"
+                  disabled
+                />
+                <button class="btn-increment" id="btn-increment">+</button>
+              </div>
+            </div>
+
+            <div class="container-cart-btn-- items-compare md:pl-5 gap-2">
+              <i class="text-[12px] text-[#5F6C72]">Total Price:</i>
+              <p class="price">$70</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="container-footer-submit-form-and-return-home flex justify-between"
+        >
+          <div class="lef-container-cart">
+            <button class="btn-return-home-">Return to Shop</button>
+          </div>
+
+          <div class="container-right-cart">
+            <button>Update cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-checkout-items-- flex justify-start flex-col gap-5">
+        <div class="container-checkout-cart">
+          <div class="header-cart-items-for-checkout">
+            <p class="whitespace-nowrap">Shopping Cart</p>
+          </div>
+
+          <div
+            class="container-checkout-details flex justify-between flex-col gap-2"
+          >
+            <div class="container-details-checkout-cart- flex justify-between">
+              <span>Sub-total</span>
+              <p>$320</p>
+            </div>
+
+            <div class="container-details-checkout-cart-- flex justify-between">
+              <span>Shipping</span>
+              <p>Free</p>
+            </div>
+
+            <div class="container-details-checkout-cart-- flex justify-between">
+              <span>Discount</span>
+              <p>$24</p>
+            </div>
+
+            <div class="container-details-checkout-cart- flex justify-between">
+              <span>Tax</span>
+              <p>$61.99</p>
+            </div>
+          </div>
+
+          <div class="container-checkout-btn-sub-total">
+            <div class="container-txt-subtotal flex justify-between">
+              <span>Total</span>
+              <p>$357.99 USD</p>
+            </div>
+
+            <button class="btn-checkout-now mt-3 flex justify-center">
+              Proceed to Checkout
+              <svg
+                class="ml-2"
+                width="16"
+                height="16"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g id="Shopicon">
+                  <polygon
+                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="container-checkout-cart">
+          <div class="header-cart-items-for-checkout">
+            <p class="whitespace-nowrap">Coupon Code</p>
+
+            <form action="{% url 'home' %}" class="mt-5">
+              <input type="text" placeholder="Email address" />
+
+              <button class="apply-coupon-btn mt-4">Apply Coupon</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

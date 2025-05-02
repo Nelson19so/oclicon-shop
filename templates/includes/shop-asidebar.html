@@ -1,0 +1,369 @@
+<!-- loads static content -->
+{% load static %}
+
+<!-- main content -->
+{% block content %}
+<p class="header-txt">Category</p>
+
+<div class="category-list--">
+  <form action="#">
+    <ul>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Electronics Devices</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Computer & Laptop</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Computer Accessories</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >SmartPhone</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Headphone</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Mobile Accessories</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Gaming Console</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Camera & Photo</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >TV & Homes Appliances</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Watchs & Accessories</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >GPS & Navigation</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Warable Technology</a
+        >
+      </li>
+    </ul>
+  </form>
+</div>
+
+<p class="header-txt mt-5">Price Range</p>
+
+<div class="category-list-- w-full">
+  <div class="container-range mb-5">
+    <input
+      type="range"
+      name="price-range"
+      id="price-range"
+      min="0"
+      max="100"
+      value="0"
+    />
+  </div>
+
+  <div class="container-prices-- mb-3 w-full flex justify-start gap-5">
+    <button class="prices-btn">Min prices</button>
+    <button class="prices-btn">Max price</button>
+  </div>
+
+  <form action="#">
+    <ul>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >All Prices</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >SmartPhone</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >Under $20</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >$100 to $300</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >$300 to $500</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >$500 to $1,000</a
+        >
+      </li>
+      <li class="flex justify-start gap-2">
+        <input type="radio" name="category" id="category" /><a href="#"
+          >$1,000 to 10,000</a
+        >
+      </li>
+    </ul>
+  </form>
+</div>
+
+<p class="header-txt mt-5">popular Brands</p>
+
+<div class="category-list-- w-full">
+  <div class="container-brands">
+    <form action="#">
+      <div class="grid-shop-bar-container-1">
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Apple</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Microsoft</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Dell</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Symphony</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Sonny</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >LG</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >One plus</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Apple</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Google</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Samsun</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >HP</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Xiaomi</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Panasonic</a
+            >
+          </div>
+        </div>
+
+        <div class="container-brands--">
+          <div
+            class="container-articles-shop-aside-bar flex justify-start gap-2"
+          >
+            <input type="checkbox" name="popular-brand" id="popular-brand" /><a
+              href="#"
+              >Intel</a
+            >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p class="header-txt mt-5">popular Tags</p>
+
+<div class="category-list-- w-full mb-10">
+  <div class="container-tags">
+    <a href="#">Game</a>
+    <a href="#">iPhone</a>
+    <a href="#">Tv</a>
+    <a href="#">Asus Laptops</a>
+    <a href="#">MacBook</a>
+    <a href="#">SSD</a>
+    <a href="#">Graphics Card</a>
+    <a href="#">Power Bank</a>
+    <a href="#">Smart TV</a>
+    <a href="#">Speaker</a>
+    <a href="#">Tablet</a>
+    <a href="#">MicroWave</a>
+    <a href="#">SamSung</a>
+  </div>
+
+  <div class="divider" style="height: 15px; clear: both"></div>
+
+  <div class="container-imgs-shop-">
+    <div class="container-img-p-a flex-col middd">
+      <img src="{% static 'images/image 7.png' %}" alt="product-aside" />
+      <img
+        src="{% static 'images/image 8.png' %}"
+        alt="product-2"
+        width="100"
+      />
+    </div>
+
+    <article class="mt-3">
+      <h1 class="text-left">Heavy on Features. Light on Price.</h1>
+      <p>Only for: <span>$299 USD</span></p>
+    </article>
+
+    <div class="container-items-shop-nav mt-5 w-full">
+      <button
+        class="p-2 add-to-cart_btn flex justify-center w-full"
+        style="width: 100% !important"
+      >
+        <img
+          src="{% static 'images/svg/shoppingcart.svg' %}"
+          alt="shoppingcart"
+          width="20"
+        />
+        <span class="h-full">Add to card</span>
+      </button>
+
+      <button class="p-2 view-all-btn flex justify-center w-full mt-3">
+        View Details
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h48v48H0z" fill="none" />
+          <g id="Shopicon">
+            <polygon
+              points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+              fill="#fa8232"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -108,7 +108,6 @@
     font-size: 13px;
     line-height: 24px;
     letter-spacing: 0%;
-    text-decoration: line-through;
     color: variables.$Gray-300;
   }
 
@@ -652,4 +651,107 @@
   padding: 5px 8px;
   font-weight: 600;
   font-size: 12px;
+}
+
+.container-slider-items-- {
+  p {
+    display: block;
+    border: 1px solid variables.$Primary-500;
+    color: variables.$Gray-900;
+    border-radius: 100px;
+    padding: 7px 10px;
+    align-items: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @media only screen and (max-width: 472px) {
+      padding: 4px 6px;
+      font-size: 10px;
+    }
+  }
+
+  .main-slider {
+    cursor: pointer;
+    border: 1px solid variables.$Gray-100;
+    transition: 1s;
+    transform: none;
+
+    &:first-child {
+      color: variables.$White-100;
+      background-color: variables.$Primary-500;
+    }
+
+    &:hover {
+      color: variables.$White-100;
+      background-color: variables.$Primary-500;
+    }
+  }
+}
+
+.off-price-product-details {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  background-color: variables.$Warning-500;
+  gap: 10px;
+  border-radius: 2px;
+  padding: 3px 6px;
+}
+
+.table-txt {
+  color: variables.$Gray-700;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.table-items-txt {
+  color: variables.$Gray-900;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.in-stock {
+  color: variables.$Success-500;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+}
+
+.out-stock {
+  color: variables.$Danger-500;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+}
+
+.price {
+  color: variables.$Gray-900;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.discount-price-wishlist {
+  color: variables.$Gray-400;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-decoration: line-through;
 }

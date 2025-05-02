@@ -239,3 +239,130 @@
     }
   }
 }
+
+.product-list-header-- {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 760px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container-left-header-product-list,
+  .container-right-product-list {
+    width: 50%;
+
+    @media only screen and (max-width: 760px) {
+      width: 100%;
+    }
+
+    span {
+      color: variables.$Gray-600;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0%;
+      align-self: center;
+
+      @media only screen and (max-width: 760px) {
+        font-size: 12px;
+      }
+
+      strong {
+        color: variables.$Gray-900;
+      }
+    }
+
+    .wrapper-header-input-select {
+      color: variables.$Gray-900;
+      font-weight: 400;
+      font-size: 12px;
+      align-items: center;
+
+      @media only screen and (max-width: 760px) {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+.container-product-description-header {
+  width: 100%;
+  border-bottom: 1px solid variables.$Gray-100;
+  padding: 0 20px;
+  padding-bottom: 0;
+  max-height: 55px;
+
+  a {
+    color: variables.$Gray-600;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: block;
+    outline: none;
+
+    &:hover {
+      border-bottom: 2px solid variables.$Primary-500;
+    }
+  }
+}
+
+// product list header
+.container-items-product--y {
+  background-color: variables.$Gray-50;
+  border-radius: 4px;
+  padding: 13px 20px;
+  top: 100px;
+
+  @media only screen and (max-width: 560px) {
+    padding: 13px 10px;
+  }
+
+  .container-left-container {
+    align-items: center;
+
+    span {
+      color: variables.$Gray-600;
+      font-weight: 400;
+      font-size: 13px;
+
+      // @media only screen and (max-width: 560px) {
+      //   font-size: 12px;
+      // }
+    }
+
+    p {
+      color: variables.$Gray-900;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0%;
+
+      // @media only screen and (max-width: 560px) {
+      //   font-size: 10px;
+      // }
+    }
+  }
+
+  .container-right-container {
+    @media only screen and (max-width: 560px) {
+      gap: 3px;
+    }
+
+    span {
+      color: variables.$Gray-600;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0%;
+
+      strong {
+        color: variables.$Gray-900;
+      }
+    }
+  }
+}

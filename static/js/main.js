@@ -1,58 +1,54 @@
 "use strict";
 
-const dropHolder = document.querySelectorAll(".container-drop-down-top-nav");
-const dropHolder1 = document.querySelectorAll(".container-drop-down-top-nav-1");
+document.addEventListener("DOMContentLoaded", function () {
+  // navbar scroll fixed effect
+  const navbar = document.querySelector(".Middle_Nav__");
+  const scrollThreshold = window.innerHeight * 0.4; // 30% of viewport height
 
-dropHolder.forEach((dropHolderContainer) => {
-  dropHolderContainer.addEventListener("click", () => {
-    dropHolderContainer
-      .querySelector(".container-currency")
-      .classList.toggle("display-block");
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > scrollThreshold) {
+      navbar.classList.add("fixed-navbar"); // Add class when scrolling past 30%
+    } else {
+      navbar.classList.remove("fixed-navbar"); // Remove class when scrolling back up
+    }
   });
-});
 
-dropHolder1.forEach((dropHolderContainer1) => {
-  dropHolderContainer1.addEventListener("click", () => {
-    dropHolderContainer1
-      .querySelector(".container-Lang")
-      .classList.toggle("display-block");
+  // dropdown handler
+  const dropHolder = document.querySelectorAll(".container-drop-down-top-nav");
+  const dropHolder1 = document.querySelectorAll(
+    ".container-drop-down-top-nav-1"
+  );
+
+  dropHolder.forEach((dropHolderContainer) => {
+    dropHolderContainer.addEventListener("click", () => {
+      dropHolderContainer
+        .querySelector(".container-currency")
+        .classList.toggle("display-block");
+    });
   });
-});
 
-// login dropdown
-const dropContainer = document.querySelector("#container-signin-dropdown");
-const dropItem = document.querySelector("#dropItem");
+  dropHolder1.forEach((dropHolderContainer1) => {
+    dropHolderContainer1.addEventListener("click", () => {
+      dropHolderContainer1
+        .querySelector(".container-Lang")
+        .classList.toggle("display-block");
+    });
+  });
 
-function dropSignInContainer() {
-  dropItem.classList.toggle("display-block");
-  return dropItem;
-}
+  // login dropdown
+  const dropContainer = document.querySelector("#container-signin-dropdown");
+  const dropItem = document.querySelector("#dropItem");
 
-// drop container
-dropContainer.addEventListener("click", (e) => {
-  if (e.target === dropContainer) {
-    dropSignInContainer();
+  function dropSignInContainer() {
+    dropItem.classList.toggle("display-block");
+    return dropItem;
   }
-  return;
-});
 
-// Sub total for cart items
-const cartProductPrice = document.querySelectorAll("#cart-product-price");
-const displayPrice = document.querySelectorAll(".total-sum");
-const numberOfProduct = document.querySelectorAll("#numberOfProduct");
-const Product = document.querySelectorAll(".container-cart-product-container");
-
-let sum = 0;
-
-cartProductPrice.forEach((cartPrices) => {
-  sum += Number(cartPrices.textContent);
-  return sum;
-});
-
-displayPrice.forEach((totalPrice) => {
-  totalPrice.textContent = sum;
-});
-
-numberOfProduct.forEach((products) => {
-  products.textContent = `(0${Product.length})`;
+  // drop container
+  dropContainer.addEventListener("click", (e) => {
+    if (e.target === dropContainer) {
+      dropSignInContainer();
+    }
+    return;
+  });
 });
