@@ -18,7 +18,7 @@ if SECRET_KEY is None:
     raise ImproperlyConfigured("Please set the SECRET_KEY environment variable")
 
 # SECURITY WARNING: run with debug turned off in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
   "127.0.0.1",
