@@ -1,54 +1,123 @@
-# oclicon-shop
+Oclicon Online Store
 
-Created and ecommerce web app using html, css, scss, Tailwindcss, javascript, jquery and django &amp; PosgresSQL. this webapp is an online store where users can be able to buy electronics online and access their profile/dashboard. this gave me a deep understanding on how to handle large dataset and manage extensive code.
+Clicon Online Store is a fully-featured eCommerce web application built with Django for the backend and enhanced with a modern, responsive frontend using HTML, CSS, SCSS, TailwindCSS, JavaScript, and jQuery. The project includes user authentication, product management, cart functionality, an admin dashboard, order processing, and much more.
 
-## libraris to install to run django
+This project is designed to showcase my skills as a backend developer, but it also integrates frontend technologies for a complete shopping experience. It can serve as a template for building scalable, production-ready eCommerce platforms.
 
-- Django
-- django-crispy-forms
-- crispy-bootstrap5
-- Pillow
-- django-allauth
-- django-oauth-toolkit
-- django-widget-tweaks
-- django-debug-toolbar
-- whitenoise
-- psycopg2-binary
-- dj-database-url
-- gunicorn
+Features
 
-  <------------------------------------>
+User Authentication: Custom user model, sign-up, login,email verification, password reset code,password reset,Google, and Apple login integration (via Django AllAuth).
 
-# djang
+Product Management: Ability to add, update, delete, and display products dynamically.
 
-- django-widget-tweaks is a Django package that allows you to customize form field widgets dynamically in templates.
+Cart System: Add, update, and remove products in the shopping cart.
 
-eg: "
-{% load widget_tweaks %}
+Order Management: Users can place orders, view order details, and track order status.
 
-<!-- <form method="POST">
-    {% csrf_token %}
+Wishlist: Users can save products to their wishlist.
 
-    <!-- Add Bootstrap classes dynamically -->
+Admin Dashboard: A simple, secure dashboard to manage orders, products, and users.
 
-    <div class="form-group">
-        {{ form.username|add_class:"form-control" }}
-    </div>
+Responsive UI: Fully responsive and mobile-friendly interface with clean UI/UX.
 
-    <div class="form-group">
-        {{ form.password|add_class:"form-control is-invalid" }}
-    </div>
+AJAX: Implemented AJAX to enhance the user experience for real-time interactions (such as updating the cart).
 
-    <button type="submit" class="btn btn-primary">Login</button>
+Security: Secure user authentication, password hashing, and protection against CSRF/XSS.
 
-</form> -->
 
-"
+Tech Stack
 
-- django-widget-tweaks is a Django package that allows you to customize form field widgets dynamically in templates.
+Frontend:
 
-- dj-database-url is a Django package that helps configure your database settings using a single environment variable. It's especially useful for deployment (e.g., on Heroku, Render, or Docker) where database URLs are provided dynamically.
+HTML5, CSS3, SCSS, Tailwind CSS
 
-## to generate folder structure to look at
+JavaScript, jQuery
 
-- tree /F /A > structure.txt
+AJAX (for dynamic content updates)
+
+
+Backend:
+
+Django (for the API and server-side logic)
+
+Django Rest Framework (for API-based functionalities)
+
+PostgreSQL (database)
+
+Pillow (for image handling)
+
+Django AllAuth (for Google and Apple authentication)
+
+
+
+Setup and Installation
+
+1. Clone the Repository:
+
+git clone https://github.com/yourusername/clickon.git
+
+
+2. Set up a Virtual Environment:
+
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+
+3. Install Dependencies:
+
+pip install -r requirements.txt
+
+
+4. Set Up Database: Make sure PostgreSQL is installed and running. Create a database for the project.
+
+python manage.py migrate
+
+
+5. Run the Development Server:
+
+python manage.py runserver
+
+Visit http://127.0.0.1:8000/ in your browser to see the application.
+
+
+6. Optional - Create Superuser for Admin Panel:
+
+python manage.py createsuperuser
+
+
+
+Environment Variables
+
+Ensure you have the following environment variables set up in a .env file (or use django-environ for better management):
+
+DATABASE_URL (PostgreSQL connection string)
+
+SECRET_KEY (Django secret key)
+
+DEBUG (True or False)
+
+ALLOWED_HOSTS (list of allowed hosts)
+
+GOOGLE_CLIENT_ID (for Google Authentication)
+
+APPLE_CLIENT_ID (for Apple Authentication)
+
+
+Future Improvements
+
+Payment Gateway Integration: Integrate payment options like Stripe or PayPal for order payments.
+
+Ratings & Reviews: Allow users to leave product reviews and rate them.
+
+Product Search: Implement search functionality with filters (by category, price, etc.).
+
+Product Recommendations: Add a recommendation system based on user activity.
+
+
+Screenshots
+
+(Include some screenshots of your project in action, such as the homepage, product page, cart, admin dashboard, etc.)
+
+Contribution
+
+Feel free to fork this repository and contribute by submitting issues, pull requests, or feature suggestions.
