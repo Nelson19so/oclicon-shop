@@ -4,7 +4,6 @@ Clicon Online Store is a fully-featured eCommerce web application built with Dja
 
 This project showcases my backend development skills while also featuring a complete frontend experience. It can serve as a robust template for scalable, production-ready eCommerce platforms.
 
-
 ---
 
 Features
@@ -36,8 +35,6 @@ Enhances user experience with real-time updates (like cart actions).
 Security:
 Password hashing, CSRF/XSS protection, and secure authentication.
 
-
-
 ---
 
 Tech Stack
@@ -49,7 +46,6 @@ HTML5, CSS3, SCSS, Tailwind CSS
 JavaScript, jQuery
 
 AJAX for dynamic interaction
-
 
 Backend
 
@@ -63,8 +59,6 @@ Pillow (image handling)
 
 Django AllAuth (OAuth with Google and Apple)
 
-
-
 ---
 
 Setup & Installation
@@ -77,9 +71,13 @@ cd clickon
 2. Set up a Virtual Environment
 
 python -m venv venv
+
 # On Windows
+
 venv\Scripts\activate
+
 # On macOS/Linux
+
 source venv/bin/activate
 
 3. Install Dependencies
@@ -102,7 +100,6 @@ python manage.py runserver
 
 Visit: http://127.0.0.1:8000/
 
-
 ---
 
 Environment Variables
@@ -116,7 +113,6 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 GOOGLE_CLIENT_ID=your_google_client_id
 APPLE_CLIENT_ID=your_apple_client_id
 
-
 ---
 
 Future Improvements
@@ -129,14 +125,11 @@ Advanced Search and Filters
 
 Recommendation System
 
-
-
 ---
 
 Screenshots
 
-(Add screenshots of the homepage, product pages, cart, and admin dashboard here)
-
+loading...
 
 ---
 
