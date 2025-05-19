@@ -8,9 +8,6 @@ __pycache__/
 .env.*
 *.env
 
-# node modules
-node_modules/
-
 # Django migrations
 **/migrations/
 !**/migrations/__init__.py
@@ -18,9 +15,6 @@ node_modules/
 # Media files (uploads)
 media/
 media/**
-
-# Static files (if you collectstatic locally)
-staticfiles/
 
 # Node.js
 node_modules/

@@ -16,9 +16,9 @@ DATABASES = {
 ALLOWED_HOSTS = ["production-domain.com", "oclicon-shop.onrender.com"]
 
 # Security settings for production
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 
 # Static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
