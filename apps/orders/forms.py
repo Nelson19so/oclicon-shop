@@ -15,6 +15,6 @@ class TrackOrderForm(forms.Form):
             order = orders.first()
             
             if order.email != email:
-                self.add_error("email", "Email does not match the order ID provided")
+                forms.ValidationError("email", "Email does not match the order ID provided")
         except Order.DoesNotExist:
             self.add_error("order_id", "Order you provided not found")        

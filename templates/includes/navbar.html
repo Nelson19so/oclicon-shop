@@ -291,13 +291,16 @@
               <p>Sign in to your account</p>
             </header>
 
-            {% include 'accounts/authentication/login.html' %}
-
             <div class="container-others">
-              <div class="divider"></div>
-              <p>Don’t have account</p>
+              <!-- <div class="divider"></div>
+              <p>Don’t have account</p> -->
 
-              <div class="container-btn-create-account">Create account</div>
+              <button
+                class="container-btn-create-account cursor-pointer"
+                onclick="window.location.assign(`{% url 'register' %}`)"
+              >
+                Create account
+              </button>
             </div>
           </div>
         </div>
@@ -308,16 +311,17 @@
       <div class="container-left-bottom-nav w-2/3">
         <ul class="main-ul w-full flex justify-items-start gap-1">
           <li id="mainLink--">
-            <a href="{% url 'random_product' %}" class="bottom-link"
-              >All Category
-            </a>
+            <a href="{% url 'shop' %}" class="bottom-link">All Category </a>
 
             <!-- drop down for all category here -->
             {% include 'includes/nav_category_list.html' %}
           </li>
 
           <li>
-            <a href="{% url 'track_order' %}" class="bottom-link">
+            <a
+              href="{% url 'track_order' %}"
+              class="bottom-link {% if request.resolver_match.url_name == 'track_order' %}active-link{% endif %}"
+            >
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -356,7 +360,11 @@
             </a>
           </li>
           <li>
-            <a href="{% url 'compare' %}" class="bottom-link" id="page_link">
+            <a
+              href="{% url 'compare' %}"
+              class="bottom-link {% if request.resolver_match.url_name == 'compare' %}active-link{% endif %}"
+              id="page_link"
+            >
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -402,7 +410,10 @@
             </a>
           </li>
           <li>
-            <a href="{% url 'home' %}" class="bottom-link" id="page_link"
+            <a
+              href="{% url 'customersupport' %}"
+              class="bottom-link {% if request.resolver_match.url_name == 'customersupport' %}active-link{% endif %}"
+              id="page_link"
               ><div class="flex justify-between">
                 <span class="mr-1">
                   <svg
@@ -421,7 +432,11 @@
             >
           </li>
           <li>
-            <a href="{% url 'home' %}" class="bottom-link" id="page_link">
+            <a
+              href="{% url 'faqs' %}"
+              class="bottom-link {% if request.resolver_match.url_name == 'faqs' %}active-link{% endif %}"
+              id="page_link"
+            >
               <div class="flex justify-between">
                 <span class="mr-1">
                   <svg

@@ -38,11 +38,9 @@
         <div
           class="container-main-product-items-list flex justify-between flex-col"
         >
-          <div class="container-product-details-wishlist flex justify-between">
-            <div
-              class="container-name-and-img items-compare flex justify-start"
-            >
-              <div class="container-btn-remove-wishlist">
+          <div class="container-product-details-cart flex justify-between">
+            <div class="container-name-and-img items-cart flex justify-start">
+              <div class="container-btn-remove-cart">
                 <button class="cursor-pointer">
                   <svg
                     width="20"
@@ -86,8 +84,8 @@
                   </div>
                   <div class="articles-main">
                     <p class="h-[10px]">
-                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
-                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
+                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
                     </p>
                   </div>
                 </div>
@@ -95,14 +93,30 @@
             </div>
 
             <div
-              class="container-product-price flex justify-start gap-2 items-compare"
+              class="container-cart-mb-details flex justify-start gap-3 flex-col"
             >
-              <i class="text-[12px] text-[#5F6C72]">Price: </i>
+              <div
+                class="container-cart-price-and-stock- flex justify-start gap-3"
+              >
+                <p class="price">$3627</p>
+              </div>
+              <p class="in-stock">in stock</p>
+            </div>
+
+            <div
+              class="container-product-price flex justify-start gap-2 items-cart"
+            >
               <p class="price">$999</p>
             </div>
 
-            <div class="container-stock-in-product items-compare">
-              <div class="container-product-amount flex justify-center">
+            <div
+              class="container-stock-in-product items-cart md:flex justify-between"
+            >
+              <div class="container-right-cart">
+                <button class="remove-cart-item">Remove cart</button>
+              </div>
+
+              <div class="container-product-amount flex justify-center w-full">
                 <button class="btn-decrement" id="btn-decrement">-</button>
                 <input
                   type="text"
@@ -116,17 +130,13 @@
               </div>
             </div>
 
-            <div class="container-cart-btn-- items-compare">
-              <i class="text-[12px] text-[#5F6C72]">Total Price: </i>
+            <div class="container-cart-subtotal- items-cart gap-2">
               <p class="price">$20</p>
             </div>
           </div>
-
-          <div class="container-product-details-wishlist flex justify-between">
-            <div
-              class="container-name-and-img items-compare flex justify-start"
-            >
-              <div class="container-btn-remove-wishlist">
+          <div class="container-product-details-cart flex justify-between">
+            <div class="container-name-and-img items-cart flex justify-start">
+              <div class="container-btn-remove-cart">
                 <button class="cursor-pointer">
                   <svg
                     width="20"
@@ -170,8 +180,8 @@
                   </div>
                   <div class="articles-main">
                     <p class="h-[10px]">
-                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
-                      Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
+                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
                     </p>
                   </div>
                 </div>
@@ -179,14 +189,31 @@
             </div>
 
             <div
-              class="container-product-price flex justify-start gap-2 items-compare"
+              class="container-cart-mb-details flex justify-start gap-3 flex-col"
             >
-              <i class="text-[12px] text-[#5F6C72]">Price: </i>
+              <div
+                class="container-cart-price-and-stock- flex justify-start gap-3"
+              >
+                <p class="discount-price-wishlist">$1299</p>
+                <p class="price">$3627</p>
+              </div>
+              <p class="out-stock">out stock</p>
+            </div>
+
+            <div
+              class="container-product-price flex justify-start gap-2 items-cart"
+            >
               <p class="price">$999</p>
             </div>
 
-            <div class="container-stock-in-product items-compare">
-              <div class="container-product-amount flex justify-center">
+            <div
+              class="container-stock-in-product items-cart md:flex justify-between"
+            >
+              <div class="container-right-cart">
+                <button class="remove-cart-item">Remove cart</button>
+              </div>
+
+              <div class="container-product-amount flex justify-center w-full">
                 <button class="btn-decrement" id="btn-decrement">-</button>
                 <input
                   type="text"
@@ -200,9 +227,8 @@
               </div>
             </div>
 
-            <div class="container-cart-btn-- items-compare md:pl-5 gap-2">
-              <i class="text-[12px] text-[#5F6C72]">Total Price:</i>
-              <p class="price">$70</p>
+            <div class="container-cart-subtotal- items-cart gap-2">
+              <p class="price">$20</p>
             </div>
           </div>
         </div>
@@ -211,10 +237,12 @@
           class="container-footer-submit-form-and-return-home flex justify-between"
         >
           <div class="lef-container-cart">
-            <button class="btn-return-home-">Return to Shop</button>
+            <a href="{% url 'shop' %}"
+              ><button class="btn-return-home-">Return to Shop</button></a
+            >
           </div>
 
-          <div class="container-right-cart">
+          <div class="container-right-visit-home-cart">
             <button>Update cart</button>
           </div>
         </div>
@@ -256,24 +284,26 @@
               <p>$357.99 USD</p>
             </div>
 
-            <button class="btn-checkout-now mt-3 flex justify-center">
-              Proceed to Checkout
-              <svg
-                class="ml-2"
-                width="16"
-                height="16"
-                viewBox="0 0 48 48"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 0h48v48H0z" fill="none" />
-                <g id="Shopicon">
-                  <polygon
-                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </button>
+            <a href="{% url 'checkout' %}">
+              <button class="btn-checkout-now mt-3 flex justify-center">
+                Proceed to Checkout
+                <svg
+                  class="ml-2"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g id="Shopicon">
+                    <polygon
+                      points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                      fill="white"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
 

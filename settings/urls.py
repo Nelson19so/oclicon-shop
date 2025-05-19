@@ -22,10 +22,9 @@ urlpatterns = [
     path('home/', include('apps.products.urls')),
 
     # order url conf
-    path('home/pages/', include('apps.orders.urls')),
+    path('home/', include('apps.orders.urls')),
 
     # cart url conf
-    path('home/cart/', include('apps.cart.urls')),
     path('home/', include('apps.cart.urls'))
 ]
 

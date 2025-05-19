@@ -1,0 +1,37 @@
+<!-- loads static data -->
+{% load static %}
+
+<!-- main content goes here -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h2>Community Comments</h2>
+
+    <button id="click" onclick="action()">Click here</button>
+    <p class="result" id="result"></p>
+
+    <script>
+      function action() {
+        $.ajax({
+          url: "/home/example/",
+          type: "GET",
+          success: function (data) {
+            $("#result").text(data.message);
+          },
+
+          error: function (xhr, status, error) {
+            console.error("Error", error);
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!-- extends to base html template -->
+{% extends 'base.html' %}
+
+<!-- loads static data -->
+{% load static %}
+
+<!-- block title for page template -->
+{% block title %} User Account Login {% endblock %}
+
+<!-- block content-->
+{% block content %}
+<div class="container-pwd-reset-form-main-page">
+  <div class="container-pwd-reset-form-main-page-padding">
+    <div class="container-main-pwd-request-page w-full">
+      <div class="reset-header text-center mb-2">
+        <h1>Verify Your Email Address</h1>
+        <span
+          >Nam ultricies lectus a risus blandit elementum. Quisque arcu arcu,
+          tristique a eu in diam.</span
+        >
+      </div>
+      {% include 'accounts/forms/email_register_verify.html' %}
+    </div>
+  </div>
+  {% endblock %}
+</div>

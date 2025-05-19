@@ -1,6 +1,7 @@
 @use "../abstracts/variables" as variables;
 @use "../abstracts/mixins" as mixin;
 
+// newsletter form
 .newsletter-form {
   width: 50%;
   align-self: center;
@@ -46,5 +47,55 @@ form {
     letter-spacing: 0%;
     align-items: center;
     vertical-align: middle;
+  }
+}
+
+// customer support
+.customer-support {
+  .form-control {
+    border: 1px solid #e4e7e9;
+    padding: 10px;
+    padding-left: 13px;
+    align-items: center;
+    border-radius: 2px;
+    width: 100%;
+
+    .btn-search-customer-support {
+      padding: 10px 25px;
+      gap: 8px;
+      border-radius: 2px;
+      background-color: variables.$Primary-500;
+      color: variables.$White-100;
+      font-size: 13px;
+      height: 100%;
+    }
+
+    input[type="search"] {
+      border: none;
+    }
+  }
+}
+
+// comments form for blog post
+.blog-post-comments-form {
+  .container-form-input-holder {
+    width: 100%;
+
+    .form-control {
+      width: 100%;
+    }
+  }
+}
+
+// aside blog search box
+.aside-blog-details-search {
+  .input-control {
+    border: 1px solid #e4e7e9;
+    align-items: center;
+    padding-right: 10px;
+
+    input {
+      border: none;
+    }
   }
 }

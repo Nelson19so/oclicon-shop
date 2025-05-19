@@ -14,7 +14,7 @@
     table {
       width: 100%;
       border: 1px solid variables.$Gray-100;
-      pointer-events: none;
+      z-index: 1;
 
       thead {
         tr {

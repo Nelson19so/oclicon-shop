@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# Exit on error
 set -o errexit
 
-# Modify this line as needed for your package manager (pip, poetry, etc.)
+# Activate virtual environment (adjust path as needed)
+source /path/to/your/venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 
-# Convert static asset files
-python manage.py collectstatic --no-input
+# Collect static files for production
+python manage.py collectstatic --no-input --settings=settings.settings.prod
 
-# Apply any outstanding database migrations
-python manage.py migrate accounts
-python manage.py migrate  --no-input
+# Apply all migrations for production
+python manage.py migrate --no-input --settings=settings.settings.prod

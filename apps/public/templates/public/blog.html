@@ -1,0 +1,177 @@
+<!-- extends to the base template file -->
+{% extends 'base.html' %}
+
+<!-- loads static items from the static file -->
+{% load static %}
+
+<!-- block title for cart page -->
+{% block title %} Blog {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container-blog-page-main">
+  <div class="container-blog-page-main-padding">
+    <div class="wrapper-blog-page-main flex justify-between">
+      <aside>
+        <div class="category-list-- top-category-list--">
+          <form action="#">
+            <ul>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Electronics Devices</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Computer & Laptop</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Computer Accessories</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >SmartPhone</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Headphone</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Mobile Accessories</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Gaming Console</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Camera & Photo</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >TV & Homes Appliances</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Watchs & Accessories</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >GPS & Navigation</a
+                >
+              </li>
+              <li class="flex justify-start gap-2">
+                <input type="radio" name="category" id="category" /><a href="#"
+                  >Warable Technology</a
+                >
+              </li>
+            </ul>
+          </form>
+        </div>
+
+        <!-- latest blogs -->
+        <div class="container-product-order flex justify-between flex-col">
+          <a href="#">
+            <div class="container-product-main flex justify-between">
+              <div class="container-img min-w-[70px]">
+                <img
+                  src="{% static 'images/blog/unsplash_FO7JIlwjOtU.png' %}"
+                  alt="p5Image"
+                  width="80"
+                />
+              </div>
+              <div class="articles-main">
+                <p class="h-[10px]">
+                  Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
+                  Sport Earbuds Wireless Earphones Bluetooth In Ear
+                </p>
+                <span class="blog-post-date">28 Nov, 2015</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#">
+            <div class="container-product-main flex justify-between">
+              <div class="container-img min-w-[70px]">
+                <img
+                  src="{% static 'images/blog/unsplash_6MNmDi1hc_Y.png' %}"
+                  alt="p5Image"
+                  width="80"
+                />
+              </div>
+              <div class="articles-main">
+                <p class="h-[10px]">
+                  Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
+                  Sport Earbuds Wireless Earphones Bluetooth In Ear
+                </p>
+                <span class="blog-post-date">28 Nov, 2015</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- popular tags -->
+
+        <div class="category-list-- w-full">
+          <p class="header-txt">popular Tags</p>
+          <div class="container-tags mt-5">
+            <a href="#">Game</a>
+            <a href="#">iPhone</a>
+            <a href="#">Tv</a>
+            <a href="#">Asus Laptops</a>
+            <a href="#">MacBook</a>
+            <a href="#">SSD</a>
+            <a href="#">Graphics Card</a>
+            <a href="#">Power Bank</a>
+            <a href="#">Smart TV</a>
+            <a href="#">Speaker</a>
+            <a href="#">Tablet</a>
+            <a href="#">MicroWave</a>
+            <a href="#">SamSung</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="container-blogs">
+        <header class="product-list-header--">
+          <div class="container-left-header-product-list">
+            <form action="#">
+              <input
+                type="text"
+                class="search-input-nav"
+                placeholder="Search for product by name..."
+              />
+            </form>
+          </div>
+
+          <div class="container-right-product-list">
+            <form action="#" class="w-full flex justify-between">
+              <div
+                class="wrapper-header-input-select w-full flex justify-end align-middle gap-3"
+              >
+                Sort by:
+                <select name="select" id="select">
+                  <option value="Most Popular">Most Popular</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </header>
+
+        <div class="container-blog mt-5">{% include 'public/news.html' %}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

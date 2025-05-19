@@ -6,7 +6,7 @@
 
 <div class="container-menu">
   <ul class="flex justify-between flex-col gap-2">
-    {% for category in categories %}
+    {% for category in categories %} {% if not category.parent %}
     <li id="mainLink">
       <a href="{% url 'shop_category' category.slug %}" class="inner-link--"
         >{{ category.name }}</a
@@ -43,7 +43,7 @@
                 <div
                   class="container-right-inner-container-- flex-col justify-between flex center"
                 >
-                  <a href="{% url 'random_product' %}" class="mt-5">
+                  <a href="{% url 'shop' %}" class="mt-5">
                     <div class="container-product-main flex justify-between">
                       <div class="container-img">
                         <img
@@ -62,7 +62,7 @@
                     </div>
                   </a>
 
-                  <a href="{% url 'random_product' %}" class="mt-5">
+                  <a href="{% url 'shop' %}" class="mt-5">
                     <div class="container-product-main flex justify-betwee">
                       <div class="container-img">
                         <img
@@ -81,7 +81,7 @@
                     </div>
                   </a>
 
-                  <a href="{% url 'random_product' %}" class="mt-5">
+                  <a href="{% url 'shop' %}" class="mt-5">
                     <div class="container-product-main flex justify-between">
                       <div class="container-img">
                         <img
@@ -124,7 +124,7 @@
       </div>
       {% endif %}
     </li>
-    {% endfor %}
+    {% endif %} {% endfor %}
   </ul>
 </div>
 {% endblock %}

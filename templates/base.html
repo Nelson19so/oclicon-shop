@@ -5,9 +5,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %} clicon online shoping {% endblock %}</title>
+    <!-- base title -->
+    <title>{% block title %} clicon online shopping store {% endblock %}</title>
 
-    <!-- favicon -->
+    <!-- clicon page favicon -->
     <link
       rel="shortcut icon"
       href="{% static 'images/logo-O.png' %}"
@@ -15,17 +16,23 @@
     />
 
     <!-- external linking -->
+    <!-- poppins font linking -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
     <!-- linking to cascading stylesheet (css) -->
+    <!-- tailwindcss output -->
     <link rel="stylesheet" href="{% static 'styles/output.css' %}" />
+    <!-- clicon website main css file linking -->
     <link rel="stylesheet" href="{% static 'styles/clicon.css' %}" />
+
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    {% if show_extra %}
+    {% if show_navbar_ads %}
     <!-- page header ads -->
     {% include 'includes/page_header_ads.html' %}
     <!-- end if statement for ads -->
@@ -35,6 +42,12 @@
     {% include 'includes/navbar.html' %}
     <!-- Navbar ends -->
 
+    {% if breadcrumbs %}
+    <!-- breadcrumbs -->
+    {% include 'includes/breadcrumbs.html' %}
+    <!-- breadcrumbs ends -->
+    {% endif %}
+
     <main>
       {% block content %}
       <!-- Default content -->
@@ -42,7 +55,7 @@
     </main>
 
     <!-- news letter -->
-    {% if show_extra %}
+    {% if show_newsletter %}
     <!-- includes -->
     {% include 'includes/newsletter.html' %}
     <!-- ending if statement for the template -->
@@ -52,8 +65,19 @@
     {% include 'includes/footer.html' %}
     <!-- footer ends -->
 
+    <!-- main js for all pages -->
     <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- sop js for shop items -->
     <script src="{% static 'js/shop.js' %}"></script>
+
+    <!-- js apis for fast and smooth UX -->
     <script src="{% static 'js/api.js' %}"></script>
+
+    <!-- js form for handling all forms -->
+    <script src="{% static 'js/forms.js' %}"></script>
+
+    <!-- js jquery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
   </body>
 </html>

@@ -1,0 +1,592 @@
+<!-- extends to base html template -->
+{% extends 'base.html' %}
+
+<!-- loads static content here -->
+{% load static %}
+
+<!-- block title for page -->
+{% block title %} customer support {% endblock %}
+
+<!-- main content goes here -->
+{% block content %}
+<div class="container-customer_support-page">
+  <div class="container-customer_support_page-padding">
+    <div class="container-customer-support-holder">
+      <article class="mb-3">
+        <p class="warning-badge">HELP CENTER</p>
+        <h1 class="mt-3">How can we help you!</h1>
+      </article>
+
+      {% include 'public/forms/customer_support.html' %}
+    </div>
+  </div>
+
+  <div class="container-assit-grid">
+    <h1>What can we assist you with today?</h1>
+
+    <div class="container-main-grid-customer-support mt-10">
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M22 18H2V23C2 23.2652 2.10536 23.5196 2.29289 23.7071C2.48043 23.8946 2.73478 24 3 24H5.5C5.5 23.2044 5.81607 22.4413 6.37868 21.8787C6.94129 21.3161 7.70435 21 8.5 21C9.29565 21 10.0587 21.3161 10.6213 21.8787C11.1839 22.4413 11.5 23.2044 11.5 24H20.5C20.4997 23.4731 20.6381 22.9553 20.9014 22.4989C21.1648 22.0425 21.5437 21.6635 22 21.4V18Z"
+            fill="#FA8232"
+          />
+          <path
+            opacity="0.2"
+            d="M26.5 24C26.5003 23.4732 26.362 22.9557 26.0988 22.4993C25.8356 22.043 25.4569 21.664 25.0008 21.4005C24.5447 21.1369 24.0273 20.9982 23.5005 20.9981C22.9737 20.998 22.4562 21.1366 22 21.4V15H30V23C30 23.2652 29.8946 23.5196 29.7071 23.7071C29.5196 23.8946 29.2652 24 29 24H26.5Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M22 10H27.325C27.5242 9.99872 27.7192 10.0577 27.8843 10.1693C28.0494 10.2808 28.1769 10.4397 28.25 10.625L30 15"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 18H22"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M23.5 27C25.1569 27 26.5 25.6569 26.5 24C26.5 22.3431 25.1569 21 23.5 21C21.8431 21 20.5 22.3431 20.5 24C20.5 25.6569 21.8431 27 23.5 27Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-miterlimit="10"
+          />
+          <path
+            d="M8.5 27C10.1569 27 11.5 25.6569 11.5 24C11.5 22.3431 10.1569 21 8.5 21C6.84315 21 5.5 22.3431 5.5 24C5.5 25.6569 6.84315 27 8.5 27Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-miterlimit="10"
+          />
+          <path
+            d="M20.5 24H11.5"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.5 24H3C2.73478 24 2.48043 23.8946 2.29289 23.7071C2.10536 23.5196 2 23.2652 2 23V9C2 8.73478 2.10536 8.48043 2.29289 8.29289C2.48043 8.10536 2.73478 8 3 8H22V21.4"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 15H30V23C30 23.2652 29.8946 23.5196 29.7071 23.7071C29.5196 23.8946 29.2652 24 29 24H26.5"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Track Order</p>
+      </div>
+
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M26 11H6C5.44772 11 5 11.4477 5 12V26C5 26.5523 5.44772 27 6 27H26C26.5523 27 27 26.5523 27 26V12C27 11.4477 26.5523 11 26 11Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M26 11H6C5.44772 11 5 11.4477 5 12V26C5 26.5523 5.44772 27 6 27H26C26.5523 27 27 26.5523 27 26V12C27 11.4477 26.5523 11 26 11Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M11.5 11V6.5C11.5 5.30653 11.9741 4.16193 12.818 3.31802C13.6619 2.47411 14.8065 2 16 2C17.1935 2 18.3381 2.47411 19.182 3.31802C20.0259 4.16193 20.5 5.30653 20.5 6.5"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 18.5C16.2761 18.5 16.5 18.7239 16.5 19C16.5 19.2761 16.2761 19.5 16 19.5C15.7239 19.5 15.5 19.2761 15.5 19C15.5 18.7239 15.7239 18.5 16 18.5Z"
+            fill="#FA8232"
+            stroke="#FA8232"
+            stroke-width="2"
+          />
+        </svg>
+
+        <p>Reset Password</p>
+      </div>
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M3 12.1133H29V24.0008C29 24.266 28.8946 24.5204 28.7071 24.7079C28.5196 24.8954 28.2652 25.0008 28 25.0008H4C3.73478 25.0008 3.48043 24.8954 3.29289 24.7079C3.10536 24.5204 3 24.266 3 24.0008V12.1133Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 21H25"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15 21H17"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3 12.1133H29"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Payment Option</p>
+      </div>
+
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M16 20C20.4183 20 24 16.4183 24 12C24 7.58172 20.4183 4 16 4C11.5817 4 8 7.58172 8 12C8 16.4183 11.5817 20 16 20Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M16 20C20.4183 20 24 16.4183 24 12C24 7.58172 20.4183 4 16 4C11.5817 4 8 7.58172 8 12C8 16.4183 11.5817 20 16 20Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-miterlimit="10"
+          />
+          <path
+            d="M3.875 26.9992C5.10367 24.8706 6.87104 23.103 8.99944 21.874C11.1278 20.6451 13.5423 19.998 16 19.998C18.4577 19.998 20.8722 20.6451 23.0006 21.874C25.129 23.103 26.8963 24.8706 28.125 26.9992"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>User & Account</p>
+      </div>
+
+      <!-- second-container -->
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path opacity="0.2" d="M4 10L16 17L28 10L16 3L4 10Z" fill="#FA8232" />
+          <path
+            d="M4 22L16 29L28 22"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M4 16L16 23L28 16"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M4 10L16 17L28 10L16 3L4 10Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Wishlist & Compare</p>
+      </div>
+
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M7 5H25C25.2652 5 25.5196 5.10536 25.7071 5.29289C25.8946 5.48043 26 5.73478 26 6V25C26 25.7956 25.6839 26.5587 25.1213 27.1213C24.5587 27.6839 23.7956 28 23 28H9C8.20435 28 7.44129 27.6839 6.87868 27.1213C6.31607 26.5587 6 25.7956 6 25V6C6 5.73478 6.10536 5.48043 6.29289 5.29289C6.48043 5.10536 6.73478 5 7 5Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M12 16H20"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 20H20"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7 5H25C25.2652 5 25.5196 5.10536 25.7071 5.29289C25.8946 5.48043 26 5.73478 26 6V25C26 25.7956 25.6839 26.5587 25.1213 27.1213C24.5587 27.6839 23.7956 28 23 28H9C8.20435 28 7.44129 27.6839 6.87868 27.1213C6.31607 26.5587 6 25.7956 6 25V6C6 5.73478 6.10536 5.48043 6.29289 5.29289C6.48043 5.10536 6.73478 5 7 5V5Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M10 3V7"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 3V7"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 3V7"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Shipping & Billing</p>
+      </div>
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M3 12.1133H29V24.0008C29 24.266 28.8946 24.5204 28.7071 24.7079C28.5196 24.8954 28.2652 25.0008 28 25.0008H4C3.73478 25.0008 3.48043 24.8954 3.29289 24.7079C3.10536 24.5204 3 24.266 3 24.0008V12.1133Z"
+            fill="#FA8232"
+          />
+          <path
+            d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 21H25"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15 21H17"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3 12.1133H29"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Shoping Cart & Wallet</p>
+      </div>
+
+      <div class="containers-assist-box flex justify-center gap-2">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.2"
+            d="M12 12V14C12 15.0609 11.5786 16.0783 10.8284 16.8284C10.0783 17.5786 9.06087 18 8 18C6.93913 18 5.92172 17.5786 5.17157 16.8284C4.42143 16.0783 4 15.0609 4 14V12"
+            fill="#FA8232"
+          />
+          <path
+            opacity="0.2"
+            d="M28 12V14C28 15.0609 27.5786 16.0783 26.8284 16.8284C26.0783 17.5786 25.0609 18 24 18C22.9391 18 21.9217 17.5786 21.1716 16.8284C20.4214 16.0783 20 15.0609 20 14V12"
+            fill="#FA8232"
+          />
+          <path
+            d="M6 17.4492V25.9992C6 26.2644 6.10536 26.5188 6.29289 26.7063C6.48043 26.8939 6.73478 26.9992 7 26.9992H25C25.2652 26.9992 25.5196 26.8939 25.7071 26.7063C25.8946 26.5188 26 26.2644 26 25.9992V17.4492"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6.75 5H25.25C25.4669 5.00179 25.6776 5.0732 25.8508 5.20373C26.0241 5.33425 26.1509 5.51698 26.2125 5.725L28 12H4L5.7875 5.725C5.84909 5.51698 5.97587 5.33425 6.14916 5.20373C6.32244 5.0732 6.53306 5.00179 6.75 5V5Z"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 12V14C12 15.0609 11.5786 16.0783 10.8284 16.8284C10.0783 17.5786 9.06087 18 8 18C6.93913 18 5.92172 17.5786 5.17157 16.8284C4.42143 16.0783 4 15.0609 4 14V12"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20 12V14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18C14.9391 18 13.9217 17.5786 13.1716 16.8284C12.4214 16.0783 12 15.0609 12 14V12"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M28 12V14C28 15.0609 27.5786 16.0783 26.8284 16.8284C26.0783 17.5786 25.0609 18 24 18C22.9391 18 21.9217 17.5786 21.1716 16.8284C20.4214 16.0783 20 15.0609 20 14V12"
+            stroke="#FA8232"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <p>Sell on Clicon</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-popular-topics">
+    <h1>Popular Topics</h1>
+
+    <div class="container-grid-topics mt-10">
+      <div class="container-list-1">
+        <ul>
+          <li>How do I return my item?</li>
+          <li>What is Clicons Returns Policy?</li>
+          <li>How long is the refund process?</li>
+        </ul>
+      </div>
+
+      <div class="container-list-1">
+        <ul>
+          <li>What are the 'Delivery Timelines'?</li>
+          <li>What is 'Discover Your Daraz Campaign 2022'?</li>
+          <li>What is the Voucher & Gift Offer in this Campaign?</li>
+        </ul>
+      </div>
+
+      <div class="container-list-1">
+        <ul>
+          <li>How to cancel Clicon Order.</li>
+          <li>Ask the Digital and Device Community</li>
+          <li>How to change my shop name?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-contact-us-section-">
+    <p class="secondary-badge">CONTACT US</p>
+    <h1>Don’t find your answer.</h1>
+
+    <div
+      class="container-contact-items flex justify-center gap-5 mt-10 md:flex-row flex-col"
+    >
+      <div class="container-phone-contact flex justify-between gap-5">
+        <div class="phone-icon">
+          <svg
+            width="35"
+            height="35"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.2"
+              d="M17.3437 23.3996C18.8873 26.5871 21.4648 29.158 24.6562 30.6933C24.8917 30.8048 25.1521 30.853 25.4118 30.8333C25.6715 30.8136 25.9216 30.7266 26.1375 30.5808L30.825 27.4496C31.0321 27.3091 31.2714 27.2234 31.5206 27.2004C31.7698 27.1775 32.0207 27.2181 32.25 27.3183L41.025 31.0871C41.3249 31.2119 41.5755 31.4318 41.7381 31.7131C41.9007 31.9943 41.9664 32.3211 41.925 32.6433C41.6469 34.8141 40.5873 36.8091 38.9446 38.2551C37.3018 39.7012 35.1885 40.4991 33 40.4996C26.237 40.4996 19.751 37.813 14.9688 33.0308C10.1866 28.2486 7.5 21.7626 7.5 14.9996C7.50049 12.8111 8.2984 10.6977 9.74442 9.05499C11.1904 7.41226 13.1855 6.3527 15.3562 6.07457C15.6784 6.03319 16.0053 6.09886 16.2865 6.26149C16.5677 6.42411 16.7877 6.67467 16.9125 6.97457L20.6812 15.7683C20.7793 15.994 20.8203 16.2403 20.8006 16.4855C20.781 16.7307 20.7014 16.9674 20.5687 17.1746L17.4375 21.9371C17.2981 22.1525 17.2163 22.4 17.1999 22.6561C17.1834 22.9121 17.233 23.1681 17.3437 23.3996Z"
+              fill="#2DA5F3"
+            />
+            <path
+              d="M17.3437 23.3996C18.8873 26.5871 21.4648 29.158 24.6562 30.6933C24.8917 30.8048 25.1521 30.853 25.4118 30.8333C25.6715 30.8136 25.9216 30.7266 26.1375 30.5808L30.825 27.4496C31.0321 27.3091 31.2714 27.2234 31.5206 27.2004C31.7698 27.1775 32.0207 27.218 32.25 27.3183L41.025 31.0871C41.3249 31.2119 41.5755 31.4318 41.7381 31.713C41.9007 31.9943 41.9664 32.3211 41.925 32.6433C41.6469 34.8141 40.5873 36.8091 38.9446 38.2551C37.3018 39.7012 35.1885 40.4991 33 40.4996C26.237 40.4996 19.751 37.813 14.9688 33.0308C10.1866 28.2486 7.5 21.7626 7.5 14.9996C7.50049 12.8111 8.2984 10.6977 9.74442 9.05499C11.1904 7.41226 13.1855 6.3527 15.3562 6.07457C15.6784 6.03319 16.0053 6.09886 16.2865 6.26149C16.5677 6.42411 16.7877 6.67467 16.9125 6.97457L20.6812 15.7683C20.7793 15.994 20.8203 16.2403 20.8006 16.4855C20.781 16.7307 20.7014 16.9674 20.5687 17.1746L17.4375 21.9371C17.2981 22.1525 17.2163 22.4 17.1999 22.6561C17.1834 22.9121 17.233 23.1681 17.3437 23.3996V23.3996Z"
+              stroke="#2DA5F3"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M29.8867 7.5C32.431 8.18283 34.7509 9.52285 36.6136 11.3856C38.4764 13.2483 39.8164 15.5682 40.4992 18.1125"
+              fill="#2DA5F3"
+            />
+            <path
+              d="M29.8867 7.5C32.431 8.18283 34.7509 9.52285 36.6136 11.3856C38.4764 13.2483 39.8164 15.5682 40.4992 18.1125"
+              stroke="#2DA5F3"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M28.332 13.293C29.8623 13.6994 31.2579 14.5031 32.3774 15.6226C33.4969 16.7421 34.3006 18.1377 34.707 19.668"
+              fill="#2DA5F3"
+            />
+            <path
+              d="M28.332 13.293C29.8623 13.6994 31.2579 14.5031 32.3774 15.6226C33.4969 16.7421 34.3006 18.1377 34.707 19.668"
+              stroke="#2DA5F3"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <article>
+          <h6>Call us now</h6>
+          <span
+            >we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk
+            with use now</span
+          >
+          <h5>+1-202-555-0126</h5>
+
+          <button class="call-now-btn flex justify-center">
+            Call now
+            <svg
+              class="ml-2"
+              width="16"
+              height="16"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="white"
+                />
+              </g>
+            </svg>
+          </button>
+        </article>
+      </div>
+
+      <div class="container-phone-contact flex justify-between gap-5">
+        <div class="chat-icon">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.2"
+              d="M8.51301 33.1867C6.27967 29.4187 5.49847 24.9651 6.31608 20.6619C7.13369 16.3588 9.49387 12.5021 12.9535 9.81578C16.4132 7.12949 20.7344 5.79837 25.106 6.07234C29.4775 6.3463 33.5987 8.2065 36.696 11.3037C39.7932 14.4009 41.6534 18.5222 41.9273 22.8937C42.2013 27.2653 40.8702 31.5865 38.1839 35.0461C35.4976 38.5058 31.6409 40.866 27.3377 41.6836C23.0346 42.5012 18.581 41.72 14.813 39.4867L8.58801 41.2492C8.33296 41.3238 8.06255 41.3284 7.80511 41.2625C7.54768 41.1967 7.31269 41.0628 7.1248 40.8749C6.9369 40.687 6.80301 40.452 6.73715 40.1946C6.6713 39.9371 6.67591 39.6667 6.75051 39.4117L8.51301 33.1867Z"
+              fill="#2DB324"
+            />
+            <path
+              d="M8.51301 33.1867C6.27967 29.4187 5.49847 24.9651 6.31608 20.6619C7.13369 16.3588 9.49387 12.5021 12.9535 9.81578C16.4132 7.12949 20.7344 5.79837 25.106 6.07234C29.4775 6.3463 33.5987 8.2065 36.696 11.3037C39.7932 14.4009 41.6534 18.5222 41.9273 22.8937C42.2013 27.2653 40.8702 31.5865 38.1839 35.0461C35.4976 38.5058 31.6409 40.866 27.3377 41.6836C23.0346 42.5012 18.581 41.72 14.813 39.4867L8.58801 41.2492C8.33296 41.3238 8.06255 41.3284 7.80511 41.2625C7.54768 41.1967 7.31269 41.0628 7.1248 40.8749C6.9369 40.687 6.80301 40.452 6.73715 40.1946C6.6713 39.9371 6.67591 39.6667 6.75051 39.4117L8.51301 33.1867Z"
+              stroke="#2DB324"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M24 26.25C25.2426 26.25 26.25 25.2426 26.25 24C26.25 22.7574 25.2426 21.75 24 21.75C22.7574 21.75 21.75 22.7574 21.75 24C21.75 25.2426 22.7574 26.25 24 26.25Z"
+              fill="#2DB324"
+            />
+            <path
+              d="M15 26.25C16.2426 26.25 17.25 25.2426 17.25 24C17.25 22.7574 16.2426 21.75 15 21.75C13.7574 21.75 12.75 22.7574 12.75 24C12.75 25.2426 13.7574 26.25 15 26.25Z"
+              fill="#2DB324"
+            />
+            <path
+              d="M33 26.25C34.2426 26.25 35.25 25.2426 35.25 24C35.25 22.7574 34.2426 21.75 33 21.75C31.7574 21.75 30.75 22.7574 30.75 24C30.75 25.2426 31.7574 26.25 33 26.25Z"
+              fill="#2DB324"
+            />
+          </svg>
+        </div>
+
+        <article>
+          <h6>Chat with us</h6>
+          <span
+            >we are available online from 9:00 AM to 5:00 PM (GMT95:45) Talk
+            with use now</span
+          >
+          <h5>Support@clicon.com</h5>
+
+          <button class="chat-now-btn flex justify-center">
+            Contact Us
+            <svg
+              class="ml-2"
+              width="16"
+              height="16"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="white"
+                />
+              </g>
+            </svg>
+          </button>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

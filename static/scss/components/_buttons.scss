@@ -165,6 +165,13 @@
   &:hover {
     color: variables.$White-100;
     background-color: variables.$Primary-500;
+
+    svg {
+      polygon {
+        transition: 1s;
+        fill: white;
+      }
+    }
   }
 }
 
@@ -417,19 +424,6 @@
   cursor: pointer;
 }
 
-.container-right-cart {
-  cursor: pointer;
-  border: 2px solid #2da5f3;
-  color: #2da5f3;
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  gap: 8px;
-  border-radius: 2px;
-  border-width: 2px;
-  padding: 10px 15px;
-}
-
 .btn-checkout-now {
   background-color: variables.$Primary-500;
   color: variables.$White-100;
@@ -458,4 +452,143 @@
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.remove-cart-item {
+  background-color: variables.$Secondary-500;
+  color: variables.$White-100;
+  gap: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 10px 15px;
+  transition: 1s;
+
+  // &:hover {
+  //   background-color: variables.$Secondary-400;
+  //   color: variables.$White-100;
+  // }
+}
+
+.container-right-visit-home-cart {
+  button {
+    cursor: pointer;
+    border: 2px solid #2da5f3;
+    color: #2da5f3;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    gap: 8px;
+    border-radius: 2px;
+    border-width: 2px;
+    padding: 10px 15px;
+  }
+}
+
+.btn-visit-dashboard {
+  border: 2px solid variables.$Primary-500;
+  color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 5px 20px;
+  transition: 1s;
+  cursor: pointer;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+
+.visit-order {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  border-radius: 3px;
+  padding: 5px 16px;
+  align-items: center;
+  font-weight: 700;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// btn submit faq form & blog comment submit
+.btn-submit-faq-form,
+.submit-comment-blog {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  gap: 2px;
+  border-radius: 3px;
+  padding: 10px 16px;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: fit-content;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// customer support call now btn
+.call-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: variables.$White-100;
+  background-color: variables.$Secondary-500;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+// customer support chat now btn
+.chat-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: variables.$White-100;
+  background-color: variables.$Success-500;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+// load more button
+.load-more {
+  color: variables.$Primary-500;
+  background-color: variables.$White-100;
+  border: 1px solid variables.$Primary-500;
+  padding: 8px 20px;
+  border-radius: 2px;
+  border-width: 2px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  align-items: center;
+  transition: 1s;
+
+  path {
+    transition: 1s;
+  }
+
+  &:hover {
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+
+    svg {
+      path {
+        stroke: variables.$White-100;
+      }
+    }
+  }
 }

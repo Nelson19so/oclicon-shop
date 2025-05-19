@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // navbar scroll fixed effect
+  // navbar on scroll effect
   const navbar = document.querySelector(".Middle_Nav__");
   const scrollThreshold = window.innerHeight * 0.4; // 30% of viewport height
 
@@ -50,5 +50,30 @@ document.addEventListener("DOMContentLoaded", function () {
       dropSignInContainer();
     }
     return;
+  });
+});
+
+// Faq_ page
+const faqItem = document.querySelectorAll(".container-main-faqs--");
+const otherFaq = document.querySelectorAll(".container-main-faqs--");
+
+faqItem.forEach((faq) => {
+  const faqToggle = faq.querySelector(".show-faq-description");
+  const faqSubject = faq.querySelector(".faq-subject-container-");
+
+  faqToggle.addEventListener("click", function () {
+    otherFaq.forEach((otherfaqs) => {
+      if (otherfaqs != faq) {
+        otherfaqs.classList.remove("active-faq-container");
+        otherfaqs
+          .querySelector(".faq-subject-container-")
+          .classList.remove("active-faq");
+      } else {
+        if (!faq.classList.contains(".active-faq-container")) {
+          faq.classList.toggle("active-faq-container");
+          faqSubject.classList.toggle("active-faq");
+        }
+      }
+    });
   });
 });

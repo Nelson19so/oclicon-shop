@@ -19,7 +19,7 @@ class BadgeVariantInLine(admin.TabularInline):
     extra = 1
 
 @admin.register(Badge)
-class Badge(admin.ModelAdmin):
+class BadgeAdmin(admin.ModelAdmin):
     list_display = ('bade_type', 'is_active')
     list_filter = ('bade_type', 'is_active')
     # list_display = ('bade_type', 'product')

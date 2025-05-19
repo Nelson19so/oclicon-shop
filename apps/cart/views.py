@@ -98,12 +98,27 @@ class RemoveItemFromCart(View):
         
         cart_item.delete()
 
+        return JsonResponse({
+            'status': 'success',
+        })
+
 class CartItemListView(CartMixin, ListView):
-    template_name = "pages/cart.html"
+    template_name = "cart/cart.html"
     context_object_name = "cart"
 
     def get_queryset(self):
         return self.cart_items_list(self.request)
+    
+    def get_breadcrumbs(self):
+        breadcrumbs = [
+            ('Shopping Cart', self.request.path)
+        ]
+        return breadcrumbs
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['breadcrumbs'] = self.get_breadcrumbs()
+        return context
 
 # update cart product quantity view create
 @require_POST
@@ -127,7 +142,7 @@ def update_cart_quantities(request):
         try:
             quantity = int(quantity)
             quantity = quantity
-            cart_item = CartItem.objects.get(id=item_id, cart=cart)
+            cart_item = CartItem.objects.filter(id=item_id, cart=cart)
             cart_item.quantity = quantity
             cart_item.save()
         except:
@@ -191,5 +206,9 @@ def wish_list_view(request):
         session_id = request.session.session_key
     wishlist = WishlistProduct.objects.filter(session=session_id)
     
-    context = {"wishlist": wishlist, "user": user}
-    return render(request, 'pages/wishlist.html', context)
+    breadcrumbs = [
+        ('Wishlist', request.path)
+    ]
+    
+    context = {"wishlist": wishlist, "user": user, 'breadcrumbs': breadcrumbs}
+    return render(request, 'cart/wishlist.html', context)

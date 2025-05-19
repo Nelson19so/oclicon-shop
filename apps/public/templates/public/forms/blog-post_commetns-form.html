@@ -1,0 +1,27 @@
+{% block content %}
+<form action="#" method="post" class="blog-post-comments-form">
+  {% csrf_token %}
+  <div class="container-form-input-holder flex justify-between gap-5">
+    <div class="form-control">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" />
+    </div>
+
+    <div class="form-control">
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" />
+    </div>
+  </div>
+
+  <div class="form-control mt-5">
+    <label for="description">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      placeholder="What’s your thought about this blog..."
+    ></textarea>
+  </div>
+
+  <button class="submit-comment-blog mt-4">post Comments</button>
+</form>
+{% endblock %}

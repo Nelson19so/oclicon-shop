@@ -1,0 +1,88 @@
+<!-- loads static content -->
+{% load static %}
+
+<!-- load main content -->
+{% block content %}
+<div class="container-login_form-- w-full">
+  <div class="container-login-padding w-full">
+    <form method="post" action="{% url 'login' %}" class="login_form w-full">
+      {% csrf_token %}
+
+      <div class="input-container w-full">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="login-email"
+          value="{{ form.email.value|default_if_none:'' }}"
+        />
+
+        <div class="container-error-msg mt-1">
+          <p class="error-msg"></p>
+        </div>
+      </div>
+
+      <div class="input-container w-full">
+        <div class="container-password-forgot-pass flex justify-between">
+          <label for="password">Password</label>
+          <a href="{% url 'reset_password_request' %}">Forget Password</a>
+        </div>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="login-password"
+          value="{{ form.password.value|default_if_none:'' }}"
+        />
+
+        <div class="svg-eye" id="login-svg-eye">
+          <svg
+            class="cursor-pointer"
+            fill="#000000"
+            width="18px"
+            height="18px"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"
+            />
+          </svg>
+        </div>
+
+        <div class="container-error-msg mt-1">
+          <p class="error-msg"></p>
+        </div>
+      </div>
+
+      {% if form.errors %}
+      <div class="container-error-msg" id="login-server-msg">
+        {% for error in form.non_field_errors %}
+        <p class="error-msg">{{ error }}*</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <button class="bton-login--sign-up flex justify-center">
+        Sign in
+        <svg
+          class="ml-2"
+          width="16"
+          height="16"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h48v48H0z" fill="none" />
+          <g id="Shopicon">
+            <polygon
+              points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+              fill="white"
+            />
+          </g>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

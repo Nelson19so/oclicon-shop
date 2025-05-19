@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductVariant, ProductImage, Brand, Category, ProductComparison
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View, TemplateView
 from django.db.models.functions import Random
 from django.contrib.sessions.models import Session
 from django.utils.decorators import method_decorator
-from django.views.generic import View, TemplateView
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST, require_http_methods
+from django.urls import reverse
 import random
 
 # Create your views here.
@@ -31,6 +31,14 @@ class ProductDetailView(DetailView):
             category__children__parent__slug=child_slug,
             slug=product_slug
         )
+    
+    def get_breadcrumbs(self):
+        product = self.get_object()
+        return [
+            ('Shop', reverse('shop')),
+            ('Shop grid', f"home/{reverse('shop')}/{product.category.slug}/{product.category.child.first().slug}"),
+            (product.name, self.request.path),
+        ]
 
     # getting additional information for product
     def get_context_data(self, **kwargs):
@@ -41,67 +49,59 @@ class ProductDetailView(DetailView):
         context['all_images'] = product.variant.first().images.all() if product.variant.exists() else []
         context['colors'] = set(v.color for v in product.variant.all() if v.color)
         context['specifications'] = set(v.product_specification for v in product.variant.all() if v.product_specification)
-
+        context['breadcrumbs'] = self.get_breadcrumbs()
         return context
 
 # shop page for items --------
-# All random product
-class RandomProductListView(ListView):
-    model = Product
-    template_name = 'pages/shop/shop.html'
-    context_object_name = 'products'
-    paginate_by = 24
 
-    def get_queryset(self):
-        # filtering active product
-        return Product.objects.filter(
-            is_active=True
-        ).order_by(Random()).prefetch_related( # getting related data
-            'variants__images',
-            'brand',
-            'category'
-        )
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['category'] = Category.objects.all() # getting all categories
-        return context
-
-# filtering for all kinds of product category, category child, brand and all product
+# filtering for all kinds of product category, category child, brand and all productclass FilteredProductListView(BreadCrumbsMixin, ListView):
 class FilteredProductListView(ListView):
     model = Product
-    template_name = 'pages/shop/shop.html'
+    template_name = 'products/shop.html'
     context_object_name = 'products'
     paginate_by = 24
 
     def get_queryset(self):
-        # listing all product for listing in the template
         queryset = Product.objects.filter(is_active=True)
+        self.category = None
+        self.child_category = None
+        self.brand = None
+
         category_slug = self.kwargs.get('category_slug')
         child_slug = self.kwargs.get('child_slug')
         brand_slug = self.kwargs.get('brand_slug')
 
-        # filtering for product under this category in the slug
         if category_slug:
-            category = get_object_or_404(Category, slug=category_slug, parent=None)
-            queryset = queryset.filter(category=category)
+            self.category = get_object_or_404(Category, slug=category_slug, parent=None)
+            queryset = queryset.filter(category=self.category)
 
-        # filtering for product under this child category in the slug
         if child_slug:
-            child_category = get_object_or_404(Category, slug=child_slug, parent__slug=category_slug)
-            queryset = queryset.filter(category=child_category)
+            self.child_category = get_object_or_404(Category, slug=child_slug, parent__slug=category_slug)
+            queryset = queryset.filter(category=self.child_category)
 
-        # filtering for product under this brand in the slug
         if brand_slug:
-            brand = get_object_or_404(Brand, slug=brand_slug)
-            queryset = queryset.filter(brand=brand)
+            self.brand = get_object_or_404(Brand, slug=brand_slug)
+            queryset = queryset.filter(brand=self.brand)
 
-        # getting related product variants from the product
-        return queryset.prefetch_related(
-            'variants__images',
-            'brand',
-            'category'
-        )
+        return queryset.prefetch_related('variants__images', 'brand', 'category')
+
+    def get_breadcrumbs(self):
+        breadcrumbs = [('Shop', reverse('shop'))]
+
+        if self.category:
+            breadcrumbs.append((self.category.name, f'/home/shop/{self.category.slug}/'))
+
+        if self.child_category:
+            breadcrumbs.append((self.child_category.name, f'/home/shop/{self.category.slug}/{self.child_category.slug}/'))
+
+        if self.brand:
+            url = f'/shop/{self.category.slug}/'
+            if self.child_category:
+                url += f'{self.child_category.slug}/'
+            url += f'{self.brand.slug}/'
+            breadcrumbs.append((self.brand.name, url))
+
+        return breadcrumbs
 
     # additional context being passed for rendering product
     def get_context_data(self, **kwargs):
@@ -110,6 +110,7 @@ class FilteredProductListView(ListView):
         context['category_slug'] = self.kwargs.get('category_slug')
         context['child_slug'] = self.kwargs.get('child_slug')
         context['brand_slug'] = self.kwargs.get('brand_slug')
+        context['breadcrumbs'] = self.get_breadcrumbs()
         return context
 
 # compare page for items. for re-usable view for count and compare listing
@@ -196,7 +197,7 @@ class AddToComparisonView(CompareMixin, View):
             'status': 'success',
             'count': self.get_compare_counts(request)
         })
-    
+
 # for removing compare product for user and session cookies
 class RemoveFromCompareView(CompareMixin, View):
     @method_decorator(require_http_methods([require_POST])) # allowing only post request
@@ -207,7 +208,7 @@ class RemoveFromCompareView(CompareMixin, View):
         if user.is_authenticated:
             ProductComparison.objects.filter(
                 user=user,
-                product_id=kwargs['product_id'], 
+                product_id=kwargs['product_id'],
             )
 
         # for session anonymous users
@@ -230,15 +231,25 @@ class RemoveFromCompareView(CompareMixin, View):
     
 # compare product list view for listing all compare product
 class ComparisonPageView(CompareMixin, ListView):
-    template_name = 'pages/compare.html'
+    template_name = 'products/compare.html'
     context_object_name = 'comparison'
 
     # query set data to use the compareMixin class for querying all compare product
     def get_queryset(self):
         return self.get_comparison_products(self.request)
     
+    def get_breadcrumbs(self):
+        breadcrumbs = [
+            ('Shop', reverse('shop')),
+            ('Compare', self.request.path),
+        ]
+        return breadcrumbs
+    
     # getting the compare counts for displaying in the UI
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comparison_count'] = self.get_compare_counts(self.request)
+        context['breadcrumbs'] = self.get_breadcrumbs()
         return context
+    
+

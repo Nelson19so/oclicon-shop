@@ -455,6 +455,13 @@ a strong {
   color: #2da5f3;
   font-size: 13px;
 }
+.price span {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
 
 .container-news-main .articles-- {
   margin-top: 10px;
@@ -524,7 +531,7 @@ a strong {
   left: 65px;
 }
 
-.input-container- label {
+.input-container label {
   width: 100%;
   font-weight: 400;
   font-size: 14px;
@@ -532,10 +539,10 @@ a strong {
   letter-spacing: 0%;
   color: #191c1f;
 }
-.input-container- .container-password-forgot-pass {
+.input-container .container-password-forgot-pass {
   gap: 10px;
 }
-.input-container- .container-password-forgot-pass a {
+.input-container .container-password-forgot-pass a {
   white-space: nowrap;
   color: #2da5f3;
   font-weight: 500;
@@ -682,7 +689,7 @@ a strong {
   text-transform: uppercase;
 }
 
-.price {
+.price- {
   color: #191c1f;
   font-weight: 500;
   font-size: 14px;
@@ -697,6 +704,114 @@ a strong {
   line-height: 20px;
   letter-spacing: 0%;
   text-decoration: line-through;
+}
+
+.header-billing-information-txt,
+.header-payment-options-txt,
+.container-additional-info-header-txt {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.container-error-msg {
+  width: 100%;
+}
+.container-error-msg .error-msg {
+  color: #ee5858;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: left;
+}
+
+.reset-header h1 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.reset-header span {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+}
+
+.container-visit-auth-page {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
+}
+.container-visit-auth-page p {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.container-visit-auth-page p a {
+  color: #2da5f3;
+}
+
+.container-bottom-container-request-pwd-reset {
+  padding-top: 20px;
+  border-top: 1px solid #e4e7e9;
+  gap: 5px;
+}
+.container-bottom-container-request-pwd-reset p {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 12px;
+  gap: 5px;
+}
+.container-bottom-container-request-pwd-reset p a {
+  float: inline-end;
+  color: #fa8232;
+}
+
+.container-header-faqs h1 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+
+.warning-badge {
+  background-color: #efd33d;
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 12px;
+  width: max-content;
+  padding: 6px;
+}
+
+.secondary-badge {
+  background-color: #2da5f3;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  padding: 5px;
+  display: block;
+  width: fit-content;
+  gap: 10px;
+  border-radius: 2px;
+}
+
+.blog-post-date {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .header-best-deals {
@@ -1298,6 +1413,80 @@ a strong {
   }
 }
 
+.container-blogs {
+  width: 75vw;
+}
+.container-blogs .container-news {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .container-blogs .container-news {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+  }
+}
+
+.container-main-grid-customer-support {
+  display: grid;
+  grid-template-columns: repeat(1, 0.7fr);
+  gap: 30px;
+  place-content: center;
+}
+@media only screen and (min-width: 655px) {
+  .container-main-grid-customer-support {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container-main-grid-customer-support {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.container-main-grid-customer-support .containers-assist-box {
+  border-radius: 4px;
+  border-width: 2px;
+  padding: 24px;
+  border: 2px solid #ffe7d6;
+  align-items: center;
+}
+.container-main-grid-customer-support .containers-assist-box p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-main-grid-customer-support .containers-assist-box:hover {
+  box-shadow: 0px 8px 40px 0px rgba(250, 130, 50, 0.1215686275);
+}
+
+.container-grid-topics {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  place-content: center;
+}
+@media only screen and (min-width: 655px) {
+  .container-grid-topics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container-grid-topics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.container-grid-topics .container-list-1 ul {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .header-txt {
   color: #191c1f;
   font-weight: 500;
@@ -1706,6 +1895,154 @@ a strong {
   color: #929fa5;
 }
 
+.container-breadcrumbs-pages {
+  width: 100%;
+  top: 0;
+  background-color: #f2f4f5;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-breadcrumbs-pages {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-breadcrumbs-pages ol {
+  display: flex;
+  justify-content: flex-start;
+  gap: 7px;
+  align-items: center;
+}
+.container-breadcrumbs-pages ol li:last-child a .wrapper-breadcrumbs span {
+  color: #2da5f3;
+}
+.container-breadcrumbs-pages ol li a {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  display: block;
+}
+.container-breadcrumbs-pages ol li a .wrapper-breadcrumbs {
+  height: 100%;
+  align-items: center;
+}
+.container-breadcrumbs-pages ol li a .wrapper-breadcrumbs span {
+  color: #5f6c72;
+}
+
+.container-checkout-items-- {
+  flex: 1;
+  width: 100%;
+}
+@media only screen and (max-width: 890px) {
+  .container-checkout-items-- {
+    flex: 0;
+    width: fit-content;
+  }
+}
+.container-checkout-items-- .container-checkout-cart {
+  padding: 10px 15px;
+  border: 1px solid #e4e7e9;
+}
+.container-checkout-items-- .container-checkout-cart .header-cart-items-for-checkout {
+  margin-bottom: 10px;
+}
+.container-checkout-items-- .container-checkout-cart .header-cart-items-for-checkout p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+}
+.container-checkout-items-- .container-checkout-cart .container-details-checkout-cart- span {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container-checkout-items-- .container-checkout-cart .container-details-checkout-cart- p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container-checkout-items-- .container-checkout-cart .container-details-checkout-cart-- span {
+  color: #5f6c72;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container-checkout-items-- .container-checkout-cart .container-details-checkout-cart-- p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total {
+  border-top: 1px solid #e4e7e9;
+  margin-top: 10px;
+}
+.container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal {
+  padding: 10px 0;
+}
+.container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal span {
+  color: #191c1f;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal p {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.container-latest-news {
+  width: 100vw;
+  background-color: #f2f4f5;
+}
+.container-latest-news .container-padder-latest-news {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-latest-news .container-padder-latest-news {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-latest-news .container-news {
+  width: 100%;
+  margin-top: 5%;
+}
+
+.container-news-details- .container-main-news-details {
+  align-items: center;
+}
+.container-news-details- .container-main-news-details p {
+  color: #475156;
+  font-weight: 400;
+  font-size: 12.7px;
+}
+
+.container-sidebar,
+.container-main {
+  width: fit-content;
+}
+
 .container-inner-sm button {
   background-color: #fa8232;
   color: #ffffff;
@@ -1853,6 +2190,10 @@ a strong {
 .btn-read-more-news:hover {
   color: #ffffff;
   background-color: #fa8232;
+}
+.btn-read-more-news:hover svg polygon {
+  transition: 1s;
+  fill: white;
 }
 
 .btn-signup-newsletter {
@@ -2086,19 +2427,6 @@ a strong {
   cursor: pointer;
 }
 
-.container-right-cart {
-  cursor: pointer;
-  border: 2px solid #2da5f3;
-  color: #2da5f3;
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  gap: 8px;
-  border-radius: 2px;
-  border-width: 2px;
-  padding: 10px 15px;
-}
-
 .btn-checkout-now {
   background-color: #fa8232;
   color: #ffffff;
@@ -2126,6 +2454,128 @@ a strong {
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.remove-cart-item {
+  background-color: #2da5f3;
+  color: #ffffff;
+  gap: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 10px 15px;
+  transition: 1s;
+}
+
+.container-right-visit-home-cart button {
+  cursor: pointer;
+  border: 2px solid #2da5f3;
+  color: #2da5f3;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  gap: 8px;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 10px 15px;
+}
+
+.btn-visit-dashboard {
+  border: 2px solid #fa8232;
+  color: #fa8232;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 5px 20px;
+  transition: 1s;
+  cursor: pointer;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+
+.visit-order {
+  background-color: #fa8232;
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 5px 16px;
+  align-items: center;
+  font-weight: 700;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+}
+.visit-order:hover {
+  background-color: #ff9d5c;
+  color: #ffffff;
+}
+
+.btn-submit-faq-form,
+.submit-comment-blog {
+  background-color: #fa8232;
+  color: #ffffff;
+  gap: 2px;
+  border-radius: 3px;
+  padding: 10px 16px;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: fit-content;
+}
+.btn-submit-faq-form:hover,
+.submit-comment-blog:hover {
+  background-color: #ff9d5c;
+  color: #ffffff;
+}
+
+.call-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: #ffffff;
+  background-color: #2da5f3;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.chat-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: #ffffff;
+  background-color: #2db224;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.load-more {
+  color: #fa8232;
+  background-color: #ffffff;
+  border: 1px solid #fa8232;
+  padding: 8px 20px;
+  border-radius: 2px;
+  border-width: 2px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  align-items: center;
+  transition: 1s;
+}
+.load-more path {
+  transition: 1s;
+}
+.load-more:hover {
+  color: #ffffff;
+  background-color: #fa8232;
+}
+.load-more:hover svg path {
+  stroke: #ffffff;
 }
 
 .product-card .container-product {
@@ -2198,6 +2648,43 @@ form .container-info {
   letter-spacing: 0%;
   align-items: center;
   vertical-align: middle;
+}
+
+.customer-support .form-control {
+  border: 1px solid #e4e7e9;
+  padding: 10px;
+  padding-left: 13px;
+  align-items: center;
+  border-radius: 2px;
+  width: 100%;
+}
+.customer-support .form-control .btn-search-customer-support {
+  padding: 10px 25px;
+  gap: 8px;
+  border-radius: 2px;
+  background-color: #fa8232;
+  color: #ffffff;
+  font-size: 13px;
+  height: 100%;
+}
+.customer-support .form-control input[type=search] {
+  border: none;
+}
+
+.blog-post-comments-form .container-form-input-holder {
+  width: 100%;
+}
+.blog-post-comments-form .container-form-input-holder .form-control {
+  width: 100%;
+}
+
+.aside-blog-details-search .input-control {
+  border: 1px solid #e4e7e9;
+  align-items: center;
+  padding-right: 10px;
+}
+.aside-blog-details-search .input-control input {
+  border: none;
 }
 
 .fixed-navbar {
@@ -2331,12 +2818,12 @@ nav .container-padder-nav .top-container .container-items-right .container-lang 
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav,
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav-1 {
   position: relative;
+  z-index: 5555655;
 }
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav .container-currency,
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav .container-Lang,
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav-1 .container-currency,
 nav .container-padder-nav .top-container .container-items-right .container-lang .container-drop-down-top-nav-1 .container-Lang {
-  z-index: 44;
   position: absolute;
   left: 0;
   background-color: #ffffff;
@@ -2464,6 +2951,7 @@ nav .container-padder-nav .Middle_Nav__ .container-icons-commerce {
 }
 nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-login {
   position: relative;
+  z-index: 333;
 }
 nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-login .container-login-navbar-drop-down {
   position: absolute;
@@ -2480,26 +2968,16 @@ nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-log
   box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
   display: none;
 }
-nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-login .container-login-navbar-drop-down .container-others {
-  padding: 0 15px;
-  position: relative;
-  padding-top: 5px;
-}
-nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-login .container-login-navbar-drop-down .container-others .divider {
-  border: 1px solid #e4e7e9;
-  top: 10px;
-  border-width: 1px;
-  margin-bottom: 25px;
-}
 nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-cart-box {
   position: relative;
+  z-index: 21313;
 }
 nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-cart-box:hover .container-mini-cart {
   display: block;
 }
 nav .container-padder-nav .Middle_Nav__ .container-icons-commerce .container-cart-box .container-mini-cart {
   display: none;
-  z-index: 44;
+  z-index: 4442424;
 }
 nav .container-padder-nav .bottom-Nav {
   width: 100%;
@@ -2559,7 +3037,7 @@ nav .container-padder-nav .bottom-Nav .container-left-bottom-nav .main-ul li .co
   border: 1px solid #e4e7e9;
   box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
   position: absolute;
-  z-index: 22;
+  z-index: 22333;
   background-color: #ffffff;
   opacity: 0;
   transition: 0.5s;
@@ -2675,6 +3153,13 @@ nav .container-padder-nav .bottom-Nav .container-right-bottom-nav {
 .container-inner {
   position: absolute;
   margin-right: 300px;
+}
+
+.active-link {
+  color: #fa8232 !important;
+}
+.active-link svg path {
+  stroke: #fa8232 !important;
 }
 
 .search-input-nav,
@@ -2851,8 +3336,7 @@ input[type=color]::-moz-color-swatch {
   height: 100%;
 }
 
-input[type=text],
-input[type=email] {
+.container-checkout-shopping-cart select {
   border-radius: 2px;
   border-width: 1px;
   border: 1px solid #e4e7e9;
@@ -2865,6 +3349,57 @@ input[type=email] {
   -webkit-appearance: none;
   background-size: 24px;
   width: 100%;
+}
+.container-checkout-shopping-cart input[type=checkbox] {
+  border: 1px solid #c9cfd2;
+}
+.container-checkout-shopping-cart .input-check label {
+  color: #475156;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=tel],
+input[type=datetime] {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid #e4e7e9;
+  color: #475156;
+  background-color: #ffffff;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-size: 24px;
+  width: 100%;
+}
+
+.wrong_input_field {
+  border: 1px solid #ee5858 !important;
+}
+
+.correct_input_field {
+  border: 1px solid #2db224 !important;
+}
+
+textarea {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid #e4e7e9;
+  color: #475156;
+  background-color: #ffffff;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-size: 24px;
+  width: 100%;
+  height: 130px;
 }
 
 #quantity-input {
@@ -2891,9 +3426,17 @@ label {
   display: block;
   font-weight: 400;
   font-size: 14px;
+}
+label span {
+  color: #adb7bc;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 20px;
   letter-spacing: 0%;
-  margin: 5px 0;
+}
+
+.invalid-field {
+  border: 1px solid #ee5858 !important;
 }
 
 .container--adds-one {
@@ -2974,6 +3517,7 @@ label {
 }
 .container--adds-one .container-add-padder .container-top-padder .container-small-add-right .container-inner-sm {
   position: relative;
+  z-index: 0;
 }
 .container--adds-one .container-add-padder .container-top-padder .container-small-add-right .container-sm-add-sm {
   background-color: #f2f4f5;
@@ -3247,29 +3791,6 @@ label {
 .container--adds-one .container-add-padder .container-product-list .container-product-list-padder {
   width: 100%;
   padding: 20px 40px;
-}
-
-.container-latest-news {
-  width: 100vw;
-  background-color: #f2f4f5;
-}
-.container-latest-news .container-padder-latest-news {
-  padding-top: 50px !important;
-  padding-bottom: 50px !important;
-  padding-top: 12px;
-  padding-right: 150px;
-  padding-bottom: 12px;
-  padding-left: 150px;
-}
-@media only screen and (max-width: 1045px) {
-  .container-latest-news .container-padder-latest-news {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-}
-.container-latest-news .container-news {
-  width: 100%;
-  margin-top: 5%;
 }
 
 @media (max-width: 992px) {
@@ -3566,6 +4087,18 @@ a .container-product-main .articles-main {
   white-space: nowrap;
 }
 
+.container-product-order .container-product-main {
+  border: none;
+}
+.container-product-order .container-product-main:hover {
+  border: none;
+}
+.container-product-order .container-product-main .articles-main {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .container-mini-cart {
   position: absolute;
   right: 0;
@@ -3808,36 +4341,71 @@ a .container-product-main .articles-main {
     align-items: center;
   }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist {
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart {
   gap: 10px;
   width: 100%;
 }
 @media only screen and (max-width: 859px) {
-  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart {
     flex-direction: column;
     border: 1px solid #e4e7e9;
     padding: 20px;
+  }
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart:hover {
     box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
   }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist .items-compare {
+@media only screen and (max-width: 859px) {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-product-price,
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-cart-subtotal- {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 859px) {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-name-and-img button {
+    display: none;
+  }
+}
+@media only screen and (max-width: 859px) {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-name-and-img img {
+    border: 1px solid #e4e7e9;
+  }
+}
+@media only screen and (min-width: 859px) {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-cart-mb-details {
+    display: none;
+  }
+}
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex: 1;
+  width: 100%;
 }
-@media only screen and (min-width: 859px) {
-  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist .items-compare i {
-    display: none;
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart .container-right-cart {
+  display: none;
+}
+@media only screen and (max-width: 859px) {
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart {
+    justify-content: space-between !important;
+  }
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart:not(:first-child) {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #e4e7e9;
+  }
+  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart .container-right-cart {
+    display: block;
   }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist .items-compare:first-child {
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .items-cart:first-child {
   flex: 2;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist .container-product-main {
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-product-main {
   border: none;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-wishlist .container-product-main .articles-main {
+.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .cart-table-wrapper .container-main-product-items-list .container-product-details-cart .container-product-main .articles-main {
   height: 100%;
   display: inline;
   justify-content: flex-start;
@@ -3848,85 +4416,166 @@ a .container-product-main .articles-main {
   border-top: 1px solid #e4e7e9;
   padding: 10px 15px;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- {
-  flex: 1;
+
+.container-checkout-shopping-cart {
+  width: 100vw;
 }
-@media only screen and (max-width: 890px) {
-  .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- {
-    flex: 0;
-    width: fit-content;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding {
+  width: 100%;
+  padding-top: 3.5% !important;
+  padding-bottom: 3.5% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart {
-  padding: 10px 15px;
+@media only screen and (max-width: 1234px) {
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding {
+    flex-direction: column;
+  }
+}
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout {
+  width: 100%;
+  flex: 2;
+}
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-user-input-control {
+  align-items: center;
+}
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options {
   border: 1px solid #e4e7e9;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .header-cart-items-for-checkout {
-  margin-bottom: 10px;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .header-container-shipping-options {
+  padding: 10px 20px;
+  border-bottom: 1px solid #e4e7e9;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .header-cart-items-for-checkout p {
-  color: #191c1f;
-  font-weight: 500;
-  font-size: 14px;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- {
+  border-bottom: 1px solid #e4e7e9;
+  padding: 20px 0;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-details-checkout-cart- span {
-  color: #5f6c72;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0%;
+@media only screen and (max-width: 768px) {
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- {
+    padding: 0 25px;
+  }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-details-checkout-cart- p {
-  color: #191c1f;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0%;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- .container-payment-option-wrapper {
+  padding: 0 25px;
+  align-items: center;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-details-checkout-cart-- span {
-  color: #5f6c72;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0%;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- .container-payment-option-wrapper:not(:last-child) {
+  border-right: 1px solid #e4e7e9;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-details-checkout-cart-- p {
-  color: #191c1f;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 0%;
+@media only screen and (max-width: 768px) {
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- .container-payment-option-wrapper {
+    border-right: none;
+    padding: 25px;
+  }
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- .container-payment-option-wrapper:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #e4e7e9;
+  }
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total {
-  border-top: 1px solid #e4e7e9;
-  margin-top: 10px;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-payment-checkbox-container- .container-payment-option-wrapper label {
+  white-space: nowrap;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal {
-  padding: 10px 0;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-billing-information-cart-checkout .container-shipping-options .container-card {
+  padding: 0 20px;
+  padding-bottom: 20px;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal span {
-  color: #191c1f;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0%;
+.container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-right-product-order-- {
+  width: 100%;
+  flex: 1;
 }
-.container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout .container-checkout-items-- .container-checkout-cart .container-checkout-btn-sub-total .container-txt-subtotal p {
-  color: #191c1f;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0%;
+@media only screen and (max-width: 1234px) {
+  .container-checkout-shopping-cart .container-checkout-shopping-cart-padding .container-right-product-order-- {
+    flex: 0;
+    width: 50%;
+  }
 }
 
-.container-login_form-- {
+.container-order-placed- {
+  width: 100vw;
+  height: 70vh;
+}
+.container-order-placed- .container-order-placed-padding- {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding-top: 8% !important;
+  padding-bottom: 8% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-order-placed- .container-order-placed-padding- {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-order-placed- .container-order-placed-padding- .container-articles {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.container-order-placed- .container-order-placed-padding- .container-articles h1 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.container-order-placed- .container-order-placed-padding- .container-articles p {
+  margin-top: 10px;
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  width: 50%;
+  text-align: center;
+}
+@media only screen and (max-width: 877px) {
+  .container-order-placed- .container-order-placed-padding- .container-articles p {
+    width: 100%;
+  }
+}
+
+.container-login_form--,
+.container-register_form--,
+.container-pwd-request_form-- {
   padding: 0;
   margin: 0;
+  position: relative;
 }
-.container-login_form-- .container-login-padding {
+.container-login_form-- .container-login-padding,
+.container-login_form-- .container-register-padding,
+.container-login_form-- .container-pdw-request-padding,
+.container-register_form-- .container-login-padding,
+.container-register_form-- .container-register-padding,
+.container-register_form-- .container-pdw-request-padding,
+.container-pwd-request_form-- .container-login-padding,
+.container-pwd-request_form-- .container-register-padding,
+.container-pwd-request_form-- .container-pdw-request-padding {
   padding: 15px;
 }
-.container-login_form-- .container-login-padding form {
+.container-login_form-- .container-login-padding form,
+.container-login_form-- .container-register-padding form,
+.container-login_form-- .container-pdw-request-padding form,
+.container-register_form-- .container-login-padding form,
+.container-register_form-- .container-register-padding form,
+.container-register_form-- .container-pdw-request-padding form,
+.container-pwd-request_form-- .container-login-padding form,
+.container-pwd-request_form-- .container-register-padding form,
+.container-pwd-request_form-- .container-pdw-request-padding form {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -3934,10 +4583,26 @@ a .container-product-main .articles-main {
   flex-direction: column;
   gap: 13px;
 }
-.container-login_form-- .container-login-padding form .input-container- {
+.container-login_form-- .container-login-padding form .input-container-,
+.container-login_form-- .container-register-padding form .input-container-,
+.container-login_form-- .container-pdw-request-padding form .input-container-,
+.container-register_form-- .container-login-padding form .input-container-,
+.container-register_form-- .container-register-padding form .input-container-,
+.container-register_form-- .container-pdw-request-padding form .input-container-,
+.container-pwd-request_form-- .container-login-padding form .input-container-,
+.container-pwd-request_form-- .container-register-padding form .input-container-,
+.container-pwd-request_form-- .container-pdw-request-padding form .input-container- {
   width: 100%;
 }
-.container-login_form-- .container-login-padding form .input-container- input {
+.container-login_form-- .container-login-padding form .input-container- input,
+.container-login_form-- .container-register-padding form .input-container- input,
+.container-login_form-- .container-pdw-request-padding form .input-container- input,
+.container-register_form-- .container-login-padding form .input-container- input,
+.container-register_form-- .container-register-padding form .input-container- input,
+.container-register_form-- .container-pdw-request-padding form .input-container- input,
+.container-pwd-request_form-- .container-login-padding form .input-container- input,
+.container-pwd-request_form-- .container-register-padding form .input-container- input,
+.container-pwd-request_form-- .container-pdw-request-padding form .input-container- input {
   margin-top: 5px;
   width: 100%;
   height: 36px;
@@ -3948,6 +4613,401 @@ a .container-product-main .articles-main {
   outline: none;
   padding: 0 10px;
   font-size: 13px;
+}
+
+.container-others {
+  padding: 0 15px;
+  position: relative;
+  padding-top: 5px;
+}
+.container-others .divider {
+  border: 1px solid #e4e7e9;
+  top: 10px;
+  border-width: 1px;
+  margin-bottom: 25px;
+}
+
+.svg-eye {
+  position: absolute;
+  right: 25px;
+  margin-top: -30px;
+}
+
+@media only screen and (max-width: 889px) {
+  .container-login-form-main-page {
+    height: 80vh;
+  }
+}
+.container-login-form-main-page .container-log-sign-naviagator a:first-child {
+  color: #191c1f !important;
+  border-bottom: 2px solid #fa8232 !important;
+}
+
+.input-container-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.input-container-checkbox label {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 11px;
+  display: flex;
+  justify-items: flex-start;
+  white-space: nowrap;
+  gap: 3px;
+}
+.input-container-checkbox label a {
+  color: #2da5f3;
+  text-decoration: underline;
+}
+.input-container-checkbox .container-checkbox input[type=checkbox] {
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.container-register-form-main-page .container-log-sign-naviagator a:last-child {
+  color: #191c1f !important;
+  border-bottom: 2px solid #fa8232 !important;
+}
+
+@media only screen and (max-width: 889px) {
+  .container-pwd-reset-form-main-page {
+    height: 80vh;
+  }
+}
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page {
+  padding: 30px !important;
+  padding-top: 20px !important;
+}
+
+.container-login-form-main-page,
+.container-register-form-main-page,
+.container-pwd-reset-form-main-page {
+  width: 100vw;
+}
+.container-login-form-main-page .container-login-form-main-page-padding,
+.container-login-form-main-page .container-register-form-main-page-padding,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding,
+.container-register-form-main-page .container-login-form-main-page-padding,
+.container-register-form-main-page .container-register-form-main-page-padding,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-login-form-main-page .container-login-form-main-page-padding,
+  .container-login-form-main-page .container-register-form-main-page-padding,
+  .container-login-form-main-page .container-pwd-reset-form-main-page-padding,
+  .container-register-form-main-page .container-login-form-main-page-padding,
+  .container-register-form-main-page .container-register-form-main-page-padding,
+  .container-register-form-main-page .container-pwd-reset-form-main-page-padding,
+  .container-pwd-reset-form-main-page .container-login-form-main-page-padding,
+  .container-pwd-reset-form-main-page .container-register-form-main-page-padding,
+  .container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page {
+  max-width: 380px;
+  min-width: 380px;
+  border: 1px solid #e4e7e9;
+  box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 0;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 20px;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a {
+  padding: 15px 58px;
+  color: #77878f;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 1px solid #e4e7e9;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-log-sign-naviagator a:not(:last-child),
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-log-sign-naviagator a:not(:last-child) {
+  border-right: 1px solid #e4e7e9;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-others p,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-others p,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-others p,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-others p,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-others p,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-others p,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-others p,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-others p,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-others p,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-others p,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-others p,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-others p,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-others p,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-others p,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-others p,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-others p,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-others p,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-others p,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-others p {
+  margin-left: 80px;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth {
+  width: 100%;
+  padding: 0 15px;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  border: 1px solid #e4e7e9;
+  padding: 10px;
+  cursor: pointer;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method .wrapper-svg-social-media,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method .wrapper-svg-social-media {
+  margin-right: 70px;
+}
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-login-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-register-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-login-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-register-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-login-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-pwd-request-page .container-other-social-auth .container-social-method span,
+.container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding .container-main-register-page .container-other-social-auth .container-social-method span {
+  color: #475156;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .shop-container-- {
@@ -3984,7 +5044,6 @@ a .container-product-main .articles-main {
 }
 .shop-container-- .container-padding-shop-page .container-shop-items .product-container-shop {
   width: 100%;
-  pointer-events: none;
 }
 
 .container-track-orders- {
@@ -4263,7 +5322,7 @@ a .container-product-main .articles-main {
 .container-compare- .container-compare-padding- table {
   width: 100%;
   border: 1px solid #e4e7e9;
-  pointer-events: none;
+  z-index: 1;
 }
 .container-compare- .container-compare-padding- table thead tr th {
   border: 1px solid #e4e7e9;
@@ -4353,13 +5412,23 @@ a .container-product-main .articles-main {
 .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist .container-main-product-items-list .container-product-details-wishlist {
   gap: 10px;
   width: 100%;
+  transition: 0.5s;
 }
 @media only screen and (max-width: 859px) {
   .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist .container-main-product-items-list .container-product-details-wishlist {
     flex-direction: column;
     border: 1px solid #e4e7e9;
     padding: 20px;
+  }
+  .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist .container-main-product-items-list .container-product-details-wishlist:hover {
     box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
+  }
+}
+@media only screen and (max-width: 859px) {
+  .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist .container-main-product-items-list .container-product-details-wishlist .container-cart-btn--:not(:first-child) {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #e4e7e9;
   }
 }
 .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist .container-main-product-items-list .container-product-details-wishlist .items-compare {
@@ -4378,6 +5447,590 @@ a .container-product-main .articles-main {
   height: 100%;
   display: inline;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.container-faq-page- {
+  width: 100vw;
+}
+.container-faq-page- .container-faq-page-padding {
+  width: 100%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-faq-page- .container-faq-page-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 858px) {
+  .container-faq-page- .container-faq-page-padding {
+    flex-direction: column;
+  }
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- {
+  flex: 1.5;
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- .container-main-faqs-- {
+  gap: 36px;
+  border-radius: 4px;
+  border-width: 1px;
+  border: 1px solid #e4e7e9;
+  overflow: hidden;
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- .container-main-faqs-- .faq-subject-container- {
+  padding: 20px;
+  align-items: center;
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- .container-main-faqs-- .faq-subject-container- .container-subject h1 {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- .container-main-faqs-- .container-main-faq-items {
+  padding: 20px;
+  display: none;
+}
+.container-faq-page- .container-faq-page-padding .container-left-faq-container- .container-main-faqs-- .container-main-faq-items p {
+  color: #475156;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+.container-faq-page- .container-faq-page-padding .container-faq-form {
+  flex: 1;
+}
+.container-faq-page- .container-faq-page-padding .container-faq-form .container-form-faq {
+  padding: 30px;
+  background-color: #fbf4ce;
+}
+.container-faq-page- .container-faq-page-padding .container-faq-form .container-form-faq form .container-faq-form-header p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+}
+.container-faq-page- .container-faq-page-padding .container-faq-form .container-form-faq form .container-faq-form-header span {
+  color: #475156;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.active-faq-container {
+  box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
+}
+.active-faq-container .active-faq {
+  background-color: #fa8232 !important;
+}
+.active-faq-container .active-faq h1 {
+  color: #ffffff !important;
+}
+.active-faq-container .container-main-faq-items {
+  display: block !important;
+}
+
+.container-about-page- {
+  width: 100vw;
+}
+.container-about-page- .container-about-page-container-padding {
+  width: 100%;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-about-page- .container-about-page-container-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-about-page- .container-about-page-container-padding .container-items-display-about .container-img-about-right {
+  flex: 1;
+}
+.container-about-page- .container-about-page-container-padding .container-items-display-about .container-articles-left {
+  flex: 1.2;
+}
+.container-about-page- .container-about-page-container-padding .container-items-display-about .container-articles-left h1 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 20px;
+}
+.container-about-page- .container-about-page-container-padding .container-items-display-about .container-articles-left .main-articles {
+  color: #475156;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-about-page- .container-about-page-container-padding .container-items-display-about .container-articles-left .container-articles- .container-txt p {
+  color: #191c1f;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  align-items: center;
+}
+.container-about-page- .container-about-page-container-padding .container-team- {
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 30px;
+  box-shadow: 0px 1px 0px 0px #e4e7e9 inset;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-header-about-team {
+  width: 100%;
+  text-align: center;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-header-about-team h2 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 40px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- {
+  display: grid;
+  grid-template-columns: repeat(1, 0.6fr);
+  gap: 20px;
+  place-items: center;
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  .container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width: 800px) {
+  .container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- .container-grid-container-main {
+  border: 1px solid #e4e7e9;
+  border-radius: 3px;
+  border-width: 1px;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- .container-grid-container-main .container-grid-container-main-padding- {
+  padding: 20px 16px;
+  align-items: center;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- .container-grid-container-main .container-grid-container-main-padding- .container-articles .container-txt strong {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-about-page- .container-about-page-container-padding .container-team- .container-main-teams-grid- .container-grid-container-main .container-grid-container-main-padding- .container-articles .container-row-txt p {
+  color: #475156;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  white-space: nowrap;
+}
+
+.container-banner-about-page {
+  width: 100vw;
+  background-image: url("/static/images/about-banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-banner-about-page {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-banner-about-page strong {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+.container-banner-about-page p {
+  color: #191c1f;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.container-customer_support-page {
+  width: 100vw;
+}
+.container-customer_support-page .container-customer_support_page-padding {
+  width: 100%;
+  background-image: url("/static/images/customer_support-background-1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-customer_support-page .container-customer_support_page-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 792px) {
+  .container-customer_support-page .container-customer_support_page-padding {
+    background: none;
+  }
+}
+.container-customer_support-page .container-customer_support_page-padding .container-customer-support-holder {
+  width: 50%;
+}
+@media only screen and (max-width: 792px) {
+  .container-customer_support-page .container-customer_support_page-padding .container-customer-support-holder {
+    width: 100%;
+  }
+}
+.container-customer_support-page .container-customer_support_page-padding .container-customer-support-holder h1 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 40px;
+}
+.container-customer_support-page .container-assit-grid {
+  border-top: 1px solid #e4e7e9;
+  margin-top: 5%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-customer_support-page .container-assit-grid {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-customer_support-page .container-assit-grid h1 {
+  text-align: center;
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 40px;
+}
+.container-customer_support-page .container-popular-topics {
+  border-top: 1px solid #e4e7e9;
+  margin-top: 5%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-customer_support-page .container-popular-topics {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-customer_support-page .container-popular-topics h1 {
+  text-align: center;
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 40px;
+}
+.container-customer_support-page .container-popular-topics ul li {
+  list-style: disc;
+  font-size: 14px;
+}
+.container-customer_support-page .container-contact-us-section- {
+  border-top: 1px solid #e4e7e9;
+  background-color: #f2f4f5;
+  margin-top: 5%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-customer_support-page .container-contact-us-section- {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-customer_support-page .container-contact-us-section- p {
+  display: flex;
+  justify-self: center;
+}
+.container-customer_support-page .container-contact-us-section- h1 {
+  text-align: center;
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 40px;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact {
+  background-color: #ffffff;
+  padding: 20px;
+  width: fit-content;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact .phone-icon {
+  background-color: #eaf6fe;
+  padding: 10px;
+  height: fit-content;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact .chat-icon {
+  background-color: #eaf7e9;
+  padding: 10px;
+  height: fit-content;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact article h6 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact article span {
+  color: #5f6c72;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.container-customer_support-page .container-contact-us-section- .container-contact-items .container-phone-contact article h5 {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.container-blog-page-main {
+  width: 100vw;
+}
+.container-blog-page-main .container-blog-page-main-padding {
+  width: 100%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-blog-page-main .container-blog-page-main-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-blog-page-main .container-blog-page-main-padding .wrapper-blog-page-main {
+  width: 100%;
+  gap: 30px;
+}
+.container-blog-page-main .container-blog-page-main-padding .wrapper-blog-page-main .container-blogs {
+  width: 60vw;
+}
+
+aside {
+  width: 26vw;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+}
+aside .top-category-list--,
+aside .container-product-order,
+aside .container-search-box-blog-details {
+  border: 1px solid #e4e7e9;
+  padding: 15px;
+}
+
+.container-blog-details-page {
+  width: 100vw;
+}
+.container-blog-details-page .container-blog-details-page-padding {
+  width: 100%;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-blog-details-page .container-blog-details-page-padding {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+.container-blog-details-page .container-blog-details-page-padding .container-rigt-articles-blog_details {
+  height: 100%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-img {
+  width: 100%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-img img {
+  width: 100%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- {
+  gap: 30px;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles {
+  width: 65vw;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .topic {
+  color: #191c1f;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 40px;
+  letter-spacing: 0%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-blog-details-post-article {
+  align-items: center;
+  gap: 12px;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-blog-details-post-article .user_name {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .whatsapp {
+  background-color: #2db224;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .facebook {
+  background-color: #3b5998;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .twitter {
+  background-color: #1da1f2;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .linked-in {
+  background-color: #0077b5;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .pinterest {
+  background-color: #cb2027;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .link {
+  background-color: #77878f;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-user-profile-blog-post-details .container-contact-social-media .social-media-contact-blog-details {
+  border-radius: 100px;
+  height: fit-content;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles {
+  margin-top: 25px;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles .article {
+  color: #475156;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  margin: 20px 0;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles .targeted-article {
+  margin: 30px 0;
+  box-shadow: 4px 0px 0px 0px #fa8232 inset;
+  background-color: #fff3eb;
+  gap: 24px;
+  padding: 40px;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles .targeted-article p {
+  color: #191c1f;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles .container-img {
+  margin: 30px 0;
+  width: 100%;
+  overflow: hidden;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-main-blog-details-articles .container-img img {
+  width: 100%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments {
+  padding: 25px 0;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments:not(:last-child) {
+  border-bottom: 1px solid #e4e7e9;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments .container-comments p {
+  color: #191c1f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  align-items: center;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments .container-comments p span {
+  color: #77878f;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments .container-comments article {
+  margin-top: 5px;
+}
+.container-blog-details-page .container-blog-details-page-padding .container-blog-descriptions- .container-left-articles .container-form .container-peaples-comments .comments-container- .comments .container-comments article p {
+  color: #475156;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
   align-items: center;
 }
 

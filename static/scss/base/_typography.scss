@@ -493,6 +493,14 @@
 .price {
   color: variables.$Secondary-500;
   font-size: 13px;
+
+  span {
+    color: variables.$Gray-600;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0%;
+  }
 }
 
 .container-news-main {
@@ -572,7 +580,7 @@
 }
 
 // log in
-.input-container- {
+.input-container {
   label {
     width: 100%;
     font-weight: 400;
@@ -739,7 +747,7 @@
   text-transform: uppercase;
 }
 
-.price {
+.price- {
   color: variables.$Gray-900;
   font-weight: 500;
   font-size: 14px;
@@ -754,4 +762,125 @@
   line-height: 20px;
   letter-spacing: 0%;
   text-decoration: line-through;
+}
+
+.header-billing-information-txt,
+.header-payment-options-txt,
+.container-additional-info-header-txt {
+  color: variables.$Gray-900;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.container-error-msg {
+  width: 100%;
+
+  .error-msg {
+    color: variables.$Danger-500;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+  }
+}
+
+// reset header txt
+.reset-header {
+  h1 {
+    color: variables.$Gray-900;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  span {
+    color: variables.$Gray-600;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.container-visit-auth-page {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
+
+  p {
+    color: variables.$Gray-600;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+
+    a {
+      color: variables.$Secondary-500;
+    }
+  }
+}
+
+.container-bottom-container-request-pwd-reset {
+  padding-top: 20px;
+  border-top: 1px solid #e4e7e9;
+  gap: 5px;
+
+  p {
+    color: variables.$Gray-600;
+    font-weight: 400;
+    font-size: 12px;
+    gap: 5px;
+
+    a {
+      float: inline-end;
+      color: variables.$Primary-500;
+    }
+  }
+}
+
+.container-header-faqs {
+  h1 {
+    color: variables.$Gray-900;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 0%;
+  }
+}
+
+// badge --
+.warning-badge {
+  background-color: variables.$Warning-400;
+  color: variables.$Gray-900;
+  font-weight: 600;
+  font-size: 12px;
+  width: max-content;
+  padding: 6px;
+}
+
+.secondary-badge {
+  background-color: variables.$Secondary-500;
+  color: variables.$White-100;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  padding: 5px;
+  display: block;
+  width: fit-content;
+  gap: 10px;
+  border-radius: 2px;
+}
+
+// blog post
+.blog-post-date {
+  color: variables.$Gray-600;
+  font-weight: 400;
+  font-size: 12px;
 }

@@ -1,17 +1,20 @@
 from django.forms import Form
 from django import forms
-from .models import Comments, NewsLetterSubscriber
+from .models import FrequentlyAskedQuestions
 
-# user comment form
-class UserCommentsForm(forms.ModelForm):
-    
+# Faqs ---------------
+class FrequentlyAskedQuestionsForms(forms.ModelForm):
     class Meta:
-        model = Comments
-        fields = ('parent', 'full_name', 'email', 'message')
+        model = FrequentlyAskedQuestions
+        fields = ('email', 'subject', 'description')
 
-# user news letter form
-class NewsLetterSubscriberForm(forms.ModelForm):
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        subject = cleaned_data.get('subject')
+        description = cleaned_data.get('description')
 
-    class Meta:
-        model = NewsLetterSubscriber
-        fields = ['email']
+        if not email or not subject or not description:
+            raise forms.ValidationError('All fields are required')
+
+        return cleaned_data

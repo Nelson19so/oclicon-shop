@@ -267,7 +267,7 @@
             align-items: center;
           }
 
-          .container-product-details-wishlist {
+          .container-product-details-cart {
             gap: 10px;
             width: 100%;
 
@@ -275,18 +275,61 @@
               flex-direction: column;
               border: 1px solid #e4e7e9;
               padding: 20px;
-              box-shadow: 0px 8px 40px 0px #0000001f;
+
+              &:hover {
+                box-shadow: 0px 8px 40px 0px #0000001f;
+              }
             }
 
-            .items-compare {
+            @media only screen and (max-width: 859px) {
+              .container-product-price,
+              .container-cart-subtotal- {
+                display: none !important;
+              }
+            }
+
+            .container-name-and-img {
+              button {
+                @media only screen and (max-width: 859px) {
+                  display: none;
+                }
+              }
+
+              img {
+                @media only screen and (max-width: 859px) {
+                  border: 1px solid #e4e7e9;
+                }
+              }
+            }
+
+            .container-cart-mb-details {
+              @media only screen and (min-width: 859px) {
+                display: none;
+              }
+            }
+
+            .items-cart {
               display: flex;
               justify-content: flex-start;
               align-items: center;
               flex: 1;
+              width: 100%;
 
-              @media only screen and (min-width: 859px) {
-                i {
-                  display: none;
+              .container-right-cart {
+                display: none;
+              }
+
+              @media only screen and (max-width: 859px) {
+                justify-content: space-between !important;
+
+                &:not(:first-child) {
+                  margin-top: 10px;
+                  padding-top: 20px;
+                  border-top: 1px solid #e4e7e9;
+                }
+
+                .container-right-cart {
+                  display: block;
                 }
               }
 
@@ -312,91 +355,6 @@
           width: 100%;
           border-top: 1px solid #e4e7e9;
           padding: 10px 15px;
-        }
-      }
-
-      .container-checkout-items-- {
-        flex: 1;
-
-        @media only screen and (max-width: 890px) {
-          flex: 0;
-          width: fit-content;
-        }
-
-        .container-checkout-cart {
-          padding: 10px 15px;
-          border: 1px solid #e4e7e9;
-
-          .header-cart-items-for-checkout {
-            margin-bottom: 10px;
-
-            p {
-              color: variables.$Gray-900;
-              font-weight: 500;
-              font-size: 14px;
-            }
-          }
-
-          .container-details-checkout-cart- {
-            span {
-              color: variables.$Gray-600;
-              font-weight: 400;
-              font-size: 14px;
-              line-height: 20px;
-              letter-spacing: 0%;
-            }
-
-            p {
-              color: variables.$Gray-900;
-              font-weight: 500;
-              font-size: 14px;
-              line-height: 20px;
-              letter-spacing: 0%;
-            }
-          }
-
-          .container-details-checkout-cart-- {
-            span {
-              color: variables.$Gray-600;
-              font-weight: 500;
-              font-size: 14px;
-              line-height: 20px;
-              letter-spacing: 0%;
-            }
-
-            p {
-              color: variables.$Gray-900;
-              font-weight: 500;
-              font-size: 12px;
-              line-height: 20px;
-              letter-spacing: 0%;
-            }
-          }
-
-          .container-checkout-btn-sub-total {
-            border-top: 1px solid #e4e7e9;
-            margin-top: 10px;
-
-            .container-txt-subtotal {
-              padding: 10px 0;
-
-              span {
-                color: variables.$Gray-900;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 24px;
-                letter-spacing: 0%;
-              }
-
-              p {
-                color: variables.$Gray-900;
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 24px;
-                letter-spacing: 0%;
-              }
-            }
-          }
         }
       }
     }

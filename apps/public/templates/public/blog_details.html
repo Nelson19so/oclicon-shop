@@ -1,0 +1,705 @@
+<!-- extends to the base template file -->
+{% extends 'base.html' %}
+
+<!-- loads static items from the static file -->
+{% load static %}
+
+<!-- block title for cart page -->
+{% block title %} Blog Details {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container-blog-details-page">
+  <div class="container-blog-details-page-padding">
+    <div class="container-img">
+      <img
+        src="{% static 'images/blog/unsplash_FO7JIlwjOtU.png' %}"
+        alt="blog-1"
+      />
+    </div>
+
+    <div
+      class="container-blog-descriptions- flex justify-between gap-[20px] mt-[20px]"
+    >
+      <div class="container-left-articles">
+        <div class="container-news-details- flex justify-start gap-2.5 mb-2">
+          <div class="container-main-news-details flex justify-start gap-1">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_2660_1467)">
+                <path
+                  d="M2.5 13.75L10 18.125L17.5 13.75"
+                  stroke="#FA8232"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2.5 10L10 14.375L17.5 10"
+                  stroke="#FA8232"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2.5 6.25L10 10.625L17.5 6.25L10 1.875L2.5 6.25Z"
+                  stroke="#FA8232"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_2660_1467">
+                  <rect width="20" height="20" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+
+            <p>Electronics</p>
+          </div>
+
+          <div class="container-main-news-details flex justify-start gap-1">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 15C14.0711 15 15.75 13.3211 15.75 11.25C15.75 9.17893 14.0711 7.5 12 7.5C9.92893 7.5 8.25 9.17893 8.25 11.25C8.25 13.3211 9.92893 15 12 15Z"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5.98047 18.6943C6.54476 17.5828 7.40581 16.6493 8.46816 15.9972C9.53052 15.3452 10.7527 15 11.9992 15C13.2457 15 14.4679 15.3452 15.5303 15.9972C16.5926 16.6493 17.4537 17.5828 18.018 18.6943"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p>Cameron</p>
+          </div>
+
+          <div class="container-main-news-details flex justify-start gap-1">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16.5 2.25V5.25"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M7.5 2.25V5.25"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3.75 8.25H20.25"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <p>1 Feb, 2020</p>
+          </div>
+
+          <div class="container-main-news-details flex justify-start gap-1">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.2565 16.5943C3.13983 14.7103 2.74924 12.4835 3.15804 10.332C3.56684 8.18038 4.74693 6.25201 6.47677 4.90887C8.2066 3.56572 10.3672 2.90016 12.553 3.03715C14.7388 3.17413 16.7994 4.10423 18.348 5.65284C19.8966 7.20144 20.8267 9.26206 20.9637 11.4478C21.1007 13.6336 20.4351 15.7942 19.0919 17.524C17.7488 19.2539 15.8204 20.434 13.6689 20.8428C11.5173 21.2516 9.29049 20.861 7.4065 19.7443L4.294 20.6256C4.16648 20.6629 4.03128 20.6652 3.90256 20.6322C3.77384 20.5993 3.65635 20.5324 3.5624 20.4384C3.46845 20.3445 3.4015 20.227 3.36858 20.0983C3.33565 19.9695 3.33796 19.8343 3.37525 19.7068L4.2565 16.5943Z"
+                stroke="#FA8232"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 13.125C12.6213 13.125 13.125 12.6213 13.125 12C13.125 11.3787 12.6213 10.875 12 10.875C11.3787 10.875 10.875 11.3787 10.875 12C10.875 12.6213 11.3787 13.125 12 13.125Z"
+                fill="#FA8232"
+              />
+              <path
+                d="M7.5 13.125C8.12132 13.125 8.625 12.6213 8.625 12C8.625 11.3787 8.12132 10.875 7.5 10.875C6.87868 10.875 6.375 11.3787 6.375 12C6.375 12.6213 6.87868 13.125 7.5 13.125Z"
+                fill="#FA8232"
+              />
+              <path
+                d="M16.5 13.125C17.1213 13.125 17.625 12.6213 17.625 12C17.625 11.3787 17.1213 10.875 16.5 10.875C15.8787 10.875 15.375 11.3787 15.375 12C15.375 12.6213 15.8787 13.125 16.5 13.125Z"
+                fill="#FA8232"
+              />
+            </svg>
+
+            <p>738</p>
+          </div>
+        </div>
+
+        <article>
+          <h1 class="topic">
+            How artist collective Meow Wolf’s website complements their
+            immersive venues
+          </h1>
+
+          <div
+            class="container-user-profile-blog-post-details mt-3 flex justify-between"
+          >
+            <div class="container-blog-details-post-article flex justify-start">
+              <img
+                src="{% static 'images/blog/profile-blog-post-user.png' %}"
+                alt="profile-blog-post-user"
+                width="40"
+                style="border-radius: 100px"
+              />
+              <p class="user_name">Cameron Williamson</p>
+            </div>
+
+            <div
+              class="container-contact-social-media flex justify-end gap-2.5"
+            >
+              <a href="#" class="social-media-contact-blog-details whatsapp">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_2703_5838)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M13.3059 2.67206C11.9026 1.26709 10.0363 0.493011 8.04806 0.492188C3.95108 0.492188 0.61673 3.82645 0.615082 7.92453C0.614532 9.23456 0.956757 10.5134 1.60724 11.6406L0.552734 15.4922L4.49307 14.4586C5.5788 15.0508 6.80112 15.3629 8.04504 15.3633H8.04816C12.1447 15.3633 15.4794 12.0287 15.481 7.93048C15.4818 5.94433 14.7093 4.07693 13.3059 2.67206ZM8.04806 14.108H8.0455C6.93698 14.1075 5.84979 13.8096 4.90112 13.2469L4.67563 13.1129L2.33737 13.7263L2.96149 11.4466L2.81454 11.2128C2.19611 10.2292 1.86954 9.09228 1.87009 7.92499C1.87137 4.51877 4.64285 1.74756 8.05054 1.74756C9.70068 1.74811 11.2519 2.39154 12.4182 3.5593C13.5846 4.72705 14.2266 6.27923 14.226 7.93002C14.2246 11.3365 11.4533 14.108 8.04806 14.108ZM11.4368 9.48102C11.2511 9.388 10.338 8.93884 10.1677 8.87677C9.99759 8.81479 9.87363 8.78393 9.74994 8.96979C9.62607 9.15564 9.2702 9.57403 9.1618 9.6979C9.0534 9.82187 8.94519 9.83743 8.75943 9.74441C8.57367 9.65149 7.97528 9.45529 7.26584 8.82257C6.71378 8.33011 6.34106 7.72192 6.23267 7.53607C6.12445 7.35004 6.23175 7.25922 6.31415 7.15704C6.5152 6.90738 6.71652 6.64563 6.77841 6.52176C6.84039 6.3978 6.80936 6.28931 6.76285 6.19638C6.71652 6.10345 6.34509 5.1893 6.19037 4.81732C6.03949 4.45532 5.8865 4.50421 5.77243 4.49853C5.66421 4.49313 5.54034 4.49203 5.41647 4.49203C5.29269 4.49203 5.09146 4.53845 4.92117 4.72449C4.75098 4.91043 4.27124 5.35968 4.27124 6.27383C4.27124 7.18799 4.93674 8.0711 5.02957 8.19507C5.12241 8.31903 6.33923 10.1949 8.20224 10.9993C8.64535 11.1909 8.99124 11.305 9.26105 11.3906C9.70599 11.532 10.1107 11.512 10.4308 11.4642C10.7877 11.4109 11.5295 11.0149 11.6844 10.5811C11.8392 10.1472 11.8392 9.77545 11.7927 9.6979C11.7463 9.62045 11.6225 9.57403 11.4368 9.48102Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2703_5838">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+
+              <a href="#" class="social-media-contact-blog-details facebook">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.33328 16H6.16101V8.1131H4V5.54528H6.16092V3.7181C6.16092 1.55288 7.1167 0 10.2804 0C10.9495 0 12 0.134507 12 0.134507V2.51887H10.8966C9.7724 2.51887 9.33345 2.85992 9.33345 3.80281V5.54528H11.9579L11.7242 8.1131H9.33336L9.33328 16Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+
+              <a href="#" class="social-media-contact-blog-details twitter">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.00378 14.4016C11.0081 14.4016 14.2917 9.45578 14.2917 5.16691C14.2917 5.02645 14.2888 4.88663 14.2824 4.7474C14.9214 4.28774 15.4728 3.71862 15.9108 3.0667C15.3259 3.32525 14.6965 3.49927 14.0362 3.57773C14.7101 3.17592 15.2275 2.54026 15.4716 1.78255C14.8308 2.1605 14.1298 2.42694 13.3988 2.57037C12.8031 1.93949 11.955 1.54492 11.016 1.54492C9.21328 1.54492 7.75143 2.99844 7.75143 4.79011C7.75143 5.04484 7.78011 5.29252 7.83612 5.53018C5.12304 5.39444 2.71728 4.10292 1.10722 2.13909C0.817235 2.63441 0.664706 3.19735 0.665213 3.77042C0.665213 4.89647 1.24149 5.89052 2.11788 6.47209C1.59949 6.45635 1.09247 6.31713 0.639471 6.06614C0.638986 6.07977 0.638986 6.09304 0.638986 6.1076C0.638986 7.67943 1.76419 8.99181 3.25786 9.28919C2.97733 9.36515 2.68785 9.40355 2.39709 9.40339C2.18712 9.40339 1.98248 9.38285 1.78359 9.34489C2.19918 10.6345 3.40426 11.5729 4.83303 11.5991C3.71575 12.4698 2.30832 12.9884 0.778658 12.9884C0.518442 12.9887 0.258439 12.9736 0 12.9435C1.44471 13.8642 3.16017 14.4014 5.00394 14.4014"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+
+              <a href="#" class="social-media-contact-blog-details linked-in">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_2703_5834)">
+                    <path
+                      d="M15.9968 15.9995V15.9988H16.0008V10.1308C16.0008 7.26016 15.3828 5.04883 12.0268 5.04883C10.4135 5.04883 9.33082 5.93416 8.88882 6.7735H8.84216V5.31683H5.66016V15.9988H8.97349V10.7095C8.97349 9.31683 9.23749 7.97017 10.9622 7.97017C12.6615 7.97017 12.6868 9.5595 12.6868 10.7988V15.9995H15.9968Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M0.263672 5.31836H3.58101V16.0004H0.263672V5.31836Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M1.92133 0C0.860667 0 0 0.860667 0 1.92133C0 2.982 0.860667 3.86067 1.92133 3.86067C2.982 3.86067 3.84267 2.982 3.84267 1.92133C3.842 0.860667 2.98133 0 1.92133 0V0Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2703_5834">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>
+
+              <a href="#" class="social-media-contact-blog-details pinterest">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.21733 0C3.83133 0.000666667 1.5 2.81067 1.5 5.87467C1.5 7.29533 2.294 9.068 3.56533 9.63C3.928 9.79333 3.88 9.594 4.192 8.40067C4.21667 8.30133 4.204 8.21533 4.124 8.12267C2.30667 6.02067 3.76933 1.69933 7.958 1.69933C14.02 1.69933 12.8873 10.0873 9.01267 10.0873C8.014 10.0873 7.27 9.30333 7.50533 8.33333C7.79067 7.178 8.34933 5.936 8.34933 5.10333C8.34933 3.00467 5.22267 3.316 5.22267 6.09667C5.22267 6.956 5.52667 7.536 5.52667 7.536C5.52667 7.536 4.52067 11.6 4.334 12.3593C4.018 13.6447 4.37667 15.7253 4.408 15.9047C4.42733 16.0033 4.538 16.0347 4.6 15.9533C4.69933 15.8233 5.91533 14.0887 6.256 12.8347C6.38 12.378 6.88867 10.5247 6.88867 10.5247C7.224 11.13 8.19067 11.6367 9.22067 11.6367C12.2847 11.6367 14.4993 8.94333 14.4993 5.60133C14.4887 2.39733 11.7467 0 8.21733 0V0Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+
+              <a href="#" class="social-media-contact-blog-details link">
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.55744 5.58014L11.1042 4.03334C11.4234 3.7139 11.8023 3.46046 12.2195 3.28751C12.6366 3.11457 13.0837 3.0255 13.5353 3.02539C13.9868 3.02529 14.434 3.11415 14.8512 3.2869C15.2684 3.45966 15.6474 3.71291 15.9667 4.03221C16.286 4.35151 16.5393 4.73059 16.712 5.14779C16.8848 5.56499 16.9737 6.01214 16.9736 6.46369C16.9734 6.91524 16.8844 7.36235 16.7114 7.77947C16.5385 8.19659 16.285 8.57555 15.9656 8.8947L13.7559 11.1044C13.4367 11.4236 13.0577 11.6768 12.6407 11.8496C12.2236 12.0223 11.7766 12.1112 11.3252 12.1112C10.8738 12.1112 10.4268 12.0223 10.0097 11.8496C9.59268 11.6768 9.21373 11.4236 8.89453 11.1044"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.4415 14.4198L8.8947 15.9666C8.57555 16.286 8.19659 16.5394 7.77947 16.7124C7.36235 16.8853 6.91524 16.9744 6.46369 16.9745C6.01214 16.9746 5.56499 16.8858 5.14779 16.713C4.73059 16.5402 4.35151 16.287 4.03221 15.9677C3.71291 15.6484 3.45966 15.2693 3.2869 14.8521C3.11415 14.4349 3.02529 13.9878 3.02539 13.5362C3.0255 13.0847 3.11457 12.6376 3.28751 12.2204C3.46046 11.8033 3.7139 11.4243 4.03334 11.1052L6.24305 8.89549C6.56225 8.57629 6.9412 8.32309 7.35826 8.15034C7.77531 7.97759 8.22231 7.88867 8.67373 7.88867C9.12515 7.88867 9.57215 7.97759 9.98921 8.15034C10.4063 8.32309 10.7852 8.57629 11.1044 8.89549"
+                    stroke="white"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="container-main-blog-details-articles">
+            <p class="article">
+              Sed a laoreet erat, in vehicula erat. Vivamus a viverra ipsum, ut
+              interdum tellus. Donec quis ex quis metus sodales facilisis ut nec
+              ex. Ut commodo lacus vel odio venenatis, sit amet lacinia lacus
+              cursus. Ut sodales laoreet dapibus. Sed aliquam nisl odio, sed
+              blandit erat placerat sed. Mauris eleifend, magna in convallis
+              congue, orci est fermentum leo, at tincidunt massa ligula semper
+              dolor. Nunc tristique enim in risus tristique rutrum eget ac eros.
+            </p>
+
+            <div class="targeted-article flex justify-start gap-3">
+              <div class="container-double-quote">
+                <svg
+                  width="56"
+                  height="56"
+                  viewBox="0 0 56 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_494_19883)">
+                    <path
+                      d="M10.6939 40.415C8.29052 37.8623 7.00018 34.9993 7.00018 30.3583C7.00018 22.1917 12.7332 14.872 21.0702 11.253L23.1539 14.4683C15.3722 18.6777 13.8509 24.14 13.2442 27.584C14.4972 26.9353 16.1375 26.709 17.7452 26.8583C21.9545 27.248 25.2725 30.7037 25.2725 34.9993C25.2725 37.1653 24.4121 39.2425 22.8806 40.7741C21.349 42.3056 19.2718 43.166 17.1058 43.166C14.6022 43.166 12.2082 42.0227 10.6939 40.415ZM34.0272 40.415C31.6238 37.8623 30.3335 34.9993 30.3335 30.3583C30.3335 22.1917 36.0665 14.872 44.4035 11.253L46.4872 14.4683C38.7055 18.6777 37.1842 24.14 36.5775 27.584C37.8305 26.9353 39.4708 26.709 41.0785 26.8583C45.2878 27.248 48.6035 30.7037 48.6035 34.9993C48.6035 37.1653 47.7431 39.2425 46.2116 40.7741C44.68 42.3056 42.6028 43.166 40.4368 43.166C37.9332 43.166 35.5392 42.0227 34.0248 40.415H34.0272Z"
+                      fill="#FA8232"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_494_19883">
+                      <rect
+                        width="56"
+                        height="56"
+                        fill="white"
+                        transform="matrix(-1 0 0 -1 56 56)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <p>
+                Vintage meets vogue is the only way to describe this serif
+                typeface. Neue World encompasses the mode high-fashion aesthetic
+                of the 1960s with a commercial take.
+              </p>
+            </div>
+
+            <p class="article">
+              Mauris fermentum faucibus risus a efficitur. Morbi sit amet arcu
+              turpis. Ut nisl velit, mattis at augue vel, molestie egestas
+              justo. Aliquam elementum nibh neque, eu ornare nunc feugiat sed.
+              Aliquam erat volutpat. Praesent vitae orci blandit, semper felis
+              ac, interdum lacus.
+            </p>
+
+            <p class="article">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              iaculis nunc urna, id lobortis elit dapibus et. Etiam ultricies
+              leo justo, nec vehicula augue auctor et. Sed finibus volutpat dui.
+              Nunc vitae urna dictum tellus luctus tincidunt quis feugiat dolor.
+              Aliquam malesuada tristique urna, quis ornare diam venenatis quis.
+              Nunc ligula lectus, posuere sit amet ultrices ut, porttitor
+              efficitur mauris. Aliquam bibendum vitae turpis sed molestie.
+              Donec massa lorem, semper vel pellentesque ut, ultrices in enim.
+              Sed fringilla, mi porttitor sodales vehicula, felis enim gravida
+              nisi, at mollis ante leo et ligula. Quisque non aliquam eros, in
+              aliquet tellus. Mauris ullamcorper quam erat, vehicula rhoncus
+              velit interdum eget.
+            </p>
+
+            <div
+              class="container-img flex justify-between gap-[30px] md:flex-row flex-col"
+            >
+              <img
+                src="{% static 'images/blog/blog_details-1.png' %}"
+                alt="blog-article-img-1"
+              />
+
+              <img
+                src="{% static 'images/blog/blog_details-2.png' %}"
+                alt="blog-article-img-1"
+              />
+            </div>
+
+            <p class="article">
+              Proin pulvinar quam at aliquet sagittis. Quisque laoreet luctus
+              bibendum. Aenean in dignissim orci. Suspendisse at augue eget
+              neque dictum vestibulum eu ac orci. Integer imperdiet lectus nec
+              urna mollis euismod. Proin et risus nulla. Cras at diam in risus
+              feugiat accumsan. Nulla sit amet blandit mi, a convallis mauris.
+              Quisque lacus dolor, cursus ac quam ac, tempus ultrices sem. Ut
+              porttitor.
+            </p>
+          </div>
+        </article>
+
+        <div class="container-form mt-10">
+          <p>Leave a Comments</p>
+
+          <div class="blog-comments-form mt-5">
+            {% include 'public/forms/blog-post_commetns-form.html' %}
+          </div>
+
+          <div class="container-peaples-comments mt-7">
+            <p>Comments</p>
+
+            <div class="comments-container- mt-5 flex justify-between flex-col">
+              <div class="comments flex justify-start gap-4">
+                <div class="comments-user-pic">
+                  <img
+                    src="{% static 'images/blog/profile-blog-post-user.png' %}"
+                    alt="comment-profile"
+                    width="100"
+                  />
+                </div>
+
+                <div class="container-comments flex justify-between flex-col">
+                  <p class="flex justify-start gap-2">
+                    Annette Black <span>.</span> <span>26 Apr, 2021</span>
+                  </p>
+
+                  <article>
+                    <p>
+                      In a nisi commodo, porttitor ligula consequat, tincidunt
+                      dui. Nulla volutpat, metus eu aliquam malesuada, elit
+                      libero venenatis urna, consequat maximus arcu diam non
+                      diam.
+                    </p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="comments flex justify-start gap-4">
+                <div class="comments-user-pic">
+                  <img
+                    src="{% static 'images/blog/profile-blog-post-user.png' %}"
+                    alt="comment-profile"
+                    width="100"
+                  />
+                </div>
+
+                <div class="container-comments flex justify-between flex-col">
+                  <p class="flex justify-start gap-2">
+                    Annette Black <span>.</span> <span>26 Apr, 2021</span>
+                  </p>
+
+                  <article>
+                    <p>
+                      In a nisi commodo, porttitor ligula consequat, tincidunt
+                      dui. Nulla volutpat, metus eu aliquam malesuada, elit
+                      libero venenatis urna, consequat maximus arcu diam non
+                      diam.
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="container-btn-load-more-comments mt-5">
+              <button class="load-more flex justify-center gap-2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.7656 7.78906H17.5156V4.03906"
+                    stroke="#FA8232"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5.14062 5.1399C5.77843 4.50116 6.53591 3.99443 7.36973 3.64869C8.20355 3.30296 9.09734 3.125 10 3.125C10.9027 3.125 11.7965 3.30296 12.6303 3.64869C13.4641 3.99443 14.2216 4.50116 14.8594 5.1399L17.5156 7.78833"
+                    stroke="#FA8232"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6.23438 12.2109H2.48438V15.9609"
+                    stroke="#FA8232"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M14.8594 14.8594C14.2216 15.4981 13.4641 16.0048 12.6303 16.3506C11.7965 16.6963 10.9027 16.8743 10 16.8743C9.09735 16.8743 8.20355 16.6963 7.36973 16.3506C6.53591 16.0048 5.77843 15.4981 5.14063 14.8594L2.48438 12.2109"
+                    stroke="#FA8232"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                Load More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-rigt-articles-blog_details">
+        <aside>
+          <div class="container-search-box-blog-details">
+            <p>Search</p>
+
+            <div class="container-search mt-4">
+              <form action="#" class="aside-blog-details-search">
+                <div class="input-control flex justify-between">
+                  <input type="search" placeholder="Search..." />
+                  <svg
+                    width="21"
+                    height="20"
+                    viewBox="0 0 21 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.5625 15.625C13.1869 15.625 16.125 12.6869 16.125 9.0625C16.125 5.43813 13.1869 2.5 9.5625 2.5C5.93813 2.5 3 5.43813 3 9.0625C3 12.6869 5.93813 15.625 9.5625 15.625Z"
+                      stroke="#191C1F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.2031 13.7031L18 17.5"
+                      stroke="#191C1F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="category-list-- top-category-list--">
+            <form action="#">
+              <ul>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Electronics Devices</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Computer & Laptop</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Computer Accessories</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >SmartPhone</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Headphone</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Mobile Accessories</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Gaming Console</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Camera & Photo</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >TV & Homes Appliances</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Watchs & Accessories</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >GPS & Navigation</a
+                  >
+                </li>
+                <li class="flex justify-start gap-2">
+                  <input type="radio" name="category" id="category" /><a
+                    href="#"
+                    >Warable Technology</a
+                  >
+                </li>
+              </ul>
+            </form>
+          </div>
+
+          <!-- latest blogs -->
+          <div class="container-product-order flex justify-between flex-col">
+            <a href="#">
+              <div class="container-product-main flex justify-between">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/blog/unsplash_FO7JIlwjOtU.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
+                    Sport Earbuds Wireless Earphones Bluetooth In Ear
+                  </p>
+                  <span class="blog-post-date">28 Nov, 2015</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="#">
+              <div class="container-product-main flex justify-between">
+                <div class="container-img min-w-[70px]">
+                  <img
+                    src="{% static 'images/blog/unsplash_6MNmDi1hc_Y.png' %}"
+                    alt="p5Image"
+                    width="80"
+                  />
+                </div>
+                <div class="articles-main">
+                  <p class="h-[10px]">
+                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
+                    Sport Earbuds Wireless Earphones Bluetooth In Ear
+                  </p>
+                  <span class="blog-post-date">28 Nov, 2015</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- popular tags -->
+
+          <div class="category-list-- w-full">
+            <p class="header-txt">popular Tags</p>
+            <div class="container-tags mt-5">
+              <a href="#">Game</a>
+              <a href="#">iPhone</a>
+              <a href="#">Tv</a>
+              <a href="#">Asus Laptops</a>
+              <a href="#">MacBook</a>
+              <a href="#">SSD</a>
+              <a href="#">Graphics Card</a>
+              <a href="#">Power Bank</a>
+              <a href="#">Smart TV</a>
+              <a href="#">Speaker</a>
+              <a href="#">Tablet</a>
+              <a href="#">MicroWave</a>
+              <a href="#">SamSung</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

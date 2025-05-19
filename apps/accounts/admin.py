@@ -6,12 +6,13 @@ from django.utils.translation import gettext_lazy as _
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'phone_number', 'first_name', 'last_name', 'is_staff', 'is_active')
+    list_display = ('pk', 'Name', 'email', 'is_staff', 'is_active')
     list_filter = ('is_staff', 'is_superuser', 'is_active')
+    readonly_fields = ('pk', 'date_joined', 'last_login')
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        (_('Personal Info'), {'fields': ('first_name', 'last_name', 'phone_number', 'terms_accepted')}),
+        (None, {'fields': ('Name', 'password')}),
+        (_('Personal Info'), {'fields': ('email', 'terms_accepted')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important Dates'), {'fields': ('last_login', 'date_joined')}),
     )
@@ -19,9 +20,9 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'phone_number', 'first_name', 'last_name', 'terms_accepted', 'password1', 'password2'),
+            'fields': ('email', 'Name', 'terms_accepted', 'password1', 'password2'),
         }),
     )
 
-    search_fields = ('email', 'phone_number', 'first_name', 'last_name')
-    ordering = ('email',)
+    search_fields = ('Name', 'email')
+    ordering = ('Name',)

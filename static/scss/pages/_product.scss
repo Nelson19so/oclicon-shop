@@ -341,3 +341,21 @@ a {
     }
   }
 }
+
+// order product display
+.container-product-order {
+  .container-product-main {
+    border: none;
+
+    &:hover {
+      border: none;
+    }
+
+    .articles-main {
+      width: 100%;
+      // white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

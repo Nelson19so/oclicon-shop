@@ -1,198 +1,49 @@
-<!-- loads static data -->
-{% load static %}
+<form method="POST" action="{% url 'register' %}">
+  {% csrf_token %}
 
-<!-- main content -->
-{% block content %}
+  <div>
+    <label for="id_name">Full Name</label>
+    <input
+      type="text"
+      name="name"
+      id="id_name"
+      value="{{ form.name.value|default_if_none:'' }}"
+    />
+    {{ form.name.errors }}
+  </div>
 
-<div class="container-menu">
-  {% for category in categories %}
-  <ul class="flex justify-between flex-col gap-2">
-    <li>
-      <a href="{% url 'category_products' category.slug %}" class="inner-link--"
-        >Computer & Laptop</a
-      >
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Computer Accessories</a>
-    </li>
-    <li id="mainLink">
-      <a href="{% url 'home' %}" class="inner-link--">SmartPhone</a>
+  <div>
+    <label for="id_email">Email Address</label>
+    <input
+      type="email"
+      name="email"
+      id="id_email"
+      value="{{ form.email.value|default_if_none:'' }}"
+    />
+    {{ form.email.errors }}
+  </div>
 
-      <div class="parent-container-nav-inner flex justify-between">
-        <div class="container-another--">
-          <div class="container-menu container-inner">
-            <!-- navbar drop down -->
+  <div>
+    <label for="id_password1">Password</label>
+    <input type="password" name="password1" id="id_password1" />
+    {{ form.password1.errors }}
+  </div>
 
-            <ul class="flex justify-between">
-              <div class="container-inner-ul-li flex justify-between flex-col">
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >All</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Iphone</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Samsung</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Huawei</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Oppo</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Redmi</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Xiomi</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Tecno</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Itel</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Infinix</a
-                  >
-                </li>
-                <li>
-                  <a href="{% url 'random_product' %}" class="inner-link--"
-                    >Vivo</a
-                  >
-                </li>
-              </div>
+  <div>
+    <label for="id_password2">Confirm Password</label>
+    <input type="password" name="password2" id="id_password2" />
+    {{ form.password2.errors }}
+  </div>
 
-              <div class="container-main-inner-items-product">
-                <div
-                  class="container-right-inner-container-- flex-col justify-between flex center"
-                >
-                  <a href="{% url 'random_product' %}" class="mt-5">
-                    <div class="container-product-main flex justify-between">
-                      <div class="container-img">
-                        <img
-                          src="{% static 'images/product/dronecontrolImage.png' %}"
-                          alt="p5Image"
-                          width="100"
-                        />
-                      </div>
-                      <div class="articles-main">
-                        <p>
-                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                          Ear...
-                        </p>
-                        <span class="price">$1,500</span>
-                      </div>
-                    </div>
-                  </a>
+  <div>
+    <label>
+      <input type="checkbox" name="terms_accepted" id="id_terms_accepted" />
+      Accept Terms & Conditions
+    </label>
+    {{ form.terms_accepted.errors }}
+  </div>
 
-                  <a href="{% url 'random_product' %}" class="mt-5">
-                    <div class="container-product-main flex justify-betwee">
-                      <div class="container-img">
-                        <img
-                          src="{% static 'images/product/dronecontrolImage.png' %}"
-                          alt="p5Image"
-                          width="100"
-                        />
-                      </div>
-                      <div class="articles-main">
-                        <p>
-                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                          Ear...
-                        </p>
-                        <span class="price">$1,500</span>
-                      </div>
-                    </div>
-                  </a>
+  <button type="submit">Register</button>
+</form>
 
-                  <a href="{% url 'random_product' %}" class="mt-5">
-                    <div class="container-product-main flex justify-between">
-                      <div class="container-img">
-                        <img
-                          src="{% static 'images/product/dronecontrolImage.png' %}"
-                          alt="p5Image"
-                          width="100"
-                        />
-                      </div>
-                      <div class="articles-main">
-                        <p>
-                          Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                          Ear...
-                        </p>
-                        <span class="price">$1,500</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <!-- adds -->
-              <div class="container-ads-navbar">
-                <div class="container-ads-navbar-padder w-100 p-5">
-                  <span class="span-1">21% <strong>Discount</strong></span>
-
-                  <p>
-                    Escape the noise, it's time to hear the magic with Xiaomi
-                    Earbuds
-                  </p>
-
-                  <span class="flex justify-center gap-5 span-2"
-                    ><p>Starting price:</p>
-                    <h5>$99 USD</h5></span
-                  >
-                </div>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Headphone</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Mobile Accessories</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Gaming Console</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Camera & Photo</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">TV & Homes Appliances</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">GPS & Navigation</a>
-    </li>
-    <li>
-      <a href="{% url 'home' %}" class="inner-link--">Warable Technology</a>
-    </li>
-  </ul>
-  {% endfor %}
-</div>
-{% endblock %} {% if product.id in cart %}
-<button>add to cart</button>
-{% else %}
-<button>add to cart</button>
-{% endfor %}
+<!-- # "C:\Users\Nelson\Documents\pgsql\bin\pg_ctl.exe" start -D "C:\Users\Nelson\Documents\psql\data" -w -->

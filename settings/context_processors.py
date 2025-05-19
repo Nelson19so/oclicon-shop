@@ -2,6 +2,7 @@ from apps.products.models import Category
 from apps.cart.models import CartItem, Cart
 from django.contrib.sessions.models import Session
 
+# context processor for category list for navbar
 def navbar_categories_list(request):
     categories = Category.objects.prefetch_related('children').filter(parent=None)
     return {"categories": categories}
@@ -29,3 +30,10 @@ def navbar_cart_display_list(request):
         cart_items = []
 
     return {'cart_items': cart_items}
+
+# breadcrumbs 
+# not yet in settings.py context processor
+def breadcrumbs_processor(request):
+    return {
+        'breadcrumbs': []  # default fallback
+    }

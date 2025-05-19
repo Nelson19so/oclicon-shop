@@ -67,6 +67,7 @@
 
         .container-inner-sm {
           position: relative;
+          z-index: 0;
         }
 
         .container-sm-add-sm {
@@ -368,22 +369,5 @@
         padding: 20px 40px;
       }
     }
-  }
-}
-
-// latest news
-.container-latest-news {
-  width: 100vw;
-  background-color: variables.$Gray-50;
-
-  .container-padder-latest-news {
-    padding-top: 50px !important;
-    padding-bottom: 50px !important;
-    @include mixin.pagePadding;
-  }
-
-  .container-news {
-    width: 100%;
-    margin-top: 5%;
   }
 }
