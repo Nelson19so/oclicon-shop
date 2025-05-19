@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Activate virtual environment (adjust path as needed)
-source /path/to/your/venv/bin/activate
-
 # Install dependencies
 pip install -r requirements.txt
 
