@@ -90,20 +90,6 @@ def logout_view(request):
     messages.info(request, 'logged out successfully')
     return redirect("home")
 
-# user profile view update
-@login_required(login_url='login')
-def update_profile(request):
-    user = request.user
-    if request.method == 'POST':
-        form = UserProfileUpdateForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')  # redirect to a profile page or dashboard
-    else:
-        form = UserProfileUpdateForm(instance=user)
-    
-    return render(request, 'account/update_profile.html', {'form': form})
-
 # View for requesting password reset (Step 1)
 def reset_password_request_view(request):
     if request.method == 'POST':

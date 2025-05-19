@@ -12,6 +12,9 @@ __pycache__/
 #! **/migrations/
 #! !**/migrations/__init__.py
 
+# Static files (if you collectstatic locally)
+staticfiles/
+
 # Media files (uploads)
 media/
 media/**
