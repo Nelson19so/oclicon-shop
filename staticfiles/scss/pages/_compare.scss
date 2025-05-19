@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-compare- {
+  width: 100vw;
+
+  .container-compare-padding- {
+    width: 100%;
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+    overflow-y: scroll;
+    @include mixin.pagePadding;
+
+    table {
+      width: 100%;
+      border: 1px solid variables.$Gray-100;
+      z-index: 1;
+
+      thead {
+        tr {
+          th {
+            border: 1px solid variables.$Gray-100;
+            padding: 10px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: variables.$Gray-50;
+          }
+
+          td {
+            border: 1px solid variables.$Gray-100;
+            white-space: nowrap;
+            padding: 7px 20px;
+            max-width: 100px;
+
+            @media only screen and (max-width: 768px) {
+              max-width: 250px;
+              min-width: 250px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

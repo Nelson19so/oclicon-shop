@@ -1,0 +1,594 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-inner-sm {
+  button {
+    background-color: variables.$Primary-500;
+    color: variables.$White-100;
+    border-radius: 2px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: variables.$Primary-400;
+    }
+  }
+}
+
+.btn-love-product {
+  width: 48;
+  height: 48;
+  gap: 10px;
+  border-radius: 2px;
+  padding: 12px;
+  background-color: variables.$Primary-100;
+  cursor: pointer;
+}
+
+.add-to-cart_btn {
+  background-color: variables.$Primary-500;
+  padding-right: 15px;
+  padding-left: 15px;
+  gap: 4px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  width: 80%;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+
+  span {
+    padding-top: 5px;
+    color: variables.$White-100;
+  }
+}
+
+.container-modal-product {
+  &:hover {
+    opacity: 1;
+
+    button {
+      opacity: 1;
+    }
+  }
+
+  button {
+    background-color: variables.$White-100;
+    border-radius: 100px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0;
+
+    &:first-child {
+      transition: 1s;
+      background-color: variables.$Primary-500;
+    }
+
+    &:nth-child(even) {
+      transition: 2s;
+    }
+
+    &:last-child {
+      transition: 3s;
+    }
+  }
+}
+
+.container-main-content {
+  button {
+    font-family: Public Sans;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    top: 216px;
+    left: 60px;
+    border-radius: 3px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+
+    &:hover {
+      background-color: variables.$Primary-400;
+    }
+  }
+}
+
+.visit-banner-product {
+  padding: 8px 24px;
+  gap: 8px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.btn-acc {
+  padding: 8px 24px;
+  gap: 8px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Secondary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: 100%;
+}
+
+.btn-shop-now {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  top: 216px;
+  left: 60px;
+  border-radius: 3px;
+  padding: 8px 40px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.btn-read-more-news {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 8px 20px;
+  color: variables.$Primary-500;
+  border: 1px solid variables.$Primary-500;
+  transition: 1s;
+  margin-top: 5px;
+
+  &:hover {
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+
+    svg {
+      polygon {
+        transition: 1s;
+        fill: white;
+      }
+    }
+  }
+}
+
+.btn-signup-newsletter {
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.bton-login--sign-up {
+  padding: 8px 15px;
+  border-radius: 2px;
+  color: variables.$White-100;
+  background-color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: 100%;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+  }
+}
+
+.container-btn-create-account {
+  width: 100%;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 8px 0;
+  padding-right: 24px;
+  padding-left: 24px;
+  gap: 8px;
+  border: 2px solid #ffe7d6;
+  transition: 1s;
+  color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+    border: none;
+  }
+}
+
+.right-container-header-ad {
+  .button-ad-shop {
+    height: max-content;
+    border-radius: 2px;
+    gap: 4px;
+    background-color: variables.$Warning-500;
+    font-weight: 700;
+    font-size: 11px;
+    align-items: center;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    transition: 1s;
+
+    @media only screen and (max-width: 760px) {
+      padding: 4px 8px;
+      font-size: 11px;
+    }
+
+    &:hover {
+      background-color: variables.$Warning-400;
+    }
+  }
+}
+
+.prices-btn {
+  padding: 5px 15px;
+  cursor: pointer;
+  border-width: 1px;
+  border-radius: 3px;
+  border: 1px solid #e4e7e9;
+  background: transparent;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: variables.$Gray-500;
+  white-space: nowrap;
+}
+
+.view-all-btn {
+  gap: 8px;
+  padding: 10px 15px;
+  border-width: 2px;
+  border-radius: 2px;
+  border: 2px solid variables.$Primary-500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-by-now {
+  border: 2px solid variables.$Primary-500;
+  color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 5px 20px;
+  transition: 1s;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: variables.$Primary-500;
+    color: variables.$White-100;
+  }
+}
+
+// inc/decrement btn
+.btn-decrement,
+.btn-increment {
+  height: 100%;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 20px;
+  color: variables.$Gray-700;
+  cursor: pointer;
+}
+
+// btn submit order
+.button-submit-order {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 4px;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// btn-go back
+.btn-go-back {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  align-items: center;
+  padding: 8px 15px;
+  transition: 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// btn-go home
+.go-to-home {
+  padding: 10px 15px;
+  gap: 8px;
+  border-width: 2px;
+  background-color: variables.$White-100;
+  color: variables.$Primary-500;
+  border: 2px solid variables.$Primary-100;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-500;
+    color: variables.$White-100;
+    border: 2px solid variables.$Primary-500;
+  }
+}
+
+.container-btns-- {
+  button {
+    font-size: 10px !important;
+    white-space: nowrap;
+  }
+
+  .btn-love-product {
+    background-color: transparent;
+    border: 1.5px solid variables.$Primary-100;
+  }
+}
+
+.added-to-cart-btn {
+  cursor: auto;
+  background-color: variables.$Gray-300;
+
+  &:hover,
+  &:focus {
+    background-color: variables.$Gray-300;
+  }
+}
+
+.added-to-wishlist {
+  border: 1.5px solid variables.$Gray-300 !important;
+  cursor: auto;
+  opacity: 0.5;
+}
+
+.container-product-amount {
+  height: 100%;
+  border: 2px solid variables.$Gray-100;
+  align-items: center;
+  border-radius: 4px;
+  max-width: 100px;
+  max-height: 40px;
+}
+
+.btn-return-home- {
+  border: 2px solid #2da5f3;
+  color: #2da5f3;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  gap: 8px;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.btn-checkout-now {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  gap: 5px;
+  border-radius: 3px;
+  padding: 10px 16px;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+.apply-coupon-btn {
+  background-color: variables.$Secondary-500;
+  color: variables.$White-100;
+  gap: 8px;
+  border-radius: 2px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.remove-cart-item {
+  background-color: variables.$Secondary-500;
+  color: variables.$White-100;
+  gap: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+  border-width: 2px;
+  padding: 10px 15px;
+  transition: 1s;
+
+  // &:hover {
+  //   background-color: variables.$Secondary-400;
+  //   color: variables.$White-100;
+  // }
+}
+
+.container-right-visit-home-cart {
+  button {
+    cursor: pointer;
+    border: 2px solid #2da5f3;
+    color: #2da5f3;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    gap: 8px;
+    border-radius: 2px;
+    border-width: 2px;
+    padding: 10px 15px;
+  }
+}
+
+.btn-visit-dashboard {
+  border: 2px solid variables.$Primary-500;
+  color: variables.$Primary-500;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 5px 20px;
+  transition: 1s;
+  cursor: pointer;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+
+.visit-order {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  border-radius: 3px;
+  padding: 5px 16px;
+  align-items: center;
+  font-weight: 700;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// btn submit faq form & blog comment submit
+.btn-submit-faq-form,
+.submit-comment-blog {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  gap: 2px;
+  border-radius: 3px;
+  padding: 10px 16px;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: fit-content;
+
+  &:hover {
+    background-color: variables.$Primary-400;
+    color: variables.$White-100;
+  }
+}
+
+// customer support call now btn
+.call-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: variables.$White-100;
+  background-color: variables.$Secondary-500;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+// customer support chat now btn
+.chat-now-btn {
+  align-items: center;
+  margin-top: 10px;
+  color: variables.$White-100;
+  background-color: variables.$Success-500;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+// load more button
+.load-more {
+  color: variables.$Primary-500;
+  background-color: variables.$White-100;
+  border: 1px solid variables.$Primary-500;
+  padding: 8px 20px;
+  border-radius: 2px;
+  border-width: 2px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  align-items: center;
+  transition: 1s;
+
+  path {
+    transition: 1s;
+  }
+
+  &:hover {
+    color: variables.$White-100;
+    background-color: variables.$Primary-500;
+
+    svg {
+      path {
+        stroke: variables.$White-100;
+      }
+    }
+  }
+}

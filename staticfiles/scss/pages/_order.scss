@@ -1,0 +1,259 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-track-orders- {
+  width: 100vw;
+
+  .container-track-orders-padding-wrapper {
+    width: 100%;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    align-items: center;
+    @include mixin.pagePadding;
+
+    @media only screen and (max-width: 899px) {
+      padding-top: 10% !important;
+      padding-bottom: 10% !important;
+    }
+
+    .divider-left {
+      width: 70%;
+
+      @media only screen and (max-width: 899px) {
+        width: 100%;
+      }
+
+      h1 {
+        color: variables.$Gray-900;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 40px;
+        letter-spacing: 0%;
+      }
+
+      p {
+        color: variables.$Gray-600;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: 0%;
+      }
+    }
+  }
+}
+
+.container-order-details-page {
+  width: 100vw;
+
+  .container-order-details-page-padding-wrapper {
+    width: 100%;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mixin.pagePadding;
+
+    .container-items-order-details {
+      width: 80%;
+      height: auto;
+      border: 1px solid variables.$Gray-100;
+      border-radius: 4px;
+
+      @media only screen and (max-width: 900px) {
+        width: 100%;
+      }
+
+      .container-items-order-details-padding {
+        width: 100%;
+
+        .wrapper-order-details-- {
+          padding: 20px;
+          padding-bottom: 0;
+
+          .top-container-product-order-details {
+            width: 100%;
+            padding: 15px 25px;
+            border: 1px solid variables.$Warning-200;
+            background-color: variables.$Warning-50;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+
+            @media only screen and (max-width: 900px) {
+              flex-direction: column;
+              gap: 2px;
+            }
+
+            .left-container-left-order-details {
+              h5 {
+                color: variables.$Gray-900;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 28px;
+                letter-spacing: 0%;
+              }
+
+              p {
+                display: flex;
+                justify-items: flex-start;
+                align-items: center;
+                gap: 5px;
+
+                span {
+                  color: variables.$Gray-700;
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 20px;
+                  letter-spacing: 0%;
+                }
+              }
+            }
+
+            .right-container-left-order-details {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              @media only screen and (max-width: 900px) {
+                justify-content: flex-start;
+              }
+
+              p {
+                color: variables.$Secondary-500;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 32px;
+                letter-spacing: 0%;
+              }
+            }
+          }
+        }
+
+        .wrapper-order-details-roadmap- {
+          padding: 20px;
+
+          .container-order-road-map- {
+            .container-main-roadmap {
+              @media only screen and (max-width: 733px) {
+                justify-items: flex-start;
+                flex-direction: row;
+                display: flex;
+                gap: 30px;
+              }
+            }
+
+            p {
+              color: variables.$Gray-600;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0%;
+
+              span {
+                color: variables.$Gray-900;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0%;
+              }
+            }
+
+            .roadmap-wrapper-,
+            .container-labels-order-roadmap {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              @media only screen and (max-width: 733px) {
+                align-items: flex-start;
+                flex-direction: column;
+                width: fit-content;
+              }
+
+              .roadmap-indicator {
+                background-color: variables.$Primary-100;
+                width: 175px;
+                height: 8px;
+                left: 115px;
+
+                @media only screen and (max-width: 733px) {
+                  width: 8px;
+                  height: 100px;
+                  margin-left: 5px;
+                }
+              }
+
+              .roadmap-finished {
+                background-color: variables.$Primary-500;
+              }
+
+              .roadmap-indicator-hidden {
+                width: 120px;
+                height: 8px;
+
+                @media only screen and (max-width: 733px) {
+                  width: 8px;
+                  height: 60px;
+                  margin-left: 5px;
+                }
+              }
+
+              p {
+                opacity: 0.3;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 20px;
+                letter-spacing: 0%;
+                text-align: center;
+                align-items: center;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+
+        .container-activity-order-details {
+          border-top: 1px solid variables.$Gray-100;
+
+          .container-main-activity {
+            padding: 20px;
+
+            .order-Header {
+              color: variables.$Gray-900;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 24px;
+              letter-spacing: 0%;
+            }
+
+            .container-items-activities {
+              width: 100%;
+
+              .items- {
+                .container-svg-activity {
+                  background-color: variables.$Secondary-50;
+                  border: 1px solid variables.$Secondary-100;
+                  padding: 10px 13px;
+                }
+
+                p {
+                  color: variables.$Gray-900;
+                  font-weight: 400;
+                  font-size: 13px;
+                }
+
+                span {
+                  color: variables.$Gray-500;
+                  font-weight: 400;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

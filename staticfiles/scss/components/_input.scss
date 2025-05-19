@@ -1,0 +1,348 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+// search-input
+.search-input-nav,
+input[type="search"] {
+  width: 100%;
+  gap: 8px;
+  padding-top: 14px;
+  padding-right: 20px;
+  outline: none;
+  padding-bottom: 14px;
+  padding-left: 20px;
+  border-radius: 2px;
+  background-color: variables.$White-100;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: variables.$Gray-500;
+  height: 35px;
+  border: 1px solid #e4e7e9;
+}
+
+// price range
+
+input[type="range"] {
+  height: 1px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background-color: variables.$White-100;
+  border-radius: 2px;
+  border: 1px solid variables.$Gray-100;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  background-color: variables.$Primary-500;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+// input[type="range"]::-moz-range-thumb {
+//   appearance: none;
+//   width: 1px;
+//   height: 1px;
+//   background-color: variables.$Primary-500;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
+
+// input[type="range"]::-ms-thumb {
+//   width: 1px;
+//   height: 1px;
+//   background-color: variables.$Primary-500;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
+
+// input[type="range"]::-webkit-slider-runnable-track {
+//   height: 1px;
+//   background-color: variables.$Primary-500;
+//   border-radius: 2px;
+//   border: 1px solid variables.$Primary-500;
+// }
+
+// input[type="range"]::-ms-track {
+//   height: 1px;
+//   border-radius: 2px;
+//   border-color: transparent;
+//   color: transparent;
+// }
+
+// input[type="range"]::-moz-range-track {
+//   height: 1px;
+//   border-radius: 2px;
+//   background-color: variables.$Primary-500;
+//   border-color: transparent;
+//   color: transparent;
+// }
+
+// clicon-check-box ----------------------------
+input[type="checkbox"] {
+  accent-color: variables.$Primary-500;
+  display: block;
+}
+
+input[type="checkbox"]:checked {
+  background-color: variables.$Primary-500;
+  border-color: variables.$Primary-500;
+}
+
+input[type="checkbox"] {
+  border: 1.5px solid variables.$Primary-500;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 3px;
+  border-radius: 4px;
+  width: 13px;
+  height: 13px;
+  min-height: 13px;
+  max-width: 13px;
+  min-height: 13px;
+  max-height: 13px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"]:checked {
+  background-color: variables.$Primary-500;
+  border-color: variables.$Primary-500;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "\2713";
+  font-size: 13px;
+  color: variables.$White-100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+// wave button
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid variables.$Gray-200;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    border: 1px solid variables.$Primary-500;
+  }
+}
+
+input[type="radio"]:checked {
+  background-color: variables.$Primary-500;
+  border-color: variables.$Primary-500;
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: variables.$White-100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// input select
+select {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid variables.$Gray-100;
+  color: variables.$Gray-700;
+  padding: 7px 10px;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  // background-image: url("../../images/svg/chevron.svg");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24 24' %3E%3Cpath d='M7 1015 5 5-5z'/%3E%3C/svg%3E");
+  appearance: none;
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 100%);
+  background-size: 24px;
+}
+
+.select-control {
+  label {
+    color: variables.$Gray-900;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+  }
+}
+
+// input color
+input[type="color"] {
+  border-radius: 100px;
+  padding: 0 1.7px;
+  width: 40px;
+  height: 40px;
+  background-clip: padding-box;
+
+  &:hover,
+  &:focus {
+    border: 2px solid variables.$Primary-500;
+  }
+}
+
+input[type="color"]::-webkit-color-swatch {
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  border: none;
+}
+
+input[type="color"]::-moz-color-swatch {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 100px;
+}
+
+// number input
+.input-number {
+  width: 50px;
+  height: 100%;
+  display: block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+// input-
+
+.container-checkout-shopping-cart {
+  select {
+    border-radius: 2px;
+    border-width: 1px;
+    border: 1px solid variables.$Gray-100;
+    color: variables.$Gray-700;
+    padding: 10px 15px;
+    font-weight: 400;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-size: 24px;
+    width: 100%;
+  }
+
+  input[type="checkbox"] {
+    border: 1px solid #c9cfd2;
+  }
+
+  .input-check {
+    label {
+      color: variables.$Gray-700;
+    }
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="datetime"] {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid variables.$Gray-100;
+  color: variables.$Gray-700;
+  background-color: variables.$White-100;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-size: 24px;
+  width: 100%;
+}
+
+.wrong_input_field {
+  border: 1px solid variables.$Danger-500 !important;
+}
+
+.correct_input_field {
+  border: 1px solid variables.$Success-500 !important;
+}
+
+textarea {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid variables.$Gray-100;
+  color: variables.$Gray-700;
+  background-color: variables.$White-100;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-size: 24px;
+  width: 100%;
+  height: 130px;
+}
+
+// quantity input
+#quantity-input {
+  border: none;
+}
+
+// roadmap
+#roadmap {
+  border-radius: 100px;
+  padding: 8px;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+
+  &:first-child {
+    margin-right: -1px;
+  }
+}
+
+.processing {
+  background-color: variables.$Primary-500;
+}
+
+// label
+label {
+  color: variables.$Gray-900;
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  // margin: 5px 0;
+
+  span {
+    color: variables.$Gray-300;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0%;
+  }
+}
+
+// input field
+.invalid-field {
+  border: 1px solid variables.$Danger-500 !important;
+}

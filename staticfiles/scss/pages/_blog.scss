@@ -1,0 +1,224 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-blog-page-main {
+  width: 100vw;
+
+  .container-blog-page-main-padding {
+    width: 100%;
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+    @include mixin.pagePadding;
+
+    .wrapper-blog-page-main {
+      width: 100%;
+      gap: 30px;
+
+      .container-blogs {
+        width: 60vw;
+      }
+    }
+  }
+}
+
+// blog side bar
+aside {
+  width: 26vw;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+
+  .top-category-list--,
+  .container-product-order,
+  .container-search-box-blog-details {
+    border: 1px solid #e4e7e9;
+    padding: 15px;
+  }
+}
+
+// blog details
+.container-blog-details-page {
+  width: 100vw;
+
+  .container-blog-details-page-padding {
+    width: 100%;
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+    @include mixin.pagePadding;
+
+    .container-rigt-articles-blog_details {
+      height: 100%;
+    }
+
+    .container-img {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .container-blog-descriptions- {
+      gap: 30px;
+
+      .container-left-articles {
+        width: 65vw;
+
+        .topic {
+          color: variables.$Gray-900;
+          font-weight: 600;
+          font-size: 25px;
+          line-height: 40px;
+          letter-spacing: 0%;
+        }
+
+        .container-user-profile-blog-post-details {
+          .container-blog-details-post-article {
+            align-items: center;
+            gap: 12px;
+
+            .user_name {
+              color: variables.$Gray-900;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 24px;
+              letter-spacing: 0%;
+            }
+          }
+
+          .container-contact-social-media {
+            .whatsapp {
+              background-color: variables.$Success-500;
+            }
+
+            .facebook {
+              background-color: #3b5998;
+            }
+
+            .twitter {
+              background-color: #1da1f2;
+            }
+
+            .linked-in {
+              background-color: #0077b5;
+            }
+
+            .pinterest {
+              background-color: #cb2027;
+            }
+
+            .link {
+              background-color: variables.$Gray-500;
+            }
+
+            .social-media-contact-blog-details {
+              border-radius: 100px;
+              height: fit-content;
+              padding: 10px 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+
+        .container-main-blog-details-articles {
+          margin-top: 25px;
+
+          .article {
+            color: #475156;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: 0%;
+            margin: 20px 0;
+          }
+
+          .targeted-article {
+            margin: 30px 0;
+            box-shadow: 4px 0px 0px 0px #fa8232 inset;
+            background-color: variables.$Primary-50;
+            gap: 24px;
+            padding: 40px;
+
+            p {
+              color: variables.$Gray-900;
+              font-weight: 400;
+              font-size: 15px;
+              line-height: 28px;
+              letter-spacing: 0%;
+            }
+          }
+
+          .container-img {
+            margin: 30px 0;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+
+        .container-form {
+          p {
+            color: variables.$Gray-900;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 28px;
+            letter-spacing: 0%;
+          }
+
+          .container-peaples-comments {
+            color: variables.$Gray-900;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 28px;
+            letter-spacing: 0%;
+
+            .comments-container- {
+              .comments {
+                padding: 25px 0;
+
+                &:not(:last-child) {
+                  border-bottom: 1px solid #e4e7e9;
+                }
+
+                .container-comments {
+                  p {
+                    color: variables.$Gray-900;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: 0%;
+                    align-items: center;
+
+                    span {
+                      color: variables.$Gray-500;
+                    }
+                  }
+
+                  article {
+                    margin-top: 5px;
+
+                    p {
+                      color: variables.$Gray-700;
+                      font-weight: 500;
+                      font-size: 14px;
+                      line-height: 20px;
+                      letter-spacing: 0%;
+                      align-items: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

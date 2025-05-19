@@ -1,0 +1,171 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.product-grid {
+  display: grid;
+}
+
+.container-products-container-- {
+  @media (max-width: 992px) {
+    margin-top: 13%;
+  }
+
+  .product-grid {
+    @media (min-width: 992px) {
+      border: none;
+    }
+
+    .container-product {
+      border: 1px solid variables.$Gray-100;
+
+      .review- {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.product-grid {
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2;
+  }
+
+  @media (min-width: 992px) {
+    border-top: 1px solid variables.$Gray-100;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .container-product {
+    border-right: 1px solid variables.$Gray-100;
+    border-bottom: 1px solid variables.$Gray-100;
+    transition: 0.5s ease-out;
+
+    &:hover {
+      box-shadow: 0px 8px 24px 0px #191c1f1f;
+    }
+
+    @media (max-width: 992px) {
+      border: 1px solid variables.$Gray-100;
+    }
+  }
+}
+
+.container-main-product-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+  }
+}
+
+// blogs grid
+.container-latest-news {
+  .container-padder-latest-news {
+    .container-news {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      width: 100%;
+      gap: 34px;
+
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      @media (max-width: 600px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+      }
+    }
+  }
+}
+
+.container-blogs {
+  width: 75vw;
+
+  .container-news {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 25px;
+    }
+  }
+}
+
+// customer support grid
+.container-main-grid-customer-support {
+  display: grid;
+  grid-template-columns: repeat(1, 0.7fr);
+  gap: 30px;
+  place-content: center;
+
+  @media only screen and (min-width: 655px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .containers-assist-box {
+    border-radius: 4px;
+    border-width: 2px;
+    padding: 24px;
+    border: 2px solid #ffe7d6;
+    align-items: center;
+
+    p {
+      color: variables.$Gray-900;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0%;
+    }
+
+    &:hover {
+      box-shadow: 0px 8px 40px 0px #fa82321f;
+    }
+  }
+}
+
+// customer service topic grid
+.container-grid-topics {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  place-content: center;
+
+  @media only screen and (min-width: 655px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container-list-1 {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
