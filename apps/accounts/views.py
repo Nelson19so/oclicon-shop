@@ -36,7 +36,7 @@ def user_registration_view_create(request):
         ('Sign Up', request.path)
     ]
 
-    return render(request, 'accounts/authentication/Register.html', {"form": form, "breadcrumbs": breadcrumbs})
+    return render(request, 'accounts/authentication/register.html', {"form": form, "breadcrumbs": breadcrumbs})
 
 # welcome registration session 
 def welcome_registration_view(request, user_id):
@@ -82,7 +82,7 @@ def login_view(request):
         ('Sign In', request.path)
     ]
 
-    return render(request, 'accounts/authentication/Login.html', {'form': form, 'breadcrumbs': breadcrumbs})
+    return render(request, 'accounts/authentication/login.html', {'form': form, 'breadcrumbs': breadcrumbs})
 
 # logout view set 
 def logout_view(request):
@@ -115,7 +115,7 @@ def reset_password_request_view(request):
         ('Forget Password', request.path)
     ]
     context = {'form': form, 'breadcrumbs': breadcrumbs}
-    return render(request, 'accounts/authentication/Password_reset_request.html', context)
+    return render(request, 'accounts/authentication/password_reset_request.html', context)
 
 # View for resetting the password (Step 2)
 def reset_password_view(request, uidb64, token):
@@ -156,7 +156,7 @@ def registration_email_verification(request):
     ]
 
     context = {'breadcrumbs': breadcrumbs}
-    return render(request, 'accounts/authentication/Email_verify_code.html', context)
+    return render(request, 'accounts/authentication/email_verify_code.html', context)
 
 # user account dashboard
 def account_dashboard(request):

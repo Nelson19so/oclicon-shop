@@ -13,7 +13,8 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ["production-domain.com", "oclicon-shop.onrender.com"]
+# allowed host
+ALLOWED_HOSTS = ["production-domain.com", "oclicon-shop.onrender.com", '127.0.0.1']
 
 # Static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
