@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order, OrderItem
+from .models import Order, OrderItem, ShippingAddress
 
 class TrackOrderForm(forms.Form):
     email = forms.EmailField()
@@ -11,10 +11,17 @@ class TrackOrderForm(forms.Form):
         email = cleaned_data.get("email")
 
         try:
-            orders = Order.objects.filter(order_id=order_id)
-            order = orders.first()
-            
-            if order.email != email:
-                forms.ValidationError("email", "Email does not match the order ID provided")
+            if not Order.objects.filter(email=email):
+                forms.ValidationError("Email does not match the order ID provided")
+            if not Order.objects.filter(order_id=order_id):
+                forms.ValidationError("The order id you provided was not found")
         except Order.DoesNotExist:
-            self.add_error("order_id", "Order you provided not found")        
+            forms.ValidationError("Order you provided not found")       
+
+# shipping address model form
+class ShippingAddressForm(forms.ModelForm):
+
+    class Meta:
+        model = ShippingAddress
+        fields = '__all__'
+        exclude = ['user']

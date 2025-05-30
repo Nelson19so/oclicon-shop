@@ -5,6 +5,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+
     <!-- base title -->
     <title>{% block title %} clicon online shopping store {% endblock %}</title>
 
@@ -42,15 +44,19 @@
     <!-- breadcrumbs ends -->
     {% endif %}
 
-    <main class="flex justify-between gap-[20px]">
-      <div class="container-sidebar">
-        {% include 'includes/account_sidebar.html' %}
-      </div>
+    <main class="user_account-base-file-wrapper">
+      <div class="container-usr_account">
+        <div class="container_user_account- flex justify-between gap-[40px]">
+          <div class="container-sidebar">
+            {% include 'includes/account_sidebar.html' %}
+          </div>
 
-      <div class="container-main">
-        {% block content %}
-        <!-- Default content -->
-        {% endblock %}
+          <div class="container-main">
+            {% block content %}
+            <!-- Default content -->
+            {% endblock %}
+          </div>
+        </div>
       </div>
     </main>
 

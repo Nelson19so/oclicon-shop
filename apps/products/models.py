@@ -4,8 +4,8 @@ from django.core.validators import MinValueValidator
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from django.conf import settings
-
-# Create your models here.
+import random
+import string
 
 # brand model
 class Brand(models.Model):
@@ -35,13 +35,17 @@ class Category(models.Model):
     def __str__(self):
         return self.name  
   
+# random skull for product
+def create_product_random_skull():
+    return ''.join(random.choices('0123456789Aabcdefghigklmnopqrstuvwxyz', k=10))
+
 # product model
 class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    sku = models.CharField(max_length=20, unique=True)
+    sku = models.CharField(max_length=20, unique=True, default=create_product_random_skull)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, related_name='product_category')
     base_price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     description = models.TextField()
@@ -77,10 +81,13 @@ class ProductColor(models.Model):
 
 # products specifications 
 class ProductSpecification(models.Model):
-    name = models.CharField(max_length=20)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='specification')
+    memory = models.CharField(blank=True, null=True)
+    size = models.CharField(blank=True, null=True)
+    storage = models.CharField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.product.name
 
 # product badge
 class Badge(models.Model):
@@ -88,7 +95,8 @@ class Badge(models.Model):
         ('sale', 'SALE'),
         ('hot', 'HOT'),
         ('new', 'NEW'),
-        ('bestdeal', 'BEST DEAL')
+        ('best_deal', 'BEST DEAL'),
+        ('sold_out', 'SOLD OUT')
     ]
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_badge')
@@ -97,11 +105,10 @@ class Badge(models.Model):
 
     def __str__(self):
         return f"{self.bade_type}"
-  
+
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variant')
     color = models.ForeignKey(ProductColor, on_delete=models.CASCADE, null=True, blank=True)
-    product_specification = models.ForeignKey(ProductSpecification, on_delete=models.PROTECT, null=True, blank=True)
     badge = models.ManyToManyField(Badge)
     stock = models.PositiveIntegerField(default=0)
     price_adjustment = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -116,11 +123,11 @@ class ProductVariant(models.Model):
         if self.stock > 20:
             return "In Stock"
         elif self.stock > 1:
-            return f"Only {self.stock} Left"
+            return f"Only {self.stock} product Left"
         return "Out of Stock"
 
     def __str__(self):
-        return f"{self.product.name} - {self.color} {self.product_specification}"
+        return f"{self.product.name} - {self.color}"
 
 class ProductImage(models.Model):
     variant = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
@@ -134,11 +141,67 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.variant}"
   
+# ads for product
+class Ad(models.Model):
+    POSITION_CHOICES = [
+        ('top', 'Top Banner'),
+        ('bottom', 'Bottom Banner'),
+        ('sidebar', 'Sidebar'),
+        ('popup', 'Popup'),
+        ('middle_banner', 'Middle Banner'),
+    ]
+
+    title = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='ads/')
+    url = models.URLField(blank=True, null=True)
+    position = models.CharField(max_length=20, choices=POSITION_CHOICES)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+  
+# product Highlight
+class ProductHighlight(models.Model):
+    FEATURES = [
+        ('best_deal', 'Best Deals'),
+        ('featured_product', 'Featured Products'),
+        ('flash_sale_today', 'FLASH SALE TODAY'),
+        ('best_sellers', 'BEST SELLERS'),
+        ('top_rated', 'TOP RATED'),
+        ('new_arrival', 'NEW ARRIVAL')
+    ]
+
+    product = models.OneToOneField(
+        Product, on_delete=models.CASCADE, related_name='product_feature'
+    )
+    features = models.CharField(max_length=50, choices=FEATURES, blank=False, null=False)
+    is_active = models.BooleanField(default=False)
+    date_created = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(blank=False, null=False)
+
+    def __str__(self):
+        return f'{self.get_features_display}'
+
+# product features
+# class ProductFeature(models.Model):
+#     variant = models.OneToOneField(
+#         ProductVariant, on_delete=models.CASCADE, related_name='product_features'
+#     )
+
 # product comparison
 class ProductComparison(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    session_id = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session', null=True, blank=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='productcomparison')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
+    )
+    session_id = models.ForeignKey(
+        Session, on_delete=models.CASCADE, related_name='session', null=True, blank=True
+    )
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='product_comparison'
+    )
     added_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:

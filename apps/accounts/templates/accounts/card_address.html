@@ -1,0 +1,104 @@
+<!-- extends to the base template file -->
+{% extends 'user_accounts/base.html' %}
+
+<!-- loads static items from the static file -->
+{% load static %}
+
+<!-- block title for cart page -->
+{% block title %} card and address {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container-card-address">
+  {% include 'accounts/payment-option.html' %}
+
+  <div class="user_account_info-history-wrapper mt-5">
+    <div class="container-main-account-info flex justify-between gap-[20px]">
+      <div class="container-account-info">
+        <div class="top-container"><p>Shipping Address</p></div>
+
+        <div class="container-articles-billing-info">
+          <div
+            class="container-others-address mt-3 flex justify-start flex-col gap-[10px]"
+          >
+            {% if user.shipping_info.full_name %}
+            <p>{{ user.shipping_info.full_name|title }}</p>
+            {% else %}
+            <span>No full name provided yet</span>
+            {% endif %}
+
+            <!-- billing address -->
+            {% if user.shipping_info.address %}
+            <span>{{ user.shipping_info.address }}</span>
+            {% else %}
+            <span>No address provided yet</span>
+            {% endif %}
+
+            <!-- billing phone number -->
+            {% if user.shipping_info.phone_number %}
+            <p>
+              Phone Number: <span> {{ user.shipping_info.phone_number }}</span>
+            </p>
+            {% else %}
+            <p>Phone Number: <span>No billing phone number provided</span></p>
+            {% endif %}
+
+            <!-- shipping email -->
+            {% if user.shipping_info.email %}
+            <p>Email: <span>{{ user.shipping_info.email }}</span></p>
+            {% else %}
+            <p>Email: <span>No email provided for billing</span></p>
+            {% endif %}
+            <a href="#"
+              ><button class="btn-outline-secondary">Edit Address</button></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="container-billing-info">
+        <div class="top-container"><p>Billing address</p></div>
+
+        <div class="container-articles-billing-info">
+          <div
+            class="container-others-address mt-3 flex justify-start flex-col gap-[10px]"
+          >
+            {% if user.billing_info.full_name %}
+            <p>{{ user.billing_info.full_name|title }}</p>
+            {% else %}
+            <span>No full name provided yet</span>
+            {% endif %}
+
+            <!-- billing address -->
+            {% if user.billing_info.address %}
+            <span>{{ user.billing_info.address }}</span>
+            {% else %}
+            <span>No address provided yet</span>
+            {% endif %}
+
+            <!-- billing phone number -->
+            {% if user.billing_info.phone_number %}
+            <p>
+              Phone Number: <span> {{ user.billing_info.phone_number }}</span>
+            </p>
+            {% else %}
+            <p>Phone Number: <span>No billing phone number provided</span></p>
+            {% endif %}
+
+            <!-- shipping email -->
+            {% if user.billing_info.email %}
+            <p>Email: <span>{{ user.billing_info.email }}</span></p>
+            {% else %}
+            <p>Email: <span>No email provided for billing</span></p>
+            {% endif %}
+
+            <a href="#"
+              ><button class="btn-outline-secondary">Edit Address</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -12,15 +12,24 @@
       </div>
 
       <div class="container-right-header flex justify-end gap-5">
+        <!-- checks for computer accessories -->
+        {% if computer_category %}
         <ul class="flex justify-end gap-3">
-          <li><a href="#">All Product</a></li>
-          <li><a href="#">Smart Phone</a></li>
-          <li><a href="#">Laptop</a></li>
-          <li><a href="#">Headphone</a></li>
-          <li><a href="#">TV</a></li>
+          <!-- children category -->
+          {% for child in computer_category.children.all %}
+          <li><a class="cursor-pointer">{{ child.name }}</a></li>
+          {% endfor %}
         </ul>
+        {% endif %}
 
-        <a href="#" class="w-1/2">
+        <!-- for all category -->
+        {% for category_all in categories %}
+        <!-- checking if it is computer accessories -->
+        {% if category_all.name == 'Computer Accessories' %}
+        <a
+          href="{% url 'shop_category' category_slug=category_all.slug %}"
+          class="w-1/2"
+        >
           <div class="flex justify-end">
             <p>Browse All Product</p>
             <svg
@@ -40,48 +49,131 @@
             </svg>
           </div>
         </a>
+        {% endif %} {% endfor %}
       </div>
     </header>
 
+    {% if computer_accessories %}
     <div class="container-products-container-- h-full mt-5">
       <div class="product-grid gap-3">
+        {% for computer_accessory in computer_accessories %}
         <div class="container-product p-2">
           <div class="container-product-img w-full">
             <img
-              src="{% static 'images/product/droneImage.png' %}"
-              alt="droneImage"
+              src="{{ computer_accessory.images.first.image.url }}"
+              alt="{{ computer_accessory.brand }}"
               class="w-full"
               width="100"
             />
 
+            {% for badge in computer_accessory.product_badge.all %}
             <div class="container-product-status">
-              <p class="sold-out">SOLD OUTs</p>
+              {% if badge.is_active %}
+              <!-- checking badge type -->
+              {% if badge.bade_type == 'sold_out' %}
+              <p class="sold-out">{{ badge.get_bade_type_display }}</p>
+
+              <!-- off price -->
+              {% elif badge.bade_type == 'off-price' %}
+              <p class="off-price">{{ badge.get_bade_type_display }}</p>
+
+              <!-- hot -->
+              {% elif badge.bade_type == 'hot' %}
+              <p class="hot">{{ badge.get_bade_type_display }}</p>
+
+              <!-- best deal -->
+              {% elif badge.bade_type == 'best_deal' %}
+              <p class="best_deal">{{ badge.get_bade_type_display }}</p>
+
+              <!-- sale -->
+              {% elif badge.bade_type == 'sale' %}
+              <p class="sale">{{ badge.get_bade_type_display }}</p>
+
+              <!-- new -->
+              {% elif badge.bade_type == 'new' %}
+              <p class="new">{{ badge.get_bade_type_display }}</p>
+
+              {% endif %}
+              <!-- ends -->
+              {% endif %}
             </div>
+            {% endfor %}
 
             <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
+              <button>
+                <svg
                   width="20"
-                />
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 20.25C12 20.25 2.625 15 2.625 8.62501C2.625 7.49803 3.01546 6.40585 3.72996 5.53431C4.44445 4.66277 5.43884 4.0657 6.54393 3.84468C7.64903 3.62366 8.79657 3.79235 9.79131 4.32204C10.7861 4.85174 11.5665 5.70972 12 6.75001C12.4335 5.70972 13.2139 4.85174 14.2087 4.32204C15.2034 3.79235 16.351 3.62366 17.4561 3.84468C18.5612 4.0657 19.5555 4.66277 20.27 5.53431C20.9845 6.40585 21.375 7.49803 21.375 8.62501C21.375 15 12 20.25 12 20.25Z"
+                    stroke="#191C1F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
 
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
+              <button>
+                <svg
                   width="20"
-                />
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.5 19.5C7.91421 19.5 8.25 19.8358 8.25 20.25C8.25 20.6642 7.91421 21 7.5 21C7.08579 21 6.75 20.6642 6.75 20.25C6.75 19.8358 7.08579 19.5 7.5 19.5Z"
+                    fill="#191C1F"
+                    stroke="#191C1F"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M17.25 21.75C18.0784 21.75 18.75 21.0784 18.75 20.25C18.75 19.4216 18.0784 18.75 17.25 18.75C16.4216 18.75 15.75 19.4216 15.75 20.25C15.75 21.0784 16.4216 21.75 17.25 21.75Z"
+                    fill="#191C1F"
+                  />
+                  <path
+                    d="M3.96562 6.75H20.7844L18.3094 15.4125C18.2211 15.7269 18.032 16.0036 17.7711 16.2C17.5103 16.3965 17.1922 16.5019 16.8656 16.5H7.88437C7.55783 16.5019 7.2397 16.3965 6.97886 16.2C6.71803 16.0036 6.52893 15.7269 6.44062 15.4125L3.04688 3.54375C3.00203 3.38696 2.9073 3.24905 2.77704 3.15093C2.64677 3.05282 2.48808 2.99983 2.325 3H0.75"
+                    stroke="#191C1F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
               </button>
 
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
+              <a
+                href="{% url 'product_details' category_slug=computer_accessory.category.first.slug child_slug=computer_accessory.category.last.slug product_slug=computer_accessory.slug %}"
+              >
+                <button>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 4.25C4.5 4.25 1.5 12 1.5 12C1.5 12 4.5 19.75 12 19.75C19.5 19.75 22.5 12 22.5 12C22.5 12 19.5 4.25 12 4.25Z"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </a>
             </div>
           </div>
 
@@ -116,560 +208,30 @@
               <p class="ml-2 review-">52,677</p>
             </span>
 
-            <p class="description-2 mt-2">
-              Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
-            </p>
+            <!--  -->
 
-            <p class="price mt-2"><span class="discount-price">$2,300</span></p>
-          </div>
-        </div>
+            <!--  -->
 
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/smartphoneImage.png' %}"
-              alt="product/smartphoneImage"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              Simple Mobile 4G LTE Prepaid Smartphone
-            </p>
-
-            <p class="price mt-2"><span class="discount-price">$220</span></p>
-          </div>
-        </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/p5controllerImage.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-product-status">
-              <p class="off-price">19% OFF</p>
-            </div>
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              4K UHD LED Smart TV with Chromecast Built-in
-            </p>
-
-            <p class="price mt-2"><span class="discount-price">$1,50</span></p>
-          </div>
-        </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/headsetImage.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              Sony DSCHX8 High Zoom Point & Shoot Camera
-            </p>
-
-            <p class="price mt-2"><span class="discount-price">$1,200</span></p>
-          </div>
-        </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/adnroid-3-Image.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              Dell Optiplex 7000x7480 All-in-One Computer Monitor
-            </p>
-
-            <p class="price mt-2"><span class="discount-price">$299</span></p>
-          </div>
-        </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/dronecontrolImage.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              Portable Wshing Machine, 11lbs capacity Model 18NMFIAM
-            </p>
+            <p class="description-2 mt-2">{{ computer_accessory.name }}</p>
 
             <p class="price mt-2">
-              <span class="normal-price mr-3">$865.99</span
-              ><span class="discount-price">$70</span>
+              <span class="discount-price"
+                >${{ computer_accessory.base_price }}</span
+              >
+              {% if computer_accessory.discount_price %}
+              <span class="normal-price mr-3"
+                >{{ computer_accessory.discount_price }}</span
+              >
+              {% endif %}
             </p>
           </div>
         </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/desktopImage.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-product-status">
-              <p class="hot">HOT</p>
-            </div>
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              2-Barrel Carburetor Carb 2100 Engine Increase Horsepower
-            </p>
-
-            <p class="price mt-2"><span class="discount-price">$160</span></p>
-          </div>
-        </div>
-
-        <div class="container-product p-2">
-          <div class="container-product-img w-full">
-            <img
-              src="{% static 'images/product/cameraImage.png' %}"
-              alt="p5Image"
-              class="w-full"
-              width="100"
-            />
-
-            <div class="container-product-status">
-              <p class="off-price">32% OFF</p>
-            </div>
-
-            <div class="container-modal-product">
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Heart.svg' %}"
-                  alt="Heart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/ShoppingCartSimple.svg' %}"
-                  alt="shoppingcart"
-                  width="20"
-                />
-              </button>
-
-              <button href="#">
-                <img
-                  src="{% static 'images/svg/Eye.svg' %}"
-                  alt="Eye"
-                  width="20"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="container-items p-1">
-            <span class="star-span flex justify-items-start">
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-              <img
-                src="{% static 'images/svg/Star.svg' %}"
-                alt="star"
-                width="15"
-              />
-
-              <p class="ml-2 review-">52,677</p>
-            </span>
-
-            <p class="description-2 mt-2">
-              JBL FLIP 4 - Waterproof Portable Bluetooth Speaker - Black
-            </p>
-
-            <p class="price mt-2">
-              <span class="normal-price mr-3">$360</span
-              ><span class="discount-price">$250</span>
-            </p>
-          </div>
-        </div>
+        {% endfor %}
 
         <!-- product-grid ends -->
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 

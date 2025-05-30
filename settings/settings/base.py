@@ -12,9 +12,6 @@ SECRET_KEY = os.getenv('django-secret-key')
 if not SECRET_KEY:
     raise ImproperlyConfigured("SECRET_KEY is not set in environment variables")
 
-# allowed host
-ALLOWED_HOSTS = []
-
 # Installed apps
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,11 +32,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.apple',
 
     # Local apps
-    'apps.accounts',
-    'apps.cart',
-    'apps.orders',
-    'apps.products',
-    'apps.public',
+    'apps.accounts.apps.AccountsConfig',
+    'apps.cart.apps.CartConfig',
+    'apps.orders.apps.OrdersConfig',
+    'apps.products.apps.ProductsConfig',
+    'apps.public.apps.PublicConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,12 +56,21 @@ ROOT_URLCONF = 'settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                # categories navbar list
                 'settings.context_processors.navbar_categories_list',
+                # context processor for navbar cart display list 
                 'settings.context_processors.navbar_cart_display_list',
+                # computer accessories filter
+                # 'settings.context_processors.computer_accessories',
+                # product ads
+                'settings.context_processors.active_ads',
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -134,5 +140,5 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = '/home/'

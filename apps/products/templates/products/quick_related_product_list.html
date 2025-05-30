@@ -1,0 +1,137 @@
+{% load static %}
+
+<!-- main content -->
+{% block content %}
+<div class="container-main-product-list-wrapper">
+  {% if related_products %}
+  <div class="container-product-list-">
+    <div class="header-"><p>RELATED PRODUCT</p></div>
+
+    <!-- loop through all product -->
+    {% for related_product in related_products %}
+    <a
+      href="{% url 'product_details' category_slug=related_product.category.first.slug child_slug=related_product.category.last.slug product_slug=related_product.slug %}"
+    >
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{{ related_product.images.first.image.url }}"
+            alt="{{ related_product.brand.name }}"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>{{ related_product.name }}</p>
+          <span class="price">{{ related_product.base_price }}</span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="container-product-list-">
+    <div class="header-"><p>PRODUCT ACCESSORIES</p></div>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="container-product-list-">
+    <div class="header-"><p>FEATURED PRODUCTS</p></div>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="container-product-main flex justify-between mt-3">
+        <div class="container-img">
+          <img
+            src="{% static 'images/product/p5controllerImage.png' %}"
+            alt="p5Image"
+            width="100"
+          />
+        </div>
+        <div class="articles-main">
+          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
+          <span class="price">$1,500</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

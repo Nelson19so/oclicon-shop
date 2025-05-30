@@ -289,6 +289,16 @@
             }
 
             .container-name-and-img {
+              a {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+
+                @media only screen and (max-width: 859px) {
+                  display: block !important;
+                }
+              }
+
               button {
                 @media only screen and (max-width: 859px) {
                   display: none;
@@ -315,6 +325,10 @@
               flex: 1;
               width: 100%;
 
+              @media only screen and (max-width: 859px) {
+                flex: none;
+              }
+
               .container-right-cart {
                 display: none;
               }
@@ -340,6 +354,12 @@
 
             .container-product-main {
               border: none;
+
+              @media only screen and (max-width: 859px) {
+                width: 100%;
+                justify-items: flex-start;
+                flex-direction: row;
+              }
 
               .articles-main {
                 height: 100%;

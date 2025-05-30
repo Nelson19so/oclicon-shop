@@ -1,0 +1,56 @@
+@use "../abstracts/variables" as variables;
+@use "../abstracts/mixins" as mixin;
+
+.container-user_dashboard- {
+  width: 100%;
+
+  .container-user-dashboard-padding- {
+    width: 100%;
+
+    .container-user-account-history {
+      width: 100%;
+      gap: 20px;
+
+      @media only screen and (max-width: 1197px) {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      @media only screen and (max-width: 656px) {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .completed-orders {
+        background-color: variables.$Success-50;
+      }
+
+      .pending-orders {
+        background-color: variables.$Primary-50;
+      }
+
+      .total-order {
+        background-color: variables.$Secondary-50;
+      }
+
+      .history-box-wrapper {
+        padding: 13px 10px;
+
+        @media only screen and (max-width: 1197px) {
+          width: 100%;
+          margin: 0 20px;
+        }
+
+        @media only screen and (max-width: 656px) {
+          margin: 0;
+          width: 100%;
+        }
+
+        .container-svg- {
+          padding: 5px;
+          background-color: variables.$White-100;
+        }
+      }
+    }
+  }
+}

@@ -34,24 +34,25 @@
         </div>
       </div>
 
+      {% if wishlists %}
       <div
         class="container-main-product-items-list flex justify-between flex-col"
       >
+        {% for wishlist in wishlists %}
         <div class="container-product-details-wishlist flex justify-between">
           <div class="container-name-and-img items-compare">
             <a href="#">
               <div class="container-product-main flex justify-between mt-3">
                 <div class="container-img min-w-[70px]">
                   <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
+                    src="{{ wishlist.product.images.first.image.url }}"
+                    alt="{{ wishlist.product.brand.name }}"
                     width="80"
                   />
                 </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
-                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear
+                <div class="articles-main ml-3 mt-3">
+                  <p class="h-[10px] max-h-[35px]">
+                    {{ wishlist.product.name }}
                   </p>
                 </div>
               </div>
@@ -61,17 +62,36 @@
           <div
             class="container-product-price flex justify-start gap-1 items-compare"
           >
-            <p class="price">$999</p>
+            <p class="price">${{ wishlist.product.base_price }}</p>
           </div>
 
           <div class="container-stock-in-product items-compare">
-            <p class="in-stock">IN STOCK</p>
+            {% if wishlist.product.variant.first.availability == 'In Stock' %}
+            <p class="in-stock">
+              {{ wishlist.product.variant.first.availability }}
+            </p>
+            {% elif wishlist.product.variant.first.availability == 'Out of
+            Stock' %}
+            <p class="out-stock">
+              {{ wishlist.product.variant.first.availability }}
+            </p>
+            {% else %}
+            <p class="low-stock">
+              {{ wishlist.product.variant.first.availability }}
+            </p>
+            <!-- ends if statement -->
+            {% endif %}
           </div>
 
           <div
             class="container-cart-btn-- items-compare flex justify-center gap-3"
           >
-            <button class="p-2 add-to-cart_btn flex justify-center">
+            <!-- add to cart -->
+            <button
+              class="p-2 add-to-cart_btn flex justify-center"
+              id="add-to-cart_btn"
+              data-product-id="{{ wishlist.product.id }}"
+            >
               <img
                 src="{% static 'images/svg/shoppingcart.svg' %}"
                 alt="shoppingcart"
@@ -80,8 +100,23 @@
               <span class="h-full">Add to card</span>
             </button>
 
+            <!-- <button
+              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
+            >
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to card</span>
+            </button> -->
+
+            <!-- remove from wishlist -->
             <div class="container-btn-remove-cart">
-              <button class="cursor-pointer">
+              <button
+                class="cursor-pointer remove-from-wishlist"
+                data-product-id="{{ wishlist.product.id }}"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -114,247 +149,16 @@
             </div>
           </div>
         </div>
+        {% endfor %}
 
-        <div class="container-product-details-wishlist flex justify-between">
-          <div class="container-name-and-img items-compare">
-            <a href="#">
-              <div class="container-product-main flex justify-between mt-3">
-                <div class="container-img min-w-[70px]">
-                  <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
-                    width="80"
-                  />
-                </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                    Ear...
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="container-product-price flex justify-start gap-1 items-compare"
-          >
-            <p class="discount-price-wishlist">$1299</p>
-            <p class="price">$999</p>
-          </div>
-
-          <div class="container-stock-in-product items-compare">
-            <p class="in-stock">IN STOCK</p>
-          </div>
-
-          <div
-            class="container-cart-btn-- items-compare flex justify-center gap-3"
-          >
-            <button
-              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
-            >
-              <img
-                src="{% static 'images/svg/shoppingcart.svg' %}"
-                alt="shoppingcart"
-                width="15"
-              />
-              <span class="h-full">Add to card</span>
-            </button>
-
-            <div class="container-btn-remove-wishlist">
-              <button class="cursor-pointer">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                  />
-                  <path
-                    d="M15 9L9 15"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15 15L9 9"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="container-product-details-wishlist flex justify-between">
-          <div class="container-name-and-img items-compare">
-            <a href="#">
-              <div class="container-product-main flex justify-between mt-3">
-                <div class="container-img min-w-[70px]">
-                  <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
-                    width="80"
-                  />
-                </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                    Ear...
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="container-product-price flex justify-start gap-1 items-compare"
-          >
-            <p class="price">$999</p>
-          </div>
-
-          <div class="container-stock-in-product items-compare">
-            <p class="out-stock">out stock</p>
-          </div>
-
-          <div
-            class="container-cart-btn-- items-compare flex justify-center gap-3"
-          >
-            <button class="p-2 add-to-cart_btn flex justify-center">
-              <img
-                src="{% static 'images/svg/shoppingcart.svg' %}"
-                alt="shoppingcart"
-                width="15"
-              />
-              <span class="h-full">Add to card</span>
-            </button>
-
-            <div class="container-btn-remove-wishlist">
-              <button class="cursor-pointer">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                  />
-                  <path
-                    d="M15 9L9 15"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15 15L9 9"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="container-product-details-wishlist flex justify-between">
-          <div class="container-name-and-img items-compare">
-            <a href="#">
-              <div class="container-product-main flex justify-between mt-3">
-                <div class="container-img min-w-[70px]">
-                  <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
-                    width="80"
-                  />
-                </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds - Wireless Earphones - Bluetooth In
-                    Ear...
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div
-            class="container-product-price flex justify-start gap-1 items-compare"
-          >
-            <p class="discount-price-wishlist">$1299</p>
-            <p class="price">$999</p>
-          </div>
-
-          <div class="container-stock-in-product items-compare">
-            <p class="in-stock">IN STOCK</p>
-          </div>
-
-          <div
-            class="container-cart-btn-- items-compare flex justify-center gap-3"
-          >
-            <button
-              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
-            >
-              <img
-                src="{% static 'images/svg/shoppingcart.svg' %}"
-                alt="shoppingcart"
-                width="15"
-              />
-              <span class="h-full">Add to card</span>
-            </button>
-
-            <div class="container-btn-remove-wishlist">
-              <button class="cursor-pointer">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                  />
-                  <path
-                    d="M15 9L9 15"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15 15L9 9"
-                    stroke="#929FA5"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- product wishlist ends -->
       </div>
+      {% else %}
+      <div class="container-doest-not-exist">
+        <p>No wishlist product found</p>
+      </div>
+      {% endif %}
+      <!--  -->
     </div>
   </div>
 </div>

@@ -3,74 +3,51 @@
 
 <!-- main content -->
 {% block content %}
+
+<!-- product category -->
+{% if products %}
 <p class="header-txt">Category</p>
 
 <div class="category-list--">
   <form action="#">
     <ul>
       <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Electronics Devices</a
-        >
+        {% if request.resolver_match.url_name == 'shop' %}
+        <input type="radio" name="category" id="category" checked />
+        {% else %}
+        <input type="radio" name="category" id="category" />
+        {% endif %}
+
+        <a href="{% url 'shop' %}">All Category</a>
       </li>
+
+      {% for category in categories %} {% if not category.parent %}
       <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Computer & Laptop</a
+        <!-- shop -->
+        {% if request.resolver_match.url_name == 'shop_category' %}
+        <!-- child -->
+        {% if request.resolver_match.url_name == 'shop_child_category' %}
+
+        <!-- slug -->
+        {% if category.slug == category_slug or category.slug == child_slug %}
+        <input type="radio" name="category" id="category" checked />
+        {% else %}
+        <input type="radio" name="category" id="category" />
+        {% endif %} {% else %}
+        <input type="radio" name="category" id="category" />
+        {% endif %} {% else %}
+        <input type="radio" name="category" id="category" />
+        {% endif %}
+
+        <a href="{% url 'shop_category' category.slug %}"
+          >{{ category.name }}</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Computer Accessories</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >SmartPhone</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Headphone</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Mobile Accessories</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Gaming Console</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Camera & Photo</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >TV & Homes Appliances</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Watchs & Accessories</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >GPS & Navigation</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Warable Technology</a
-        >
-      </li>
+      {% endif %} {% endfor %}
     </ul>
   </form>
 </div>
+{% endif %}
 
 <p class="header-txt mt-5">Price Range</p>
 

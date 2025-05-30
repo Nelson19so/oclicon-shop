@@ -5,10 +5,17 @@
 {% block content %}
 <div class="container-register_form-- w-full">
   <div class="container-register-padding w-full">
-    <form method="post" class="login_form w-full">
+    <form method="post" class="login_form w-full" action="{% url 'register' %}">
+      {% csrf_token %}
+
       <div class="input-container w-full">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" />
+        <input
+          type="text"
+          name="Name"
+          id="name"
+          value="{{ form.Name.value|default_if_none:'' }}"
+        />
 
         <div class="container-error-msg mt-1">
           <p class="error-msg"></p>
@@ -17,11 +24,26 @@
 
       <div class="input-container w-full">
         <label for="email">Email Address</label>
-        <input type="email" name="email" id="email" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="{{ form.email.value|default_if_none:'' }}"
+        />
 
+        <!-- js error -->
         <div class="container-error-msg mt-1">
           <p class="error-msg"></p>
         </div>
+
+        <!-- server error -->
+        {% if form.errors %}
+        <div class="container-error-msg mt-1">
+          {% for error in form.email.errors %}
+          <p class="error-msg">{{ error }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
 
       <div class="input-container w-full">
@@ -33,6 +55,7 @@
           name="password1"
           id="password1"
           placeholder="8+ characters"
+          value="{{ form.password1.value|default_if_none:'' }}"
         />
         <a href="#" class="svg-eye">
           <svg
@@ -57,7 +80,12 @@
         <div class="container-password-forgot-pass flex justify-between">
           <label for="password2">Confirm Password</label>
         </div>
-        <input type="password" name="password2" id="password2" />
+        <input
+          type="password"
+          name="password2"
+          id="password2"
+          value="{{ form.password2.value|default_if_none:'' }}"
+        />
         <a href="#" class="svg-eye">
           <svg
             fill="#000000"
@@ -86,6 +114,14 @@
           <a href="#">Terms of Condition</a> and <a href="#">Privacy Policy</a>.
         </label>
       </div>
+
+      {% if form.errors %}
+      <div class="container-error-msg mt-1">
+        {% for error in form.non_field_errors %}
+        <p class="error-msg">{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
 
       <button class="bton-login--sign-up flex justify-center">
         Sign up

@@ -12,241 +12,162 @@
 <div class="container-cart-product-list-display-">
   <div class="container-cart-product-list-display-padding">
     <div class="wrapper-cary-product-and-checkout flex justify-between gap-5">
-      <div class="cart-table-wrapper">
-        <div class="header-cart-items w-full">
-          <p>Shopping Cart</p>
-        </div>
+      <form action="{% url 'cart_update' %}" method="post" id="cart_quantity">
+        {% csrf_token %}
 
-        <div class="items-list-display-table-header flex justify-between">
-          <div class="container-items-">
-            <p>Products</p>
+        <div class="cart-table-wrapper">
+          <div class="header-cart-items w-full">
+            <p>Shopping Cart</p>
           </div>
 
-          <div class="container-items-">
-            <p>Price</p>
+          <div class="items-list-display-table-header flex justify-between">
+            <div class="container-items-">
+              <p>Products</p>
+            </div>
+
+            <div class="container-items-">
+              <p>Price</p>
+            </div>
+
+            <div class="container-items-">
+              <p>Quantity</p>
+            </div>
+
+            <div class="container-items-">
+              <p>Sub-Total</p>
+            </div>
           </div>
 
-          <div class="container-items-">
-            <p>Quantity</p>
-          </div>
-
-          <div class="container-items-">
-            <p>Sub-Total</p>
-          </div>
-        </div>
-
-        <div
-          class="container-main-product-items-list flex justify-between flex-col"
-        >
-          <div class="container-product-details-cart flex justify-between">
-            <div class="container-name-and-img items-cart flex justify-start">
-              <div class="container-btn-remove-cart">
-                <button class="cursor-pointer">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                    />
-                    <path
-                      d="M15 9L9 15"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M15 15L9 9"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <a href="#">
-                <div class="container-product-main flex justify-between mt-3">
-                  <div class="container-img min-w-[70px]">
-                    <img
-                      src="{% static 'images/product/p5controllerImage.png' %}"
-                      alt="p5Image"
-                      width="80"
-                    />
-                  </div>
-                  <div class="articles-main">
-                    <p class="h-[10px]">
-                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
-                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
-                    </p>
-                  </div>
+          {% if carts %}
+          <div
+            class="container-main-product-items-list flex justify-between flex-col"
+          >
+            {% for cart in carts %}
+            <div class="container-product-details-cart flex justify-between">
+              <div class="container-name-and-img items-cart flex justify-start">
+                <div class="container-btn-remove-cart">
+                  <button class="cursor-pointer">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                        stroke="#929FA5"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                      />
+                      <path
+                        d="M15 9L9 15"
+                        stroke="#929FA5"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M15 15L9 9"
+                        stroke="#929FA5"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
                 </div>
-              </a>
-            </div>
 
-            <div
-              class="container-cart-mb-details flex justify-start gap-3 flex-col"
-            >
+                <a
+                  href="{% url 'product_details' category_slug=cart.product.category.first.slug child_slug=cart.product.category.last.slug product_slug=cart.product.slug %}"
+                >
+                  <div class="container-product-main flex justify-between mt-3">
+                    <div class="container-img min-w-[70px]">
+                      <img
+                        src="{{ cart.product.images.first.image.url }}"
+                        alt="p5Image"
+                        width="80"
+                      />
+                    </div>
+                    <div class="articles-main mt-2 ml-4">
+                      <p class="h-[10px]">{{ cart.product.name }}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
               <div
-                class="container-cart-price-and-stock- flex justify-start gap-3"
+                class="container-cart-mb-details flex justify-start gap-3 flex-col"
               >
-                <p class="price">$3627</p>
-              </div>
-              <p class="in-stock">in stock</p>
-            </div>
-
-            <div
-              class="container-product-price flex justify-start gap-2 items-cart"
-            >
-              <p class="price">$999</p>
-            </div>
-
-            <div
-              class="container-stock-in-product items-cart md:flex justify-between"
-            >
-              <div class="container-right-cart">
-                <button class="remove-cart-item">Remove cart</button>
+                <div
+                  class="container-cart-price-and-stock- flex justify-start gap-3"
+                ></div>
+                <p class="price total-price">
+                  <span>Price: </span> ${{ cart.product.base_price }}
+                </p>
+                <p class="price total-price">
+                  <span>Sub-Total: </span> ${{ cart.total_price }}
+                </p>
+                <p class="in-stock">in stock</p>
               </div>
 
-              <div class="container-product-amount flex justify-center w-full">
-                <button class="btn-decrement" id="btn-decrement">-</button>
-                <input
-                  type="text"
-                  name="quantity"
-                  id="quantity-input"
-                  class="input-number outline-none"
-                  value="1"
-                  disabled
-                />
-                <button class="btn-increment" id="btn-increment">+</button>
-              </div>
-            </div>
-
-            <div class="container-cart-subtotal- items-cart gap-2">
-              <p class="price">$20</p>
-            </div>
-          </div>
-          <div class="container-product-details-cart flex justify-between">
-            <div class="container-name-and-img items-cart flex justify-start">
-              <div class="container-btn-remove-cart">
-                <button class="cursor-pointer">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-miterlimit="10"
-                    />
-                    <path
-                      d="M15 9L9 15"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M15 15L9 9"
-                      stroke="#929FA5"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
+              <div
+                class="container-product-price flex justify-start gap-2 items-cart"
+              >
+                <p class="price total-price">${{ cart.product.base_price }}</p>
               </div>
 
-              <a href="#">
-                <div class="container-product-main flex justify-between mt-3">
-                  <div class="container-img min-w-[70px]">
-                    <img
-                      src="{% static 'images/product/p5controllerImage.png' %}"
-                      alt="p5Image"
-                      width="80"
-                    />
-                  </div>
-                  <div class="articles-main">
-                    <p class="h-[10px]">
-                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
-                      Bose Sport Earbuds Wireless Earphones Bluetooth In Ear
-                    </p>
-                  </div>
+              <div
+                class="container-stock-in-product items-cart md:flex justify-between"
+              >
+                <div class="container-right-cart">
+                  <button class="remove-cart-item">Remove cart</button>
                 </div>
-              </a>
-            </div>
 
-            <div
-              class="container-cart-mb-details flex justify-start gap-3 flex-col"
-            >
-              <div
-                class="container-cart-price-and-stock- flex justify-start gap-3"
+                <div
+                  class="container-product-amount flex justify-center w-full"
+                >
+                  <button class="btn-decrement" id="btn-decrement">-</button>
+                  <input type="hidden" name="item_ids" value="{{cart.id}}" />
+                  <input
+                    type="text"
+                    name="quantity_{{ cart.id }}"
+                    id="quantity-input"
+                    class="input-number outline-none"
+                    value="{{ cart.quantity}}"
+                    readonly
+                  />
+                  <button class="btn-increment" id="btn-increment">+</button>
+                </div>
+              </div>
+
+              <div class="container-cart-subtotal- items-cart gap-2">
+                <p class="price">${{ cart.total_price }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="container-doest-not-exist">
+            <p>No Cart item found</p>
+            <!-- <a href="{% url 'shop' %}">Go back to Shop</a> -->
+          </div>
+          {% endif %}
+          <div
+            class="container-footer-submit-form-and-return-home flex justify-between"
+          >
+            <div class="lef-container-cart">
+              <a href="{% url 'shop' %}"
+                ><button class="btn-return-home-">Return to Shop</button></a
               >
-                <p class="discount-price-wishlist">$1299</p>
-                <p class="price">$3627</p>
-              </div>
-              <p class="out-stock">out stock</p>
             </div>
 
-            <div
-              class="container-product-price flex justify-start gap-2 items-cart"
-            >
-              <p class="price">$999</p>
-            </div>
-
-            <div
-              class="container-stock-in-product items-cart md:flex justify-between"
-            >
-              <div class="container-right-cart">
-                <button class="remove-cart-item">Remove cart</button>
-              </div>
-
-              <div class="container-product-amount flex justify-center w-full">
-                <button class="btn-decrement" id="btn-decrement">-</button>
-                <input
-                  type="text"
-                  name="quantity"
-                  id="quantity-input"
-                  class="input-number outline-none"
-                  value="1"
-                  disabled
-                />
-                <button class="btn-increment" id="btn-increment">+</button>
-              </div>
-            </div>
-
-            <div class="container-cart-subtotal- items-cart gap-2">
-              <p class="price">$20</p>
+            <div class="container-right-visit-home-cart">
+              <button type="submit">Update cart</button>
             </div>
           </div>
         </div>
-
-        <div
-          class="container-footer-submit-form-and-return-home flex justify-between"
-        >
-          <div class="lef-container-cart">
-            <a href="{% url 'shop' %}"
-              ><button class="btn-return-home-">Return to Shop</button></a
-            >
-          </div>
-
-          <div class="container-right-visit-home-cart">
-            <button>Update cart</button>
-          </div>
-        </div>
-      </div>
+      </form>
 
       <div class="container-checkout-items-- flex justify-start flex-col gap-5">
         <div class="container-checkout-cart">

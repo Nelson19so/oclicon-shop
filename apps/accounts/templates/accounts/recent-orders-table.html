@@ -1,0 +1,229 @@
+<div class="container-order-table">
+  <div class="container-order-table-top flex justify-between">
+    <div class="container-left-order-top"><p>Recent Order</p></div>
+    {% if request.resolve_match.url_name == 'home' %}
+    <div class="container-right-order-top">
+      <a href="#">
+        <div class="flex justify-end gap-1" style="align-items: center">
+          View All
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.125 10H16.875"
+              stroke="#FA8232"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11.25 4.375L16.875 10L11.25 15.625"
+              stroke="#FA8232"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </a>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+  </div>
+
+  <div class="container-table">
+    <table>
+      <thead>
+        <th>Order ID</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Action</th>
+      </thead>
+
+      <tbody>
+        <td>
+          <p class="order-id">#96459761</p>
+        </td>
+        <td>
+          <p class="status status-progress">IN PROGRESS</p>
+        </td>
+        <td><p class="date">Dec 30, 2019 05:18</p></td>
+        <td>
+          <p class="total">$1,500 (5 Products)</p>
+        </td>
+        <td>
+          <a href="#">
+            <div class="flex justify-end gap-1">
+              View Details
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.125 10H16.875"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.25 4.375L16.875 10L11.25 15.625"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </a>
+        </td>
+      </tbody>
+
+      <tbody>
+        <td>
+          <p class="order-id">#96459761</p>
+        </td>
+        <td>
+          <p class="status status-cancel">CANCELED</p>
+        </td>
+        <td><p class="date">Dec 30, 2019 05:18</p></td>
+        <td>
+          <p class="total">$1,500 (5 Products)</p>
+        </td>
+        <td>
+          <a href="#">
+            <div class="flex justify-end gap-1">
+              View Details
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.125 10H16.875"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.25 4.375L16.875 10L11.25 15.625"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </a>
+        </td>
+      </tbody>
+
+      <tbody>
+        <td>
+          <p class="order-id">#96459761</p>
+        </td>
+        <td>
+          <p class="status status-completed">Completed</p>
+        </td>
+        <td><p class="date">Dec 30, 2019 05:18</p></td>
+        <td>
+          <p class="total">$1,500 (5 Products)</p>
+        </td>
+        <td>
+          <a href="#">
+            <div class="flex justify-end gap-1">
+              View Details
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.125 10H16.875"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.25 4.375L16.875 10L11.25 15.625"
+                  stroke="#2DA5F3"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </a>
+        </td>
+      </tbody>
+    </table>
+  </div>
+
+  <!--  -->
+  {% if request.resolver_match.url_name == 'order-history' %}
+  <div class="container-bottom-slider- mt-8 flex justify-self-center w-full">
+    <div class="container-slider-items-- w-full flex justify-center gap-2.5">
+      <p>
+        <svg
+          class="y-svg"
+          width="12"
+          height="12"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h48v48H0z" fill="none" />
+          <g id="Shopicon">
+            <polygon
+              points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+              fill="#fa8232"
+            />
+          </g>
+        </svg>
+      </p>
+
+      <div class="sliders-no flex justify-center gap-2.5">
+        <p class="main-slider">01</p>
+        <p class="main-slider">02</p>
+        <p class="main-slider">03</p>
+        <p class="main-slider">04</p>
+        <p class="main-slider">05</p>
+        <p class="main-slider">06</p>
+        <p class="main-slider">07</p>
+        <p class="main-slider">08</p>
+      </div>
+
+      <p>
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h48v48H0z" fill="none" />
+          <g id="Shopicon">
+            <polygon
+              points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+              fill="#fa8232"
+            />
+          </g>
+        </svg>
+      </p>
+    </div>
+  </div>
+  {% endif %}
+</div>

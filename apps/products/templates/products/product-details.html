@@ -5,7 +5,7 @@
 {% load static %}
 
 <!-- block title for page -->
-{% block title %} Product Details || MacBook Pro Book {% endblock %}
+{% block title %} Product Details -> {{ product.name }} {% endblock %}
 
 <!-- main content -->
 {% block content %}
@@ -17,10 +17,16 @@
       <div class="container-left-img-product-details-- flex-1/2 h-1/5">
         <div class="img-container-product- w-full">
           <div class="img-big-top--" id="product-view">
-            <img src="" alt="MacBook" id="mainImg" />
+            <img
+              class="img-Select"
+              id="first-img"
+              src="{{ product.images.first.image.url }}"
+              alt="{{ product.brand }}"
+            />
           </div>
 
           <div class="container-imgs-product-details-list gap-2">
+            {% for image in product.images.all %}
             <div
               class="img-list-container- img-list-container-activate"
               id="product-img-Select"
@@ -28,50 +34,11 @@
               <img
                 class="img-Select"
                 id="first-img"
-                src="{% static 'images/product/product-d-img.png' %}"
-                alt="MacBook"
+                src="{{ image.image.url }}"
+                alt="{{ product.brand }}"
               />
             </div>
-
-            <div class="img-list-container-" id="product-img-Select">
-              <img
-                class="img-Select"
-                src="{% static 'images/product/product-d-img-1.png' %}"
-                alt="MacBook"
-              />
-            </div>
-
-            <div class="img-list-container-" id="product-img-Select">
-              <img
-                class="img-Select"
-                src="{% static 'images/product/product-d-img-2.png' %}"
-                alt="MacBook"
-              />
-            </div>
-
-            <div class="img-list-container-" id="product-img-Select">
-              <img
-                class="img-Select"
-                src="{% static 'images/product/product-d-img-3.png' %}"
-                alt="MacBook"
-              />
-            </div>
-
-            <div class="img-list-container-" id="product-img-Select">
-              <img
-                class="img-Select"
-                src="{% static 'images/product/product-d-img-4.png' %}"
-                alt="MacBook"
-              />
-            </div>
-
-            <div class="img-list-container-" id="product-img-Select">
-              <img
-                class="img-Select"
-                src="{% static 'images/product/product-d-img-5.png' %}"
-                alt="MacBook"
-              />
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -136,131 +103,173 @@
           </div>
 
           <div class="container-main-articles pb-7">
-            <p class="product-name">
-              2020 Apple MacBook Pro with Apple M1 Chip (13-inch, 8GB RAM, 256GB
-              SSD Storage) - Space Gray
-            </p>
+            <p class="product-name">{{ product.name }}</p>
 
             <div class="container-product-details flex justify-between mt-5">
               <div
                 class="container-left-container-- flex-1/2 text-left flex justify-between gap-3 flex-col"
               >
-                <p>Sku: <span>A264671</span></p>
-                <p>Brand: <span>Apple</span></p>
+                <p>Sku: <span>{{ product.sku }}</span></p>
+                <p>Brand: <span>{{ product.brand }}</span></p>
               </div>
 
               <div
                 class="container-right- flex-1/2 text-left flex justify-between gap-3 flex-col"
               >
-                <p>Availability: <span class="stock">In Stock</span></p>
-                <p>Category: <span>Electronics Devices</span></p>
+                <p>
+                  Availability: {% if variant.availability == 'In Stock' %}
+                  <span class="stock">{{ variant.availability }}</span>
+                  {% elif variant.availability == 'Out of Stock' %}
+                  <span class="out-of-stock">{{ variant.availability }}</span>
+                  {% else %}
+                  <span class="low-stock">{{ variant.availability }}</span>
+                  <!-- ends if statement -->
+                  {% endif %}
+                </p>
+
+                <p>Category: <span>{{ product.category.first.name }}</span></p>
               </div>
             </div>
 
             <div class="container-prices-status mt-7 flex justf-start">
               <p class="price">
-                <strong><span class="discount-price">$2,300</span></strong>
-                <span class="normal-price mr-3">$1999.00</span>
+                <strong
+                  ><span class="discount-price"
+                    >${{ product.base_price }}</span
+                  ></strong
+                >
+                {% if product.discount_price %}
+                <span class="normal-price">${{ product.discount_price }}</span>
+                {% endif %}
               </p>
-              <p class="off-price-product-details">21% OFF</p>
+
+              <div class="price-product-details ml-3">
+                {% if badges.is_active %}
+                <!-- checking badge type -->
+                {% if badges.bade_type == 'sold_out' %}
+                <p class="sold-out-detail">
+                  {{ badges.get_bade_type_display }}
+                </p>
+
+                <!-- off price -->
+                {% elif badges.bade_type == 'off-price' %}
+                <p class="off-price-detail">
+                  {{ badges.get_bade_type_display }}
+                </p>
+
+                <!-- hot -->
+                {% elif badges.bade_type == 'hot' %}
+                <p class="hot-detail">{{ badges.get_bade_type_display }}</p>
+
+                <!-- best deal -->
+                {% elif badges.bade_type == 'best_deal' %}
+                <p class="best_deal-detail">
+                  {{ badges.get_bade_type_display }}
+                </p>
+
+                <!-- sale -->
+                {% elif badges.bade_type == 'sale' %}
+                <p class="sale-detail">{{ badges.get_bade_type_display }}</p>
+
+                <!-- new -->
+                {% elif badges.bade_type == 'new' %}
+                <p class="new-detail">{{ badges.get_bade_type_display }}</p>
+
+                {% endif %}
+                <!-- ends -->
+                {% endif %}
+              </div>
             </div>
           </div>
 
           <div class="container-product-select-type w-full">
-            <form action="#" class="w-full">
-              <div
-                class="container-input-select-p-t flex justify-between gap-10"
-              >
-                <div class="flex-1/2 flex justify-between flex-col gap-3">
-                  <div class="select-control w-full">
-                    <label class="block">Color</label>
+            <div class="container-input-select-p-t flex justify-between gap-10">
+              <div class="flex-1/2 flex justify-between flex-col gap-3">
+                <div class="select-control w-full">
+                  <label class="block">Color</label>
 
-                    <div class="flex justify-start gap-4">
-                      <div class="color-input">
-                        <input
-                          type="color"
-                          name="product-color"
-                          id="product-color"
-                        />
-                      </div>
+                  <div class="flex justify-start gap-4">
+                    <div class="color-input">
+                      <input
+                        type="color"
+                        name="product-color"
+                        id="product-color"
+                      />
+                    </div>
 
-                      <div class="color-input">
-                        <input
-                          type="color"
-                          name="product-color"
-                          id="product-color"
-                        />
-                      </div>
+                    <div class="color-input">
+                      <input
+                        type="color"
+                        name="product-color"
+                        id="product-color"
+                      />
                     </div>
                   </div>
-
-                  <div class="select-control w-full">
-                    <label for="select-product" class="block">Memory</label>
-                    <select
-                      name="select-product"
-                      id="select-product"
-                      class="w-full"
-                    >
-                      <option value="Most Popular">16GB unified memory</option>
-                    </select>
-                  </div>
                 </div>
 
-                <div class="flex-1/2 flex justify-between flex-col gap-3">
-                  <div class="select-control w-full">
-                    <label for="select-product" class="block">Size</label>
-                    <select
-                      name="select-product"
-                      id="select-product"
-                      class="w-full"
-                    >
-                      <option value="Most Popular">
-                        14-inch Liquid Retina XDR display
-                      </option>
-                    </select>
-                  </div>
+                {% if form.memory.value %}
+                <div class="select-control w-full">
+                  <label for="select-product" class="block">Memory</label>
 
-                  <div class="select-control w-full">
-                    <label for="select-product" class="block">Storage</label>
-                    <select
-                      name="select-product"
-                      id="select-product"
-                      class="w-full"
-                    >
-                      <option value="Most Popular">1TV SSD Storage</option>
-                    </select>
-                  </div>
+                  {{ form.memory }}
                 </div>
+                {% endif %}
               </div>
 
-              <div
-                class="container-btn-product-details flex justify-between gap-2 mt-8"
-              >
-                <div class="container-product-amount flex justify-center">
-                  <button class="btn-decrement" id="btn-decrement">-</button>
-                  <input
-                    type="text"
-                    name="quantity"
-                    id="quantity-input"
-                    class="input-number outline-none"
-                    value="1"
-                    disabled
-                  />
-                  <button class="btn-increment" id="btn-increment">+</button>
+              <div class="flex-1/2 flex justify-between flex-col gap-3">
+                {% if form.size.value %}
+                <div class="select-control w-full">
+                  <label for="select-product" class="block">Size</label>
+
+                  {{ form.size }}
                 </div>
+                {% endif %}
 
-                <button class="p-2 add-to-cart_btn flex justify-center w-full">
-                  <img
-                    src="{% static 'images/svg/shoppingcart.svg' %}"
-                    alt="shoppingcart"
-                    width="20"
-                  />
-                  <span class="h-full">Add to card</span>
-                </button>
+                <!-- storage spec -->
+                {% if form.memory.value %}
+                <div class="select-control w-full">
+                  <label for="select-product" class="block">Storage</label>
 
-                <button class="btn-by-now">Buy now</button>
+                  {{ form.memory }}
+                </div>
+                {% endif %}
               </div>
-            </form>
+            </div>
+
+            <div
+              class="container-btn-product-details flex justify-between gap-2 mt-8"
+            >
+              <!-- for cart product quantity -->
+              <div class="container-product-amount flex justify-center">
+                <button class="btn-decrement" id="btn-decrement">-</button>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity-input"
+                  class="input-number outline-none"
+                  value="1"
+                  disabled
+                />
+                <button class="btn-increment" id="btn-increment">+</button>
+              </div>
+
+              <!-- button for adding items to cart -->
+              <button class="p-2 add-to-cart_btn flex justify-center w-full">
+                <img
+                  src="{% static 'images/svg/shoppingcart.svg' %}"
+                  alt="shoppingcart"
+                  width="20"
+                />
+                <span
+                  class="h-full"
+                  id="add-to-cart_btn"
+                  data-product-id="{{ product.id }}"
+                  >Add to card</span
+                >
+              </button>
+
+              <button class="btn-by-now">Buy now</button>
+            </div>
 
             <div
               class="container-btn-wishlist-compare mt-5 w-full flex justify-between"
@@ -268,7 +277,8 @@
               <div class="container-left-btn-p-l flex justify-start gap-5">
                 <div class="wishlist">
                   <button
-                    class="w-full cursor-pointer flex justify-start gap-1"
+                    class="w-full cursor-pointer flex justify-start gap-1 add-to-wishlist"
+                    data-product-id="{{ product.id }}"
                   >
                     <svg
                       fill="#475156"
@@ -289,7 +299,8 @@
 
                 <div class="wishlist">
                   <button
-                    class="w-full cursor-pointer flex justify-start gap-1"
+                    class="w-full cursor-pointer flex justify-start gap-1 add-to-compare"
+                    data-product-id="{{ product.id }}"
                   >
                     <svg
                       width="20"
@@ -430,23 +441,9 @@
         <div class="articles-product-description flex justify-between">
           <div class="articles-wrapper">
             <strong>Description</strong>
-            <p>
-              The most powerful MacBook Pro ever is here. With the blazing-fast
-              M1 Pro or M1 Max chip — the first Apple silicon designed for pros
-              — you get groundbreaking performance and amazing battery life. Add
-              to that a stunning Liquid Retina XDR display, the best camera and
-              audio ever in a Mac notebook, and all the ports you need. The
-              first notebook of its kind, this MacBook Pro is a beast. M1 Pro
-              takes the exceptional performance of the M1 architecture to a
-              whole new level for pro users.
-            </p>
-
-            <p>
-              Even the most ambitious projects are easily handled with up to 10
-              CPU cores, up to 16 GPU cores, a 16‑core Neural Engine, and
-              dedicated encode and decode media engines that support H.264,
-              HEVC, and ProRes codecs.
-            </p>
+            {% if product.description %}
+            <p>{{ product.description }}</p>
+            {% endif %}
           </div>
 
           <div class="articles-wrapper">
@@ -488,7 +485,7 @@
     </div>
 
     <div class="suggested-product mt-20">
-      {% include 'products/quick-product-list.html' %}
+      {% include 'products/quick_related_product_list.html' %}
     </div>
   </div>
 </div>

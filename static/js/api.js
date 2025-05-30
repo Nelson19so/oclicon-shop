@@ -1,17 +1,35 @@
+// Get CSRF token from meta tag
+function getCSRFToken() {
+  return document
+    .querySelector('meta[name="csrf-token"]')
+    ?.getAttribute("content");
+}
+
 // add product to comparison
 $(document).ready(function () {
   $(".add-to-compare").click(function () {
     const productId = $(this).data("product-id");
 
     $.ajax({
-      url: `/compare/add/${productId}/`,
-      type: "GET",
-      // if the data is successfully added to comparison
+      url: `/home/compare/add/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
+
+      // if the process went successful
       success: function (data) {
-        // shows the new compare count in the page
-        $("compare-count").text(data.count);
-        // displays toast for is successfully added
+        $(".compare-count").text(data.count);
         showToast("Item added to comparison");
+      },
+
+      // if the process didn't go successful
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
       },
     });
   });
@@ -23,12 +41,117 @@ $(document).ready(function () {
     const productId = $(this).data("product-id");
 
     $.ajax({
-      url: `/compare/remove/${productId}/`,
-      type: "GET",
+      url: `/home/compare/add/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
       // if the data is successfully deleted
       success: function (data) {
         // reload the page to reflect data
+        // location.reload();
+
+        // display message from the server to th UI
+        showToast(data);
+      },
+
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
+      },
+    });
+  });
+});
+
+// add product to wishlist ---
+$(document).ready(function () {
+  $(".add-to-wishlist").click(function () {
+    const productId = $(this).data("product-id");
+
+    $.ajax({
+      url: `/home/wishlist/add/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
+
+      // if the process went successful
+      success: function (data) {
+        $(".compare-count").text(data.count);
+        showToast("Item added to wishlist");
+      },
+
+      // if the process didn't go successful
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
+      },
+    });
+  });
+});
+
+// removing product from wishlist
+$(document).ready(function () {
+  $(".remove-from-wishlist").click(function () {
+    const productId = $(this).data("product-id");
+
+    $.ajax({
+      url: `/home/wishlist/remove/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
+
+      // if the process went successful
+      success: function (data) {
+        $(".compare-count").text(data.count);
+        showToast("Item added to wishlist");
         location.reload();
+      },
+
+      // if the process didn't go successful
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
+      },
+    });
+  });
+});
+
+// creating or adding product to cart list ---
+$(document).ready(function () {
+  $("#add-to-cart_btn").click(function () {
+    const productId = $(this).data("product-id");
+
+    $.ajax({
+      url: `/home/cart/add/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
+
+      // if the process went successful
+      success: function (data) {
+        $(".compare-count").text(data.count);
+        showToast("Item added to wishlist");
+      },
+
+      // if the process didn't go successful
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
       },
     });
   });

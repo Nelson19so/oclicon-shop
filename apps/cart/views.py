@@ -7,49 +7,49 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, View
 from django.contrib.sessions.models import Session
 from django.http import HttpResponseNotAllowed
-
-# Create your views here.
+from .forms import *
 
 class CartMixin:
     def cart_item_count(self, request):
         user = request.user
 
         if user.is_authenticated:
-            return CartItem.objects.filter(user=user).count()
+            cart = Cart.objects.get(user=user)
+            return CartItem.objects.filter(cart=cart).count()
         
         if not request.session.session_key:
             return 0
-
-        return CartItem.objects.filter(cart__session__session_key=request.session.session_key).count()
-
+        session = Session.objects.get(session_key=request.session.session_key)
+        cart = Cart.objects.filter(session_id=session)
+        return CartItem.objects.filter().count()
 
     def cart_items_list(self, request):
         user = request.user
-        session_id = request.session.session_key
 
-        if user.is_authenticated:
-            cart = Cart.objects.filter(user=user).first()
-            if cart:
-                return CartItem.objects.filter(cart=cart)
+        try:
+            if user.is_authenticated:
+                cart = Cart.objects.get(user=user)
+
             else:
-                return CartItem.objects.none()
+                if not request.session.session_key:
+                    request.session.create()
+                    
+                session_id = request.session.session_key
+                session = Session.objects.get(session_key=session_id)
 
-        if not session_id:
-            request.session.create()
-            session_id = request.session.session_key
+                cart = Cart.objects.get(session=session)
+        except (Cart.DoesNotExist or Session.DoesNotExist):
+            cart = None
 
-        cart = Cart.objects.filter(session__session_key=session_id).first()
+        return CartItem.objects.filter(cart=cart)
 
-        if cart:
-            return CartItem.objects.filter(cart=cart)
-        else:
-            return CartItem.objects.none()
 
-        
+# create cart item for user and anonymous user
 class CreateCartItem(CartMixin, View):
-    @method_decorator(require_http_methods([require_POST]))
+    @method_decorator([require_POST])
     def post(self, request, *args, **kwargs):
-        product = get_object_or_404(Product, slug=kwargs.get('product_slug'))
+        # filters product for renders 404 if the id does not exist
+        product = get_object_or_404(Product, id=kwargs.get('product_id'))
         user = request.user
 
         if user.is_authenticated:
@@ -67,16 +67,18 @@ class CreateCartItem(CartMixin, View):
                 session_id = request.session.session_key
 
             session = Session.objects.get(session_key=session_id)
-            cart, created = Cart.objects.get_or_create(session=session)
-            cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+            cart, created = Cart.objects.get(session=session)
+            cart_item, created = CartItem.objects.get(product=product, cart=cart)
 
             if not created:
                 cart_item.quantity = 1
                 cart_item.save()
 
+        cart_count = self.cart_item_count(request)
+        
         return JsonResponse({
             'status': 'success',
-            'count': self.cart_item_count(request)
+            'count': cart_count
         })
 
 class RemoveItemFromCart(View):
@@ -104,7 +106,7 @@ class RemoveItemFromCart(View):
 
 class CartItemListView(CartMixin, ListView):
     template_name = "cart/cart.html"
-    context_object_name = "cart"
+    context_object_name = "carts"
 
     def get_queryset(self):
         return self.cart_items_list(self.request)
@@ -126,40 +128,46 @@ def update_cart_quantities(request):
     user = request.user
 
     if user.is_authenticated:
-        cart = Cart.objects.filter(user=user).first()
+        cart = Cart.objects.get(user=user)
     else:
-        session_id = request.session.session_key
         if not session_id:
             request.session.create()
-            session_id = request.session.session_key
-        cart = Cart.objects.filter(session=session_id).first()
+        session_id = request.session.session_key
+        session = Session.objects.get(session_key=session_id)
+        cart = Cart.objects.filter(session=session)
 
     if not cart:
         return redirect('cart_list')
 
+    item_ids = request.POST.getlist('item_ids')
+
     # Loop through posted quantities
-    for item_id, quantity in request.POST.items():
+    for item_id in item_ids:
+        quantity = request.POST.get(f'quantity_{item_id}')
+
         try:
             quantity = int(quantity)
-            quantity = quantity
-            cart_item = CartItem.objects.filter(id=item_id, cart=cart)
+            cart_item = CartItem.objects.get(id=item_id, cart=cart)
             cart_item.quantity = quantity
             cart_item.save()
-        except:
-            pass
+        except (ValueError, CartItem.DoesNotExist):
+            # skip invalid entries silently
+            continue
 
     return redirect('cart_list')
 
 # product wishlist view create
 class WishListProductCreate(View):
-    @method_decorator(require_http_methods(["POST"]))
+    @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         user = request.user
         session_id = request.session.session_key
-        product_slug = kwargs.get('product_id')
+        product_id = kwargs.get('product_id')
 
-        product = get_object_or_404(Product, slug=product_slug)
+        # filters product or 404 if not found
+        product = get_object_or_404(Product, id=product_id)
 
+        # checks if user is authenticated
         if user.is_authenticated:
             exists = WishlistProduct.objects.filter(user=user, product=product).exists()
             if not exists:
@@ -178,37 +186,76 @@ class WishListProductCreate(View):
             'message': 'Added item to wishlist'
         })
 
+# removes items from wishlist
 class RemoveItemFromWishlist(View):
     @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
-        product = get_object_or_404(Product, slug=kwargs.get('product_id'))
+        # getting the product id
+        product = get_object_or_404(Product, id=kwargs.get('product_id'))
+        # requesting for the authenticated user 
         user = request.user
+        # filters session id for anonymous user session
+        session_id = request.session.session_key
 
+        # checks if user is authenticated
         if user.is_authenticated:
+            # filters wishlist product for the user and also the product with the id and delete
             WishlistProduct.objects.filter(user=user, product=product).delete()
+        # if not authenticated user, then anonymous users
         else:
-            session_id = request.session.session_key
-            WishlistProduct.objects.filter(session=session_id, product=product).delete()
+            # if not session id
+            if not session_id:
+                # creating new session
+                request.session.create()
+            # getting anonymous user session
+            session = Session.objects.get(session_key=session_id)
+            # deleting session for anonymous user
+            WishlistProduct.objects.filter(session=session, product=product).delete()
 
+        # returns Json message if success
         return JsonResponse({
             'status': 'success',
             'message': 'Product removed from wishlist'
         })
 
+# wishlist page view
 def wish_list_view(request):
+    # request for authenticated user
     user = request.user
-    session_id = request.session.session_key
+    wishlists = []
     
+    # if user is authenticated
     if user.is_authenticated:
-        wishlist = WishlistProduct.objects.filter(user=user)
-    if not session_id:
-        request.session.create()
+        # filters wishlist product for user
+        wishlists = WishlistProduct.objects.filter(user=user)
+
+    # else if not authenticated and no session id for anonymous user 
+    else:
+        if not request.session.session_key:
+            # creating new session for user
+            request.session.create()
+            
+        # request for user session
         session_id = request.session.session_key
-    wishlist = WishlistProduct.objects.filter(session=session_id)
+        
+        try:
+            # getting session for anonymous user
+            session = Session.objects.get(session_key=session_id)
+            
+            # filtering wishlist for anonymous user
+            wishlists = WishlistProduct.objects.filter(session=session)
+        except Session.DoesNotExist:
+            wishlists = []
     
+    # builds breadcrumbs for user
     breadcrumbs = [
         ('Wishlist', request.path)
     ]
     
-    context = {"wishlist": wishlist, "user": user, 'breadcrumbs': breadcrumbs}
+    # renders context processor for use in the UI
+    context = {
+        "wishlists": wishlists, 
+        "user": user, 
+        'breadcrumbs': breadcrumbs,
+    }
     return render(request, 'cart/wishlist.html', context)

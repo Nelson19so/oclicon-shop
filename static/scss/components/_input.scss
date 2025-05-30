@@ -261,7 +261,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
-input[type="datetime"] {
+input[type="datetime"],
+input[type="number"] {
   border-radius: 2px;
   border-width: 1px;
   border: 1px solid variables.$Gray-100;
@@ -275,6 +276,11 @@ input[type="datetime"] {
   -webkit-appearance: none;
   background-size: 24px;
   width: 100%;
+}
+
+// disabled input
+.disabled-input {
+  background-color: variables.$Gray-50 !important;
 }
 
 .wrong_input_field {

@@ -274,7 +274,7 @@ nav /** main page navbar **/ {
 
         .container-cart-box {
           position: relative;
-          z-index: 21313;
+          z-index: 888888;
 
           &:hover {
             .container-mini-cart {
@@ -284,7 +284,7 @@ nav /** main page navbar **/ {
 
           .container-mini-cart {
             display: none;
-            z-index: 4442424;
+            z-index: 8888;
           }
         }
       }
@@ -395,8 +395,8 @@ nav /** main page navbar **/ {
                   }
 
                   .parent-container-nav-inner {
-                    top: -89px;
-                    // top: 0;
+                    // top: -89px;
+                    top: -13px;
                     right: -5px;
                     opacity: 0;
                     transition: 0.4s;

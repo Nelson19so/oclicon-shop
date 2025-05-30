@@ -172,6 +172,11 @@
         display: flex;
         justify-content: space-between;
 
+        a {
+          display: block;
+          max-width: fit-content;
+        }
+
         @media (max-width: 992px) {
           display: block;
         }
@@ -265,6 +270,11 @@
 
       .container-computer_accessories-padder-product {
         width: 100%;
+
+        a {
+          display: block;
+          max-width: fit-content;
+        }
 
         @media (max-width: 992px) {
           flex-direction: column-reverse;

@@ -66,3 +66,7 @@ class BlogPostComment(models.Model):
 
     def __str__(self):
         return self.user
+
+
+    
+    

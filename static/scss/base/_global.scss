@@ -8,6 +8,7 @@ html {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: variables.$White-100;
 }
 
 *,
@@ -32,3 +33,8 @@ a strong {
   list-style: none;
   color: variables.$Gray-900;
 }
+
+// a {
+//   display: block;
+//   max-width: fit-content;
+// }
