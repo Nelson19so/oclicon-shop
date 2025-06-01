@@ -54,7 +54,7 @@
             <p class="order-id">#{{ order.order_id }}</p>
           </td>
           <td>
-            <p class="status status-progress">{{ order.status }}</p>
+            <p class="status status-progress">{{ order.get_status_display }}</p>
           </td>
           <td><p class="date">{{ order.created_at }}</p></td>
           <td>

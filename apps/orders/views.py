@@ -18,9 +18,11 @@ def track_order(request):
     
     # Handles post request from users
     if request.method == "POST":
+
         # checks if user is authenticated
         if user.is_authenticated:
             form = TrackOrderForm(request.POST)
+
             # checks if form is valid
             if form.is_valid():
                 # getting the order id from the data submit by the user
@@ -28,6 +30,7 @@ def track_order(request):
                 
                 # redirect user to the order details page with the order id provided by user
                 return redirect('order_details', order_id=order_id)
+
         # if user is not authenticated
         else:
             # redirect users to login
@@ -39,7 +42,7 @@ def track_order(request):
     breadcrumbs = [
         ('Track Order', request.path)
     ]
-    
+
     # context for use in template
     context = {"form": form, 'breadcrumbs': True, 'breadcrumbs': breadcrumbs}
     # renders template with context
@@ -130,7 +133,8 @@ class CheckoutOrderViewCreate(View):
         order.total_amount = total_amount
         order = order.save()
 
-        cart_items.delete()  # Optionally clear the cart
+        # delete all cart item after order is placed
+        cart_items.delete() 
 
         # request.session['order_id'] = order.id
         # request.session['order_placed_success'] = True
