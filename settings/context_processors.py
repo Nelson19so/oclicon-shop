@@ -32,39 +32,50 @@ def active_ads(request):
 def navbar_cart_display_list(request):
     # requesting for authenticated user
     user = request.user
+    cart = None
+    total_cart_price = 0
+    cart_items = []
 
-    try:
-        # checks if user is authenticated
-        if user.is_authenticated:
-            # filters cart item for authenticated user
+    # if user.is_authenticated:
+
+
+    # checks if user is authenticated
+    if user.is_authenticated:
+        try:
+            # cart total price
             cart = Cart.objects.get(user=user)
-
-            # then filters cart item for user cart
-            cart_items = CartItem.objects.filter(cart=cart)[:3]
-        
-        else:
-            # if theres no session for anonymous user
-            if not request.session.session_key:
-                # creating new session for anonymous user
-                request.session.create()
-    
-            # requesting for anonymous user session
-            session_key = request.session.session_key
+            total_cart_price = cart.total_price()
             
-            # getting session for anonymous user
-            session = Session.objects.get(session_key=session_key)
-            # tries to get data for anonymous user session
-            cart = Cart.objects.get(session_id=session)
-            # getting cart item for the session cart
-            cart_items = CartItem.objects.filter(cart=cart)[:3]
+            if user.is_authenticated:
+                # filters cart item for authenticated user
+                cart = Cart.objects.get(user=user)
 
-    # if cart does not exist
-    except (Cart.DoesNotExist or Session.DoesNotExist):
-        # returns empty tuple to avoid conflict
-        cart_items = []
+                # then filters cart item for user cart
+                cart_items = CartItem.objects.filter(cart=cart)[:2]
+        
+            else:
+                # if theres no session for anonymous user
+                if not request.session.session_key:
+                    # creating new session for anonymous user
+                    request.session.create()
+        
+                # requesting for anonymous user session
+                session_key = request.session.session_key
+                
+                # getting session for anonymous user
+                session = Session.objects.get(session_key=session_key)
+                # tries to get data for anonymous user session
+                cart = Cart.objects.get(session_id=session)
+                # getting cart item for the session cart
+                cart_items = CartItem.objects.filter(cart=cart)[:2]
+
+        # if cart does not exist
+        except (Cart.DoesNotExist or Session.DoesNotExist):
+            # returns empty tuple to avoid conflict
+            cart_items = []
 
     # returns the cart item for use.
-    return {'cart_items': cart_items}
+    return {'cart_items': cart_items, 'total_cart_price': total_cart_price}
 
 # breadcrumbs 
 # not yet in settings.py context processor

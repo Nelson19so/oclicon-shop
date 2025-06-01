@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.conf import settings
 from apps.products.models import Product, Category
+from django.utils import timezone
 
 # Create your models here.
 
@@ -44,20 +45,21 @@ class CustomUser(AbstractUser):
 class ProfilePicture(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     profile = models.ImageField(upload_to='profile', blank=False, null=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.user.Name}"
 
 class UserStatus(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    is_verified = models.BooleanField(default=False)
-    is_banned = models.BooleanField(default=False)
-    ban_reason = models.TextField(max_length=500)
+    is_verified = models.BooleanField(default=False, blank=True, null=True)
+    is_banned = models.BooleanField(default=False, blank=True, null=True)
+    ban_reason = models.TextField(max_length=500, blank=True, null=True)
+    date_status = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.Name}"
-    
+
 # vendor
 class UserVendor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

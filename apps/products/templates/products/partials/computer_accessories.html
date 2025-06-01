@@ -13,14 +13,19 @@
 
       <div class="container-right-header flex justify-end gap-5">
         <!-- checks for computer accessories -->
-        {% if computer_category %}
         <ul class="flex justify-end gap-3">
-          <!-- children category -->
-          {% for child in computer_category.children.all %}
-          <li><a class="cursor-pointer">{{ child.name }}</a></li>
+          {% for child in child_categories %}
+          <li>
+            <a
+              class="cursor-pointer computer_acc_category_child"
+              data-category_child="{{ child.name }}"
+              >{{ child.name }}</a
+            >
+          </li>
+          {% empty %}
+          <p>No product found</p>
           {% endfor %}
         </ul>
-        {% endif %}
 
         <!-- for all category -->
         {% for category_all in categories %}

@@ -17,7 +17,7 @@ urlpatterns = [
     path('faqs/', frequently_asked_question, name='faqs'),
     path('customersupport/', customer_support, name="customersupport"),
     path('blog/', blog, name='blog'),
-    path('blog/blog_details/', blog_details, name='blog_details'),
+    path('blog/blog_details/<int:id>', blog_details, name='blog_details'),
 ]
 
 handler404 = page_not_found

@@ -16,16 +16,16 @@
         <div class="wrapper-order-details--">
           <div class="top-container-product-order-details w-full">
             <div class="left-container-left-order-details">
-              <h5>#96459761</h5>
+              <h5>#{{ order.order_id }}</h5>
 
               <p>
-                <span>4 Products</span> <span>.</span>
-                <span>Order Placed in 17 Jan, 2021 at 7:32 PM</span>
+                <span>{{ order.total_product }}</span> <span>.</span>
+                <span>Order Placed in {{ order.created_at }}</span>
               </p>
             </div>
 
             <div class="right-container-left-order-details">
-              <p>$1199.00</p>
+              <p>${{ order.total_amount }}</p>
             </div>
           </div>
         </div>

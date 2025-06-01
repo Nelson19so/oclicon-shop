@@ -2,6 +2,7 @@ from django.db import models
 from apps.products.models import Product
 from django.conf import settings
 from django.contrib.sessions.models import Session
+from decimal import Decimal
 
 # cart
 class Cart(models.Model):
@@ -11,6 +12,12 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart {self.id}"
+    
+    def total_price(self):
+        total = Decimal('0.00')
+        for item in self.cartitem_set.all():
+            total += item.product.base_price * item.quantity
+        return total
 
 # cart item
 class CartItem(models.Model):
@@ -28,7 +35,7 @@ class CartItem(models.Model):
     
     # sub total price
     @property
-    def total_price(self):
+    def sub_total_price(self):
         return self.product.base_price * self.quantity
 
 # wishlist product model

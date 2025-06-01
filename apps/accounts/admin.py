@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, ProfilePicture, AdditionalUserInfo, BillingAddress
+from .models import CustomUser, ProfilePicture, AdditionalUserInfo, BillingAddress, UserStatus
 from django.utils.translation import gettext_lazy as _
 
 # custom user
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('Name', 'email', 'is_staff', 'is_active')
-    list_filter = ('is_staff', 'is_superuser', 'is_active')
+    list_display = ('Name', 'email', 'is_staff', 'is_active', 'date_joined')
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'date_joined')
     readonly_fields = ('pk', 'date_joined', 'last_login')
 
     fieldsets = (
@@ -50,10 +50,10 @@ class AdditionalUserInfoAdmin(admin.ModelAdmin):
 @admin.register(ProfilePicture)
 class ProfilePicture(admin.ModelAdmin):
     fields = ('user', 'profile')
-    list_display = ('user', 'profile')
-    list_filter = ('user', 'profile')
+    list_display = ('user', 'profile', 'updated_at')
+    list_filter = ('user', 'profile', 'updated_at')
     readonly_fields = ['updated_at']
-    search_fields= ['user']
+    search_fields = ['user']
 
 @admin.register(BillingAddress)
 class BillingAddress(admin.ModelAdmin):
@@ -77,3 +77,11 @@ class BillingAddress(admin.ModelAdmin):
         'email'
     )
     readonly_fields = ('id', 'updated_at')
+
+@admin.register(UserStatus)
+class UserStatusAdmin(admin.ModelAdmin):
+    fields = ('user', 'is_verified', 'is_banned', 'ban_reason')
+    list_display = ('user', 'is_verified', 'is_banned', 'date_status')
+    list_filter = ('user', 'is_verified', 'is_banned', 'date_status')
+    search_fields = ['user']
+    readonly_fields = ['date_status']

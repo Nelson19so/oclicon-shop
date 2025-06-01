@@ -8,7 +8,9 @@ from django.views.generic import ListView, DetailView, View
 from django.contrib.sessions.models import Session
 from django.http import HttpResponseNotAllowed
 from .forms import *
+from django.utils import timezone
 
+# cart mixin for all cart product
 class CartMixin:
     def cart_item_count(self, request):
         user = request.user
@@ -117,9 +119,22 @@ class CartItemListView(CartMixin, ListView):
         ]
         return breadcrumbs
     
+    # get total price
+    def get_total_price(self, request):
+        cart = 0
+
+        if request.user.is_authenticated:
+            try:
+                cart = Cart.objects.get(user=request.user)
+                cart = cart.total_price()
+            except Cart.DoesNotExist:
+                pass
+        return cart
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['breadcrumbs'] = self.get_breadcrumbs()
+        context['total_price'] = self.get_total_price(self.request)
         return context
 
 # update cart product quantity view create
@@ -149,6 +164,7 @@ def update_cart_quantities(request):
             quantity = int(quantity)
             cart_item = CartItem.objects.get(id=item_id, cart=cart)
             cart_item.quantity = quantity
+            cart_item.updated_at = timezone.now()
             cart_item.save()
         except (ValueError, CartItem.DoesNotExist):
             # skip invalid entries silently

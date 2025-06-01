@@ -372,45 +372,46 @@
             <p class="whitespace-nowrap">Order Summery</p>
           </div>
 
+          {% if cart_items %}
           <div class="container-product-order flex justify-between flex-col">
-            <a href="#">
-              <div class="container-product-main flex justify-between">
-                <div class="container-img min-w-[70px]">
+            {% for cart_item in cart_items %}
+            <a
+              href="{% url 'product_details' category_slug=cart_item.product.category.first.slug child_slug=cart_item.product.category.last.slug product_slug=cart_item.product.slug %}"
+            >
+              <div class="container-product-container" style="margin: 10px 0">
+                <div class="container-img">
                   <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
-                    width="80"
+                    src="{{ cart_item.product.images.first.image.url }}"
+                    alt="{{ cart_item.product.brand }}"
                   />
                 </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
-                    Sport Earbuds Wireless Earphones Bluetooth In Ear
-                  </p>
-                  <h6 class="price"><span>1 X</span> $329</h6>
-                </div>
-              </div>
-            </a>
 
-            <a href="#">
-              <div class="container-product-main flex justify-between">
-                <div class="container-img min-w-[70px]">
-                  <img
-                    src="{% static 'images/product/p5controllerImage.png' %}"
-                    alt="p5Image"
-                    width="80"
-                  />
-                </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
-                    Sport Earbuds Wireless Earphones Bluetooth In Ear
-                  </p>
-                  <h6 class="price"><span>1 X</span> $329</h6>
+                <div class="container-articles--">
+                  <article>
+                    <p class="product-name">{{ cart_item.product.name }}</p>
+
+                    <h6 class="product-price-amount">
+                      <span class="product-amount"
+                        >{{ cart_item.quantity }}x</span
+                      >
+                      $<span id="cart-product-price"
+                        >{{ cart_item.product.base_price }}</span
+                      >
+                    </h6>
+                  </article>
                 </div>
               </div>
             </a>
+            {% endfor %}
           </div>
+          {% else %}
+          <div
+            class="container-doest-not-exist"
+            style="border-bottom: 1px solid #e4e7e9"
+          >
+            <p>No Cart item found</p>
+          </div>
+          {% endif %}
 
           <div
             class="container-checkout-details flex justify-between flex-col gap-2 mt-5"
@@ -439,30 +440,31 @@
           <div class="container-checkout-btn-sub-total">
             <div class="container-txt-subtotal flex justify-between">
               <span>Total</span>
-              <p>$357.99 USD</p>
+              <p>${{ total_cart_price }} USD</p>
             </div>
 
-            <button
-              class="btn-checkout-now w-full mt-3 flex justify-center"
-              onclick="window.location.assign(`{% url 'order_successfully_placed' 4282 %}`)"
-            >
-              Place order
-              <svg
-                class="ml-2"
-                width="16"
-                height="16"
-                viewBox="0 0 48 48"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 0h48v48H0z" fill="none" />
-                <g id="Shopicon">
-                  <polygon
-                    points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
-                    fill="white"
-                  />
-                </g>
-              </svg>
-            </button>
+            <form action="{% url 'order_create' %}" method="post">
+              {% csrf_token %}
+
+              <button class="btn-checkout-now w-full mt-3 flex justify-center">
+                Place order
+                <svg
+                  class="ml-2"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g id="Shopicon">
+                    <polygon
+                      points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                      fill="white"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
       </div>

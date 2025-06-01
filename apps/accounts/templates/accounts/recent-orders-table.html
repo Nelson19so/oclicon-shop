@@ -46,49 +46,73 @@
         <th>Action</th>
       </thead>
 
-      <tbody>
-        <td>
-          <p class="order-id">#96459761</p>
-        </td>
-        <td>
-          <p class="status status-progress">IN PROGRESS</p>
-        </td>
-        <td><p class="date">Dec 30, 2019 05:18</p></td>
-        <td>
-          <p class="total">$1,500 (5 Products)</p>
-        </td>
-        <td>
-          <a href="#">
-            <div class="flex justify-end gap-1">
-              View Details
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3.125 10H16.875"
-                  stroke="#2DA5F3"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M11.25 4.375L16.875 10L11.25 15.625"
-                  stroke="#2DA5F3"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-          </a>
-        </td>
-      </tbody>
+      {% if orders %}
+      <div>
+        {% for order in orders %}
+        <tbody>
+          <td>
+            <p class="order-id">#{{ order.order_id }}</p>
+          </td>
+          <td>
+            <p class="status status-progress">{{ order.status }}</p>
+          </td>
+          <td><p class="date">{{ order.created_at }}</p></td>
+          <td>
+            <p class="total">
+              ${{ order.total_amount }} ({{ order.total_product }})
+            </p>
+          </td>
 
+          <td>
+            <a href="{% url 'order_details' order.order_id %}">
+              <div class="flex justify-end gap-1">
+                View Details
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3.125 10H16.875"
+                    stroke="#2DA5F3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M11.25 4.375L16.875 10L11.25 15.625"
+                    stroke="#2DA5F3"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+        </tbody>
+        {% endfor %}
+      </div>
+      {% else %}
       <tbody>
+        <td>
+          <p class="order-id">--</p>
+        </td>
+        <td>
+          <p class="status status-progress">--</p>
+        </td>
+        <td><p class="date">--</p></td>
+        <td>
+          <p class="total">--</p>
+        </td>
+
+        <td>--</td>
+      </tbody>
+      {% endif %}
+
+      <!-- <tbody>
         <td>
           <p class="order-id">#96459761</p>
         </td>
@@ -128,9 +152,9 @@
             </div>
           </a>
         </td>
-      </tbody>
+      </tbody> -->
 
-      <tbody>
+      <!-- <tbody>
         <td>
           <p class="order-id">#96459761</p>
         </td>
@@ -170,7 +194,7 @@
             </div>
           </a>
         </td>
-      </tbody>
+      </tbody> -->
     </table>
   </div>
 

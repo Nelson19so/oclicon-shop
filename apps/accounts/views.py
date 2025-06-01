@@ -22,8 +22,6 @@ from .forms import (
     UserPasswordChange
 )
 
-# Create your views here.
-
 User = get_user_model()
 
 # registration view set
@@ -31,8 +29,11 @@ def user_registration_view_create(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
 
+        # checks if user form is valid
         if form.is_valid():
+            # saves the user form to the db
             user = form.save()
+            # chooses the user auth method for saving user details
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
 
@@ -197,10 +198,10 @@ def account_dashboard(request):
     ]
 
     # total order filtering for user
-    order = Order.objects.filter(user=user)
-    total_order = order.count()
-    total_pending_order = order.filter(status='PENDING').count()
-    completed_order = order.filter(status='DELIVERED').count()
+    orders = Order.objects.filter(user=user)
+    total_orders = orders.count()
+    total_pending_order = orders.filter(status='PENDING').count()
+    completed_order = orders.filter(status='DELIVERED').count()
 
     # recent searched
     search_product = SearchHistory.objects.filter(user=user).order_by('-searched_at')[:4]
@@ -218,7 +219,8 @@ def account_dashboard(request):
     context = {
         'breadcrumbs': breadcrumbs,
         'user': user,
-        'total_orders': total_order,
+        'orders': orders,
+        'total_orders': total_orders,
         'total_pending_order': total_pending_order,
         'completed_order': completed_order,
         'search_product': search_product,
@@ -231,7 +233,7 @@ def account_dashboard(request):
 # order history page
 @login_required(login_url='login')
 def order_history(request):
-    order = Order.objects.filter(user=request.user)
+    orders = Order.objects.filter(user=request.user)
 
     breadcrumbs = [
         ('User Account', '#/'),
@@ -239,7 +241,7 @@ def order_history(request):
         ('Order History', reverse('order-history'))
     ]
 
-    context = {'breadcrumbs': breadcrumbs, 'order': order}
+    context = {'breadcrumbs': breadcrumbs, 'orders': orders}
 
     return render(request, 'accounts/order-history.html', context)
 

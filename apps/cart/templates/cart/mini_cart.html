@@ -53,24 +53,17 @@
       <div class="checkout-btn--total-padding---">
         <div class="container-sub-totoal">
           <p class="sub-text">Sub-Total:</p>
-          {% if cart_items %}
+
           <h6 class="total-price">
-            ${% for cart_total in cart_items %}<span class="total-sum"
-              >{{ cart_total.total_price }}</span
-            >
-            {% endfor %} USD
-          </h6>
-          {% else %}
-          <h6 class="total-price">
-            $<span class="total-sum">0</span>
+            $<span class="total-sum">{{ total_cart_price }}</span>
             USD
           </h6>
-          {% endif %}
         </div>
 
         <div class="container-btns--">
           <button
             class="btn-Checkout-now flex justify-center gap-3 align-middle"
+            onclick="window.location.assign(`{% url 'checkout' %}`)"
           >
             Checkout now
             <svg

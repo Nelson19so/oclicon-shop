@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import OrderDetails, track_order, checkout_view, successfully_placed_order_view_create
+from .views import OrderDetails, track_order, checkout_view, successfully_placed_order_view_create, CheckoutOrderViewCreate
 
 urlpatterns = [
     path('track_order/', track_order, name='track_order'),
@@ -7,5 +7,6 @@ urlpatterns = [
 
     # checkout
     path('checkout/', checkout_view, name='checkout'),
+    path('order_create/', CheckoutOrderViewCreate.as_view(), name='order_create'),
     path("order_successfully_Placed/<int:order_id>", successfully_placed_order_view_create, name="order_successfully_placed"),
 ]

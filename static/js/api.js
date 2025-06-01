@@ -157,6 +157,30 @@ $(document).ready(function () {
   });
 });
 
+// filters home page computer accessories
+$(document).ready(function () {
+  $(".computer_acc_category_child").click(function () {
+    const category_child = $(this).data("category_child");
+    $.ajax({
+      url: "/home/",
+      type: "GET",
+      data: {
+        category_child: category_child,
+      },
+      success: function (response) {
+        $("#computer-accessories-products").html(response.html);
+      },
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
+      },
+    });
+  });
+});
+
 function showToast(message) {
   // toast notification here
 }

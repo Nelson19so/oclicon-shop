@@ -142,7 +142,7 @@
               </div>
 
               <div class="container-cart-subtotal- items-cart gap-2">
-                <p class="price">${{ cart.total_price }}</p>
+                <p class="price">${{ cart.sub_total_price }}</p>
               </div>
             </div>
             {% endfor %}
@@ -202,7 +202,7 @@
           <div class="container-checkout-btn-sub-total">
             <div class="container-txt-subtotal flex justify-between">
               <span>Total</span>
-              <p>$357.99 USD</p>
+              <p>${{ total_price }} USD</p>
             </div>
 
             <a href="{% url 'checkout' %}">

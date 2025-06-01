@@ -22,7 +22,7 @@ class BillingAddress(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    fields = ('user', 'email', 'total_amount', 'status',)
+    fields = ('user', 'email', 'total_amount', 'status', 'order_id')
     list_display = ('order_id', 'user', 'email', 'status', 'created_at')
     list_filter = ('status', 'created_at')
     search_fields = ('order_id', 'email', 'user__email')
@@ -33,6 +33,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
+    fields = ('product', 'order', 'quantity', 'price')
     list_display = ('product', 'order', 'quantity', 'price')
 
 @admin.register(OrderMessage)

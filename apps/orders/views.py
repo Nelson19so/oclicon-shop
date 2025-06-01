@@ -9,8 +9,9 @@ from apps.cart.models import Cart, CartItem
 from apps.products.models import Product
 from django.urls import reverse
 from datetime import timezone
+from django.contrib.auth.decorators import login_required
 
-# track order page
+# track user order page
 def track_order(request):
     # request for the authenticated user 
     user = request.user
@@ -97,22 +98,22 @@ class OrderDetails(DetailView):
 
 # adding items to order
 class CheckoutOrderViewCreate(View):
-    @method_decorator(require_http_methods(["POST"]))
+    @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         user = request.user
 
         if not user.is_authenticated:
             return redirect('login')
 
-        cart = Cart.objects.filter(user=user).first()
+        cart = Cart.objects.get(user=user)
         # if the cart doesn't exist
         if not cart:
-            return redirect('cart_view')  # or some cart view name
+            return redirect('cart_list')  # or some cart view name
 
         cart_items = CartItem.objects.filter(cart=cart)
         # if cart item doesn't exist
         if not cart_items.exists():
-            return redirect('cart_view')
+            return redirect('cart_list')
 
         order = Order.objects.create(user=user, total_amount=0)
         total_amount = 0
@@ -122,21 +123,24 @@ class CheckoutOrderViewCreate(View):
                 order=order,
                 product=item.product,
                 quantity=item.quantity,
-                price=item.product.price
+                price=item.product.base_price
             )
-            total_amount += item.quantity * item.product.price
+            total_amount += item.quantity * item.product.base_price
 
         order.total_amount = total_amount
         order = order.save()
 
         cart_items.delete()  # Optionally clear the cart
 
-        request.session['order_id'] = order.order_id
-        request.session['order_placed_success'] = True
+        # request.session['order_id'] = order.id
+        # request.session['order_placed_success'] = True
         
-        return redirect('success_checkout', order.order_id)
+        # return redirect('success_checkout', order.id)
+
+        return redirect('checkout')
 
 # checkout view
+@login_required(login_url='login')
 def checkout_view(request):
     breadcrumbs = [
         ('Shopping Cart', reverse('cart_list')),
