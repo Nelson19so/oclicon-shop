@@ -39,14 +39,22 @@ class ProductSpecificationAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ('name', 'brand', 'category', 'base_price', 'discount_price', 'description', 'is_active', 'slug')
-    list_display = ('name', 'brand', 'current_price', 'is_active')
+    fields = (
+        'name', 'brand', 
+        'category', 'base_price', 
+        'discount_price', 'description', 
+        'is_active', 'slug'
+    )
+    list_display = ('name', 'brand', 'current_price', 'is_active', 'average_rating')
     list_filter = ['brand', 'category', 'is_active']
     search_fields = ('name', 'sku', 'description')
     # prepopulated_fields = {'slug': ('name',)}
     exclude = ('slug', 'skull')
     readonly_fields = ('id', 'created_at', 'updated_at', 'slug')
-    inlines = [ProductVariantInline, BadgeInline, ProductImageInLine, ProductSpecificationInline]
+    inlines = [
+        ProductVariantInline, BadgeInline,
+        ProductImageInLine, ProductSpecificationInline
+    ]
 
 @admin.register(ProductColor)
 class ProductColorAdmin(admin.ModelAdmin):
@@ -68,16 +76,30 @@ class BrandAdmin(admin.ModelAdmin):
     exclude = ['slug']
 
 @admin.register(Ad)
-class ADAdmin(admin.ModelAdmin):
-    fields = ('title', 'name', 'description', 'image', 'url', 'position', 'is_active')
-    list_display = ('title', 'name', 'position', 'is_active')
-    list_filter = ('title', 'name', 'position', 'is_active')
+class AdAdmin(admin.ModelAdmin):
+    fields = (
+        'title', 'name', 
+        'description', 'image', 
+        'url', 'position', 
+        'is_active', 'price', 
+        'badge', 'highlight'
+    )
+    list_display = ('name', 'title', 'position', 'is_active')
+    list_filter = ('name', 'title', 'position', 'is_active')
     readonly_fields = ['created_at']
 
 @admin.register(ProductHighlight)
-class ProductFeaturesAdmin(admin.ModelAdmin):
+class ProductHighlightAdmin(admin.ModelAdmin):
     fields = ('product', 'features', 'date_created', 'is_active', 'updated_at')
-    list_display = ('features', 'date_created', 'is_active')
+    list_display = ('product', 'features', 'date_created', 'is_active')
     list_filter = ('features', 'date_created', 'is_active')
     readonly_fields = ('id', 'date_created', 'updated_at')
     search_fields = ['features']
+
+# product rating
+@admin.register(ProductRating)
+class ProductRateAdmin(admin.ModelAdmin):
+    fields = ('user', 'product', 'stars', 'review', 'date_created')
+    list_display = ('user', 'product', 'stars', 'date_created')
+    list_filter = ('user', 'stars', 'date_created')
+    readonly_fields = ('id', 'date_created')

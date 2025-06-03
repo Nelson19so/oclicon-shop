@@ -62,26 +62,27 @@
           <div
             class="container-product-price flex justify-start gap-1 items-compare"
           >
-            <p class="price">${{ wishlist.product.base_price }}</p>
+            <p class="price">
+              {% if wishlist.product.discount_price %}<span
+                class="mr-1 normal-price"
+                >${{ wishlist.product.discount_price }}</span
+              >
+              {% endif %} ${{ wishlist.product.base_price }}
+            </p>
           </div>
 
+          {% with wishlist.product.variant.first as variant %}
           <div class="container-stock-in-product items-compare">
-            {% if wishlist.product.variant.first.availability == 'In Stock' %}
-            <p class="in-stock">
-              {{ wishlist.product.variant.first.availability }}
-            </p>
-            {% elif wishlist.product.variant.first.availability == 'Out of
-            Stock' %}
-            <p class="out-stock">
-              {{ wishlist.product.variant.first.availability }}
-            </p>
+            {% if variant.availability == 'In Stock' %}
+            <p class="in-stock">{{ variant.availability }}</p>
+            {% elif variant.availability == 'Out of Stock' %}
+            <p class="out-stock">{{ variant.availability }}</p>
             {% else %}
-            <p class="low-stock">
-              {{ wishlist.product.variant.first.availability }}
-            </p>
+            <p class="low-stock">{{ variant.availability }}</p>
             <!-- ends if statement -->
             {% endif %}
           </div>
+          {% endwith %}
 
           <div
             class="container-cart-btn-- items-compare flex justify-center gap-3"

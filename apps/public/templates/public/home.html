@@ -16,19 +16,27 @@
   <div class="container-add-padder">
     <!-- ecommerce adds -->
     <div class="container-top-padder w-full flex justify-betwen gap-7">
+      {% if top_ad %}
       <div
         class="container-big-add-left w-full md:flex justify-between overflow-hidden hidden"
       >
         <div
           class="container-inner-sm -container-articles w-1/2 h-full p-6 pt-25 xl:pl-10"
         >
-          <h3>----THE BEST PLACE TO PLAY</h3>
-          <h1 class="text-white">Xbox Consoles</h1>
-          <p>
-            Save up to 50% on select Xbox games. Get 3 months of PC Game Pass
-            for $2 USD.
-          </p>
-          <button class="mt-4 w-1/2 flex justify-center gap-1">
+          {% if top_ad.title %}
+          <h3>----{{ top_ad.title }}</h3>
+          {% endif %}
+
+          <!--  -->
+          {% if top_ad.name %}
+          <h1 class="text-white">{{ top_ad.name }}</h1>
+          {% endif %}
+
+          <!--  -->
+          {% if top_ad.description %}
+          <p>{{ top_ad.description }}</p>
+          {% endif %}
+          <button class="mt-4 w-1/2 flex justify-center btn-primary gap-1">
             Shop now
             <svg
               width="16"
@@ -50,23 +58,47 @@
         <div
           class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
         >
-          <p class="huge-price">$590</p>
+          {% if top_ad.price %}
+          <p class="huge-price">${{ top_ad.price }}</p>
+          {% endif %}
+
           <img
-            src="{% static 'images/adds/Image.png' %}"
+            src="{{ top_ad.image.url }}"
             alt="playstation-5"
             class="bottom-0"
           />
         </div>
       </div>
+      {% else %}
+      <div
+        class="container-big-add-left w-full md:flex justify-between overflow-hidden hidden"
+      >
+        <div
+          class="container-inner-sm -container-articles w-1/2 h-full p-6 pt-25 xl:pl-10"
+        ></div>
+      </div>
+      {% endif %}
 
       <div class="container-small-add-right w-full gap-7">
+        {% if top_right_ad %}
         <div
           class="container-sm-add-sm w-full flex justify-between overflow-hidden"
         >
           <div class="container-inner-sm w-1/2 h-full p-6">
-            <p>Summer Sales</p>
-            <h2 class="text-white">New Google Pixel 6 Pro</h2>
-            <button class="mt-4 w-full flex justify-center gap-1">
+            {% if top_right_ad.title %}
+            <p>{{ top_right_ad.title }}</p>
+            {% endif %}
+
+            <!--  -->
+            {% if top_right_ad.name %}
+            <h2 class="text-white">{{ top_right_ad.name }}</h2>
+            {% endif %}
+
+            <!--  -->
+            {% if top_right_ad.price %}
+            <p>{{ top_right_ad.price }}</p>
+            {% endif %}
+            <button class="mt-4 w-full flex justify-center btn-primary gap-1">
               Shop now
               <svg
                 width="16"
@@ -88,30 +120,44 @@
           <div
             class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
           >
-            <p class="off-percentage">29% OFF</p>
+            <!-- <p class="off-percentage">29% OFF</p> -->
             <img
-              src="{% static 'images/adds/image 5.png' %}"
+              src="{{ top_right_ad.image.url }}"
               alt="phone"
               class="bottom-0"
             />
           </div>
         </div>
+        {% else %}
+        <div
+          class="container-sm-add-sm w-full flex justify-between overflow-hidden"
+        ></div>
+        {% endif %}
 
+        <!--  -->
+        {% if top_right_bottom_ad %}
         <div
           class="container-sm-add-sm w-full flex justify-between overflow-hidden"
         >
           <div class="container-inner-sm w-1/2 h-ful pt-5">
             <img
-              src="{% static 'images/adds/image 4.png' %}"
+              src="{{ top_right_bottom_ad.image.url }}"
               alt="phone"
               class="bottom-0"
             />
           </div>
 
           <div class="container-inner-sm w-1/2 h-full p-6">
-            <h2>Xiaomi FlipBuds Pro</h2>
-            <p>$299 USD</p>
-            <button class="mt-4 w-full flex justify-center gap-1">
+            <!--  -->
+            {% if top_right_bottom_ad.name %}
+            <h2>{{ top_right_bottom_ad.name }}</h2>
+            {% endif %}
+
+            <!--  -->
+            {% if top_right_bottom_ad.price %}
+            <p>${{ top_right_bottom_ad.price }} USD</p>
+            {% endif %}
+            <button class="mt-4 w-full flex justify-center btn-primary gap-1">
               Shop now
               <svg
                 width="16"
@@ -130,6 +176,11 @@
             </button>
           </div>
         </div>
+        {% else %}
+        <div
+          class="container-sm-add-sm w-full flex justify-between overflow-hidden"
+        ></div>
+        {% endif %}
       </div>
     </div>
 
@@ -199,7 +250,7 @@
             <div
               class="container-header-items container-right--- flex justify-end w-1/2 gap-2"
             >
-              <a href="#" class="w-1/2">
+              <a href="{% url 'shop' %}" class="w-1/2">
                 <div class="flex justify-end">
                   <p>Browse All Product</p>
                   <svg
@@ -255,7 +306,7 @@
               Jam-packed with innovation, HomePod mini delivers unexpectedly.
             </p>
 
-            <button class="visit-banner-product mt-5 flex justify-center">
+            <button class="mt-5 flex justify-center btn-primary">
               Shop now
               <svg
                 width="16"
@@ -291,7 +342,7 @@
             <p class="banner-product-description">
               *Data provided by internal laboratories. Industry measurment.
             </p>
-            <button class="visit-banner-product mt-5 flex justify-between">
+            <button class="mt-5 flex justify-between btn-primary">
               Shop now
               <svg
                 width="16"

@@ -13,6 +13,7 @@
 
       <div class="container-right-header flex justify-end gap-5">
         <!-- checks for computer accessories -->
+        {% if child_categories %}
         <ul class="flex justify-end gap-3">
           {% for child in child_categories %}
           <li>
@@ -22,10 +23,11 @@
               >{{ child.name }}</a
             >
           </li>
-          {% empty %}
-          <p>No product found</p>
           {% endfor %}
         </ul>
+        {% else %}
+        <p>No product found</p>
+        {% endif %}
 
         <!-- for all category -->
         {% for category_all in categories %}

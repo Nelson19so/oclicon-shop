@@ -45,7 +45,6 @@ class CartMixin:
 
         return CartItem.objects.filter(cart=cart)
 
-
 # create cart item for user and anonymous user
 class CreateCartItem(CartMixin, View):
     @method_decorator([require_POST])
@@ -83,23 +82,33 @@ class CreateCartItem(CartMixin, View):
             'count': cart_count
         })
 
+# view form removing items from cart list
 class RemoveItemFromCart(View):
     @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         cart_id = kwargs.get('cart_id')
         user = request.user
         session_id = request.session.session_key
+        cart_item = []
+        cart = None
 
         if user.is_authenticated:
-            cart_item = get_object_or_404(CartItem, car__user=user, id=cart_id)
+            cart = Cart.objects.get(user=user)
+
+            if cart:
+                cart_item = get_object_or_404(CartItem, id=cart_id)
 
         else:
             if not session_id:
                 request.session.create()
-                session_id = request.session_key
+            session_id = request.session_key
 
-                cart_item = get_object_or_404(CartItem, car__session=session_id, id=cart_id)
-        
+            session = Session.objects.get(session_key=session_id)
+            cart = Cart.objects.get(session=session)
+
+            if cart:
+                cart_item = get_object_or_404(CartItem, cart=cart, id=cart_id)
+
         cart_item.delete()
 
         return JsonResponse({
@@ -208,8 +217,10 @@ class RemoveItemFromWishlist(View):
     def post(self, request, *args, **kwargs):
         # getting the product id
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
+        
         # requesting for the authenticated user 
         user = request.user
+
         # filters session id for anonymous user session
         session_id = request.session.session_key
 
@@ -217,14 +228,18 @@ class RemoveItemFromWishlist(View):
         if user.is_authenticated:
             # filters wishlist product for the user and also the product with the id and delete
             WishlistProduct.objects.filter(user=user, product=product).delete()
+
         # if not authenticated user, then anonymous users
         else:
             # if not session id
             if not session_id:
+
                 # creating new session
                 request.session.create()
+
             # getting anonymous user session
             session = Session.objects.get(session_key=session_id)
+
             # deleting session for anonymous user
             WishlistProduct.objects.filter(session=session, product=product).delete()
 

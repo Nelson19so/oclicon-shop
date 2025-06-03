@@ -33,7 +33,7 @@ class BlogPost(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.author
+        return f'{self.title} by {self.author.Name}'
 
 # blog post image
 class BlogPostImage(models.Model):
@@ -41,7 +41,7 @@ class BlogPostImage(models.Model):
     image = models.ImageField(upload_to='blogpost/blog-img/%Y/%m/%d/')
 
     def __str__(self):
-        return self.post
+        return self.post.title
 
 # blog post links
 class BlogPostLink(models.Model):
@@ -53,7 +53,7 @@ class BlogPostLink(models.Model):
     link = models.URLField()
 
     def __str__(self):
-        return self.post
+        return self.post.title
 
 # comment for blog post
 class BlogPostComment(models.Model):

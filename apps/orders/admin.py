@@ -23,7 +23,7 @@ class BillingAddress(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     fields = ('user', 'email', 'total_amount', 'status', 'order_id')
-    list_display = ('order_id', 'user', 'email', 'status', 'created_at')
+    list_display = ('order_id', 'user', 'status', 'quantity', 'created_at')
     list_filter = ('status', 'created_at')
     search_fields = ('order_id', 'email', 'user__email')
     date_hierarchy = 'created_at'

@@ -46,7 +46,11 @@
             <div class="container-product-details-cart flex justify-between">
               <div class="container-name-and-img items-cart flex justify-start">
                 <div class="container-btn-remove-cart">
-                  <button class="cursor-pointer">
+                  <button
+                    class="cursor-pointer"
+                    id="remove-cart_btn"
+                    data-product-id="{{ cart.id }}"
+                  >
                     <svg
                       width="20"
                       height="20"
@@ -103,12 +107,28 @@
                   class="container-cart-price-and-stock- flex justify-start gap-3"
                 ></div>
                 <p class="price total-price">
-                  <span>Price: </span> ${{ cart.product.base_price }}
+                  {% if cart.product.discount_price %}<span
+                    class="mr-1 normal-price"
+                    >${{ cart.product.discount_price }}</span
+                  >
+                  {% endif %} ${{ cart.product.base_price }}
                 </p>
                 <p class="price total-price">
-                  <span>Sub-Total: </span> ${{ cart.total_price }}
+                  <span>Sub-Total: </span> ${{ cart.sub_total_price }}
                 </p>
-                <p class="in-stock">in stock</p>
+
+                {% with cart.product.variant.first as variant %}
+                <div>
+                  {% if variant.availability == 'In Stock' %}
+                  <p class="in-stock">{{ variant.availability }}</p>
+                  {% elif variant.availability == 'Out of Stock' %}
+                  <p class="out-stock">{{ variant.availability }}</p>
+                  {% else %}
+                  <p class="low-stock">{{ variant.availability }}</p>
+                  <!-- ends if statement -->
+                  {% endif %}
+                </div>
+                {% endwith %}
               </div>
 
               <div
@@ -121,7 +141,13 @@
                 class="container-stock-in-product items-cart md:flex justify-between"
               >
                 <div class="container-right-cart">
-                  <button class="remove-cart-item">Remove cart</button>
+                  <button
+                    class="remove-cart-item"
+                    id="remove-cart_btn"
+                    data-product-id="{{ cart.id }}"
+                  >
+                    Remove cart
+                  </button>
                 </div>
 
                 <div

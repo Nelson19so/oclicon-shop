@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, ProductVariant, ProductImage, Brand, Category, ProductComparison, Badge
+from .models import Product, ProductVariant, ProductImage, Brand, Category, ProductComparison, Badge, ProductHighlight
 from .forms import ReadOnlyProductSpecificationForm
 from django.views.generic import ListView, DetailView, View, TemplateView
 from django.db.models.functions import Random
@@ -65,6 +65,24 @@ class ProductDetailView(DetailView):
         specification = product.specification.first()
         return ReadOnlyProductSpecificationForm(instance=specification)
     
+    # filter for featured product
+    def featured_product(self):
+        # filters active featured product as well as active product
+        feature_product = ProductHighlight.objects.filter(
+            is_active=True, product__is_active=True
+        ).order_by('?')[:3]
+        return feature_product
+    
+    def product_accessories(self):
+        product_accessories = []
+        
+        # filters product for product accessories
+        product_accessories = Product.objects.filter(
+            is_active=True,
+            category__name__in=['Mobile Accessories', 'Computer Accessories']
+        ).order_by('?')[:3]
+        return product_accessories
+    
     # getting additional information for product to use in the template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -74,6 +92,8 @@ class ProductDetailView(DetailView):
         context['badges'] = product.product_badge.first()
         context['form'] = self.get_product_specification()
         context['related_products'] = self.get_related_product()
+        context['feature_products'] = self.featured_product()
+        context['product_accessories'] = self.product_accessories()
         return context
 
 # shop page for filtering and searching all kinds of product that exist in shop
@@ -153,6 +173,16 @@ class FilteredProductListView(ListView):
 
         return breadcrumbs
 
+    # for showing user active filters in shop page
+    def show_category(self):
+        # filters category slug
+        category_slug = self.kwargs.get('category_slug')
+
+        # checks if category exist
+        if category_slug:
+            return Category.objects.get(slug=category_slug)
+        return None
+
     # additional context being passed for rendering product and it items to the template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -163,6 +193,7 @@ class FilteredProductListView(ListView):
         context['child_slug'] = self.kwargs.get('child_slug')
         context['brand_slug'] = self.kwargs.get('brand_slug')
         context['breadcrumbs'] = self.get_breadcrumbs()
+        context['category_name'] = self.show_category()
         context['product_count'] = product.count()
         context['query'] = self.request.GET.get('q', '')
         return context

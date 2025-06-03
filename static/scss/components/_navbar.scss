@@ -253,11 +253,11 @@ nav /** main page navbar **/ {
 
         .container-login {
           position: relative;
-          z-index: 333;
+          z-index: 15;
 
           .container-login-navbar-drop-down {
             position: absolute;
-            z-index: 33 !important;
+            overflow: hidden;
             width: 290px;
             top: 30px;
             right: 0;
@@ -274,7 +274,7 @@ nav /** main page navbar **/ {
 
         .container-cart-box {
           position: relative;
-          z-index: 888888;
+          z-index: 15;
 
           &:hover {
             .container-mini-cart {
@@ -283,8 +283,8 @@ nav /** main page navbar **/ {
           }
 
           .container-mini-cart {
+            overflow: hidden;
             display: none;
-            z-index: 8888;
           }
         }
       }
@@ -349,7 +349,7 @@ nav /** main page navbar **/ {
               border: 1px solid #e4e7e9;
               box-shadow: 0px 8px 40px 0px #0000001f;
               position: absolute;
-              z-index: 22333;
+              z-index: 88888;
               background-color: variables.$White-100;
               opacity: 0;
               transition: 0.5s;

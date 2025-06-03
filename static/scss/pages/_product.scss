@@ -67,6 +67,10 @@
   border: 1px solid variables.$Gray-100;
 
   @media (max-width: 992px) {
+    width: 50%;
+  }
+
+  @media (max-width: 698px) {
     width: 100%;
   }
 }

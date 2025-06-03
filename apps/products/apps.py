@@ -10,6 +10,8 @@ class ProductsConfig(AppConfig):
         from django.db.utils import OperationalError
         from django.db import ProgrammingError
         from apps.products.seed_categories import seed_categories
+        import apps.products.signals
+
         try:
             seed_categories()
         except (OperationalError, ProgrammingError):

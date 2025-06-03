@@ -9,7 +9,7 @@ urlpatterns = [
     # shop by child category
     path('shop/<slug:category_slug>/<slug:child_slug>/', FilteredProductListView.as_view(), name='shop_child_category'),  
     # shop by child + brand
-    path('shop/<slug:category_slug>/<slug:child_slug>/<slug:brand_slug>/', FilteredProductListView.as_view(), name='shop_child_category_brand'),  
+    # path('shop/<slug:category_slug>/<slug:child_slug>/<slug:brand_slug>/', FilteredProductListView.as_view(), name='shop_child_category_brand'),  
     # product details
     path('shop/product-details/<slug:category_slug>/<slug:child_slug>/<slug:product_slug>/', ProductDetailView.as_view(), name='product_details'), 
 

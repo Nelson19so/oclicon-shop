@@ -45,7 +45,9 @@
       <div class="container-items-product--y w-full flex justify-between">
         <div class="container-left-container flex justify-start gap-3">
           <span>Active Filters:</span>
-          <p>Electronics Devices</p>
+          {% if category_name %}
+          <p>{{ category_name }}</p>
+          {% endif %}
           <p>5 Star Rating</p>
         </div>
 
@@ -58,7 +60,10 @@
         {% if products %}
         <div class="product-grid gap-3">
           {% for product in products %}
-          <div class="container-product p-2">
+          <div
+            class="container-product p-2"
+            data-price="{{ product.base_price }}"
+          >
             <div class="container-product-img w-full">
               <img
                 src="{{ product.images.first.image.url }}"
@@ -185,7 +190,27 @@
 
             <div class="container-items p-1">
               <span class="star-span flex justify-items-start">
+                {% for i in "12345" %}
+                <!--  -->
+                {% if i <= product.average_rating %}
                 <img
+                  src="{% static 'images/svg/Star.svg' %}"
+                  alt="star"
+                  width="15"
+                />
+                {% elif i <= product.average_rating|add:0.5 %}
+                <img
+                  src="{% static 'images/svg/Star.svg' %}"
+                  alt="star"
+                  width="15"
+                />
+                {% else %}
+                <img
+                  src="{% static 'images/svg/Star.svg' %}"
+                  alt="star"
+                  width="15"
+                />
+                <!-- <img
                   src="{% static 'images/svg/Star.svg' %}"
                   alt="star"
                   width="15"
@@ -194,26 +219,10 @@
                   src="{% static 'images/svg/Star.svg' %}"
                   alt="star"
                   width="15"
-                />
-                <img
-                  src="{% static 'images/svg/Star.svg' %}"
-                  alt="star"
-                  width="15"
-                />
-                <img
-                  src="{% static 'images/svg/Star.svg' %}"
-                  alt="star"
-                  width="15"
-                />
-                <img
-                  src="{% static 'images/svg/Star.svg' %}"
-                  alt="star"
-                  width="15"
-                />
-
-                <p class="ml-2 review-">52,677</p>
+                /> -->
+                {% endif %} {% endfor %}
+                <p class="ml-2 review-">{{ product.rating_count }}</p>
               </span>
-
               <!--  -->
 
               <!--  -->
@@ -221,7 +230,9 @@
               <p class="description-2 mt-2">{{ product.name }}</p>
 
               <p class="price mt-2">
-                <span class="discount-price">${{ product.base_price }}</span>
+                <span class="discount-price price_product"
+                  >${{ product.base_price }}</span
+                >
                 {% if product.discount_price %}
                 <span class="normal-price mr-3"
                   >{{ product.discount_price }}</span

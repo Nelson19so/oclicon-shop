@@ -1,21 +1,20 @@
 @use "../abstracts/variables" as variables;
 @use "../abstracts/mixins" as mixin;
 
-.container-inner-sm {
-  button {
-    background-color: variables.$Primary-500;
-    color: variables.$White-100;
-    border-radius: 2px;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: 0.5s;
+.btn-primary {
+  background-color: variables.$Primary-500;
+  color: variables.$White-100;
+  border-radius: 2px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 0.5s;
+  white-space: nowrap;
 
-    &:hover {
-      background-color: variables.$Primary-400;
-    }
+  &:hover {
+    background-color: variables.$Primary-400;
   }
 }
 

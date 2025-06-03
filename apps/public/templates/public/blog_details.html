@@ -9,13 +9,12 @@
 
 <!-- block content -->
 {% block content %}
+<!--  -->
+{% if blog_details %}
 <div class="container-blog-details-page">
   <div class="container-blog-details-page-padding">
     <div class="container-img">
-      <img
-        src="{% static 'images/blog/unsplash_FO7JIlwjOtU.png' %}"
-        alt="blog-1"
-      />
+      <img src="{{ blog_details.blog_post_images.image.url }}" alt="blog-1" />
     </div>
 
     <div
@@ -61,7 +60,7 @@
               </defs>
             </svg>
 
-            <p>Electronics</p>
+            <p>{{ blog_details.category }}</p>
           </div>
 
           <div class="container-main-news-details flex justify-start gap-1">
@@ -94,7 +93,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <p>Cameron</p>
+            <p>{{ blog_details.author }}</p>
           </div>
 
           <div class="container-main-news-details flex justify-start gap-1">
@@ -135,7 +134,7 @@
               />
             </svg>
 
-            <p>1 Feb, 2020</p>
+            <p>{{ blog_details.date_posted|date:"j F Y" }}</p>
           </div>
 
           <div class="container-main-news-details flex justify-start gap-1">
@@ -167,15 +166,12 @@
               />
             </svg>
 
-            <p>738</p>
+            <p>{{ blog_details_count }}</p>
           </div>
         </div>
 
         <article>
-          <h1 class="topic">
-            How artist collective Meow Wolf’s website complements their
-            immersive venues
-          </h1>
+          <h1 class="topic">{{ blog_details.title }}</h1>
 
           <div
             class="container-user-profile-blog-post-details mt-3 flex justify-between"
@@ -187,7 +183,7 @@
                 width="40"
                 style="border-radius: 100px"
               />
-              <p class="user_name">Cameron Williamson</p>
+              <p class="user_name">{{ blog_details.author }}</p>
             </div>
 
             <div
@@ -702,4 +698,6 @@
     </div>
   </div>
 </div>
+{% endif %}
+<!--  -->
 {% endblock %}

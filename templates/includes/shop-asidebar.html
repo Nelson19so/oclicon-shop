@@ -23,19 +23,10 @@
 
       {% for category in categories %} {% if not category.parent %}
       <li class="flex justify-start gap-2">
-        <!-- shop -->
-        {% if request.resolver_match.url_name == 'shop_category' %}
-        <!-- child -->
-        {% if request.resolver_match.url_name == 'shop_child_category' %}
-
         <!-- slug -->
-        {% if category.slug == category_slug or category.slug == child_slug %}
+        {% if category.slug == category_slug %}
         <input type="radio" name="category" id="category" checked />
         {% else %}
-        <input type="radio" name="category" id="category" />
-        {% endif %} {% else %}
-        <input type="radio" name="category" id="category" />
-        {% endif %} {% else %}
         <input type="radio" name="category" id="category" />
         {% endif %}
 
@@ -71,37 +62,59 @@
   <form action="#">
     <ul>
       <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
+          id="reset_price-filter"
           >All Prices</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >SmartPhone</a
+      <li
+        class="flex justify-start gap-2 filter-price"
+        data-min-price="1.00"
+        data-max-price="100"
+      >
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
+          >Under $100</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
-          >Under $20</a
-        >
-      </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
+      <li
+        class="flex justify-start gap-2 filter-price"
+        data-min-price="100"
+        data-max-price="300"
+      >
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
           >$100 to $300</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
+      <li
+        class="flex justify-start gap-2 filter-price"
+        data-min-price="300"
+        data-max-price="500"
+      >
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
           >$300 to $500</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
+      <li
+        class="flex justify-start gap-2 filter-price"
+        data-min-price="500"
+        data-max-price="1000"
+      >
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
           >$500 to $1,000</a
         >
       </li>
-      <li class="flex justify-start gap-2">
-        <input type="radio" name="category" id="category" /><a href="#"
+      <li
+        class="flex justify-start gap-2 filter-price"
+        data-min-price="1000"
+        data-max-price="10000"
+      >
+        <input type="radio" name="category" id="category" /><a
+          class="cursor-pointer"
           >$1,000 to 10,000</a
         >
       </li>

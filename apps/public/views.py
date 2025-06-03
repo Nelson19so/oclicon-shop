@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from apps.products.models import Category, Product, ProductHighlight, Badge
+from django.shortcuts import render, redirect, get_object_or_404
+from apps.products.models import Category, Product, ProductHighlight, Badge, Ad
 from django.core.exceptions import PermissionDenied
 from .models import OcliconTeamMembers, FrequentlyAskedQuestions, BlogPost
 from .forms import FrequentlyAskedQuestionsForms
@@ -16,19 +16,53 @@ def Home_page(request):
     computer_category = None
     computer_category = None
     best_hot_deals = None
-    best_deals_product = Product.objects.none()  
-    featured_product = Product.objects.none()  
+    best_deals_products = Product.objects.none()  
+    featured_products = Product.objects.none() 
+
+    # getting top ad for home page
+    top_ad = Ad.objects.filter(is_active=True, position='top').first()
+
+    if top_ad is None:
+        pass
+    
+    # top right ad
+    top_right_ad = Ad.objects.filter(is_active=True, position='top-right-banner').first()
+
+    if top_right_ad is None:
+        pass
+
+    # top right bottom ad
+    top_right_bottom_ad = Ad.objects.filter(
+        is_active=True, position='top-right-two-banner'
+    ).first()
+
+    if top_right_bottom_ad is None:
+        pass
+
+    featured_ad_highlight = ProductHighlight.objects.filter(features='featured_product').first()
+
+    featured_sidebar_ad = Ad.objects.filter(
+        is_active=True,
+        position='Sidebar',
+        highlight=featured_ad_highlight,
+    ).first()
+
+    if featured_sidebar_ad is None:
+        pass
 
     try:
         # Get the "Computer Accessories category
         computer_category = Category.objects.prefetch_related('children').get(name='Computer Accessories')
 
+        # Get all child categories
+        child_categories = list(computer_category.children.all()[:3])
+
         # Filter products marked as 'best_deal' and active
-        best_deals_product = Product.objects.filter(
+        best_deals_products = Product.objects.filter(
             is_active=True,
             product_feature__features='best_deal',
             product_feature__is_active=True
-        ).select_related('product_feature')
+        ).prefetch_related('product_feature')
 
         # best hot deals for best deals product
         best_hot_deals_badge = Badge.objects.filter(bade_type='hot').first()
@@ -36,18 +70,21 @@ def Home_page(request):
         # checks if there is best hot deal
         if best_hot_deals_badge:
             best_hot_deals = (
-                best_deals_product.filter(product_badge=best_hot_deals_badge)[:1]
+                best_deals_products.filter(product_badge=best_hot_deals_badge).first()
             )
 
+            # excludes best hot deals from the filtering
+            best_deals_products = best_deals_products.exclude(id=best_hot_deals.id)
+        
+        # filtering 8 product from best hot deals
+        best_deals_products = best_deals_products[:8]
+
         # featured product
-        featured_product = Product.objects.filter(
+        featured_products = Product.objects.filter(
             is_active=True,
             product_feature__features='featured_product',
             product_feature__is_active=True
-        ).select_related('product_feature')[:8]
-
-        # Get all child categories
-        child_categories = list(computer_category.children.all()[:3])
+        ).prefetch_related('product_feature')[:8]
 
         # Filter products that belong to the child categories only
         computer_accessories = Product.objects.filter(
@@ -55,40 +92,105 @@ def Home_page(request):
             category__in=child_categories,
         )
 
+        # filters product flash sale highlight
+        flash_sales_filter = ProductHighlight.objects.filter(
+            is_active=True,
+            features='flash_sale_today'
+        ).first()
+
+        # checks if filtering items exist
+        if not flash_sales_filter:
+            flash_sales_filter = None
+
+        # filter flash sales
+        flash_sales = Product.objects.filter(
+            is_active=True,
+            product_feature=flash_sales_filter
+        )
+
+        flash_sales = flash_sales.order_by('?')[:3]
+
+        # filters top rated product
+        top_rated_filter = ProductHighlight.objects.filter(
+            is_active=True,
+            features='top_rated'
+        ).first()
+
+        # checks if filtering exist
+        if not top_rated_filter:
+            top_rated_filter = None
+
+        # filter top rated product
+        top_rated = Product.objects.filter(
+            is_active=True,
+            product_feature=top_rated_filter
+        )
+
+        top_rated = top_rated.order_by('?')[:3]
+
+        # filters new arrival product
+        new_arrival_filter = ProductHighlight.objects.filter(
+            is_active=True,
+            features='new_arrival'
+        ).first()
+
+        # check if new arrival exist
+        if not new_arrival_filter:
+            new_arrival_filter = None
+        
+        # filters new arrival product
+        new_arrivals = Product.objects.filter(
+            is_active=True,
+            product_feature=new_arrival_filter
+        )[:3]
+        
         # if queryset_computer_acc:
         #     computer_accessories = computer_accessories.filter(
         #         category__name__icontains=queryset_computer_acc
         #     )[:8]
 
-        best_deals_product = best_deals_product[:8]
-
+    # except category and product does not exist and passes it
     except (Category.DoesNotExist, Product.DoesNotExist):
         pass
 
     # AJAX handling for computer accessories
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         html = render_to_string('products/partials/computer_accessories.html', {
-            'computer_accessories': computer_accessories
+            'computer_accessories': computer_accessories,
+            'child_categories': child_categories,
         })
         return JsonResponse({'html': html})
 
     # AJAX handling for featured product
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         html = render_to_string('products/partials/computer_accessories.html',{
-            'featured_product': featured_product
+            'featured_product': featured_products
         })
         return JsonResponse({'html': html})
 
+    blogs = BlogPost.objects.all()
+
+    for blog in blogs:
+        blog_count = blog.blog_post_comment.count()
+
     context = {
-        'show_newsletter': True, 
-        'show_navbar_ads': True,
+        'show_newsletter': True, 'show_navbar_ads': True,
         'computer_accessories': computer_accessories, 
         'computer_category': computer_category,
         # 'queryset_computer_acc': queryset_computer_acc,
-        'best_deals_product': best_deals_product,
-        'featured_product': featured_product,
+        'best_deals_products': best_deals_products,
+        'featured_products': featured_products,
         'best_hot_deals': best_hot_deals,
         'child_categories': child_categories,
+        'top_ad': top_ad,
+        'top_right_ad': top_right_ad,
+        'top_right_bottom_ad': top_right_bottom_ad,
+        'blogs': blogs,
+        'blog_count': blog_count,
+        'featured_sidebar_ad': 'featured_sidebar_ad',
+        'flash_sales': flash_sales,
+        'top_rated': top_rated,
+        'new_arrivals': new_arrivals
     }
     return render(request, 'public/home.html', context)
 
@@ -139,16 +241,24 @@ def customer_support(request):
 # blog page
 def blog(request):
     blogs = BlogPost.objects.all()
+
+    for blog in blogs:
+        blog_count = blog.blog_post_comment.count()
     
     breadcrumbs = [
         ('Pages', '#/'),
         ('Blog', request.path),
     ]
-    return render(request, 'public/blog.html', {'breadcrumbs': breadcrumbs, 'blogs': blogs})
+    return render(request, 'public/blog.html', {
+        'breadcrumbs': breadcrumbs, 
+        'blogs': blogs,
+        'blog_count': blog_count
+    })
 
 # blog details page
 def blog_details(request, id):
-    blog_details = BlogPost.objects.get(id=id)
+    blog_details = get_object_or_404(BlogPost, id=id)
+    blog_details_count = blog_details.blog_post_comment.count()
     
     breadcrumbs = [
         ('Pages', '#/'),
@@ -158,5 +268,6 @@ def blog_details(request, id):
 
     return render(request, 'public/blog_details.html', {
         'breadcrumbs': breadcrumbs, 
-        'blog_details': blog_details
+        'blog_details': blog_details,
+        'blog_details_count': blog_details_count,
     })

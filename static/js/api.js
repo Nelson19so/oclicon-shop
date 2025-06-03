@@ -141,8 +141,37 @@ $(document).ready(function () {
 
       // if the process went successful
       success: function (data) {
-        $(".compare-count").text(data.count);
-        showToast("Item added to wishlist");
+        // $(".compare-count").text(data.count);
+        // showToast("Item added to wishlist");
+      },
+
+      // if the process didn't go successful
+      error: function (xhr, status, error) {
+        console.error("AJAX Error →", {
+          status: xhr.status,
+          message: error,
+          response: xhr.responseText,
+        });
+      },
+    });
+  });
+});
+
+// removing product to cart list ---
+$(document).ready(function () {
+  $("#remove-cart_btn").click(function () {
+    const productId = $(this).data("product-id");
+
+    $.ajax({
+      url: `/home/cart/remove/${productId}/`,
+      type: "POST",
+      headers: {
+        "X-CSRFToken": getCSRFToken(),
+      },
+
+      // if the process went successful
+      success: function (data) {
+        window.location.reload();
       },
 
       // if the process didn't go successful

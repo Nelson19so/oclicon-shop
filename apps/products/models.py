@@ -67,10 +67,24 @@ class Product(models.Model):
     @property
     def current_price(self):
         return self.discount_price if self.discount_price else self.base_price
+
+    @property
+    def average_rating(self):
+        ratings = self.rating.all()
+        if not ratings.exists():
+            return 0
+        return round(sum(r.stars for r in ratings) / ratings.count(), 1)
+    
+    def average_rating_int(self):
+        return int(self.average_rating or 0)
+    
+    @property
+    def rating_count(self):
+        return self.rating.all().count()
     
     def __str__(self):
-        return f"{self.brand.name} {self.name} ({self.sku})"
-    
+        return f"{self.name} ({self.sku})"
+
 # product colors type
 class ProductColor(models.Model):
     name = models.CharField(max_length=20)
@@ -141,28 +155,6 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.variant}"
   
-# ads for product
-class Ad(models.Model):
-    POSITION_CHOICES = [
-        ('top', 'Top Banner'),
-        ('bottom', 'Bottom Banner'),
-        ('sidebar', 'Sidebar'),
-        ('popup', 'Popup'),
-        ('middle_banner', 'Middle Banner'),
-    ]
-
-    title = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='ads/')
-    url = models.URLField(blank=True, null=True)
-    position = models.CharField(max_length=20, choices=POSITION_CHOICES)
-    is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
-  
 # product Highlight
 class ProductHighlight(models.Model):
     FEATURES = [
@@ -174,22 +166,64 @@ class ProductHighlight(models.Model):
         ('new_arrival', 'NEW ARRIVAL')
     ]
 
-    product = models.OneToOneField(
+    product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='product_feature'
     )
     features = models.CharField(max_length=50, choices=FEATURES, blank=False, null=False)
     is_active = models.BooleanField(default=False)
     date_created = models.DateField(auto_now_add=True)
-    updated_at = models.DateTimeField(blank=False, null=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.get_features_display}'
+        return f'{self.features}'
+
+# ads for product
+class Ad(models.Model):
+    POSITION_CHOICES = [
+        ('top', 'Top Banner'),
+        ('top-right-banner', 'Top Right Banner'),
+        ('top-right-two-banner', 'Top Right Two Banner'),
+        ('bottom', 'Bottom Banner'),
+        ('sidebar', 'Sidebar'),
+        ('popup', 'Popup'),
+        ('middle_banner', 'Middle Banner'),
+    ]
+
+    badge = models.OneToOneField(Badge, on_delete=models.PROTECT, null=True, blank=True)
+    highlight = models.OneToOneField(
+        ProductHighlight, on_delete=models.PROTECT, related_name='product_highlight',
+        null=True, blank=True
+    )
+    title = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='ads/')
+    price = models.DecimalField(decimal_places=0, max_digits=10, blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
+    position = models.CharField(max_length=20, choices=POSITION_CHOICES)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+  
 
 # product features
 # class ProductFeature(models.Model):
 #     variant = models.OneToOneField(
 #         ProductVariant, on_delete=models.CASCADE, related_name='product_features'
 #     )
+
+# product rating
+class ProductRating(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating')
+    stars = models.PositiveIntegerField(choices=[(i, str(i)) for i in range(1, 6)])
+    review = models.TextField(blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together =  ['product', 'user']
 
 # product comparison
 class ProductComparison(models.Model):

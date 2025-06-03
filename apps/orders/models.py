@@ -39,6 +39,13 @@ class Order(models.Model):
     def order_status(self):
         return f'{self.get_status_display()}'
     
+    @property
+    def quantity(self):
+        total_product = 0
+        for item in self.items.all():
+            total_product += item.quantity
+        return f'{total_product}'
+    
     def total_product(self):
         total_product = 0
         for item in self.items.all():

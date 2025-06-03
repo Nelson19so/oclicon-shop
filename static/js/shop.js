@@ -102,3 +102,31 @@ document.addEventListener("DOMContentLoaded", function () {
 // shopSearchInput.addEventListener("input", function () {
 //   shopSearchInputForm.submit();
 // });
+
+// filtering product by price
+document.querySelectorAll(".filter-price").forEach((filterBtn) => {
+  filterBtn.addEventListener("click", function () {
+    const priceFilter = parseFloat(this.getAttribute("data-max-price"));
+    const priceFilterMin = parseFloat(this.getAttribute("data-min-price"));
+    const productFilter = document.querySelectorAll(".container-product");
+
+    productFilter.forEach((product) => {
+      const productPrice = parseFloat(product.getAttribute("data-price"));
+
+      let show = false;
+      if (productPrice >= priceFilterMin && productPrice <= priceFilter) {
+        show = true;
+      }
+      product.style.display = show ? "block" : "none";
+    });
+  });
+});
+
+document
+  .getElementById("reset_price-filter")
+  .addEventListener("click", function () {
+    const allProduct = document.querySelectorAll(".container-product");
+    allProduct.forEach((product) => {
+      product.style.display = "block";
+    });
+  });

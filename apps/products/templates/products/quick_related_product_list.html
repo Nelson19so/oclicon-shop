@@ -30,108 +30,56 @@
   </div>
   {% endif %}
 
+  <!-- product accessories -->
+  {% if product_accessories %}
   <div class="container-product-list-">
     <div class="header-"><p>PRODUCT ACCESSORIES</p></div>
 
+    {% for product_accessory in product_accessories %}
     <a href="#">
       <div class="container-product-main flex justify-between mt-3">
         <div class="container-img">
           <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
+            src="{{ product_accessory.images.first.image.url }}"
+            alt="{{ product_accessory.brand }}"
             width="100"
           />
         </div>
         <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
+          <p>{{ product_accessory.name }}</p>
+          <span class="price">${{ product_accessory.base_price }}</span>
         </div>
       </div>
     </a>
-
-    <a href="#">
-      <div class="container-product-main flex justify-between mt-3">
-        <div class="container-img">
-          <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
-            width="100"
-          />
-        </div>
-        <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="#">
-      <div class="container-product-main flex justify-between mt-3">
-        <div class="container-img">
-          <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
-            width="100"
-          />
-        </div>
-        <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
-        </div>
-      </div>
-    </a>
+    {% endfor %}
   </div>
+  {% endif %}
 
+  <!-- feature product -->
+  {% if feature_products %}
   <div class="container-product-list-">
     <div class="header-"><p>FEATURED PRODUCTS</p></div>
 
-    <a href="#">
+    {% for feature_product in feature_products %}
+    <a
+      href="{% url 'product_details' category_slug=feature_product.product.category.first.slug child_slug=feature_product.product.category.last.slug product_slug=feature_product.product.slug %}"
+    >
       <div class="container-product-main flex justify-between mt-3">
         <div class="container-img">
           <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
+            src="{{ feature_product.product.images.first.image.url }}"
+            alt="{{ feature_products.product.brand.name }}"
             width="100"
           />
         </div>
         <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
+          <p>{{ feature_product.product.name }}</p>
+          <span class="price">${{ feature_product.product.base_price }}</span>
         </div>
       </div>
     </a>
-
-    <a href="#">
-      <div class="container-product-main flex justify-between mt-3">
-        <div class="container-img">
-          <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
-            width="100"
-          />
-        </div>
-        <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="#">
-      <div class="container-product-main flex justify-between mt-3">
-        <div class="container-img">
-          <img
-            src="{% static 'images/product/p5controllerImage.png' %}"
-            alt="p5Image"
-            width="100"
-          />
-        </div>
-        <div class="articles-main">
-          <p>Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...</p>
-          <span class="price">$1,500</span>
-        </div>
-      </div>
-    </a>
+    {% endfor %}
   </div>
+  {% endif %}
 </div>
 {% endblock %}

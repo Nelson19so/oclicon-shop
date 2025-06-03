@@ -14,6 +14,7 @@
     .container-top-padder {
       width: 100%;
       height: 70vh;
+      max-height: 500px;
 
       @media only screen and (max-width: 768px) {
         height: fit-content;
@@ -65,10 +66,9 @@
           gap: 15px;
         }
 
-        .container-inner-sm {
-          position: relative;
-          z-index: 0;
-        }
+        // .container-inner-sm {
+        //   position: relative;
+        // }
 
         .container-sm-add-sm {
           background-color: variables.$Gray-50;
