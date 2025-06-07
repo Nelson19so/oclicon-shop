@@ -69,17 +69,25 @@
             <li class="mt-1 whitespace-nowrap">
               <a href="{% url 'shop' %}">Shop Product</a>
             </li>
-            <li class="whitespace-nowrap"><a href="#">Shoping Cart</a></li>
-            <li class="whitespace-nowrap"><a href="#">Headphone</a></li>
-            <li class="whitespace-nowrap"><a href="#">Wishlist</a></li>
+            <li class="whitespace-nowrap">
+              <a href="{% url 'cart_list' %}">Shoping Cart</a>
+            </li>
+            <!-- <li class="whitespace-nowrap"><a href="#">Headphone</a></li> -->
+            <li class="whitespace-nowrap">
+              <a href="{% url 'wishlist' %}">Wishlist</a>
+            </li>
             <li class="whitespace-nowrap">
               <a href="{% url 'compare' %}">Compare</a>
             </li>
             <li class="whitespace-nowrap">
               <a href="{% url 'track_order' %}">Track Order</a>
             </li>
-            <li class="whitespace-nowrap"><a href="#">Customer Help</a></li>
-            <li class="whitespace-nowrap"><a href="#">About Us</a></li>
+            <li class="whitespace-nowrap">
+              <a href="{% url 'customersupport' %}">Customer Help</a>
+            </li>
+            <li class="whitespace-nowrap">
+              <a href="{% url 'about' %}">About Us</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -87,37 +95,42 @@
       <div class="container-footer-items--">
         <p>Download APP</p>
 
-        <a href="#">
-          <div
-            class="container-mobile-app-link flex justify-between w-full mt-3"
-          >
-            <div class="container-img-apple-store">
-              <img src="{% static 'images/playstore.png' %}" alt="playstore" />
-            </div>
+        <div class="md:block flex justify-start gap-2">
+          <a href="#">
             <div
-              class="articles flex justify-items-start flex-col gap-1 align-middle"
+              class="container-mobile-app-link flex justify-between w-full mt-3"
             >
-              <p>Get it now</p>
-              <h6>Google Play</h6>
+              <div class="container-img-apple-store">
+                <img
+                  src="{% static 'images/playstore.png' %}"
+                  alt="playstore"
+                />
+              </div>
+              <div
+                class="articles flex justify-items-start flex-col gap-1 align-middle"
+              >
+                <p>Get it now</p>
+                <h6>Google Play</h6>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <a href="#">
-          <div
-            class="container-mobile-app-link flex justify-between w-full mt-3"
-          >
-            <div class="container-img-apple-store">
-              <img src="{% static 'images/applestore.png' %}" alt="Apple" />
-            </div>
+          <a href="#">
             <div
-              class="articles flex justify-items-start flex-col gap-1 align-middle"
+              class="container-mobile-app-link flex justify-between w-full mt-3"
             >
-              <p>Get it now</p>
-              <h6>App Store</h6>
+              <div class="container-img-apple-store">
+                <img src="{% static 'images/applestore.png' %}" alt="Apple" />
+              </div>
+              <div
+                class="articles flex justify-items-start flex-col gap-1 align-middle"
+              >
+                <p>Get it now</p>
+                <h6>App Store</h6>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
 
       <div class="container-footer-items-- container-popular-items">

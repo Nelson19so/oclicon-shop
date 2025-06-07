@@ -10,7 +10,7 @@ inputContainers.forEach((allContainers) => {
   input.addEventListener("input", function () {
     if (!this.value.length) {
       this.classList.add("wrong_input_field");
-      allMessage.textContent = "This field is required";
+      allMessage.textContent = "This field is required*";
     } else if (this.value.length <= minInputQuantity) {
       // this.classList.remove("correct_input_field");
       this.classList.add("wrong_input_field");
@@ -29,7 +29,7 @@ inputContainers.forEach((allContainers) => {
     if (!this.value.length) {
       // this.classList.remove("correct_input_field");
       this.classList.add("wrong_input_field");
-      allMessage.textContent = "This field is required";
+      allMessage.textContent = "This field is required*";
     } else if (this.value.length <= minInputQuantity) {
       this.classList.add("wrong_input_field");
       allMessage.textContent =

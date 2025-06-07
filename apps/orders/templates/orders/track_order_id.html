@@ -1,7 +1,7 @@
 <!-- track order by id content -->
 {% block content %}
 <div>
-  <form method="post" action="#">
+  <form method="post" action="{% url 'track_order' %}">
     {% csrf_token %}
     <div
       class="input-wrapper flex justify-start md:gap-10 gap-5 flex-col md:flex-row"
@@ -14,6 +14,7 @@
           name="order_id"
           class="order-id w-full"
           placeholder="ID..."
+          value="{{ form.order_id.value|default_if_none:'' }}"
         />
       </div>
 
@@ -25,6 +26,7 @@
           id="order_email"
           class="email-field w-full"
           placeholder="Email address"
+          value="{{ form.email.value|default_if_none:'' }}"
         />
       </div>
     </div>
@@ -61,6 +63,14 @@
 
       Enter thr Order ID that we sent to you in your email address.
     </div>
+
+    {% if form.errors %}
+    <div class="container-error-msg mt-3">
+      {% for error in form.non_field_errors %}
+      <p class="error-msg">{{ error }}*</p>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <button
       type="submit"

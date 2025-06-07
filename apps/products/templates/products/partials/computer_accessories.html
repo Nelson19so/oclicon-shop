@@ -9,32 +9,9 @@
     <header class="header-acc-product w-full flex justify-between">
       <div class="container-left-container flex justify-items-start h-full">
         <h1>Computer Accessories</h1>
-      </div>
 
-      <div class="container-right-header flex justify-end gap-5">
-        <!-- checks for computer accessories -->
-        {% if child_categories %}
-        <ul class="flex justify-end gap-3">
-          {% for child in child_categories %}
-          <li>
-            <a
-              class="cursor-pointer computer_acc_category_child"
-              data-category_child="{{ child.name }}"
-              >{{ child.name }}</a
-            >
-          </li>
-          {% endfor %}
-        </ul>
-        {% else %}
-        <p>No product found</p>
-        {% endif %}
-
-        <!-- for all category -->
-        {% for category_all in categories %}
-        <!-- checking if it is computer accessories -->
-        {% if category_all.name == 'Computer Accessories' %}
         <a
-          href="{% url 'shop_category' category_slug=category_all.slug %}"
+          href="{% url 'shop_category' category_slug=computer_category.slug %}"
           class="w-1/2"
         >
           <div class="flex justify-end">
@@ -56,7 +33,49 @@
             </svg>
           </div>
         </a>
-        {% endif %} {% endfor %}
+      </div>
+
+      <div class="container-right-header flex justify-end gap-5">
+        <!-- checks for computer accessories -->
+        {% if child_categories %}
+        <ul class="flex justify-end gap-3">
+          {% for child in child_categories %}
+          <li>
+            <a
+              class="cursor-pointer computer_acc_category_child"
+              data-category_child="{{ child.name }}"
+              >{{ child.name }}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No product found</p>
+        {% endif %}
+
+        <a
+          href="{% url 'shop_category' category_slug=computer_category.slug %}"
+          class="w-1/2"
+        >
+          <div class="flex justify-end">
+            <p>Browse All Product</p>
+            <svg
+              class="mt-1 ml-2"
+              width="15"
+              height="15"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="#ff9d5c"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
       </div>
     </header>
 
@@ -212,7 +231,7 @@
                 width="15"
               />
 
-              <p class="ml-2 review-">52,677</p>
+              <p class="ml-2 review-">{{ computer_accessory.rating_count }}</p>
             </span>
 
             <!--  -->

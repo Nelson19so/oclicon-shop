@@ -68,7 +68,7 @@ TEMPLATES = [
                 'settings.context_processors.navbar_cart_display_list',
                 # computer accessories filter
                 # 'settings.context_processors.computer_accessories',
-                # product ads
+                # active product ads
                 'settings.context_processors.active_ads',
 
                 'django.template.context_processors.debug',
@@ -141,4 +141,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = 'dashboard'
-LOGOUT_REDIRECT_URL = '/home/'
+LOGOUT_REDIRECT_URL = 'successful_logout'

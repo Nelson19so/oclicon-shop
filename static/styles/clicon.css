@@ -1151,6 +1151,37 @@ a strong {
 .header-acc-product .container-left-container {
   padding-bottom: 5px;
   width: 30%;
+  align-items: center;
+}
+@media (max-width: 992px) {
+  .header-featured-product .container-left-container,
+  .header-acc-product .container-left-container {
+    justify-content: space-between;
+  }
+}
+.header-featured-product .container-left-container a,
+.header-acc-product .container-left-container a {
+  max-width: fit-content;
+}
+@media (min-width: 992px) {
+  .header-featured-product .container-left-container a,
+  .header-acc-product .container-left-container a {
+    display: none;
+  }
+}
+.header-featured-product .container-left-container a p,
+.header-acc-product .container-left-container a p {
+  color: #fa8232;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+@media (max-width: 992px) {
+  .header-featured-product .container-left-container a p,
+  .header-acc-product .container-left-container a p {
+    font-size: 10px;
+  }
 }
 @media (max-width: 992px) {
   .header-featured-product .container-left-container,
@@ -1177,6 +1208,10 @@ a strong {
     margin-top: 15px;
     justify-content: flex-start;
   }
+}
+.header-featured-product .container-right-header a,
+.header-acc-product .container-right-header a {
+  max-width: fit-content;
 }
 @media (max-width: 992px) {
   .header-featured-product .container-right-header a,
@@ -1225,6 +1260,7 @@ a strong {
   letter-spacing: 0%;
   color: #5f6c72;
   display: block;
+  max-width: fit-content;
 }
 
 .header- p {
@@ -1343,12 +1379,12 @@ a strong {
 .container-items-product--y .container-left-container span {
   color: #5f6c72;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 12px;
 }
 .container-items-product--y .container-left-container p {
   color: #191c1f;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   letter-spacing: 0%;
 }
@@ -1392,8 +1428,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .main-footer .container-padder-divider .top-main-footer-items {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 999px) {
@@ -1474,14 +1510,25 @@ a strong {
   padding-left: 20px;
   border-radius: 3px;
   width: 169px;
+  align-items: center;
+}
+@media only screen and (max-width: 999px) {
+  .main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link {
+    max-width: 155px;
+  }
 }
 .main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link:hover {
   border: 1px solid #fff;
   transition: 1s;
   width: 169px;
 }
-.main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link img {
+.main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link .container-img-apple-store img {
   width: 100%;
+}
+@media only screen and (max-width: 999px) {
+  .main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link .container-img-apple-store img {
+    width: 100%;
+  }
 }
 .main-footer .container-padder-divider .top-main-footer-items .container-footer-items-- .container-mobile-app-link p {
   font-weight: 400;
@@ -1954,8 +2001,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-newsletter-bottom .container-bottom-newsletter-padder {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-newsletter-bottom .container-bottom-newsletter-padder .container-middle-form {
@@ -2024,8 +2071,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-ad .container-ad-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-ad .container-ad-padding .left-container-- {
@@ -2120,8 +2167,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-page-not-found-wrapper .container-page-not-found-wrapper-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-page-not-found-wrapper .container-page-not-found-wrapper-padding .container-img-404 {
@@ -2177,8 +2224,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-breadcrumbs-pages {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-breadcrumbs-pages ol {
@@ -2291,8 +2338,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-latest-news .container-padder-latest-news {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-latest-news .container-news {
@@ -2323,8 +2370,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-usr_account .container_user_account- {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 1044px) {
@@ -2358,8 +2405,8 @@ a strong {
 }
 @media only screen and (max-width: 1045px) {
   .container-success-status- .container-success-status-padding- {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-success-status- .container-success-status-padding- .container-articles {
@@ -3315,8 +3362,8 @@ nav .container-padder-nav .top-container {
 }
 @media only screen and (max-width: 1045px) {
   nav .container-padder-nav .top-container {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 1045px) {
@@ -3483,8 +3530,8 @@ nav .container-padder-nav .Middle_Nav__ {
 }
 @media only screen and (max-width: 1045px) {
   nav .container-padder-nav .Middle_Nav__ {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 968px) {
@@ -3582,8 +3629,8 @@ nav .container-padder-nav .bottom-Nav {
 }
 @media only screen and (max-width: 1045px) {
   nav .container-padder-nav .bottom-Nav {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 842px) {
@@ -4050,8 +4097,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container--adds-one .container-add-padder {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container--adds-one .container-add-padder .container-top-padder {
@@ -4200,10 +4247,6 @@ label span {
   display: flex;
   justify-content: space-between;
 }
-.container--adds-one .container-add-padder .container-featured-product .container-featured-padder-product a {
-  display: block;
-  max-width: fit-content;
-}
 @media (max-width: 992px) {
   .container--adds-one .container-add-padder .container-featured-product .container-featured-padder-product {
     display: block;
@@ -4292,10 +4335,6 @@ label span {
 }
 .container--adds-one .container-add-padder .container-computer_accessories-product .container-computer_accessories-padder-product {
   width: 100%;
-}
-.container--adds-one .container-add-padder .container-computer_accessories-product .container-computer_accessories-padder-product a {
-  display: block;
-  max-width: fit-content;
 }
 @media (max-width: 992px) {
   .container--adds-one .container-add-padder .container-computer_accessories-product .container-computer_accessories-padder-product {
@@ -4523,8 +4562,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-product-details- .container-product-details-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 829px) {
@@ -4729,11 +4768,20 @@ label span {
   right: 0;
   z-index: 22;
 }
+@media only screen and (max-width: 386px) {
+  .container-mini-cart {
+    right: -20px;
+  }
+}
+@media only screen and (max-width: 344px) {
+  .container-mini-cart {
+    right: -50px;
+  }
+}
 
 .container-product-mini-cart {
   width: 286px;
   top: 204px;
-  left: 1129px;
   border-radius: 4px;
   border-width: 1px;
   padding-bottom: 24px;
@@ -4907,8 +4955,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-cart-product-list-display- .container-cart-product-list-display-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-cart-product-list-display- .container-cart-product-list-display-padding .wrapper-cary-product-and-checkout {
@@ -5080,8 +5128,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-checkout-shopping-cart .container-checkout-shopping-cart-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 1234px) {
@@ -5369,8 +5417,8 @@ label span {
   .container-pwd-reset-form-main-page .container-login-form-main-page-padding,
   .container-pwd-reset-form-main-page .container-register-form-main-page-padding,
   .container-pwd-reset-form-main-page .container-pwd-reset-form-main-page-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-login-form-main-page .container-login-form-main-page-padding .container-main-login-page,
@@ -5674,8 +5722,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .shop-container-- .container-padding-shop-page {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .shop-container-- .container-padding-shop-page .container-shop-items {
@@ -5711,8 +5759,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-track-orders- .container-track-orders-padding-wrapper {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 899px) {
@@ -5761,8 +5809,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-order-details-page .container-order-details-page-padding-wrapper {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-order-details-page .container-order-details-page-padding-wrapper .container-items-order-details {
@@ -6064,8 +6112,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-compare- .container-compare-padding- {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-compare- .container-compare-padding- table {
@@ -6111,8 +6159,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-wishlist-items-list .container-wishlist-items-list-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-wishlist-items-list .container-wishlist-items-list-padding .container-items-in-wishlist {
@@ -6220,8 +6268,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-faq-page- .container-faq-page-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 858px) {
@@ -6306,8 +6354,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-about-page- .container-about-page-container-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-about-page- .container-about-page-container-padding .container-items-display-about .container-img-about-right {
@@ -6416,8 +6464,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-banner-about-page {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-banner-about-page strong {
@@ -6453,8 +6501,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-customer_support-page .container-customer_support_page-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media only screen and (max-width: 792px) {
@@ -6488,8 +6536,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-customer_support-page .container-assit-grid {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-customer_support-page .container-assit-grid h1 {
@@ -6511,8 +6559,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-customer_support-page .container-popular-topics {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-customer_support-page .container-popular-topics h1 {
@@ -6539,8 +6587,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-customer_support-page .container-contact-us-section- {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-customer_support-page .container-contact-us-section- p {
@@ -6607,8 +6655,8 @@ label span {
 }
 @media only screen and (max-width: 1045px) {
   .container-blog-page-main .container-blog-page-main-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-blog-page-main .container-blog-page-main-padding .wrapper-blog-page-main {
@@ -6648,8 +6696,8 @@ aside .container-search-box-blog-details {
 }
 @media only screen and (max-width: 1045px) {
   .container-blog-details-page .container-blog-details-page-padding {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 .container-blog-details-page .container-blog-details-page-padding .container-rigt-articles-blog_details {

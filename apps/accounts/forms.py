@@ -159,14 +159,14 @@ class UserPasswordChange(forms.Form):
         validators=[validate_password]
     )
 
-    def __init(self, user, *args, **kwargs):
-        self.user = user
+    def __init__(self, user=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.user = user
 
     def clean_current_password(self):
         current_password = self.cleaned_data.get('current_password')
 
-        if not authenticate(email=self.user.email, password=current_password):
+        if not self.user.check_password(current_password):
             raise forms.ValidationError('Current password is incorrect')
         return current_password
 

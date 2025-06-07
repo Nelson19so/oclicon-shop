@@ -1,0 +1,126 @@
+<!-- extends to base html template  -->
+{% extends 'base.html' %}
+
+<!-- loads static data -->
+{% load static %}
+
+<!-- block title for page -->
+{% block title %} User Successfully logout out {% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container-success-status- w-full">
+  <div
+    class="container-success-status-padding- w-full flex justify-center flex-col gap-5"
+  >
+    <div class="container-checked-circle">
+      <svg
+        width="88"
+        height="88"
+        viewBox="0 0 88 88"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          opacity="0.2"
+          d="M44 77C62.2254 77 77 62.2254 77 44C77 25.7746 62.2254 11 44 11C25.7746 11 11 25.7746 11 44C11 62.2254 25.7746 77 44 77Z"
+          fill="#2DB324"
+        />
+        <path
+          d="M59.125 35.75L38.9469 55L28.875 45.375"
+          stroke="#2DB324"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M44 77C62.2254 77 77 62.2254 77 44C77 25.7746 62.2254 11 44 11C25.7746 11 11 25.7746 11 44C11 62.2254 25.7746 77 44 77Z"
+          stroke="#2DB324"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <div class="container-articles w-full text-center">
+      <h1>Your account has been Successfully been created</h1>
+      <p>
+        Dear {{ name }}, your Oclicon account has successfully been created,
+        <a href="" style="display: inline-block">Verify your email</a> address
+        to get your account stronger and avoid having unverified status. the
+        token code for verification will be sent to {{ email }}
+      </p>
+    </div>
+
+    <div
+      class="container-btns-navigation- w-full flex justify-center gap-5 mt-5"
+    >
+      <button
+        class="btn-visit-dashboard flex justify-center gap-2"
+        onclick="location.assign(`{% url 'home' %}`)"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_2660_1467)">
+            <path
+              d="M2.5 13.75L10 18.125L17.5 13.75"
+              stroke="#FA8232"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.5 10L10 14.375L17.5 10"
+              stroke="#FA8232"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.5 6.25L10 10.625L17.5 6.25L10 1.875L2.5 6.25Z"
+              stroke="#FA8232"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_2660_1467">
+              <rect width="20" height="20" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        Go back to home
+      </button>
+
+      <button
+        class="visit-order flex justify-center"
+        onclick="location.assign(`{% url 'dashboard' %}`)"
+      >
+        Go to Dashboard
+        <svg
+          class="ml-2"
+          width="16"
+          height="16"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h48v48H0z" fill="none" />
+          <g id="Shopicon">
+            <polygon
+              points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+              fill="white"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -111,6 +111,11 @@
           padding-left: 20px;
           border-radius: 3px;
           width: 169px;
+          align-items: center;
+
+          @media only screen and (max-width: 999px) {
+            max-width: 155px;
+          }
 
           &:hover {
             border: 1px solid #fff;
@@ -118,8 +123,14 @@
             width: 169px;
           }
 
-          img {
-            width: 100%;
+          .container-img-apple-store {
+            img {
+              width: 100%;
+
+              @media only screen and (max-width: 999px) {
+                width: 100%;
+              }
+            }
           }
 
           p {

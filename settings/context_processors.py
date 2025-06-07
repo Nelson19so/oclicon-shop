@@ -1,6 +1,6 @@
 # apps/product/context-processor
 
-from apps.products.models import Category, Product, Ad
+from apps.products.models import Category, Product, Ad, ProductHighlight
 from apps.cart.models import CartItem, Cart
 from django.contrib.sessions.models import Session
 
@@ -13,11 +13,41 @@ def navbar_categories_list(request):
 
 # ads
 def active_ads(request):
+    # getting top ad for home page
+    top_ad = Ad.objects.filter(is_active=True, position='top').first()
+
+    if top_ad is None:
+        pass
+    
+    # top right ad
+    top_right_ad = Ad.objects.filter(is_active=True, position='top-right-banner').first()
+
+    if top_right_ad is None:
+        pass
+
+    # top right bottom ad
+    top_right_bottom_ad = Ad.objects.filter(
+        is_active=True, position='top-right-two-banner'
+    ).first()
+
+    if top_right_bottom_ad is None:
+        pass
+
+    featured_ad_highlight = ProductHighlight.objects.filter(features='featured_product').first()
+
+    featured_sidebar_ad = Ad.objects.filter(
+        is_active=True,
+        position='Sidebar',
+        highlight=featured_ad_highlight,
+    ).first()
+
+    if featured_sidebar_ad is None:
+        pass
+
     return {
-        'top_ads': Ad.objects.filter(position='top', is_active=True),
-        'bottom_ads': Ad.objects.filter(position='bottom', is_active=True),
-        'sidebar_ads': Ad.objects.filter(position='sidebar', is_active=True),
-        'popup_ads': Ad.objects.filter(position='popup', is_active=True),
+        'top_ad': top_ad,
+        'top_right_ad': top_right_ad,
+        'top_right_bottom_ad': top_right_bottom_ad,
     }
 
 # featured product filtering for home
@@ -35,9 +65,6 @@ def navbar_cart_display_list(request):
     cart = None
     total_cart_price = 0
     cart_items = []
-
-    # if user.is_authenticated:
-
 
     # checks if user is authenticated
     if user.is_authenticated:

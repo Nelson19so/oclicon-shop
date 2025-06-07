@@ -12,50 +12,19 @@ from django.http import JsonResponse
 # home page view
 def Home_page(request):
     computer_accessories = Product.objects.none()
-    # queryset_computer_acc= request.GET.get('category_child')
+    queryset_computer_acc= request.GET.get('category_child')
     computer_category = None
     computer_category = None
     best_hot_deals = None
     best_deals_products = Product.objects.none()  
     featured_products = Product.objects.none() 
 
-    # getting top ad for home page
-    top_ad = Ad.objects.filter(is_active=True, position='top').first()
-
-    if top_ad is None:
-        pass
-    
-    # top right ad
-    top_right_ad = Ad.objects.filter(is_active=True, position='top-right-banner').first()
-
-    if top_right_ad is None:
-        pass
-
-    # top right bottom ad
-    top_right_bottom_ad = Ad.objects.filter(
-        is_active=True, position='top-right-two-banner'
-    ).first()
-
-    if top_right_bottom_ad is None:
-        pass
-
-    featured_ad_highlight = ProductHighlight.objects.filter(features='featured_product').first()
-
-    featured_sidebar_ad = Ad.objects.filter(
-        is_active=True,
-        position='Sidebar',
-        highlight=featured_ad_highlight,
-    ).first()
-
-    if featured_sidebar_ad is None:
-        pass
-
     try:
         # Get the "Computer Accessories category
         computer_category = Category.objects.prefetch_related('children').get(name='Computer Accessories')
 
         # Get all child categories
-        child_categories = list(computer_category.children.all()[:3])
+        child_categories = list(computer_category.children.all()[:4])
 
         # Filter products marked as 'best_deal' and active
         best_deals_products = Product.objects.filter(
@@ -143,11 +112,11 @@ def Home_page(request):
             is_active=True,
             product_feature=new_arrival_filter
         )[:3]
-        
-        # if queryset_computer_acc:
-        #     computer_accessories = computer_accessories.filter(
-        #         category__name__icontains=queryset_computer_acc
-        #     )[:8]
+
+        if queryset_computer_acc:
+            computer_accessories = computer_accessories.filter(
+                category__name__icontains=queryset_computer_acc
+            )[:8]
 
     # except category and product does not exist and passes it
     except (Category.DoesNotExist, Product.DoesNotExist):
@@ -158,6 +127,7 @@ def Home_page(request):
         html = render_to_string('products/partials/computer_accessories.html', {
             'computer_accessories': computer_accessories,
             'child_categories': child_categories,
+            'computer_category': computer_category
         })
         return JsonResponse({'html': html})
 
@@ -168,7 +138,7 @@ def Home_page(request):
         })
         return JsonResponse({'html': html})
 
-    blogs = BlogPost.objects.all()
+    blogs = BlogPost.objects.all()[:3]
 
     for blog in blogs:
         blog_count = blog.blog_post_comment.count()
@@ -177,14 +147,11 @@ def Home_page(request):
         'show_newsletter': True, 'show_navbar_ads': True,
         'computer_accessories': computer_accessories, 
         'computer_category': computer_category,
-        # 'queryset_computer_acc': queryset_computer_acc,
+        'queryset_computer_acc': queryset_computer_acc,
         'best_deals_products': best_deals_products,
         'featured_products': featured_products,
         'best_hot_deals': best_hot_deals,
         'child_categories': child_categories,
-        'top_ad': top_ad,
-        'top_right_ad': top_right_ad,
-        'top_right_bottom_ad': top_right_bottom_ad,
         'blogs': blogs,
         'blog_count': blog_count,
         'featured_sidebar_ad': 'featured_sidebar_ad',

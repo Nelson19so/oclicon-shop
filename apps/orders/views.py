@@ -21,7 +21,7 @@ def track_order(request):
 
         # checks if user is authenticated
         if user.is_authenticated:
-            form = TrackOrderForm(request.POST)
+            form = TrackOrderForm(request.user, request.POST)
 
             # checks if form is valid
             if form.is_valid():

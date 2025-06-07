@@ -5,18 +5,21 @@ class TrackOrderForm(forms.Form):
     email = forms.EmailField()
     order_id = forms.CharField()
 
+    def __init__(self, user=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
     def clean(self):
         cleaned_data = super().clean()
         order_id = cleaned_data.get("order_id")
         email = cleaned_data.get("email")
 
-        try:
-            if not Order.objects.filter(email=email):
-                forms.ValidationError("Email does not match the order ID provided")
-            if not Order.objects.filter(order_id=order_id):
-                forms.ValidationError("The order id you provided was not found")
-        except Order.DoesNotExist:
-            forms.ValidationError("Order you provided not found")       
+        if order_id and email:
+            try:
+                Order.objects.get(user=self.user, email=email, order_id=order_id)
+            except Order.DoesNotExist:
+                raise forms.ValidationError("No order was found for this user with the " \
+                "provided email and order IDS")       
 
 # shipping address model form
 class ShippingAddressForm(forms.ModelForm):

@@ -380,30 +380,18 @@
           <td><span class="table-txt">Stock status:</span></td>
 
           {% if comparisons %} {% for comparison in comparisons %}
-          <!-- in stock product -->
-          {% if comparison.product.variant.availability == 'In Stock' %}
           <td>
-            <span class="in-stock"
-              >{{ comparison.product.variant.first.availability }}</span
-            >
+            {% with comparison.product.variant.first as variant %}
+            <!--  -->
+            {% if variant.availability == 'In Stock' %}
+            <span class="in-stock">{{ variant.availability }}</span>
+            {% elif variant.availability == 'Out of Stock' %}
+            <span class="out-stock">{{ variant.availability }}</span>
+            {% else %}
+            <span class="low-stock">{{ variant.availability }}</span>
+            {% endif %} {% endwith %}
           </td>
-
-          <!-- out of stock product -->
-          {% elif comparison.product.variant.availability == 'Out of Stock' %}
-          <td>
-            <span class="out-stock"
-              >{{ comparison.product.variant.first.availability }}</span
-            >
-          </td>
-          {% else %}
-          <td>
-            <span class="low-stock"
-              >{{ comparison.product.variant.first.availability }}</span
-            >
-          </td>
-          {% endif %}
-          <!-- endif -->
-          {% endfor %} {% endif %}
+          {% endfor %}{% endif %}
         </tr>
 
         <tr>
