@@ -36,7 +36,9 @@
     <div class="header-"><p>PRODUCT ACCESSORIES</p></div>
 
     {% for product_accessory in product_accessories %}
-    <a href="#">
+    <a
+      href="{% url 'product_details' category_slug=product_accessory.category.first.slug child_slug=product_accessory.category.last.slug product_slug=product_accessory.slug %}"
+    >
       <div class="container-product-main flex justify-between mt-3">
         <div class="container-img">
           <img

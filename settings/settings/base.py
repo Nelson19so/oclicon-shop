@@ -1,7 +1,7 @@
 from pathlib import Path
-import os
 from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
+import os
 
 load_dotenv()
 
@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Secret Key
 SECRET_KEY = os.getenv('django-secret-key')
 if not SECRET_KEY:
-    raise ImproperlyConfigured("SECRET_KEY is not set in environment variables")
+    raise ImproperlyConfigured("django SECRET_KEY is not was not found")
 
 # Installed apps
 INSTALLED_APPS = [

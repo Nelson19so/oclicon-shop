@@ -41,7 +41,9 @@
         {% for wishlist in wishlists %}
         <div class="container-product-details-wishlist flex justify-between">
           <div class="container-name-and-img items-compare">
-            <a href="#">
+            <a
+              href="{% url 'product_details' category_slug=wishlist.product.category.first.slug child_slug=wishlist.product.category.last.slug product_slug=wishlist.product.slug %}"
+            >
               <div class="container-product-main flex justify-between mt-3">
                 <div class="container-img min-w-[70px]">
                   <img
@@ -88,6 +90,18 @@
             class="container-cart-btn-- items-compare flex justify-center gap-3"
           >
             <!-- add to cart -->
+            {% if wishlist.in_cart %}
+            <button
+              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
+            >
+              <img
+                src="{% static 'images/svg/shoppingcart.svg' %}"
+                alt="shoppingcart"
+                width="15"
+              />
+              <span class="h-full">Add to cart</span>
+            </button>
+            {% else %}
             <button
               class="p-2 add-to-cart_btn flex justify-center"
               id="add-to-cart_btn"
@@ -98,19 +112,9 @@
                 alt="shoppingcart"
                 width="15"
               />
-              <span class="h-full">Add to card</span>
+              <span class="h-full">Add to cart</span>
             </button>
-
-            <!-- <button
-              class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
-            >
-              <img
-                src="{% static 'images/svg/shoppingcart.svg' %}"
-                alt="shoppingcart"
-                width="15"
-              />
-              <span class="h-full">Add to card</span>
-            </button> -->
+            {% endif %}
 
             <!-- remove from wishlist -->
             <div class="container-btn-remove-cart">

@@ -178,4 +178,3 @@ class UserPasswordChange(forms.Form):
         if new_password and confirm_password and new_password != confirm_password:
             raise forms.ValidationError('new password and confirm password do not match')
         return cleaned_data
-    

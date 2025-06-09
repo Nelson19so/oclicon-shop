@@ -61,11 +61,11 @@
         />
       </svg>
 
-      Enter thr Order ID that we sent to you in your email address.
+      Enter the Order ID that we sent to you in your email address.
     </div>
 
     {% if form.errors %}
-    <div class="container-error-msg mt-3">
+    <div class="container-error-msg mt-5">
       {% for error in form.non_field_errors %}
       <p class="error-msg">{{ error }}*</p>
       {% endfor %}

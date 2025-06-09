@@ -20,7 +20,7 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
-  
+
 # category model
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -37,7 +37,7 @@ class Category(models.Model):
   
 # random skull for product
 def create_product_random_skull():
-    return ''.join(random.choices('0123456789Aabcdefghigklmnopqrstuvwxyz', k=10))
+    return ''.join(random.choices('0123456789abcdefghijklmnopqrstuvwxyz', k=10))
 
 # product model
 class Product(models.Model):
@@ -57,7 +57,6 @@ class Product(models.Model):
         if not self.slug:
             base_slug = slugify(self.name)
             unique_slug = base_slug
-
             num = 1
             while Product.objects.filter(slug=unique_slug).exists():
               unique_slug = f"{base_slug}-{num}"
@@ -77,7 +76,7 @@ class Product(models.Model):
     
     def average_rating_int(self):
         return int(self.average_rating or 0)
-    
+
     @property
     def rating_count(self):
         return self.rating.all().count()
@@ -154,7 +153,7 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.variant}"
-  
+
 # product Highlight
 class ProductHighlight(models.Model):
     FEATURES = [
@@ -206,7 +205,6 @@ class Ad(models.Model):
 
     def __str__(self):
         return self.title
-  
 
 # product features
 # class ProductFeature(models.Model):

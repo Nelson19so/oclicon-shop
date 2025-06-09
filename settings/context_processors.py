@@ -1,5 +1,3 @@
-# apps/product/context-processor
-
 from apps.products.models import Category, Product, Ad, ProductHighlight
 from apps.cart.models import CartItem, Cart
 from django.contrib.sessions.models import Session
@@ -11,7 +9,7 @@ def navbar_categories_list(request):
     # returns the category for use.
     return {"categories": categories}
 
-# ads
+# product ads
 def active_ads(request):
     # getting top ad for home page
     top_ad = Ad.objects.filter(is_active=True, position='top').first()
@@ -44,10 +42,30 @@ def active_ads(request):
     if featured_sidebar_ad is None:
         pass
 
+    # getting the middle banner ad
+    middle_banner_ads = Ad.objects.filter(
+        is_active=True,
+        position='middle_banner'
+    ).order_by('-created_at')[:2]
+
+    if middle_banner_ads is None:
+        pass
+
+    # getting the first bottom banner ad
+    first_bottom_banner = Ad.objects.filter(
+        is_active=True,
+        position='bottom'
+    ).filter()
+
+    if first_bottom_banner is None:
+        pass
+
     return {
         'top_ad': top_ad,
         'top_right_ad': top_right_ad,
         'top_right_bottom_ad': top_right_bottom_ad,
+        'middle_banner_ads': middle_banner_ads,
+        'first_bottom_banner': first_bottom_banner,
     }
 
 # featured product filtering for home
@@ -104,7 +122,7 @@ def navbar_cart_display_list(request):
     # returns the cart item for use.
     return {'cart_items': cart_items, 'total_cart_price': total_cart_price}
 
-# breadcrumbs 
+# breadcrumbs
 # not yet in settings.py context processor
 def breadcrumbs_processor(request):
     return {

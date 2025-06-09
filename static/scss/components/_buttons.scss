@@ -387,11 +387,11 @@
 
 .added-to-cart-btn {
   cursor: auto;
-  background-color: variables.$Gray-300;
+  background-color: variables.$Gray-300 !important;
 
   &:hover,
   &:focus {
-    background-color: variables.$Gray-300;
+    background-color: variables.$Gray-300 !important;
   }
 }
 

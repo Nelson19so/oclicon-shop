@@ -254,19 +254,31 @@
               </div>
 
               <!-- button for adding items to cart -->
-              <button class="p-2 add-to-cart_btn flex justify-center w-full">
+              {% if cart_exist %}
+              <button
+                class="p-2 add-to-cart_btn added-to-cart-btn flex justify-center"
+              >
+                <img
+                  src="{% static 'images/svg/shoppingcart.svg' %}"
+                  alt="shoppingcart"
+                  width="15"
+                />
+                <span class="h-full">Added to cart</span>
+              </button>
+              {% else %}
+              <button
+                class="p-2 add-to-cart_btn flex justify-center w-full"
+                id="add-to-cart_btn"
+                data-product-id="{{ product.id }}"
+              >
                 <img
                   src="{% static 'images/svg/shoppingcart.svg' %}"
                   alt="shoppingcart"
                   width="20"
                 />
-                <span
-                  class="h-full"
-                  id="add-to-cart_btn"
-                  data-product-id="{{ product.id }}"
-                  >Add to card</span
-                >
+                <span class="h-full">Add to card</span>
               </button>
+              {% endif %}
 
               <button class="btn-by-now">Buy now</button>
             </div>
@@ -274,8 +286,28 @@
             <div
               class="container-btn-wishlist-compare mt-5 w-full flex justify-between"
             >
-              <div class="container-left-btn-p-l flex justify-start gap-5">
+              <div class="container-left-btn-p-l flex justify-start gap-3">
                 <div class="wishlist">
+                  {% if exist_in_wish %}
+                  <button
+                    class="w-full cursor-default opacity-55 flex justify-start gap-1"
+                  >
+                    <svg
+                      fill="#fa8232"
+                      width="23"
+                      height="23"
+                      viewBox="-2 -4 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMinYMin"
+                      class="jam jam-heart"
+                    >
+                      <path
+                        d="M3.636 7.208L10 13.572l6.364-6.364a3 3 0 1 0-4.243-4.243L10 5.086l-2.121-2.12a3 3 0 0 0-4.243 4.242zM9.293 1.55l.707.707.707-.707a5 5 0 1 1 7.071 7.071l-7.07 7.071a1 1 0 0 1-1.415 0l-7.071-7.07a5 5 0 1 1 7.07-7.071z"
+                      />
+                    </svg>
+                    Added to Wishlist
+                  </button>
+                  {% else %}
                   <button
                     class="w-full cursor-pointer flex justify-start gap-1 add-to-wishlist"
                     data-product-id="{{ product.id }}"
@@ -295,9 +327,54 @@
                     </svg>
                     Add to Wishlist
                   </button>
+                  {% endif %}
                 </div>
 
                 <div class="wishlist">
+                  {% if compare_exist %}
+                  <button
+                    class="w-full cursor-default opacity-55 flex justify-start gap-1"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 6.25V10"
+                        stroke="#fa8232"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M13.25 11.875L10 10"
+                        stroke="#fa8232"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.3906 7.78906H17.5156V4.66406"
+                        stroke="#fa8232"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.8594 14.8594C13.8982 15.8214 12.6732 16.4768 11.3394 16.7425C10.0056 17.0082 8.62301 16.8724 7.36644 16.3522C6.10987 15.832 5.03581 14.9508 4.28013 13.8201C3.52445 12.6894 3.12109 11.36 3.12109 10C3.12109 8.64002 3.52445 7.31058 4.28013 6.17988C5.03581 5.04917 6.10987 4.16798 7.36644 3.64779C8.62301 3.12761 10.0056 2.99179 11.3394 3.25752C12.6732 3.52324 13.8982 4.17858 14.8594 5.14063L17.5157 7.78907"
+                        stroke="#fa8232"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    Added to Compare
+                  </button>
+                  {% else %}
                   <button
                     class="w-full cursor-pointer flex justify-start gap-1 add-to-compare"
                     data-product-id="{{ product.id }}"
@@ -341,6 +418,7 @@
 
                     Add to Compare
                   </button>
+                  {% endif %}
                 </div>
               </div>
 

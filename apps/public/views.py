@@ -138,10 +138,10 @@ def Home_page(request):
         })
         return JsonResponse({'html': html})
 
-    blogs = BlogPost.objects.all()[:3]
+    blogs = BlogPost.objects.all().prefetch_related('blog_post_comment')[:3]
 
     for blog in blogs:
-        blog_count = blog.blog_post_comment.count()
+        blog.comment_count = blog.blog_post_comment.count()
 
     context = {
         'show_newsletter': True, 'show_navbar_ads': True,
@@ -153,7 +153,6 @@ def Home_page(request):
         'best_hot_deals': best_hot_deals,
         'child_categories': child_categories,
         'blogs': blogs,
-        'blog_count': blog_count,
         'featured_sidebar_ad': 'featured_sidebar_ad',
         'flash_sales': flash_sales,
         'top_rated': top_rated,
@@ -207,11 +206,11 @@ def customer_support(request):
 
 # blog page
 def blog(request):
-    blogs = BlogPost.objects.all()
+    blogs = BlogPost.objects.all().prefetch_related('blog_post_comment')
 
     for blog in blogs:
-        blog_count = blog.blog_post_comment.count()
-    
+        blog.comment_count = blog.blog_post_comment.count()
+
     breadcrumbs = [
         ('Pages', '#/'),
         ('Blog', request.path),
@@ -219,7 +218,6 @@ def blog(request):
     return render(request, 'public/blog.html', {
         'breadcrumbs': breadcrumbs, 
         'blogs': blogs,
-        'blog_count': blog_count
     })
 
 # blog details page

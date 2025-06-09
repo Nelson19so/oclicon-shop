@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.db.models import Q
 import random
 from django.core.exceptions import ObjectDoesNotExist
+from apps.cart.models import WishlistProduct, CartItem, Cart
 
 # product details view page
 class ProductDetailView(DetailView):
@@ -83,6 +84,49 @@ class ProductDetailView(DetailView):
         ).order_by('?')[:3]
         return product_accessories
     
+    def check_wishlist(self, request):
+        product = self.get_object() 
+
+        try:
+            if WishlistProduct.objects.filter(user=request.user, product=product).exists():
+                exist_in_wish = True
+            else:
+                exist_in_wish = False
+        except WishlistProduct.DoesNotExist:
+            pass
+        
+        return exist_in_wish
+    
+    def check_cart(self, request):
+        product = self.get_object()
+        cart = None
+
+        try:
+            cart = Cart.objects.get(user=request.user)
+
+            if cart and CartItem.objects.filter(cart=cart, product=product).exists():
+                cart_exist = True
+            else:
+                cart_exist = False
+        except Cart.DoesNotExist or CartItem.DoesNotExist:
+            pass
+
+        return cart_exist
+    
+    def check_compare(self, request):
+        product = self.get_object()
+
+        try:
+            if request.user.is_authenticated:
+                if ProductComparison.objects.filter(user=request.user, product=product):
+                    compare_exist = True
+                else:
+                    compare_exist = False
+        except ProductComparison.DoesNotExist:
+            pass
+
+        return compare_exist
+            
     # getting additional information for product to use in the template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -94,6 +138,9 @@ class ProductDetailView(DetailView):
         context['related_products'] = self.get_related_product()
         context['feature_products'] = self.featured_product()
         context['product_accessories'] = self.product_accessories()
+        context['exist_in_wish'] = self.check_wishlist(self.request)
+        context['cart_exist'] = self.check_cart(self.request)
+        context['compare_exist'] = self.check_compare(self.request)
         return context
 
 # shop page for filtering and searching all kinds of product that exist in shop
@@ -182,6 +229,9 @@ class FilteredProductListView(ListView):
         if category_slug:
             return Category.objects.get(slug=category_slug)
         return None
+    
+    # def product_wishlist_cart_compare_exist(self, request):
+    #     pass
 
     # additional context being passed for rendering product and it items to the template
     def get_context_data(self, **kwargs):

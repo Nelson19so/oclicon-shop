@@ -258,7 +258,7 @@ def wish_list_view(request):
     # if user is authenticated
     if user.is_authenticated:
         # filters wishlist product for user
-        wishlists = WishlistProduct.objects.filter(user=user)
+        wishlists = WishlistProduct.objects.filter(user=user).select_related('product')
 
     # else if not authenticated and no session id for anonymous user 
     else:
@@ -277,6 +277,20 @@ def wish_list_view(request):
             wishlists = WishlistProduct.objects.filter(session=session)
         except Session.DoesNotExist:
             wishlists = []
+
+    try:
+        cart = Cart.objects.get(user=user) 
+
+        for wishlist in wishlists:
+            wishlist.in_cart = False
+
+            if cart and CartItem.objects.filter(
+                cart=cart,
+                product=wishlist.product
+            ).exists():
+                wishlist.in_cart = True
+    except (Cart.DoesNotExist or CartItem.DoesNotExist):
+        pass
     
     # builds breadcrumbs for user
     breadcrumbs = [
@@ -285,7 +299,7 @@ def wish_list_view(request):
     
     # renders context processor for use in the UI
     context = {
-        "wishlists": wishlists, 
+        "wishlists": wishlists,
         "user": user, 
         'breadcrumbs': breadcrumbs,
     }

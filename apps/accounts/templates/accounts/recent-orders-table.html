@@ -1,6 +1,12 @@
 <div class="container-order-table">
   <div class="container-order-table-top flex justify-between">
-    <div class="container-left-order-top"><p>Recent Order</p></div>
+    <div class="container-left-order-top">
+      {% if orders.count > 1 %}
+      <p>Recent Orders</p>
+      {% else %}
+      <p>Recent Order</p>
+      {% endif %}
+    </div>
     {% if request.resolve_match.url_name == 'home' %}
     <div class="container-right-order-top">
       <a href="#">

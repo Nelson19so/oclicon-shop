@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from apps.orders.models import Order, ShippingAddress
 from apps.orders.forms import ShippingAddressForm
 from .models import (
-    CustomUser, SearchHistory, 
+    CustomUser, SearchHistory,
     AdditionalUserInfo, ProfilePicture, 
     BillingAddress
 )
@@ -455,4 +455,3 @@ def reset_user_password(request):
             reset_user_password_form = UserPasswordChange(request.user)            
 
     return redirect('profile')
-

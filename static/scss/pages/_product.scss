@@ -276,11 +276,15 @@
               }
 
               .container-left-btn-p-l {
+                @media only screen and (max-width: 473px) {
+                  gap: 30px;
+                }
+
                 .wishlist {
                   align-items: center;
                   color: variables.$Gray-700;
                   font-weight: 400;
-                  font-size: 14px;
+                  font-size: 13px;
                   line-height: 20px;
                   letter-spacing: 0%;
                 }
@@ -289,12 +293,13 @@
               .container-right-get-i-t- {
                 align-items: center;
                 justify-content: flex-start;
+                align-items: center;
 
                 span {
                   align-items: center;
                   color: variables.$Gray-700;
                   font-weight: 400;
-                  font-size: 14px;
+                  font-size: 13px;
                   line-height: 20px;
                   letter-spacing: 0%;
                 }
