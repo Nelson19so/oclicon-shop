@@ -119,7 +119,7 @@ def Home_page(request):
             )[:8]
 
     # except category and product does not exist and passes it
-    except (Category.DoesNotExist, Product.DoesNotExist):
+    except (Category.DoesNotExist, Product.DoesNotExist, ProductHighlight):
         pass
 
     # AJAX handling for computer accessories
