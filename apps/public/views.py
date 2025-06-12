@@ -18,6 +18,9 @@ def Home_page(request):
     best_hot_deals = None
     best_deals_products = Product.objects.none()  
     featured_products = Product.objects.none() 
+    top_rated_filter = None
+    flash_sales_filter = None
+    new_arrival_filter = None
 
     try:
         # Get the "Computer Accessories category
@@ -67,10 +70,6 @@ def Home_page(request):
             features='flash_sale_today'
         ).first()
 
-        # checks if filtering items exist
-        if not flash_sales_filter:
-            flash_sales_filter = None
-
         # filter flash sales
         flash_sales = Product.objects.filter(
             is_active=True,
@@ -84,10 +83,6 @@ def Home_page(request):
             is_active=True,
             features='top_rated'
         ).first()
-
-        # checks if filtering exist
-        if not top_rated_filter:
-            top_rated_filter = None
 
         # filter top rated product
         top_rated = Product.objects.filter(
@@ -103,10 +98,6 @@ def Home_page(request):
             features='new_arrival'
         ).first()
 
-        # check if new arrival exist
-        if not new_arrival_filter:
-            new_arrival_filter = None
-        
         # filters new arrival product
         new_arrivals = Product.objects.filter(
             is_active=True,
@@ -119,7 +110,7 @@ def Home_page(request):
             )[:8]
 
     # except category and product does not exist and passes it
-    except (Category.DoesNotExist, Product.DoesNotExist, ProductHighlight):
+    except (Category.DoesNotExist, Product.DoesNotExist):
         pass
 
     # AJAX handling for computer accessories
