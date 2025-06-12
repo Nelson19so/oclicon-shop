@@ -85,45 +85,43 @@ class ProductDetailView(DetailView):
         return product_accessories
     
     def check_wishlist(self, request):
-        product = self.get_object() 
-
-        try:
-            if WishlistProduct.objects.filter(user=request.user, product=product).exists():
-                exist_in_wish = True
-            else:
-                exist_in_wish = False
-        except WishlistProduct.DoesNotExist:
-            pass
+        product = self.get_object()
+        exist_in_wish = False
+        
+        if request.user.is_authenticated:
+            try:
+                if WishlistProduct.objects.filter(user=request.user, product=product).exists():
+                    exist_in_wish = True
+            except WishlistProduct.DoesNotExist:
+                pass
         
         return exist_in_wish
     
     def check_cart(self, request):
         product = self.get_object()
         cart = None
+        cart_exist = False
 
-        try:
-            cart = Cart.objects.get(user=request.user)
-
-            if cart and CartItem.objects.filter(cart=cart, product=product).exists():
-                cart_exist = True
-            else:
-                cart_exist = False
-        except Cart.DoesNotExist or CartItem.DoesNotExist:
-            pass
+        if request.user.is_authenticated:
+            try:
+                cart = Cart.objects.get(user=request.user)
+                if cart and CartItem.objects.filter(cart=cart, product=product).exists():
+                    cart_exist = True
+            except Cart.DoesNotExist or CartItem.DoesNotExist:
+                pass
 
         return cart_exist
-    
+
     def check_compare(self, request):
         product = self.get_object()
+        compare_exist = False
 
-        try:
-            if request.user.is_authenticated:
+        if request.user.is_authenticated:
+            try:
                 if ProductComparison.objects.filter(user=request.user, product=product):
                     compare_exist = True
-                else:
-                    compare_exist = False
-        except ProductComparison.DoesNotExist:
-            pass
+            except ProductComparison.DoesNotExist:
+                pass
 
         return compare_exist
             

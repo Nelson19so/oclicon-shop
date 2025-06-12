@@ -205,6 +205,13 @@ nav /** main page navbar **/ {
 
       .container-logo {
         padding-top: 5px;
+        align-items: center;
+
+        button {
+          @media only screen and (min-width: 1045px) {
+            display: none;
+          }
+        }
 
         @media only screen and (max-width: 1045px) {
           width: 60%;

@@ -10,8 +10,8 @@ __pycache__/
 *.env
 
 # Django migrations
-#! **/migrations/
-#! !**/migrations/__init__.py
+**/migrations/
+!**/migrations/__init__.py
 
 # Static files (if you collectstatic locally)
 staticfiles/

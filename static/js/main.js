@@ -1,7 +1,36 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.querySelector(".web-model");
+
+  const toggleModal = () => modal.classList.toggle("active");
+
+  modal.addEventListener("click", () => {
+    if (sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+    }
+    toggleModal();
+  });
+
+  // handle sidebar
+  const displaySidebar = document.getElementById("display-sidebar");
+  const sidebar = document.getElementById("page-sidebar");
+  const closeSidebar = document.getElementById("close_navbar");
+
+  displaySidebar.addEventListener("click", function () {
+    sidebar.classList.add("active");
+    toggleModal();
+  });
+
+  closeSidebar.addEventListener("click", function () {
+    if (sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+      toggleModal();
+    }
+  });
+
   // navbar on scroll effect
+
   const navbar = document.querySelector(".Middle_Nav__");
   const scrollThreshold = window.innerHeight * 0.4; // 30% of viewport height
 
