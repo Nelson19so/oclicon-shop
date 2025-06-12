@@ -1,138 +1,111 @@
-Oclicon Online Store
+---
 
-Clicon Online Store is a fully-featured eCommerce web application built with Django for the backend and enhanced with a modern, responsive frontend using HTML, CSS, SCSS, TailwindCSS, JavaScript, and jQuery. It includes user authentication, product management, cart functionality, an admin dashboard, order processing, wishlist, and more.
+# 🛍️ Clicon Online Store — eCommerce Project
 
-This project showcases my backend development skills while also featuring a complete frontend experience. It can serve as a robust template for scalable, production-ready eCommerce platforms.
+A fully functional eCommerce platform built using **Django** for the backend and **HTML, CSS, TailwindCSS, JavaScript, and jQuery** for the frontend.
 
 ---
 
-Features
+## 🚀 Features
 
-User Authentication:
-Custom user model, sign-up, login, email verification, password reset code & form, Google and Apple login (via Django AllAuth).
-
-Product Management:
-Add, update, delete, and display products dynamically.
-
-Cart System:
-Add, update, and remove items in the shopping cart.
-
-Order Management:
-Place orders, view order details, and track order status.
-
-Wishlist:
-Save products to a wishlist for future reference.
-
-Admin Dashboard:
-Secure admin interface for managing orders, users, and inventory.
-
-Responsive UI:
-Fully mobile-friendly and responsive layout.
-
-AJAX:
-Enhances user experience with real-time updates (like cart actions).
-
-Security:
-Password hashing, CSRF/XSS protection, and secure authentication.
+- User registration and login (email/username/password + Google OAuth)
+- email confirmation, reset password
+- Product listing + filtering and detail pages
+- Add to cart, update quantity, remove from cart
+- Add to wishlist, Compare and Remove 
+- Checkout and order processing/order tracking
+- User profile with order history
+- Admin product management (CRUD)
+- blog post listing and details
+- ads and so on
+- Responsive UI using TailwindCSS and jQuery + scss
+- Deployed backend on **Render**
 
 ---
 
-Tech Stack
+## 🛠️ Tech Stack
 
-Frontend
-
-HTML5, CSS3, SCSS, Tailwind CSS
-
-JavaScript, jQuery
-
-AJAX for dynamic interaction
-
-Backend
-
-Django
-
-Django REST Framework
-
-PostgreSQL
-
-Pillow (image handling)
-
-Django AllAuth (OAuth with Google and Apple)
+| Backend        | Frontend             | Other Services            |
+|----------------|----------------------|----------------------------|
+| Django         | HTML, CSS, Tailwind  | Django AllAuth (Google)   |
+| Django AllAuth | JavaScript, jQuery   | PostgreSQL                |
+| Pillow         | SCSS (optional)      | Render (deployment)       |
 
 ---
 
-Setup & Installation
+## 🔐 Authentication
 
-1. Clone the Repository
+- Users can register using **email or username + password**
+- Google login via **Django AllAuth**
+- JWT or session-based login supported
 
-git clone https://github.com/yourusername/clickon.git
-cd clickon
+---
 
-2. Set up a Virtual Environment
+## 📦 How to Run Locally
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/clickon-ecommerce.git
+cd clickon-ecommerce
+
+2. Set up virtual environment
 
 python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# On Windows
-
-venv\Scripts\activate
-
-# On macOS/Linux
-
-source venv/bin/activate
-
-3. Install Dependencies
+3. Install dependencies
 
 pip install -r requirements.txt
 
-4. Configure PostgreSQL Database
+4. Environment variables
 
-Ensure PostgreSQL is installed and running. Then set up your database and update your .env or settings.py accordingly.
+Create a .env file with:
 
-python manage.py migrate
-
-5. Create Superuser (Optional)
-
-python manage.py createsuperuser
-
-6. Run the Server
-
-python manage.py runserver
-
-Visit: http://127.0.0.1:8000/
-
----
-
-Environment Variables
-
-Create a .env file and add the following:
-
-DATABASE_URL=your_postgresql_connection_string
 SECRET_KEY=your_secret_key
 DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
+DATABASE_URL=your_postgres_url
 GOOGLE_CLIENT_ID=your_google_client_id
-APPLE_CLIENT_ID=your_apple_client_id
+GOOGLE_CLIENT_SECRET=your_google_secret
+
+5. Run migrations
+
+python manage.py makemigrations
+python manage.py migrate
+
+6. Run server
+
+python manage.py runserver
+
 
 ---
 
-Future Improvements
+🌐 Deployment
 
-Payment Gateway Integration – Stripe or PayPal
+Backend is deployed on Render.
+Static files served using WhiteNoise.
 
-Product Ratings & Reviews
-
-Advanced Search and Filters
-
-Recommendation System
 
 ---
 
-Screenshots
+📸 Screenshots
 
 loading...
 
+
 ---
 
-Contribution
+👨‍💻 Developer
 
-Feel free to fork this repository and open pull requests or issues. Suggestions and improvements are welcome.
+Name: Nelson
+
+Role: Backend Developer (Django) + Front-end developer 
+
+Country: Nigeria 🇳🇬
+
+Email: nelsonsomto19@email.com
+
+LinkedIn: https://www.linkedin.com/in/nelson-junior-700b67363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+
+GitHub: github.com/Nelson19so 
