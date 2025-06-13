@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from apps.products.models import Category
 
 # clicon team members model create
 class OcliconTeamMembers(models.Model):
@@ -27,7 +26,7 @@ class FrequentlyAskedQuestions(models.Model):
 # blog post model create
 class BlogPost(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='author')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='stack')
+    category = models.ForeignKey('products.Category', on_delete=models.CASCADE, related_name='stack')
     title = models.CharField(max_length=200)
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)

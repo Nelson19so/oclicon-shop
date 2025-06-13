@@ -278,19 +278,21 @@ def wish_list_view(request):
         except Session.DoesNotExist:
             wishlists = []
 
-    try:
-        cart = Cart.objects.get(user=user) 
+    # if user is authenticated
+    if user.is_authenticated:
+        try:
+            cart = Cart.objects.get(user=user) 
 
-        for wishlist in wishlists:
-            wishlist.in_cart = False
+            for wishlist in wishlists:
+                wishlist.in_cart = False
 
-            if cart and CartItem.objects.filter(
-                cart=cart,
-                product=wishlist.product
-            ).exists():
-                wishlist.in_cart = True
-    except (Cart.DoesNotExist or CartItem.DoesNotExist):
-        pass
+                if cart and CartItem.objects.filter(
+                    cart=cart,
+                    product=wishlist.product
+                ).exists():
+                    wishlist.in_cart = True
+        except (Cart.DoesNotExist or CartItem.DoesNotExist):
+            pass
     
     # builds breadcrumbs for user
     breadcrumbs = [

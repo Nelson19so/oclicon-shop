@@ -10,9 +10,8 @@ from django.core.mail import send_mail
 from apps.orders.models import Order, ShippingAddress
 from apps.orders.forms import ShippingAddressForm
 from .models import (
-    CustomUser, SearchHistory,
-    AdditionalUserInfo, ProfilePicture, 
-    BillingAddress
+    CustomUser, AdditionalUserInfo, 
+    ProfilePicture, BillingAddress
 )
 from .forms import (
     UserRegistrationForm, UserLoginForm, 

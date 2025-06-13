@@ -21,6 +21,10 @@ def Home_page(request):
     top_rated_filter = None
     flash_sales_filter = None
     new_arrival_filter = None
+    child_categories = []
+    flash_sales = []
+    top_rated = []
+    new_arrivals = []
 
     try:
         # Get the "Computer Accessories category

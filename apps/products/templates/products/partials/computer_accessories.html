@@ -10,6 +10,8 @@
       <div class="container-left-container flex justify-items-start h-full">
         <h1>Computer Accessories</h1>
 
+        <!-- checks if theres is slug -->
+        {% if computer_category %}
         <a
           href="{% url 'shop_category' category_slug=computer_category.slug %}"
           class="w-1/2"
@@ -33,6 +35,28 @@
             </svg>
           </div>
         </a>
+        {% else %}
+        <a href="{% url 'shop' %}" class="w-1/2">
+          <div class="flex justify-end">
+            <p>Browse All Product</p>
+            <svg
+              class="mt-1 ml-2"
+              width="15"
+              height="15"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="#ff9d5c"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
+        {% endif %}
       </div>
 
       <div class="container-right-header flex justify-end gap-5">
@@ -53,6 +77,8 @@
         <p>No product found</p>
         {% endif %}
 
+        <!-- checks if theres is slug -->
+        {% if computer_category %}
         <a
           href="{% url 'shop_category' category_slug=computer_category.slug %}"
           class="w-1/2"
@@ -76,6 +102,28 @@
             </svg>
           </div>
         </a>
+        {% else %}
+        <a href="{% url 'shop' %}" class="w-1/2">
+          <div class="flex justify-end">
+            <p>Browse All Product</p>
+            <svg
+              class="mt-1 ml-2"
+              width="15"
+              height="15"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="#ff9d5c"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
+        {% endif %}
       </div>
     </header>
 

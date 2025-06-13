@@ -8,7 +8,10 @@
         /></a>
       </div>
 
-      <button class="close-sidebar flex justify-center gap-2" id="close_navbar">
+      <button
+        class="close-sidebar flex justify-center gap-2 cursor-pointer"
+        id="close_navbar"
+      >
         <svg
           fill="white"
           width="20px"
@@ -29,7 +32,7 @@
     </div>
 
     <div class="container-grid-pages">
-      <a href="#">
+      <a href="{% url 'track_order' %}">
         <div class="container-grid-item flex justify-start gap-2 odd-1">
           <span>
             <svg
@@ -68,7 +71,7 @@
           </div>
         </div>
       </a>
-      <a href="#">
+      <a href="{% url 'compare' %}">
         <div class="container-grid-item flex justify-start gap-2 even-1">
           <span>
             <svg
@@ -115,7 +118,7 @@
           </div>
         </div>
       </a>
-      <a href="#">
+      <a href="{% url 'customersupport' %}">
         <div class="container-grid-item flex justify-start gap-2 odd-2">
           <span class="mr-1">
             <svg
@@ -136,7 +139,7 @@
           </div>
         </div>
       </a>
-      <a href="#">
+      <a href="{% url 'faqs' %}">
         <div class="container-grid-item flex justify-start gap-2 even-2">
           <span class="mr-1">
             <svg
@@ -178,7 +181,30 @@
     </div>
 
     <div class="container-categories">
-      <p>Categories</p>
+      <div class="container-category-header-sidebar flex justify-between">
+        <p>Categories</p>
+
+        <a href="{% url 'shop' %}" class="w-1/2">
+          <div class="flex justify-end">
+            <span>Browse All Product</span>
+            <svg
+              class="mt-1 ml-2"
+              width="15"
+              height="15"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0h48v48H0z" fill="none" />
+              <g id="Shopicon">
+                <polygon
+                  points="8,26 33.172,26 19.172,40 22,42.828 40.828,24 22,5.172 19.172,8 33.172,22 8,22 	"
+                  fill="#ff9d5c"
+                />
+              </g>
+            </svg>
+          </div>
+        </a>
+      </div>
 
       {% if categories %}
       <ul>

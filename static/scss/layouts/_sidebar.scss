@@ -294,7 +294,7 @@
         p {
           font-size: 11px;
           color: variables.$Gray-700;
-          height: 17px;
+          height: 7px;
         }
 
         span {
@@ -308,11 +308,24 @@
       width: 100%;
       margin-top: 20px;
 
-      p {
-        font-size: 14px;
-        color: variables.$Gray-700;
-        font-weight: bolder;
-        padding: 0 20px;
+      .container-category-header-sidebar {
+        p {
+          font-size: 14px;
+          color: variables.$Gray-700;
+          font-weight: bolder;
+          padding: 0 20px;
+        }
+
+        a {
+          div {
+            align-items: center;
+
+            span {
+              color: variables.$Primary-500;
+              font-size: 12px;
+            }
+          }
+        }
       }
 
       ul {

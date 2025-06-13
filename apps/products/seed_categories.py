@@ -3,13 +3,14 @@
 from django.core.management.base import BaseCommand
 from apps.products.models import Category
 
+
 def seed_categories():
     # Category.objects.all().delete()
 
     # checking if category exist to seed the categories
-    # if Category.objects.exists():
-    #     print("⚠️ Categories already exist. Skipping seeding.")
-    #     return
+    if Category.objects.exists():
+        print("⚠️ Categories already exist. Skipping seeding.")
+        return
 
     print("🌱 Seeding categories...")
 

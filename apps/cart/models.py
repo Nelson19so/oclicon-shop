@@ -1,5 +1,4 @@
 from django.db import models
-from apps.products.models import Product
 from django.conf import settings
 from django.contrib.sessions.models import Session
 from decimal import Decimal
@@ -22,7 +21,7 @@ class Cart(models.Model):
 # cart item
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_cart')
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='product_cart')
     quantity = models.IntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True)
@@ -41,7 +40,7 @@ class CartItem(models.Model):
 # wishlist product model
 class WishlistProduct(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='wish_product')
+    product = models.OneToOneField('products.Product', on_delete=models.CASCADE, related_name='wish_product')
     session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session_wish', blank=True, null=True)
     added_at = models.DateTimeField(auto_now_add=True)
 

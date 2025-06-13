@@ -1,5 +1,4 @@
 from django.db import models
-from apps.products.models import Product
 from django.conf import settings
 import random
 
@@ -54,7 +53,7 @@ class Order(models.Model):
 
 # order items
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)

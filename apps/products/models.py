@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator
-from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
 from django.conf import settings
 import random
@@ -214,7 +213,7 @@ class Ad(models.Model):
 
 # product rating
 class ProductRating(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating')
     stars = models.PositiveIntegerField(choices=[(i, str(i)) for i in range(1, 6)])
     review = models.TextField(blank=True)
@@ -223,10 +222,19 @@ class ProductRating(models.Model):
     class Meta:
         unique_together =  ['product', 'user']
 
+# product search history for users
+class SearchHistory(models.Model):
+    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    searched_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.Name
+
 # product comparison
 class ProductComparison(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True
+        'accounts.CustomUser', on_delete=models.CASCADE, blank=True, null=True
     )
     session_id = models.ForeignKey(
         Session, on_delete=models.CASCADE, related_name='session', null=True, blank=True
@@ -241,4 +249,3 @@ class ProductComparison(models.Model):
 
     def __str__(self):
         return f"{self.product.name}"
-    

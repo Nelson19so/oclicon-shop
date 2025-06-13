@@ -11,14 +11,11 @@ __pycache__/
 
 # Django migrations
 # Ignore all migration files EXCEPT __init__.py and actual migrations
-- **/migrations/
-+ # Ignore only compiled migration files, not Python migration scripts
-+ **/migrations/*.pyc
-+ **/migrations/*.pyo
-+ **/migrations/*.pyd
-+ **/migrations/__pycache__/
-!**/migrations/*.py
-!**/migrations/__init__.py
+# Ignore Django migration cache but not the actual migration scripts
+**/migrations/__pycache__/
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.pyd
 
 # Static files (if you collectstatic locally)
 staticfiles/
@@ -70,3 +67,7 @@ celerybeat-schedule
 
 # Pycharm
 *.iml
+
+# Allow migration Python files
+!**/migrations/*.py
+!**/migrations/__init__.py

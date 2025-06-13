@@ -2025,7 +2025,7 @@ a strong {
 .sidebar-for-all-page .container-padding .container-grid-pages .container-grid-item p {
   font-size: 11px;
   color: #475156;
-  height: 17px;
+  height: 7px;
 }
 .sidebar-for-all-page .container-padding .container-grid-pages .container-grid-item span {
   font-size: 9px;
@@ -2035,11 +2035,18 @@ a strong {
   width: 100%;
   margin-top: 20px;
 }
-.sidebar-for-all-page .container-padding .container-categories p {
+.sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar p {
   font-size: 14px;
   color: #475156;
   font-weight: bolder;
   padding: 0 20px;
+}
+.sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar a div {
+  align-items: center;
+}
+.sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar a div span {
+  color: #fa8232;
+  font-size: 12px;
 }
 .sidebar-for-all-page .container-padding .container-categories ul {
   margin-top: 20px;

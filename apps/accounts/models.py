@@ -1,10 +1,7 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.conf import settings
-from apps.products.models import Product, Category
 from django.utils import timezone
-
-# Create your models here.
 
 # base user model
 class BaseUserManager(BaseUserManager):
@@ -43,7 +40,7 @@ class CustomUser(AbstractUser):
     
 # user profile
 class ProfilePicture(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='profile')
     profile = models.ImageField(upload_to='profile', blank=False, null=False)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -51,7 +48,7 @@ class ProfilePicture(models.Model):
         return f"{self.user.Name}"
 
 class UserStatus(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
     is_verified = models.BooleanField(default=False, blank=True, null=True)
     is_banned = models.BooleanField(default=False, blank=True, null=True)
     ban_reason = models.TextField(max_length=500, blank=True, null=True)
@@ -62,8 +59,8 @@ class UserStatus(models.Model):
 
 # vendor
 class UserVendor(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
+    category = models.ForeignKey('products.Category', on_delete=models.PROTECT)
     is_vendor = models.BooleanField(default=False)
 
     def __str__(self):
@@ -78,14 +75,14 @@ class VendorInformation():
         return f"{self.vendor}"
 
 class TermsPrivacy(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
     terms_privacy = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.user.Name}"
 
 class AdditionalUserInfo(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='additional_user')
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='additional_user')
     username = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=200)
     phone_number = models.CharField(max_length=12, null=True, blank=True)
@@ -107,17 +104,9 @@ class AdditionalUserInfo(models.Model):
             self.username
         ])
 
-class SearchHistory(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    searched_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.Name
-
 # billing information
 class BillingAddress(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='billing_info')
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='billing_info')
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     company_name = models.CharField(max_length=400, null=True, blank=True)

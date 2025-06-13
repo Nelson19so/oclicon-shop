@@ -303,6 +303,7 @@
             </svg>
           </a>
 
+          {% if not request.user.is_authenticated %}
           <div class="container-login-navbar-drop-down" id="dropItem">
             <header class="container- text-center">
               <p>Sign in to your account</p>
@@ -320,6 +321,11 @@
               </button>
             </div>
           </div>
+          {% else %}
+          <div class="container-login-navbar-drop-down" id="dropItem">
+            Hello {{ request.user.Name }}
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>
