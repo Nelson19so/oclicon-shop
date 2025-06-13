@@ -4,13 +4,20 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-*.sqlite3
+# *.sqlite3
 *.env
 .env.*
 *.env
 
 # Django migrations
-**/migrations/
+# Ignore all migration files EXCEPT __init__.py and actual migrations
+- **/migrations/
++ # Ignore only compiled migration files, not Python migration scripts
++ **/migrations/*.pyc
++ **/migrations/*.pyo
++ **/migrations/*.pyd
++ **/migrations/__pycache__/
+!**/migrations/*.py
 !**/migrations/__init__.py
 
 # Static files (if you collectstatic locally)
@@ -37,9 +44,6 @@ yarn-error.log*
 
 # pyenv
 .python-version
-
-# dotenv environment files
-.env
 
 # JetBrains IDEs
 .idea/

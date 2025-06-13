@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 set -o errexit
-
-# exit on error & print commands
-set -ex
+set -ex  # Print commands as they run and exit on failure
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Collect static files for production
-python manage.py collectstatic --no-input --settings=settings.settings.prod
-
-# create new migration files
-python manage.py makemigrations
-
-# Apply all migrations for production
+# Apply DB migrations (apply)
 python manage.py migrate --no-input --settings=settings.settings.prod
 
+# Collect static files
+python manage.py collectstatic --no-input --settings=settings.settings.prod
