@@ -240,8 +240,10 @@
   background-color: variables.$White-100;
   overflow-y: scroll;
   transition: left 0.5s ease-in-out;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media only screen and (min-width: 1045px) {
     display: none;
@@ -252,7 +254,7 @@
   }
 
   @media only screen and (max-width: 497px) {
-    width: 350px;
+    width: 100vw;
   }
 
   .container-padding {
@@ -260,7 +262,7 @@
     height: 100%;
 
     .container-logo-side-bar {
-      padding: 20px;
+      padding: 9px 20px;
       background-color: variables.$Secondary-700;
       margin-bottom: 30px;
 
@@ -309,11 +311,12 @@
       margin-top: 20px;
 
       .container-category-header-sidebar {
+        padding: 0 20px;
+
         p {
           font-size: 14px;
           color: variables.$Gray-700;
           font-weight: bolder;
-          padding: 0 20px;
         }
 
         a {
@@ -322,7 +325,7 @@
 
             span {
               color: variables.$Primary-500;
-              font-size: 12px;
+              font-size: 10px;
             }
           }
         }

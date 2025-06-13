@@ -1972,8 +1972,9 @@ a strong {
   background-color: #ffffff;
   overflow-y: scroll;
   transition: left 0.5s ease-in-out;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+}
+.sidebar-for-all-page::-webkit-scrollbar {
+  display: none;
 }
 @media only screen and (min-width: 1045px) {
   .sidebar-for-all-page {
@@ -1987,7 +1988,7 @@ a strong {
 }
 @media only screen and (max-width: 497px) {
   .sidebar-for-all-page {
-    width: 350px;
+    width: 100vw;
   }
 }
 .sidebar-for-all-page .container-padding {
@@ -1995,7 +1996,7 @@ a strong {
   height: 100%;
 }
 .sidebar-for-all-page .container-padding .container-logo-side-bar {
-  padding: 20px;
+  padding: 9px 20px;
   background-color: #1b6392;
   margin-bottom: 30px;
 }
@@ -2035,18 +2036,20 @@ a strong {
   width: 100%;
   margin-top: 20px;
 }
+.sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar {
+  padding: 0 20px;
+}
 .sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar p {
   font-size: 14px;
   color: #475156;
   font-weight: bolder;
-  padding: 0 20px;
 }
 .sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar a div {
   align-items: center;
 }
 .sidebar-for-all-page .container-padding .container-categories .container-category-header-sidebar a div span {
   color: #fa8232;
-  font-size: 12px;
+  font-size: 10px;
 }
 .sidebar-for-all-page .container-padding .container-categories ul {
   margin-top: 20px;
