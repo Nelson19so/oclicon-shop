@@ -166,6 +166,7 @@ def frequently_asked_question(request):
     form = FrequentlyAskedQuestionsForms()
     active_faq = FrequentlyAskedQuestions.objects.filter(active_faq=True)
 
+    # handling post request
     if request.method == 'POST':
         form = FrequentlyAskedQuestionsForms(request.POST)
         if form.is_valid(): # validates whether form is valid or not
