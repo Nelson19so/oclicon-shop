@@ -5,75 +5,66 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods, require_POST
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, View
-from django.contrib.sessions.models import Session
 from django.http import HttpResponseNotAllowed
 from .forms import *
 from django.utils import timezone
 
+class SessionMixin:
+    def get_or_create_session_key(self, request):
+        if not request.session.session_key:
+            request.session.create()
+        return request.session.session_key
+
 # cart mixin for all cart product
-class CartMixin:
+class CartMixin(SessionMixin):
     def cart_item_count(self, request):
         user = request.user
 
         if user.is_authenticated:
             cart = Cart.objects.get(user=user)
-            return CartItem.objects.filter(cart=cart).count()
         
-        if not request.session.session_key:
-            return 0
-        session = Session.objects.get(session_key=request.session.session_key)
-        cart = Cart.objects.filter(session_id=session)
-        return CartItem.objects.filter().count()
+        else:
+            if not request.session.session_key:
+                return 0
+            session_id = request.session.session_key
+            cart = Cart.objects.filter(session_id=session_id)
+
+        return CartItem.objects.filter(cart=cart).count()
 
     def cart_items_list(self, request):
         user = request.user
+        cart = None
 
         try:
             if user.is_authenticated:
                 cart = Cart.objects.get(user=user)
-
             else:
-                if not request.session.session_key:
-                    request.session.create()
-                    
-                session_id = request.session.session_key
-                session = Session.objects.get(session_key=session_id)
-
-                cart = Cart.objects.get(session=session)
-        except (Cart.DoesNotExist or Session.DoesNotExist):
-            cart = None
+                session_id = self.get_or_create_session_key(request)
+                cart = Cart.objects.get(session=session_id)
+        except Cart.DoesNotExist:
+            return CartItem.objects.none()
 
         return CartItem.objects.filter(cart=cart)
 
 # create cart item for user and anonymous user
-class CreateCartItem(CartMixin, View):
-    @method_decorator([require_POST])
+class CreateCartItem(CartMixin, SessionMixin, View):
+    @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         # filters product for renders 404 if the id does not exist
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
         user = request.user
 
         if user.is_authenticated:
-            cart, created = Cart.objects.get_or_create(user=user)
-            cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
-
-            if not created:
-                cart_item.quantity = 1
-                cart_item.save()
+            cart, _ = Cart.objects.get_or_create(user=user)
 
         else:
-            session_id = request.session.session_key
-            if not session_id:
-                request.session.create()
-                session_id = request.session.session_key
+            session_id = self.get_or_create_session_key(request)
+            cart, _ = Cart.objects.get(session=session_id)
 
-            session = Session.objects.get(session_key=session_id)
-            cart, created = Cart.objects.get(session=session)
-            cart_item, created = CartItem.objects.get(product=product, cart=cart)
-
-            if not created:
-                cart_item.quantity = 1
-                cart_item.save()
+        cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+        if not created:
+            cart_item.quantity = 1
+            cart_item.save()
 
         cart_count = self.cart_item_count(request)
         
@@ -88,27 +79,22 @@ class RemoveItemFromCart(View):
     def post(self, request, *args, **kwargs):
         cart_id = kwargs.get('cart_id')
         user = request.user
-        session_id = request.session.session_key
         cart_item = []
         cart = None
 
         if user.is_authenticated:
             cart = Cart.objects.get(user=user)
 
-            if cart:
-                cart_item = get_object_or_404(CartItem, id=cart_id)
-
         else:
-            if not session_id:
-                request.session.create()
-            session_id = request.session_key
+            session_id = self.get_or_create_session_key(request)
+            cart = Cart.objects.get(session=session_id)
 
-            session = Session.objects.get(session_key=session_id)
-            cart = Cart.objects.get(session=session)
-
-            if cart:
-                cart_item = get_object_or_404(CartItem, cart=cart, id=cart_id)
-
+        if not cart:
+            return JsonResponse({
+                'status': 'Cart not found', 
+            }, status=404)
+            
+        cart_item = get_object_or_404(CartItem, cart=cart, id=cart_id)
         cart_item.delete()
 
         return JsonResponse({
@@ -150,20 +136,25 @@ class CartItemListView(CartMixin, ListView):
 @require_POST
 def update_cart_quantities(request):
     user = request.user
+    cart = None
 
     if user.is_authenticated:
         cart = Cart.objects.get(user=user)
     else:
-        if not session_id:
+        if not request.session.session_key:
             request.session.create()
+
         session_id = request.session.session_key
-        session = Session.objects.get(session_key=session_id)
-        cart = Cart.objects.filter(session=session)
+        cart = Cart.objects.filter(session=session_id)
+        return redirect('cart_list')
 
     if not cart:
         return redirect('cart_list')
 
     item_ids = request.POST.getlist('item_ids')
+
+    if not item_ids:
+        return redirect('cart_list')
 
     # Loop through posted quantities
     for item_id in item_ids:
@@ -186,7 +177,6 @@ class WishListProductCreate(View):
     @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         user = request.user
-        session_id = request.session.session_key
         product_id = kwargs.get('product_id')
 
         # filters product or 404 if not found
@@ -194,22 +184,29 @@ class WishListProductCreate(View):
 
         # checks if user is authenticated
         if user.is_authenticated:
-            exists = WishlistProduct.objects.filter(user=user, product=product).exists()
-            if not exists:
+           
+            if not WishlistProduct.objects.filter(user=user, product=product).exists():
                 WishlistProduct.objects.create(user=user, product=product)
         else:
+            session_id = request.session.session_key
             if not session_id:
                 request.session.create()
-                session_id = request.session.session_key
 
-            exists = WishlistProduct.objects.filter(session=session_id, product=product).exists()
-            if not exists:
+            session_id = request.session.session_key
+            if not session_id:
+                return JsonResponse({
+                    'status': 'error',
+                    'message': 'No session found',
+                }, status=201)
+
+            # checks for existing item 
+            if not WishlistProduct.objects.filter(session=session_id, product=product).exists():
                 WishlistProduct.objects.create(session=session_id, product=product)
-
+           
         return JsonResponse({
             'status': 'success',
-            'message': 'Added item to wishlist'
-        })
+            'message': 'Added item to wishlist',
+        }, status=201)
 
 # removes items from wishlist
 class RemoveItemFromWishlist(View):
@@ -217,12 +214,10 @@ class RemoveItemFromWishlist(View):
     def post(self, request, *args, **kwargs):
         # getting the product id
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
+        mixin = SessionMixin()
         
         # requesting for the authenticated user 
         user = request.user
-
-        # filters session id for anonymous user session
-        session_id = request.session.session_key
 
         # checks if user is authenticated
         if user.is_authenticated:
@@ -231,17 +226,11 @@ class RemoveItemFromWishlist(View):
 
         # if not authenticated user, then anonymous users
         else:
-            # if not session id
-            if not session_id:
-
-                # creating new session
-                request.session.create()
-
-            # getting anonymous user session
-            session = Session.objects.get(session_key=session_id)
+            # filters session id for anonymous user session
+            session_id = mixin.get_or_create_session_key(request)
 
             # deleting session for anonymous user
-            WishlistProduct.objects.filter(session=session, product=product).delete()
+            WishlistProduct.objects.filter(session=session_id, product=product).delete()
 
         # returns Json message if success
         return JsonResponse({
@@ -254,6 +243,7 @@ def wish_list_view(request):
     # request for authenticated user
     user = request.user
     wishlists = []
+    mixin = SessionMixin()
     
     # if user is authenticated
     if user.is_authenticated:
@@ -262,21 +252,10 @@ def wish_list_view(request):
 
     # else if not authenticated and no session id for anonymous user 
     else:
-        if not request.session.session_key:
-            # creating new session for user
-            request.session.create()
-            
-        # request for user session
-        session_id = request.session.session_key
-        
-        try:
-            # getting session for anonymous user
-            session = Session.objects.get(session_key=session_id)
-            
-            # filtering wishlist for anonymous user
-            wishlists = WishlistProduct.objects.filter(session=session)
-        except Session.DoesNotExist:
-            wishlists = []
+        session_id = mixin.get_or_create_session_key(request)
+        # filtering wishlist for anonymous user
+        wishlists = WishlistProduct.objects.filter(session=session_id)
+
 
     # if user is authenticated
     if user.is_authenticated:

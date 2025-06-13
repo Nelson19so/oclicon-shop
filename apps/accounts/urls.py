@@ -1,17 +1,13 @@
 from django.urls import path
 from .views import (
-    user_registration_view_create,
+    user_registration_view_create, reset_user_password,
     logout_view, welcome_registration_view, 
     login_view, reset_password_view, 
-    reset_password_request_view, 
-    registration_email_verification,
-    account_dashboard,
-    user_successfully_logged_out,
-    order_history,
-    card_address,
-    search_history,
-    user_settings_profile,
-    reset_user_password
+    reset_password_request_view, card_address,
+    registration_email_verification, search_history,
+    account_dashboard, user_successfully_logged_out,
+    order_history, user_settings_profile,
+    delete_user_account    
 )
 
 urlpatterns = [
@@ -21,6 +17,7 @@ urlpatterns = [
     path('card-address/', card_address, name='card-address'),
     path('search_history/', search_history, name='search-history'),
     path('profile_settings/', user_settings_profile, name='profile'),
+    path('delete_user/', delete_user_account, name='delete_user'),
 
     #? authentication
     path('register/', user_registration_view_create, name='register'),

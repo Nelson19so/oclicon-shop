@@ -632,3 +632,26 @@
     color: variables.$White-100;
   }
 }
+
+.btn-danger {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  background-color: variables.$Danger-600;
+  color: variables.$White-100;
+  gap: 2px;
+  border-radius: 3px;
+  padding: 10px 16px;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: 1s;
+  width: fit-content;
+
+  &:hover {
+    background-color: variables.$Danger-500;
+    color: variables.$White-100;
+  }
+}

@@ -3,7 +3,6 @@ from .models import Product, ProductVariant, ProductImage, Brand, Category, Prod
 from .forms import ReadOnlyProductSpecificationForm
 from django.views.generic import ListView, DetailView, View, TemplateView
 from django.db.models.functions import Random
-from django.contrib.sessions.models import Session
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST, require_http_methods
@@ -12,6 +11,12 @@ from django.db.models import Q
 import random
 from django.core.exceptions import ObjectDoesNotExist
 from apps.cart.models import WishlistProduct, CartItem, Cart
+
+class SessionMixin:
+    def get_or_create_session_key(self, request):
+        if not request.session.session_key:
+            request.session.create()
+        return request.session.session_key
 
 # product details view page
 class ProductDetailView(DetailView):
@@ -247,14 +252,11 @@ class FilteredProductListView(ListView):
         return context
 
 # compare page for items. for re-usable view for count and compare listing
-class CompareMixin:
+class CompareMixin(SessionMixin):
     # compare product count for mixin
     def get_compare_counts(self, request):
         # requesting for the user
         user = request.user
-
-        # requesting for anonymous user session
-        session_key = request.session.session_key
         
         # checking if the user exist
         if user.is_authenticated:
@@ -264,24 +266,17 @@ class CompareMixin:
         # section for user saved in the cookie
         else:
             # checking if the session exist and creating new session if not
-            if not request.session.session_key:
-                request.session.create()
-            
-            # getting requested session
-            session = Session.objects.filter(session_key=session_key)
+            session_id = self.get_or_create_session_key(request)
             
             # returning filtered product that was counted
             return Product.objects.filter(
-                product_comparison__session_id=session
+                product_comparison__session_id=session_id
             ).count()
 
     # filtering all compared product from anonymous users and authenticated users
     def get_comparison_products(self, request):
         # requesting for user
         user = request.user
-
-        # requesting session key for anonymous user 
-        session_key = request.session.session_key
 
         # checking if user is authenticated
         if user.is_authenticated:
@@ -291,18 +286,15 @@ class CompareMixin:
         # for session anonymous users
         else:
             # tries and check if there's any session for anonymous user
-            try:
-                session = Session.objects.get(session_key=session_key)
-            except ObjectDoesNotExist:
-                return Product.objects.none()
-        
+            session_id = self.get_or_create_session_key(request)
+
             # filtering product for anonymous users
             return Product.objects.filter(
-                product_comparison__session_id=session
+                product_comparison__session_id=session_id
             )
     
 # add product to comparison view set
-class AddToComparisonView(CompareMixin, View):
+class AddToComparisonView(CompareMixin, SessionMixin, View):
     # Only post request can trigger what happens here
     require_http_methods([require_POST])
     def post(self, request, *args, **kwargs):
@@ -345,18 +337,11 @@ class AddToComparisonView(CompareMixin, View):
 
         # session for user
         else:
-            # creating new session if user has no session
-            if not request.session.session_key:
-                request.session.create()
-
-            # requesting for session
-            session_id = request.session.session_key
-            # getting session
-            session = Session.objects.get(session_key=session_id)
+            session_id = self.get_or_create_session_key(request)
 
             # filtering product for anonymous user
             compare_product = ProductComparison.objects.filter(
-                session_id=session,
+                session_id=session_id,
                 product=product
             )
 
@@ -364,13 +349,13 @@ class AddToComparisonView(CompareMixin, View):
             if not compare_product.exists():
                 # counting compare product
                 compare_count = ProductComparison.objects.filter(
-                    session_id=session,
+                    session_id=session_id,
                 ).count()
 
                 # checking if anonymous user compare product is equal to max compare
                 if compare_count < MAX_COMPARE:
                     ProductComparison.objects.get_or_create(
-                        session_id=session,
+                        session_id=session_id,
                         product=product
                     )
 
@@ -391,7 +376,7 @@ class AddToComparisonView(CompareMixin, View):
         })
 
 # removing compare product for user and session cookies
-class RemoveFromCompareView(CompareMixin, View):
+class RemoveFromCompareView(CompareMixin, SessionMixin, View):
     @method_decorator([require_POST]) # allowing only post request
     def post(self, request, *args, **kwargs):
         # requesting for authenticated users
@@ -407,18 +392,11 @@ class RemoveFromCompareView(CompareMixin, View):
 
         # for session anonymous users
         else:
-            # checking for if session and creating if session doesn't exist
-            if not request.session.session_key:
-                request.session.create()
-            
-            # requesting for session
-            session_key = request.session.session_key
-            # getting session
-            session = Session.objects.get(session_key=session_key)
+            session_id = self.get_or_create_session_key(request)
 
             # filtering product compare for session and delete it
             ProductComparison.objects.filter(
-                session_id=session,
+                session_id=session_id,
                 product_id=kwargs['product_id']
             ).delete()
 

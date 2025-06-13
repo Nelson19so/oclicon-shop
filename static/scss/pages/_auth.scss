@@ -55,10 +55,20 @@
   }
 }
 
-.svg-eye {
-  position: absolute;
-  right: 25px;
-  margin-top: -30px;
+.container-login_form-- {
+  .svg-eye {
+    position: absolute;
+    right: 25px;
+    margin-top: -30px;
+  }
+}
+
+.container-register_form-- {
+  .svg-eye {
+    position: absolute;
+    right: 25px;
+    margin-top: 12px;
+  }
 }
 
 .container-login-form-main-page {

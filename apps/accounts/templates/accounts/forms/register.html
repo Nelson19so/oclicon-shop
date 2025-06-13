@@ -5,7 +5,12 @@
 {% block content %}
 <div class="container-register_form-- w-full">
   <div class="container-register-padding w-full">
-    <form method="post" class="login_form w-full" action="{% url 'register' %}">
+    <form
+      method="post"
+      class="register_form w-full"
+      action="{% url 'register' %}"
+      id="register_form"
+    >
       {% csrf_token %}
 
       <div class="input-container w-full">
@@ -57,7 +62,7 @@
           placeholder="8+ characters"
           value="{{ form.password1.value|default_if_none:'' }}"
         />
-        <a href="#" class="svg-eye">
+        <a class="svg-eye cursor-pointer" id="register-svg-eye1">
           <svg
             fill="#000000"
             width="18px"
@@ -86,7 +91,7 @@
           id="password2"
           value="{{ form.password2.value|default_if_none:'' }}"
         />
-        <a href="#" class="svg-eye">
+        <a class="svg-eye cursor-pointer" id="register-svg-eye2">
           <svg
             fill="#000000"
             width="18px"

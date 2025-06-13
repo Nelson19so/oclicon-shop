@@ -6,9 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model, update_session_auth_hash
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from apps.orders.models import Order, ShippingAddress
 from apps.orders.forms import ShippingAddressForm
+from apps.products.models import SearchHistory
+from django.utils.encoding import force_bytes
+from django.template.loader import render_to_string
 from .models import (
     CustomUser, AdditionalUserInfo, 
     ProfilePicture, BillingAddress
@@ -167,19 +170,26 @@ def reset_password_request_view(request):
             # getting user with this email
             user = User.objects.get(email=email)
 
-            # generates a reset token for this user
-            token = default_token_generator.make_token(user) 
-
-            # encode the token for the user ID
-            uid = urlsafe_base64_encode(str(user.pk).encode()).decode()  
+            token = default_token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+    
+            reset_url = request.build_absolute_uri(f'/reset/{uid}/{token}/')
+            
+            # render email html
+            html_content = render_to_string('email/password_reset_email.html', {
+                'user': user,
+                'reset_url': reset_url,
+            })
     
             # send the password reset link to the user's email
-            send_mail(
-                'Password Reset Request',
-                f'Click this link to reset your password: /reset/{uid}/{token}/',
-                'no-reply@clicon.com',
-                [email],
+            send__message = EmailMultiAlternatives(
+                subject='Password Reset Request',
+                body=html_content,
+                from_email='no-reply@clickon.com',
+                to=[email]
             )
+            send__message.attach_alternative(html_content, "text/html")
+            send__message.send()
     
             # Redirect to a page saying email has been sent
             return redirect('password_reset_email_sent')  
@@ -454,3 +464,8 @@ def reset_user_password(request):
             reset_user_password_form = UserPasswordChange(request.user)            
 
     return redirect('profile')
+
+def delete_user_account(request):
+    user = request.user
+    user.delete()
+    return redirect('home')

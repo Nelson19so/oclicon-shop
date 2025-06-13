@@ -5,7 +5,12 @@
 {% block content %}
 <div class="container-login_form-- w-full">
   <div class="container-login-padding w-full">
-    <form method="post" action="{% url 'login' %}" class="login_form w-full">
+    <form
+      method="post"
+      action="{% url 'login' %}"
+      class="login_form w-full"
+      id="login_form"
+    >
       {% csrf_token %}
 
       <div class="input-container w-full">
