@@ -26,8 +26,8 @@ class CartMixin(SessionMixin):
         else:
             if not request.session.session_key:
                 return 0
-            session_id = request.session.session_key
-            cart = Cart.objects.filter(session_id=session_id)
+            session_key = request.session.session_key
+            cart = Cart.objects.filter(session_key=session_key).first()
 
         return CartItem.objects.filter(cart=cart).count()
 
@@ -39,8 +39,8 @@ class CartMixin(SessionMixin):
             if user.is_authenticated:
                 cart = Cart.objects.get(user=user)
             else:
-                session_id = self.get_or_create_session_key(request)
-                cart = Cart.objects.get(session=session_id)
+                session_key = self.get_or_create_session_key(request)
+                cart = Cart.objects.get(session_key=session_key)
         except Cart.DoesNotExist:
             return CartItem.objects.none()
 
@@ -58,10 +58,11 @@ class CreateCartItem(CartMixin, SessionMixin, View):
             cart, _ = Cart.objects.get_or_create(user=user)
 
         else:
-            session_id = self.get_or_create_session_key(request)
-            cart, _ = Cart.objects.get(session=session_id)
+            session_key = self.get_or_create_session_key(request)
+            cart, _ = Cart.objects.get_or_create(session_key=session_key)
 
         cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+
         if not created:
             cart_item.quantity = 1
             cart_item.save()
@@ -74,7 +75,7 @@ class CreateCartItem(CartMixin, SessionMixin, View):
         })
 
 # view form removing items from cart list
-class RemoveItemFromCart(View):
+class RemoveItemFromCart(View, SessionMixin):
     @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
         cart_id = kwargs.get('cart_id')
@@ -86,8 +87,8 @@ class RemoveItemFromCart(View):
             cart = Cart.objects.get(user=user)
 
         else:
-            session_id = self.get_or_create_session_key(request)
-            cart = Cart.objects.get(session=session_id)
+            session_key = self.get_or_create_session_key(request)
+            cart = Cart.objects.get(session_key=session_key)
 
         if not cart:
             return JsonResponse({
@@ -101,7 +102,7 @@ class RemoveItemFromCart(View):
             'status': 'success',
         })
 
-class CartItemListView(CartMixin, ListView):
+class CartItemListView(CartMixin, ListView, SessionMixin):
     template_name = "cart/cart.html"
     context_object_name = "carts"
 
@@ -118,12 +119,16 @@ class CartItemListView(CartMixin, ListView):
     def get_total_price(self, request):
         cart = 0
 
-        if request.user.is_authenticated:
-            try:
+        try:
+            if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)
                 cart = cart.total_price()
-            except Cart.DoesNotExist:
-                pass
+            else:
+                session_key = self.get_or_create_session_key(request)
+                cart = Cart.objects.get(session_key=session_key)
+                cart = cart.total_price()
+        except Cart.DoesNotExist:
+            pass
         return cart
     
     def get_context_data(self, **kwargs):
@@ -137,6 +142,7 @@ class CartItemListView(CartMixin, ListView):
 def update_cart_quantities(request):
     user = request.user
     cart = None
+    session_mixin = SessionMixin()
 
     if user.is_authenticated:
         cart = Cart.objects.get(user=user)
@@ -144,9 +150,8 @@ def update_cart_quantities(request):
         if not request.session.session_key:
             request.session.create()
 
-        session_id = request.session.session_key
-        cart = Cart.objects.filter(session=session_id)
-        return redirect('cart_list')
+        session_key = session_mixin.get_or_create_session_key(request)
+        cart = Cart.objects.get(session_key=session_key)
 
     if not cart:
         return redirect('cart_list')
@@ -188,20 +193,20 @@ class WishListProductCreate(View):
             if not WishlistProduct.objects.filter(user=user, product=product).exists():
                 WishlistProduct.objects.create(user=user, product=product)
         else:
-            session_id = request.session.session_key
-            if not session_id:
+            session_key = request.session.session_key
+            if not session_key:
                 request.session.create()
 
-            session_id = request.session.session_key
-            if not session_id:
+            session_key = request.session.session_key
+            if not session_key:
                 return JsonResponse({
                     'status': 'error',
                     'message': 'No session found',
                 }, status=201)
 
             # checks for existing item 
-            if not WishlistProduct.objects.filter(session=session_id, product=product).exists():
-                WishlistProduct.objects.create(session=session_id, product=product)
+            if not WishlistProduct.objects.filter(session_key=session_key, product=product).exists():
+                WishlistProduct.objects.create(session_key=session_key, product=product)
            
         return JsonResponse({
             'status': 'success',
@@ -227,10 +232,10 @@ class RemoveItemFromWishlist(View):
         # if not authenticated user, then anonymous users
         else:
             # filters session id for anonymous user session
-            session_id = mixin.get_or_create_session_key(request)
+            session_key = mixin.get_or_create_session_key(request)
 
             # deleting session for anonymous user
-            WishlistProduct.objects.filter(session=session_id, product=product).delete()
+            WishlistProduct.objects.filter(session_key=session_key, product=product).delete()
 
         # returns Json message if success
         return JsonResponse({
@@ -244,6 +249,7 @@ def wish_list_view(request):
     user = request.user
     wishlists = []
     mixin = SessionMixin()
+    session_key = mixin.get_or_create_session_key(request)
     
     # if user is authenticated
     if user.is_authenticated:
@@ -252,15 +258,30 @@ def wish_list_view(request):
 
     # else if not authenticated and no session id for anonymous user 
     else:
-        session_id = mixin.get_or_create_session_key(request)
         # filtering wishlist for anonymous user
-        wishlists = WishlistProduct.objects.filter(session=session_id)
+        wishlists = WishlistProduct.objects.filter(session_key=session_key)
 
 
     # if user is authenticated
     if user.is_authenticated:
         try:
             cart = Cart.objects.get(user=user) 
+
+            for wishlist in wishlists:
+                wishlist.in_cart = False
+
+                if cart and CartItem.objects.filter(
+                    cart=cart,
+                    product=wishlist.product
+                ).exists():
+                    wishlist.in_cart = True
+        except (Cart.DoesNotExist or CartItem.DoesNotExist):
+            pass
+
+    # anonymous users
+    else:
+        try:
+            cart = Cart.objects.get(session_key=session_key) 
 
             for wishlist in wishlists:
                 wishlist.in_cart = False

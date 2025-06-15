@@ -6,7 +6,7 @@ from decimal import Decimal
 # cart
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session_id', null=True, blank=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -41,7 +41,7 @@ class CartItem(models.Model):
 class WishlistProduct(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     product = models.OneToOneField('products.Product', on_delete=models.CASCADE, related_name='wish_product')
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, related_name='session_wish', blank=True, null=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True) 
     added_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

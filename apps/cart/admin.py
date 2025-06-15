@@ -4,8 +4,8 @@ from .models import Cart, CartItem, WishlistProduct
 # Cart admin
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    fields = ('user', 'session')
-    list_display = ('user', 'session', 'created_at',) 
+    fields = ('user', 'session_key')
+    list_display = ('user', 'session_key', 'created_at',) 
     list_filter = ('user', 'created_at',)
     readonly_fields = ('id', 'created_at',)
 
@@ -20,6 +20,6 @@ class CartItemAdmin(admin.ModelAdmin):
 @admin.register(WishlistProduct)
 class WishlistProductAdmin(admin.ModelAdmin):
     fields = ('user', 'product')
-    list_display = ('user', 'session', 'product', 'added_at')
+    list_display = ('user', 'session_key', 'product', 'added_at')
     list_filter = ('user', 'added_at')
-    readonly_fields = ('added_at', 'session')
+    readonly_fields = ('added_at', 'session_key')

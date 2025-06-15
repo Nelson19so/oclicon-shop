@@ -1,20 +1,18 @@
 ---
-
 # 🛍️ Clicon Online Store — eCommerce Project
 
 A fully functional eCommerce platform built using **Django** for the backend and **HTML, CSS, TailwindCSS, JavaScript, and jQuery** for the frontend.
-
 ---
 
-## 🚀 Features
+## 🚀 Features - complete (CRUD)
 
 - User registration and login (email/username/password + Google OAuth)
 - email confirmation, reset password
 - Product listing + filtering and detail pages
-- Add to cart, update quantity, remove from cart
-- Add to wishlist, Compare and Remove 
-- Checkout and order processing/order tracking
-- User profile with order history
+- User and anonymous user add to cart, update quantity, remove from cart
+- User and anonymous user add to wishlist, Compare and Remove
+- authenticated user Checkout and order processing/order tracking
+- User profile and user account delete with order history
 - Admin product management (CRUD)
 - blog post listing and details
 - ads and so on
@@ -25,11 +23,12 @@ A fully functional eCommerce platform built using **Django** for the backend and
 
 ## 🛠️ Tech Stack
 
-| Backend        | Frontend             | Other Services            |
-|----------------|----------------------|----------------------------|
-| Django         | HTML, CSS, Tailwind  | Django AllAuth (Google)   |
-| Django AllAuth | JavaScript, jQuery   | PostgreSQL                |
-| Pillow         | SCSS (optional)      | Render (deployment)       |
+| Backend        | Frontend             | Other Services          |
+| -------------- | -------------------- | ----------------------- |
+| Django         | HTML, CSS, Tailwind  | Django AllAuth (Google) |
+| Django AllAuth | JavaScript, jQuery   | PostgreSQL (prod)       |
+| Pillow         | SCSS (optional)      | Render (deployment)     |
+|                | Ajax (jquery method) | SQlite3 (dev)           |
 
 ---
 
@@ -100,7 +99,7 @@ loading...
 
 Name: Nelson
 
-Role: Backend Developer (Django) + Front-end developer 
+Role: Backend Developer (Django) + Front-end developer
 
 Country: Nigeria 🇳🇬
 
@@ -108,4 +107,5 @@ Email: nelsonsomto19@email.com
 
 LinkedIn: https://www.linkedin.com/in/nelson-junior-700b67363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 
-GitHub: github.com/Nelson19so 
+GitHub: github.com/Nelson19so
+```

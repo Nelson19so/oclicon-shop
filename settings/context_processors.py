@@ -85,39 +85,34 @@ def navbar_cart_display_list(request):
     cart_items = []
 
     # checks if user is authenticated
-    if user.is_authenticated:
-        try:
-            # cart total price
+    try:
+        if user.is_authenticated:
+            # filters cart item for authenticated user
             cart = Cart.objects.get(user=user)
             total_cart_price = cart.total_price()
-            
-            if user.is_authenticated:
-                # filters cart item for authenticated user
-                cart = Cart.objects.get(user=user)
 
-                # then filters cart item for user cart
-                cart_items = CartItem.objects.filter(cart=cart)[:2]
-        
-            else:
-                # if theres no session for anonymous user
-                if not request.session.session_key:
-                    # creating new session for anonymous user
-                    request.session.create()
-        
-                # requesting for anonymous user session
-                session_key = request.session.session_key
-                
-                # getting session for anonymous user
-                session = Session.objects.get(session_key=session_key)
-                # tries to get data for anonymous user session
-                cart = Cart.objects.get(session_id=session)
-                # getting cart item for the session cart
-                cart_items = CartItem.objects.filter(cart=cart)[:2]
+            # then filters cart item for user cart
+            cart_items = CartItem.objects.filter(cart=cart)[:2]
+    
+        else:
+            # if theres no session for anonymous user
+            if not request.session.session_key:
+                # creating new session for anonymous user
+                request.session.create()
+    
+            # requesting for anonymous user session
+            session_key = request.session.session_key
+            # tries to get data for anonymous user session
+            cart = Cart.objects.get(session_key=session_key)
+            # total cart for anonymous users
+            total_cart_price = cart.total_price()
+            # getting cart item for the session cart
+            cart_items = CartItem.objects.filter(cart=cart)[:2]
 
-        # if cart does not exist
-        except (Cart.DoesNotExist or Session.DoesNotExist):
-            # returns empty tuple to avoid conflict
-            cart_items = []
+    # if cart does not exist
+    except (Cart.DoesNotExist):
+        # returns empty tuple to avoid conflict
+        cart_items = []
 
     # returns the cart item for use.
     return {'cart_items': cart_items, 'total_cart_price': total_cart_price}

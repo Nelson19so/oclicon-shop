@@ -19,7 +19,7 @@ class SessionMixin:
         return request.session.session_key
 
 # product details view page
-class ProductDetailView(DetailView):
+class ProductDetailView(DetailView, SessionMixin):
     model = Product
     template_name = 'products/product-details.html'
     context_object_name = 'product'
@@ -92,13 +92,17 @@ class ProductDetailView(DetailView):
     def check_wishlist(self, request):
         product = self.get_object()
         exist_in_wish = False
+        session_key = self.get_or_create_session_key(request)
         
-        if request.user.is_authenticated:
-            try:
+        try:
+            if request.user.is_authenticated:
                 if WishlistProduct.objects.filter(user=request.user, product=product).exists():
                     exist_in_wish = True
-            except WishlistProduct.DoesNotExist:
-                pass
+            else:
+                if WishlistProduct.objects.filter(session_key=session_key, product=product).exists():
+                    exist_in_wish = True
+        except WishlistProduct.DoesNotExist:
+            pass
         
         return exist_in_wish
     
@@ -106,27 +110,36 @@ class ProductDetailView(DetailView):
         product = self.get_object()
         cart = None
         cart_exist = False
+        session_key = self.get_or_create_session_key(request)
 
-        if request.user.is_authenticated:
-            try:
+        try:
+            if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)
                 if cart and CartItem.objects.filter(cart=cart, product=product).exists():
                     cart_exist = True
-            except Cart.DoesNotExist or CartItem.DoesNotExist:
-                pass
+            else:
+                cart = Cart.objects.get(session_key=session_key)
+                if cart and CartItem.objects.filter(cart=cart, product=product).exists():
+                    cart_exist = True
+        except Cart.DoesNotExist or CartItem.DoesNotExist:
+            pass
 
         return cart_exist
 
     def check_compare(self, request):
         product = self.get_object()
         compare_exist = False
+        session_key = self.get_or_create_session_key(request)
 
-        if request.user.is_authenticated:
-            try:
-                if ProductComparison.objects.filter(user=request.user, product=product):
+        try:
+            if request.user.is_authenticated:
+                if ProductComparison.objects.filter(user=request.user, product=product).exists():
                     compare_exist = True
-            except ProductComparison.DoesNotExist:
-                pass
+            else:
+                if ProductComparison.objects.filter(session_key=session_key, product=product).exists():
+                    compare_exist = True
+        except ProductComparison.DoesNotExist:
+            pass
 
         return compare_exist
             
@@ -266,11 +279,11 @@ class CompareMixin(SessionMixin):
         # section for user saved in the cookie
         else:
             # checking if the session exist and creating new session if not
-            session_id = self.get_or_create_session_key(request)
+            session_key = self.get_or_create_session_key(request)
             
             # returning filtered product that was counted
             return Product.objects.filter(
-                product_comparison__session_id=session_id
+                product_comparison__session_key=session_key
             ).count()
 
     # filtering all compared product from anonymous users and authenticated users
@@ -286,11 +299,11 @@ class CompareMixin(SessionMixin):
         # for session anonymous users
         else:
             # tries and check if there's any session for anonymous user
-            session_id = self.get_or_create_session_key(request)
+            session_key = self.get_or_create_session_key(request)
 
             # filtering product for anonymous users
             return Product.objects.filter(
-                product_comparison__session_id=session_id
+                product_comparison__session_key=session_key
             )
     
 # add product to comparison view set
@@ -337,11 +350,11 @@ class AddToComparisonView(CompareMixin, SessionMixin, View):
 
         # session for user
         else:
-            session_id = self.get_or_create_session_key(request)
+            session_key = self.get_or_create_session_key(request)
 
             # filtering product for anonymous user
             compare_product = ProductComparison.objects.filter(
-                session_id=session_id,
+                session_key=session_key,
                 product=product
             )
 
@@ -349,13 +362,13 @@ class AddToComparisonView(CompareMixin, SessionMixin, View):
             if not compare_product.exists():
                 # counting compare product
                 compare_count = ProductComparison.objects.filter(
-                    session_id=session_id,
+                    session_key=session_key,
                 ).count()
 
                 # checking if anonymous user compare product is equal to max compare
                 if compare_count < MAX_COMPARE:
                     ProductComparison.objects.get_or_create(
-                        session_id=session_id,
+                        session_key=session_key,
                         product=product
                     )
 
@@ -392,11 +405,11 @@ class RemoveFromCompareView(CompareMixin, SessionMixin, View):
 
         # for session anonymous users
         else:
-            session_id = self.get_or_create_session_key(request)
+            session_key = self.get_or_create_session_key(request)
 
             # filtering product compare for session and delete it
             ProductComparison.objects.filter(
-                session_id=session_id,
+                session_key=session_key,
                 product_id=kwargs['product_id']
             ).delete()
 

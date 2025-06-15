@@ -59,6 +59,7 @@ class Product(models.Model):
             num = 1
             while Product.objects.filter(slug=unique_slug).exists():
               unique_slug = f"{base_slug}-{num}"
+              num += 1
             self.slug = unique_slug
         super().save(*args, **kwargs)
 
@@ -236,16 +237,14 @@ class ProductComparison(models.Model):
     user = models.ForeignKey(
         'accounts.CustomUser', on_delete=models.CASCADE, blank=True, null=True
     )
-    session_id = models.ForeignKey(
-        Session, on_delete=models.CASCADE, related_name='session', null=True, blank=True
-    )
+    session_key = models.CharField(max_length=40, null=True, blank=True) 
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='product_comparison'
     )
     added_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('session_id', 'product')
+        unique_together = ('session_key', 'product')
 
     def __str__(self):
         return f"{self.product.name}"

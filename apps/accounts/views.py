@@ -348,7 +348,6 @@ def search_history(request):
     
     return render(request, 'accounts/search_history.html', context)
 
-
 # user settings profile
 @login_required(login_url='login')
 def user_settings_profile(request):

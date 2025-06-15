@@ -34,8 +34,8 @@ class BadgeAdmin(admin.ModelAdmin):
     list_filter = ('bade_type', 'is_active')
 
 @admin.register(ProductComparison)
-class ProductSpecificationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'session_id', 'product', 'added_date')
+class ProductComparisonAdmin(admin.ModelAdmin):
+    list_display = ('user', 'session_key', 'product', 'added_date')
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
