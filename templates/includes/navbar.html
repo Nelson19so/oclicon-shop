@@ -222,6 +222,7 @@
       </div>
 
       <div class="container-icons-commerce flex justify-center gap-4">
+        <!-- cart box -->
         <div class="container-cart-box">
           <a class="cursor-pointer">
             <svg
@@ -250,6 +251,7 @@
               />
             </svg>
           </a>
+          <p class="nav_mini_cart_count">{{ nav_cart_count }}</p>
 
           <div class="container-mini-cart">
             {% include 'cart/mini_cart.html' %}

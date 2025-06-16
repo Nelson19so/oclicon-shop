@@ -107,15 +107,21 @@ def navbar_cart_display_list(request):
             # total cart for anonymous users
             total_cart_price = cart.total_price()
             # getting cart item for the session cart
-            cart_items = CartItem.objects.filter(cart=cart)[:2]
-
+            cart_items = CartItem.objects.filter(cart=cart)
+            
     # if cart does not exist
     except (Cart.DoesNotExist):
         # returns empty tuple to avoid conflict
         cart_items = []
+    
+    nav_cart_count = cart_items.count()
 
     # returns the cart item for use.
-    return {'cart_items': cart_items, 'total_cart_price': total_cart_price}
+    return {
+        'cart_items': cart_items[:2], 
+        'total_cart_price': total_cart_price, 
+        'nav_cart_count': nav_cart_count
+    }
 
 # breadcrumbs
 # not yet in settings.py context processor
