@@ -83,6 +83,7 @@ def navbar_cart_display_list(request):
     cart = None
     total_cart_price = 0
     cart_items = []
+    nav_cart_count = 0
 
     # checks if user is authenticated
     try:
@@ -114,7 +115,8 @@ def navbar_cart_display_list(request):
         # returns empty tuple to avoid conflict
         cart_items = []
     
-    nav_cart_count = cart_items.count()
+    if len(cart_items) > 0:
+        nav_cart_count = cart_items.count()
 
     # returns the cart item for use.
     return {
