@@ -25,7 +25,10 @@ urlpatterns = [
     path('home/user_account/', include('apps.orders.urls')),
 
     # cart url conf
-    path('home/', include('apps.cart.urls'))
+    path('home/', include('apps.cart.urls')),
+
+    # PayStack payment gateway url configuration
+    path('home/payment', include('apps.payments.urls'))
 ]
 
 # Add Debug Toolbar URLs in debug mode

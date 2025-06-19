@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.orders.apps.OrdersConfig',
     'apps.products.apps.ProductsConfig',
     'apps.public.apps.PublicConfig',
+    'apps.payments'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'successful_logout'
+
+PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY")

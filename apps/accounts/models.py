@@ -40,8 +40,13 @@ class CustomUser(AbstractUser):
     
 # user profile
 class ProfilePicture(models.Model):
-    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='profile')
-    profile = models.ImageField(upload_to='profile', blank=False, null=False)
+    user = models.OneToOneField(
+        'CustomUser', on_delete=models.CASCADE, related_name='profile', 
+    )
+    profile = models.ImageField(
+        upload_to='profile', 
+        blank=False, null=False
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -57,7 +62,7 @@ class UserStatus(models.Model):
     def __str__(self):
         return f"{self.user.Name}"
 
-# vendor
+# vendor modal
 class UserVendor(models.Model):
     user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
     category = models.ForeignKey('products.Category', on_delete=models.PROTECT)

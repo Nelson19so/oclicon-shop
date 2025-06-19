@@ -99,7 +99,7 @@ class OrderDetails(DetailView):
         context['order_messages'] = OrderMessage.objects.filter(order=order)
         return context
 
-# adding items to order
+# adding items to order | place order for user
 class CheckoutOrderViewCreate(View):
     @method_decorator(require_POST)
     def post(self, request, *args, **kwargs):
