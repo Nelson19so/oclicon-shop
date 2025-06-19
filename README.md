@@ -165,14 +165,4 @@ Feel free to open issues or pull requests. Feedback is welcome!
 yaml
 Copy
 Edit
-
----
-
-✅ This version of the README:
-- Is **well-organized** and professional
-- Shows off your **backend + frontend** skills
-- Explains how payment and authentication flows work
-- Helps recruiters **understand your project fast**
-
-Let me know if you want a **short version** or a **PDF export** for your portfolio or CV!
 ```
