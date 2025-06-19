@@ -1,111 +1,178 @@
+# 🛍️ Clicon Online Store — Full Stack eCommerce Platform
+
+Clicon is a fully functional eCommerce platform built with a robust Django backend and a responsive, modern frontend using HTML, TailwindCSS, JavaScript, SCSS, and jQuery. It supports both **authenticated and anonymous users** for full CRUD functionality — including cart, wishlist, comparison, checkout, and payment integration using **Paystack**.
+
 ---
-# 🛍️ Clicon Online Store — eCommerce Project
 
-A fully functional eCommerce platform built using **Django** for the backend and **HTML, CSS, TailwindCSS, JavaScript, and jQuery** for the frontend.
----
+## 🚀 Features
 
-## 🚀 Features - complete (CRUD)
+- 🔐 User Authentication:
 
-- User registration and login (email/username/password + Google OAuth)
-- email confirmation, reset password
-- Product listing + filtering and detail pages
-- User and anonymous user add to cart, update quantity, remove from cart
-- User and anonymous user add to wishlist, Compare and Remove
-- authenticated user Checkout and order processing/order tracking
-- User profile and user account delete with order history
-- Admin product management (CRUD)
-- blog post listing and details
-- ads and so on
-- Responsive UI using TailwindCSS and jQuery + scss
-- Deployed backend on **Render**
+  - Register/login with **email or username + password**
+  - Google login using **Django AllAuth**
+  - Email verification, password reset
+
+- 🛒 Cart & Wishlist (for both authenticated and anonymous users):
+
+  - Add, update, and remove items from cart
+  - Add or remove items from wishlist and product comparison
+
+- 📦 Orders & Checkout:
+
+  - Secure checkout flow with **Paystack** integration
+  - Payment only creates order after successful verification
+  - Order history for logged-in users
+
+- 🛍️ Products:
+
+  - Product listing with search and filtering
+  - Product detail pages
+  - Admin product management (CRUD)
+
+- 📝 Blog & Ads:
+
+  - Blog post listing and detail views
+  - Ad section (banner-style)
+
+- 👤 User Account:
+
+  - View/edit profile picture and details
+  - Delete account with data cleanup
+  - Track order history
+
+- 💻 UI/UX:
+
+  - Responsive design using TailwindCSS and jQuery
+  - SCSS for custom styles
+  - AJAX used for dynamic user interactions (cart, wishlist, etc.)
+
+- 🚀 Deployment:
+  - Backend hosted on **Render**
+  - Static/media files handled with **WhiteNoise**
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Backend        | Frontend             | Other Services          |
-| -------------- | -------------------- | ----------------------- |
-| Django         | HTML, CSS, Tailwind  | Django AllAuth (Google) |
-| Django AllAuth | JavaScript, jQuery   | PostgreSQL (prod)       |
-| Pillow         | SCSS (optional)      | Render (deployment)     |
-|                | Ajax (jquery method) | SQlite3 (dev)           |
+| Backend        | Frontend               | Services & Tools          |
+| -------------- | ---------------------- | ------------------------- |
+| Django         | HTML, CSS, TailwindCSS | PostgreSQL (production)   |
+| Django REST    | JavaScript, jQuery     | SQLite (local dev)        |
+| Django AllAuth | SCSS, AJAX             | Render (deployment)       |
+| Pillow         |                        | WhiteNoise (static files) |
 
 ---
 
-## 🔐 Authentication
+## 🔐 Authentication Flow
 
-- Users can register using **email or username + password**
-- Google login via **Django AllAuth**
-- JWT or session-based login supported
+- Session-based and email/password authentication
+- Google login via OAuth using Django AllAuth
+- Account activation via email confirmation
+- Password reset via email link
 
 ---
 
-## 📦 How to Run Locally
+## 💳 Payment Integration
 
-### 1. Clone the repo
+- Integrated with **Paystack**
+- Secure payment flow:
+  - Payment page generated with cart total
+  - Redirect to Paystack
+  - Verified via Paystack API
+  - ✅ Order only created **after successful payment**
+
+---
+
+## 📦 Running Locally
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/clickon-ecommerce.git
-cd clickon-ecommerce
+git clone https://github.com/Nelson19so/oclicon-shop.git
+cd oclicon-shop
 
-2. Set up virtual environment
-
+2. Set Up Virtual Environment
+bash
+Copy
+Edit
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-3. Install dependencies
+# On Linux/macOS
+source venv/bin/activate
 
+# On Windows
+venv\Scripts\activate
+
+3. Install Dependencies
+bash
+Copy
+Edit
 pip install -r requirements.txt
 
-4. Environment variables
+4. Configure Environment Variables
+Create a .env file in the root folder:
 
-Create a .env file with:
-
+ini
+Copy
+Edit
 SECRET_KEY=your_secret_key
 DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
-DATABASE_URL=your_postgres_url
+
+# Database
+DATABASE_URL=your_postgres_database_url
+
+# Google OAuth
 GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_secret
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-5. Run migrations
+# Paystack
+PAYSTACK_SECRET_KEY=your_paystack_secret_key
 
+5. Apply Migrations
+bash
+Copy
+Edit
 python manage.py makemigrations
 python manage.py migrate
 
-6. Run server
-
+6. Run Development Server
+bash
+Copy
+Edit
 python manage.py runserver
+🌍 Deployment
+Hosted backend on Render
 
+Static and media files served via WhiteNoise
 
----
-
-🌐 Deployment
-
-Backend is deployed on Render.
-Static files served using WhiteNoise.
-
-
----
+Production DB: PostgreSQL on Render
 
 📸 Screenshots
+🖼️ Coming soon...
 
-loading...
+👨‍💻 Developer
+Name: Nelson Junior
+Role: Full Stack Developer (Django, Frontend, Deployment)
+Country: Nigeria 🇳🇬
+Email: nelsonsomto19@email.com
+GitHub: github.com/Nelson19so
+LinkedIn: linkedin.com/in/nelson-junior-700b67363
 
+⭐ Contributions & Feedback
+Feel free to open issues or pull requests. Feedback is welcome!
+
+yaml
+Copy
+Edit
 
 ---
 
-👨‍💻 Developer
+✅ This version of the README:
+- Is **well-organized** and professional
+- Shows off your **backend + frontend** skills
+- Explains how payment and authentication flows work
+- Helps recruiters **understand your project fast**
 
-Name: Nelson
-
-Role: Backend Developer (Django) + Front-end developer
-
-Country: Nigeria 🇳🇬
-
-Email: nelsonsomto19@email.com
-
-LinkedIn: https://www.linkedin.com/in/nelson-junior-700b67363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
-
-GitHub: github.com/Nelson19so
+Let me know if you want a **short version** or a **PDF export** for your portfolio or CV!
 ```
