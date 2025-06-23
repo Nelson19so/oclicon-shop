@@ -144,16 +144,16 @@ def update_cart_quantities(request):
     cart = None
     session_mixin = SessionMixin()
 
-    if user.is_authenticated:
-        cart = Cart.objects.get(user=user)
-    else:
-        if not request.session.session_key:
-            request.session.create()
-
-        session_key = session_mixin.get_or_create_session_key(request)
-        cart = Cart.objects.get(session_key=session_key)
-
-    if not cart:
+    try:
+        if user.is_authenticated:
+            cart = Cart.objects.get(user=user)
+        else:
+            if not request.session.session_key:
+                request.session.create()
+        
+                session_key = session_mixin.get_or_create_session_key(request)
+                cart = Cart.objects.get(session_key=session_key)
+    except Cart.DoesNotExist:
         return redirect('cart_list')
 
     item_ids = request.POST.getlist('item_ids')
