@@ -64,13 +64,13 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # categories navbar list
-                'settings.context_processors.navbar_categories_list',
+                'settings.commands.context_processors.navbar_categories_list',
                 # context processor for navbar cart display list 
-                'settings.context_processors.navbar_cart_display_list',
+                'settings.commands.context_processors.navbar_cart_display_list',
                 # computer accessories filter
                 # 'settings.context_processors.computer_accessories',
                 # active product ads
-                'settings.context_processors.active_ads',
+                'settings.commands.context_processors.active_ads',
 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
