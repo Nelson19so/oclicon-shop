@@ -27,16 +27,16 @@ class ProductDetailView(DetailView, SessionMixin):
     # getting objects for getting products details
     def get_object(self, queryset=None):
         # getting category, child slug and product slug
-        category_slug = self.kwargs.get('category_slug')
-        child_slug = self.kwargs.get('child_slug')
-        product_slug = self.kwargs.get('product_slug')
+        self.category_slug = self.kwargs.get('category_slug')
+        self.child_slug = self.kwargs.get('child_slug')
+        self.product_slug = self.kwargs.get('product_slug')
     
         # filtering product that inherit this category and child slug and returns 404 if None
         return get_object_or_404(
             Product,
-            category__slug=category_slug,
-            category__children__slug=child_slug,
-            slug=product_slug
+            category__slug=self.category_slug,
+            category__children__slug=self.child_slug,
+            slug=self.product_slug
         )
 
     # breadcrumb for product details page
@@ -44,19 +44,17 @@ class ProductDetailView(DetailView, SessionMixin):
         # getting product from get object
         product = self.get_object()
 
-        category_slug = self.kwargs.get('category_slug')
-        category = Category.objects.filter(slug=category_slug).first()
+        category = Category.objects.filter(slug=self.category_slug).first()
 
-        category_child_slug = self.kwargs.get('child_slug')
         category_child = Category.objects.filter(
-            slug=category_child_slug, parent__slug=category_slug
+            slug=self.child_slug, parent__slug=self.category_slug
         ).last()
         
         return [
             ('Shop', reverse('shop')),
             ('Shop grid', '#/'),
-            (category.name, f'/home/shop/{category_slug}/'),
-            (category_child.name, f'/home/shop/{category_slug}/{category_child_slug}/'),
+            (category.name, f'/home/shop/{category.slug}/'),
+            (category_child.name, f'/home/shop/{category.slug}/{category_child.slug}/'),
             (product.name, self.request.path),
         ]
 
