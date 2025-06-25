@@ -6,7 +6,6 @@ from django.views.decorators.http import require_http_methods, require_POST
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, View
 from django.http import HttpResponseNotAllowed
-from .forms import *
 from django.utils import timezone
 
 class SessionMixin:

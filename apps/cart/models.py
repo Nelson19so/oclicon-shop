@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.sessions.models import Session
 from decimal import Decimal
 
-# cart
+# cart model
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     session_key = models.CharField(max_length=40, null=True, blank=True)
@@ -18,7 +18,7 @@ class Cart(models.Model):
             total += item.product.base_price * item.quantity
         return total
 
-# cart item
+# cart items model
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='product_cart')
@@ -49,5 +49,5 @@ class WishlistProduct(models.Model):
         ordering = ['-added_at']
 
     def __str__(self):
-        identifier = self.user if self.user else self.session
+        identifier = self.user if self.user else self.session_key
         return f"{identifier} - {self.product}"

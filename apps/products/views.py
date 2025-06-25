@@ -336,7 +336,7 @@ class AddToComparisonView(CompareMixin, SessionMixin, View):
 
                 # making sure compare product is less than max compare
                 if compare_count < MAX_COMPARE:
-                    ProductComparison.objects.get_or_create(
+                    ProductComparison.objects.create(
                         user=user,
                         product=product
                     )
@@ -367,7 +367,7 @@ class AddToComparisonView(CompareMixin, SessionMixin, View):
 
                 # checking if anonymous user compare product is equal to max compare
                 if compare_count < MAX_COMPARE:
-                    ProductComparison.objects.get_or_create(
+                    ProductComparison.objects.create(
                         session_key=session_key,
                         product=product
                     )
