@@ -75,12 +75,13 @@ def Home_page(request):
         ).first()
 
         # filter flash sales
-        flash_sales = Product.objects.filter(
-            is_active=True,
-            product_feature=flash_sales_filter
-        )
+        if flash_sales_filter:
+            flash_sales = Product.objects.filter(
+                is_active=True,
+                product_feature=flash_sales_filter
+            )
 
-        flash_sales = flash_sales.order_by('?')[:3]
+            flash_sales = flash_sales.order_by('?')[:3]
 
         # filters top rated product
         top_rated_filter = ProductHighlight.objects.filter(
@@ -89,12 +90,13 @@ def Home_page(request):
         ).first()
 
         # filter top rated product
-        top_rated = Product.objects.filter(
-            is_active=True,
-            product_feature=top_rated_filter
-        )
+        if top_rated_filter:
+            top_rated = Product.objects.filter(
+                is_active=True,
+                product_feature=top_rated_filter
+            )
 
-        top_rated = top_rated.order_by('?')[:3]
+            top_rated = top_rated.order_by('?')[:3]
 
         # filters new arrival product
         new_arrival_filter = ProductHighlight.objects.filter(
@@ -103,10 +105,11 @@ def Home_page(request):
         ).first()
 
         # filters new arrival product
-        new_arrivals = Product.objects.filter(
-            is_active=True,
-            product_feature=new_arrival_filter
-        )[:3]
+        if new_arrival_filter:
+            new_arrivals = Product.objects.filter(
+                is_active=True,
+                product_feature=new_arrival_filter
+            )[:3]
 
         if queryset_computer_acc:
             computer_accessories = computer_accessories.filter(
