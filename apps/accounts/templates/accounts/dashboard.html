@@ -42,10 +42,12 @@
               <div class="container-user-info flex justify-center flex-col">
                 <p>{{ user.Name|title }}</p>
                 <span
-                  >{{ user.additional_user.city }} -
+                  >{% if user.additional_user.city %} {{
+                  user.additional_user.city }} - {% endif %}
 
                   <!-- zip code -->
-                  {{user.additional_user.zip_code }},
+                  {% if user.additional_user.zip_code %} {{
+                  user.additional_user.zip_code }}, {% endif %}
                   <!-- country region -->
                   {{ user.additional_user.country_region }}</span
                 >

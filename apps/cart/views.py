@@ -172,7 +172,7 @@ def update_cart_quantities(request):
             cart_item.save()
         except (ValueError, CartItem.DoesNotExist):
             # skip invalid entries silently
-            continue
+            return redirect('cart_list')
 
     return redirect('cart_list')
 

@@ -43,12 +43,21 @@ class ProductDetailView(DetailView, SessionMixin):
     def get_breadcrumbs(self):
         # getting product from get object
         product = self.get_object()
+
+        category_slug = self.kwargs.get('category_slug')
+        category = Category.objects.filter(slug=category_slug).first()
+
+        category_child_slug = self.kwargs.get('child_slug')
+        category_child = Category.objects.filter(
+            slug=category_child_slug, parent__slug=category_slug
+        ).last()
+        
         return [
             ('Shop', reverse('shop')),
             ('Shop grid', '#/'),
-            # (product.category.name, 'll'),
-            # ( product.category_child.name,  product.category_child.slug),
-            (product.brand, self.request.path),
+            (category.name, f'/home/shop/{category_slug}/'),
+            (category_child.name, f'/home/shop/{category_slug}/{category_child_slug}/'),
+            (product.name, self.request.path),
         ]
 
     # filter related product

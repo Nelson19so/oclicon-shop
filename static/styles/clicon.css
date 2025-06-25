@@ -2390,27 +2390,33 @@ a strong {
   width: 100%;
   top: 0;
   background-color: #f2f4f5;
-  padding-top: 12px;
-  padding-right: 150px;
-  padding-bottom: 12px;
-  padding-left: 150px;
-}
-@media only screen and (max-width: 1045px) {
-  .container-breadcrumbs-pages {
-    padding-right: 15px;
-    padding-left: 15px;
-  }
 }
 .container-breadcrumbs-pages ol {
   display: flex;
   justify-content: flex-start;
   gap: 7px;
   align-items: center;
+  overflow-x: scroll;
+  width: 100%;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+  padding-left: 150px;
+}
+@media only screen and (max-width: 1045px) {
+  .container-breadcrumbs-pages ol {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+.container-breadcrumbs-pages ol::-webkit-scrollbar {
+  display: none;
 }
 .container-breadcrumbs-pages ol li:last-child a .wrapper-breadcrumbs span {
   color: #2da5f3;
 }
 .container-breadcrumbs-pages ol li a {
+  white-space: nowrap;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
