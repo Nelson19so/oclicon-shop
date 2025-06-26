@@ -90,8 +90,10 @@ Clicon is a fully functional eCommerce platform built with a robust Django backe
 ```bash
 git clone https://github.com/Nelson19so/oclicon-shop.git
 cd oclicon-shop
+```
 
 2. Set Up Virtual Environment
+```bash
 bash
 Copy
 Edit
@@ -102,16 +104,20 @@ source venv/bin/activate
 
 # On Windows
 venv\Scripts\activate
+```
+
 
 3. Install Dependencies
+```bash
 bash
 Copy
 Edit
 pip install -r requirements.txt
+```
 
 4. Configure Environment Variables
 Create a .env file in the root folder:
-
+```bash
 ini
 Copy
 Edit
@@ -128,19 +134,26 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 
 # Paystack
 PAYSTACK_SECRET_KEY=your_paystack_secret_key
+```
 
 5. Apply Migrations
+```bash
 bash
 Copy
 Edit
 python manage.py makemigrations
 python manage.py migrate
+```
 
 6. Run Development Server
+```bash
 bash
 Copy
 Edit
 python manage.py runserver
+```
+
+
 🌍 Deployment
 Hosted backend on Render
 
@@ -151,7 +164,7 @@ Production DB: PostgreSQL on Render
 📸 Screenshots
 🖼️ Coming soon...
 
-👨‍💻 Developer
+# 👨‍💻 Developer
 Name: Nelson Junior
 Role: Full Stack Developer (Django, Frontend, Deployment)
 Country: Nigeria 🇳🇬
@@ -161,8 +174,3 @@ LinkedIn: linkedin.com/in/nelson-junior-700b67363
 
 ⭐ Contributions & Feedback
 Feel free to open issues or pull requests. Feedback is welcome!
-
-yaml
-Copy
-Edit
-```
