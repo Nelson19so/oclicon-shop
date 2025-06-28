@@ -5,7 +5,7 @@
 {% load static %}
 
 <!-- block title for cart page -->
-{% block title %} Cart {% endblock %}
+{% block title %} Cart item list {% endblock %}
 
 <!-- block content -->
 {% block content %}
@@ -193,7 +193,18 @@
             </div>
 
             <div class="container-right-visit-home-cart">
+              {% if cart %}
               <button type="submit">Update cart</button>
+              {% else %}
+              <button
+                type="submit"
+                class="opacity-40"
+                style="cursor: auto"
+                disabled
+              >
+                Update cart
+              </button>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -210,7 +221,7 @@
           >
             <div class="container-details-checkout-cart- flex justify-between">
               <span>Sub-total</span>
-              <p>$320</p>
+              <p>${{ cart_shipping_sub_total }}</p>
             </div>
 
             <div class="container-details-checkout-cart-- flex justify-between">

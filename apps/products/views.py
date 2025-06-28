@@ -180,14 +180,14 @@ class FilteredProductListView(ListView):
         # setting category, child category, brand to None to be able to filter all product
         self.category = None
         self.child_category = None
-        # self.brand = None
+        self.brand = None
         # query for searching for product
         query = self.request.GET.get('q')
 
         # getting url slug for category, child category and brand
         category_slug = self.kwargs.get('category_slug')
         child_slug = self.kwargs.get('child_slug')
-        # brand_slug = self.kwargs.get('brand_slug')
+        brand_slug = self.kwargs.get('brand_slug')
 
         # filters product under the category
         if category_slug:
@@ -200,9 +200,9 @@ class FilteredProductListView(ListView):
             queryset = queryset.filter(category=self.child_category)
 
         # filter category under the brand
-        # if brand_slug:
-        #     self.brand = get_object_or_404(Brand, slug=brand_slug)
-        #     queryset = queryset.filter(brand=self.brand)
+        if brand_slug:
+            self.brand = get_object_or_404(Brand, slug=brand_slug)
+            queryset = queryset.filter(brand=self.brand)
 
         # checks if theres any item in search
         if query:
@@ -234,12 +234,12 @@ class FilteredProductListView(ListView):
         if self.child_category:
             breadcrumbs.append((self.child_category.name, f'/home/shop/{self.category.slug}/{self.child_category.slug}/'))
 
-        # if self.brand:
-        #     url = f'/shop/{self.category.slug}/'
-        #     if self.child_category:
-        #         url += f'{self.child_category.slug}/'
-        #     url += f'{self.brand.slug}/'
-        #     breadcrumbs.append((self.brand.name, url))
+        if self.brand:
+            url = f'/shop/{self.brand.slug}/'
+            # if self.child_category:
+            #     url += f'{self.child_category.slug}/'
+            # url += f'{self.brand.slug}/'
+            breadcrumbs.append((self.brand.name, url))
 
         return breadcrumbs
 

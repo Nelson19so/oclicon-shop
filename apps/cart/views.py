@@ -114,6 +114,12 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
         ]
         return breadcrumbs
     
+    # calculate cart total amount for checkout taxes + cart items
+    def calculate_cart_tax(self, request):
+        cart_item_count = self.cart_item_count(self.request)
+        sub_total = round(61.99 * cart_item_count, 2)
+        return sub_total
+        
     # get total price
     def get_total_price(self, request):
         cart = 0
@@ -121,11 +127,10 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
         try:
             if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)
-                cart = cart.total_price()
             else:
                 session_key = self.get_or_create_session_key(request)
                 cart = Cart.objects.get(session_key=session_key)
-                cart = cart.total_price()
+            cart = cart.total_price
         except Cart.DoesNotExist:
             pass
         return cart
@@ -134,6 +139,7 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
         context = super().get_context_data(**kwargs)
         context['breadcrumbs'] = self.get_breadcrumbs()
         context['total_price'] = self.get_total_price(self.request)
+        context['cart_shipping_sub_total'] = self.calculate_cart_tax(self.request)
         return context
 
 # update cart product quantity view create
@@ -147,11 +153,8 @@ def update_cart_quantities(request):
         if user.is_authenticated:
             cart = Cart.objects.get(user=user)
         else:
-            if not request.session.session_key:
-                request.session.create()
-        
-                session_key = session_mixin.get_or_create_session_key(request)
-                cart = Cart.objects.get(session_key=session_key)
+            session_key = session_mixin.get_or_create_session_key(request)
+            cart = Cart.objects.get(session_key=session_key)
     except Cart.DoesNotExist:
         return redirect('cart_list')
 
@@ -166,13 +169,17 @@ def update_cart_quantities(request):
 
         try:
             quantity = int(quantity)
+
+            if quantity < 1:
+                continue
+            
             cart_item = CartItem.objects.get(id=item_id, cart=cart)
             cart_item.quantity = quantity
             cart_item.updated_at = timezone.now()
             cart_item.save()
         except (ValueError, CartItem.DoesNotExist):
             # skip invalid entries silently
-            return redirect('cart_list')
+            continue
 
     return redirect('cart_list')
 

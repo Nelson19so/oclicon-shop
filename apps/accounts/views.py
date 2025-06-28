@@ -267,23 +267,29 @@ def account_dashboard(request):
         ('Dashboard', reverse('dashboard'))
     ]
 
-    # total order filtering for user
-    orders = Order.objects.filter(user=user)
-    total_orders = orders.count()
-    total_pending_order = orders.filter(status='PENDING').count()
-    completed_order = orders.filter(status='DELIVERED').count()
+    try:
+        # total order filtering for user
+        orders = Order.objects.filter(user=user)
+        total_orders = orders.count()
+        total_pending_order = orders.filter(status='PENDING').count()
+        completed_order = orders.filter(status='DELIVERED').count()
 
-    # recent searched
-    search_product = SearchHistory.objects.filter(user=user).order_by('-searched_at')[:4]
+        # recent searched
+        search_product = SearchHistory.objects.filter(user=user).order_by('-searched_at')[:4]
 
-    # latest 7 orders
-    latest_orders = Order.objects.filter(user=user).order_by('-created_at')[:7]
+        # latest 7 orders
+        latest_orders = Order.objects.filter(user=user).order_by('-created_at')[:7]
 
-    # additional information
-    user_info = AdditionalUserInfo.objects.filter(user=user)
+        # additional information
+        user_info = AdditionalUserInfo.objects.filter(user=user)
 
-    # billing information
-    billing_info = BillingAddress.objects.filter(user=user)
+        # billing information
+        billing_info = BillingAddress.objects.filter(user=user)
+    except (
+        Order.DoesNotExist or AdditionalUserInfo.DoesNotExist or 
+        BillingAddress.DoesNotExist, SearchHistory.DoesNotExist
+    ):
+        pass
     
     # context processor
     context = {
@@ -303,7 +309,10 @@ def account_dashboard(request):
 # order history page
 @login_required(login_url='login')
 def order_history(request):
-    orders = Order.objects.filter(user=request.user)
+    try:
+        orders = Order.objects.filter(user=request.user)
+    except Order.DoesNotExist:
+        pass
 
     breadcrumbs = [
         ('User Account', '#/'),
@@ -332,11 +341,13 @@ def card_address(request):
 # user search history
 @login_required(login_url='login')
 def search_history(request):
-
-    searched_products = (
-        SearchHistory.objects.filter(user=request.user)
-        .order_by('-searched_at')
-    )
+    try:
+        searched_products = (
+            SearchHistory.objects.filter(user=request.user)
+            .order_by('-searched_at')
+        )
+    except SearchHistory.DoesNotExist:
+        pass
 
     breadcrumbs = [
         ('User Account', '#/'),
@@ -419,7 +430,7 @@ def user_settings_profile(request):
             return redirect('profile')
 
     if additional_info and additional_info.is_complete():
-        pass
+        pass # passes this condition if all fields are filled up
     else:
         messages.error(request, 'Your account profile is incomplete!')
 
@@ -464,6 +475,7 @@ def reset_user_password(request):
 
     return redirect('profile')
 
+# Delete user account function
 def delete_user_account(request):
     user = request.user
     user.delete()

@@ -502,9 +502,7 @@
   <div class="container-delete-user pt-7">
     <form action="{% url 'delete_user' %}" method="post">
       {% csrf_token %}
-      <button class="btn-danger">
-        delete {{ user.Name }} o-clicon account
-      </button>
+      <button class="btn-danger">Delete account</button>
     </form>
   </div>
 </div>
