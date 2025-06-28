@@ -83,6 +83,76 @@ Clicon is a fully functional eCommerce platform built with a robust Django backe
 
 ---
 
+## Project Structure
+
+```bash
+
++---apps
+ª   +---accounts
+ª   ª   +---migrations
+ª   ª   ª   +---__pycache__
+ª   ª   +---templates
+ª   ª   ª   +---accounts
+ª   ª   ª       +---authentication
+ª   ª   ª       +---forms
+ª   ª   +---__pycache__
+ª   +---cart
+ª   ª   +---migrations
+ª   ª   ª   +---__pycache__
+ª   ª   +---templates
+ª   ª   ª   +---cart
+ª   ª   +---__pycache__
+ª   +---orders
+ª   ª   +---migrations
+ª   ª   ª   +---__pycache__
+ª   ª   +---templates
+ª   ª   ª   +---orders
+ª   ª   +---__pycache__
+ª   +---payments
+ª   ª   +---migrations
+ª   ª   ª   +---__pycache__
+ª   ª   +---__pycache__
+ª   +---products
+ª   ª   +---migrations
+ª   ª   ª   +---__pycache__
+ª   ª   +---templates
+ª   ª   ª   +---products
+ª   ª   ª       +---partials
+ª   ª   +---__pycache__
+ª   +---public
+ª       +---migrations
+ª       ª   +---__pycache__
+ª       +---templates
+ª       ª   +---public
+ª       ª       +---forms
+ª       +---__pycache__
++---settings
+ª   +---commands
+ª   ª   +---__pycache__
+ª   +---settings
+ª   ª   +---__pycache__
+ª   +---__pycache__
++---static
+ª   +---images
+ª   ª   +---svg
+ª   +---js
+ª   +---scss
+ª   ª   +---abstracts
+ª   ª   +---base
+ª   ª   +---components
+ª   ª   +---layouts
+ª   ª   +---pages
+ª   ª   +---vendors
+ª   +---styles
++---staticfiles
++---templates
+    +---email
+    +---error
+    +---includes
+    +---user_accounts
+
+```
+
 ## 📦 Running Locally
 
 ### 1. Clone the Repository
@@ -93,10 +163,12 @@ cd oclicon-shop
 ```
 
 2. Set Up Virtual Environment
+
 ```bash
 bash
 Copy
 Edit
+
 python -m venv venv
 
 # On Linux/macOS
@@ -106,21 +178,24 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-
 3. Install Dependencies
+
 ```bash
 bash
 Copy
 Edit
+
 pip install -r requirements.txt
 ```
 
 4. Configure Environment Variables
-Create a .env file in the root folder:
+   Create a .env file in the root folder:
+
 ```bash
 ini
 Copy
 Edit
+
 SECRET_KEY=your_secret_key
 DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
@@ -137,22 +212,28 @@ PAYSTACK_SECRET_KEY=your_paystack_secret_key
 ```
 
 5. Apply Migrations
+
 ```bash
 bash
 Copy
 Edit
+
+python manage.py makemigrations accounts
 python manage.py makemigrations
 python manage.py migrate
 ```
 
+### **NOTE**: you migrate the accounts app first before any other app
+
 6. Run Development Server
+
 ```bash
 bash
 Copy
 Edit
+
 python manage.py runserver
 ```
-
 
 🌍 Deployment
 Hosted backend on Render
@@ -164,7 +245,44 @@ Production DB: PostgreSQL on Render
 📸 Screenshots
 🖼️ Coming soon...
 
+## Observation and what i learned
+
+1. How to auth users with sending email for verification status
+
+2. User profile update, delete verify account
+
+3. Model relation ship (Ont-to-One, Many-to-Many, One-to-Many keys)
+
+- model functions such as @property, save, All etc
+
+4. cart, orders, product, wishlist create, update, read, and delete (CRUD)
+
+5. signals operations
+
+- Implemented for user create account giving user a default profile picture
+- Used signals for order history
+
+6. Seeds operations
+
+- Implemented seed operation for creating default categories and children
+
+7. Payment gateway
+
+- implemented a payment gateway using PayStack
+  - This payment gateway is used for paying for orders and also verify reference number
+
+8. Added product ads and banners
+
+9. implemented a newsletter sign-up
+
+10. Django's try and exception for error/null handling
+
+**etc...**
+
+---
+
 # 👨‍💻 Developer
+
 - Name: Nelson Junior
 - Role: Full Stack Developer (Django, Frontend, Deployment)
 - Country: Nigeria 🇳🇬
