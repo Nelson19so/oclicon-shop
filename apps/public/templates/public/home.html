@@ -297,13 +297,18 @@
 
     <!-- banner -->
     <div class="container-banner mt-10 w-full flex justify-between gap-4">
+      {% if first_middle_banner_ad %}
       <div class="container-benner-1 w-1/2 flex justify-between">
         <div class="container-articles w-1/2">
           <article>
-            <p class="introduction-banner-txt">INTRODUCING</p>
-            <h4 class="banner-product-name mt-3">New Apple Homepod Mini</h4>
+            <p class="introduction-banner-txt">
+              {{ first_middle_banner_ad.title }}
+            </p>
+            <h4 class="banner-product-name mt-3">
+              {{ first_middle_banner_ad.name }}
+            </h4>
             <p class="banner-product-description">
-              Jam-packed with innovation, HomePod mini delivers unexpectedly.
+              {{ first_middle_banner_ad.description }}
             </p>
 
             <button class="mt-5 flex justify-center btn-primary">
@@ -327,20 +332,26 @@
         </div>
 
         <div class="banner-product-img w-1/2">
-          <img src="{% static 'images/product/mp4.png' %}" alt="mp4" />
+          <img
+            src="{{ first_middle_banner_ad.image.url }}"
+            alt="{{ first_middle_banner_ads.title }}"
+          />
         </div>
       </div>
+      {% endif %}
 
       <!-- banner 2 -->
       <div class="container-benner-2 w-1/2 flex justify-between">
         <div class="container-articles w-1/2">
           <article>
-            <p class="introduction-banner-txt">INTRODUCING NEW</p>
+            <p class="introduction-banner-txt">
+              {{ second_middle_banner_ads.title }}
+            </p>
             <h4 class="banner-product-name mt-3">
-              Xiaomi Mi 11 Ultra 12GB+256GB
+              {{ second_middle_banner_ads.name }}
             </h4>
             <p class="banner-product-description">
-              *Data provided by internal laboratories. Industry measurment.
+              {{ second_middle_banner_ads.description }}
             </p>
             <button class="mt-5 flex justify-between btn-primary">
               Shop now
@@ -363,10 +374,12 @@
         </div>
 
         <div class="banner-product-img w-1/2 h-full pt-10">
-          <p class="banner-price">$590</p>
+          {% if second_middle_banner_ads.price %}
+          <p class="banner-price">${{ second_middle_banner_ads.price }}</p>
+          {% endif %}
           <img
-            src="{% static 'images/product/phone.png' %}"
-            alt="phone"
+            src="{{ second_middle_banner_ads.image.url }}"
+            alt="{{ second_middle_banner_ads.title }}"
             class="h-full"
           />
         </div>
@@ -388,15 +401,14 @@
       </div>
     </section>
 
-    <!-- banner -->
+    <!-- bottom banner -->
+    {% if first_bottom_banner %}
     <div class="container-last-banner-home mt-10">
       <div class="container-left-banner">
-        <p class="title">SAVE UP TO $200.00</p>
+        <p class="title">{{ first_bottom_banner.title }}</p>
 
-        <h1 class="mt-1">Macbook Pro</h1>
-        <p class="mt-1">
-          Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage
-        </p>
+        <h1 class="mt-1">{{ first_bottom_banner.name }}</h1>
+        <p class="mt-1">{{ first_bottom_banner.description }}</p>
 
         <button class="btn-shop-now mt-5 flex justify-center">
           Shop now
@@ -419,14 +431,15 @@
       </div>
 
       <div class="right-container-">
-        <p class="huge-price-banner">$1999</p>
+        <p class="huge-price-banner">${{ first_bottom_banner.price }}</p>
         <img
-          src="{% static 'images/product/macbookImage.png' %}"
+          src="{{ first_bottom_banner.image.url }}"
           alt="macbookImage"
           width="300"
         />
       </div>
     </div>
+    {% endif %}
 
     <!-- product-list -->
     <section class="product-list" id="product-list">

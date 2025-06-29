@@ -56,7 +56,7 @@ def cancel_order(request, order_id):
         order = get_object_or_404(Order, id=order_id)
         
         # makes sure the order is not yet shipped or not yet late
-        if order.status in ['_']:
+        if order.status in ['SHIPPED', 'DELIVERED', 'ON_THE_ROAD', 'SHIPPED']:
             # sends user massage if order cant be canceled
             messages.error(request, 'Order cannot be canceled with current status')
             return redirect('order-list')

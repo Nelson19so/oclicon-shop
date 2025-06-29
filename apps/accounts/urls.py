@@ -1,13 +1,16 @@
 from django.urls import path
-from .views import (
+from .views.auth_view import (
     user_registration_view_create, reset_user_password,
     logout_view, welcome_registration_view, 
     login_view, reset_password_view, 
-    reset_password_request_view, card_address,
-    registration_email_verification, search_history,
-    account_dashboard, user_successfully_logged_out,
+    reset_password_request_view, 
+    registration_email_verification, 
+    user_successfully_logged_out,
+)
+from .views.account_view import (
     order_history, user_settings_profile,
-    delete_user_account    
+    delete_user_account, search_history,
+    account_dashboard, card_address,
 )
 
 urlpatterns = [

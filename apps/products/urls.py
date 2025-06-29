@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import ProductDetailView, FilteredProductListView, ComparisonPageView, AddToComparisonView
+from .views.product_compare_view import ComparisonPageView, AddToComparisonView, RemoveFromCompareView
+from .views.product_view import ProductDetailView, FilteredProductListView
 
 urlpatterns = [
     # shop url conf
@@ -16,7 +17,7 @@ urlpatterns = [
     # comparison url conf
     path('compare/', ComparisonPageView.as_view(), name='compare'),
     path('compare/add/<int:product_id>/', AddToComparisonView.as_view(), name='add_compare'),
-    path('compare/remove/<int:product_id>/', ComparisonPageView.as_view(), name='remove_compare'),
+    path('compare/remove/<int:product_id>/', RemoveFromCompareView.as_view(), name='remove_compare'),
 ]
 
 

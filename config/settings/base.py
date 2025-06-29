@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'settings.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -64,13 +64,13 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # categories navbar list
-                'settings.commands.context_processors.navbar_categories_list',
-                # context processor for navbar cart display list 
-                'settings.commands.context_processors.navbar_cart_display_list',
-                # computer accessories filter
-                # 'settings.context_processors.computer_accessories',
+                'config.context.processors.navbar_categories_list',
                 # active product ads
-                'settings.commands.context_processors.active_ads',
+                'config.context.ads_processor.active_product_ads',
+                # cart processor
+                'config.context.cart_processor.cart_list',
+                # ads processor
+                'config.context.ads_processor.active_product_ads',
 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -81,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'settings.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -119,11 +119,11 @@ SITE_ID = 1
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Social Account Providers
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-google-client-id>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-google-client-secret>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<google-client-id>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<google-client-secret>'
 
-SOCIAL_AUTH_APPLE_ID_KEY = '<your-apple-client-id>'
-SOCIAL_AUTH_APPLE_ID_SECRET = '<your-apple-client-secret>'
+SOCIAL_AUTH_APPLE_ID_KEY = '<apple-client-id>'
+SOCIAL_AUTH_APPLE_ID_SECRET = '<apple-client-secret>'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

@@ -151,7 +151,6 @@ def Home_page(request):
         'best_hot_deals': best_hot_deals,
         'child_categories': child_categories,
         'blogs': blogs,
-        'featured_sidebar_ad': 'featured_sidebar_ad',
         'flash_sales': flash_sales,
         'top_rated': top_rated,
         'new_arrivals': new_arrivals
