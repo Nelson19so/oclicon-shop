@@ -1,6 +1,6 @@
 # 🛍️ Clicon Online Store — Full Stack eCommerce Platform
 
-Clicon is a fully functional eCommerce platform built with a robust Django backend and a responsive, modern frontend using HTML, TailwindCSS, JavaScript, SCSS, and jQuery. It supports both **authenticated and anonymous users** for full CRUD functionality — including cart, wishlist, comparison, checkout, and payment integration using **Paystack**.
+Clicon is a fully functional eCommerce platform built with a robust Django backend and a responsive, modern frontend using HTML, TailwindCSS, JavaScript, SCSS, and jQuery. It supports both **authenticated and anonymous users** for full CRUD functionality — including cart, wishlist, comparison, checkout, and payment integration using **Paystack**. Users can also view blogs and it's details + asking questions with customer support
 
 ---
 
