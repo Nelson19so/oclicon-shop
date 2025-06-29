@@ -21,8 +21,8 @@ __pycache__/
 staticfiles/
 
 # Media files (uploads)
-# media/
-# media/**
+media/
+media/**
 
 # Node.js
 node_modules/
