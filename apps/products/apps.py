@@ -6,7 +6,6 @@ class ProductsConfig(AppConfig):
 
     # this function runs the apps/product/seed_categories when ever the app runs 
     def ready(self):
-        # did the import here to avoid app conflict
         from django.db.utils import OperationalError
         from django.db import ProgrammingError
         from apps.products.seed_categories import seed_categories

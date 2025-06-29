@@ -177,6 +177,7 @@ def frequently_asked_question(request):
         form = FrequentlyAskedQuestionsForms(request.POST)
         if form.is_valid(): # validates whether form is valid or not
             form.save() # saves the form
+            return redirect('faqs')
     else:
         form = FrequentlyAskedQuestionsForms()
     

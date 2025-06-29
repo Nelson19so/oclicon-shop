@@ -22,7 +22,7 @@ class StartOrderPayment(View):
 
             total_amount = order_total_amount
             TempPayment.objects.create(user=user, reference=reference, amount=total_amount)
-            
+
             headers = {
                 "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
                 "Content-Type": "application/json"

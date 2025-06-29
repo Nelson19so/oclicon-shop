@@ -18,16 +18,19 @@ class CartMixin(SessionMixin):
     def cart_item_count(self, request):
         user = request.user
 
-        if user.is_authenticated:
-            cart = Cart.objects.get(user=user)
-        
-        else:
-            if not request.session.session_key:
-                return 0
-            session_key = request.session.session_key
-            cart = Cart.objects.filter(session_key=session_key).first()
+        try:
+            if user.is_authenticated:
+                cart = Cart.objects.get(user=user)
+            else:
+                if not request.session.session_key:
+                    return 0
+                session_key = request.session.session_key
+                cart = Cart.objects.filter(session_key=session_key).first()
+            cart_count = CartItem.objects.filter(cart=cart).count()
+        except Cart.DoesNotExist:
+            pass
 
-        return CartItem.objects.filter(cart=cart).count()
+        return cart_count
 
     def cart_items_list(self, request):
         user = request.user
@@ -116,23 +119,25 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
     # calculate cart total amount for checkout taxes + cart items
     def calculate_cart_tax(self, request):
         cart_item_count = self.cart_item_count(self.request)
-        sub_total = round(61.99 * cart_item_count, 2)
+        if cart_item_count:
+            sub_total = round(61.99 * cart_item_count, 2)
+        else:
+            sub_total = 0.00
         return sub_total
-        
+
     # get total price
     def get_total_price(self, request):
-        cart = 0
-
         try:
             if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)
             else:
                 session_key = self.get_or_create_session_key(request)
                 cart = Cart.objects.get(session_key=session_key)
-            cart = cart.total_price
+            cart_total_price = cart.total_price()
         except Cart.DoesNotExist:
             pass
-        return cart
+
+        return cart_total_price
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
