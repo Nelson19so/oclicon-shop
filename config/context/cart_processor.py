@@ -18,7 +18,7 @@ def cart_list(request):
             total_cart_price = cart.total_price()
 
             # setting the cache for auth user
-            cache_key = f'navbar_cart_user_{user.id}'
+            cart_key = f'cart_user_{user.id}'
 
         else:
             # if theres no session for anonymous user
@@ -30,7 +30,7 @@ def cart_list(request):
             session_key = request.session.session_key
             
             # setting the cache for anonymous user
-            cache_key = f'navbar_cart_user_{user.id}'
+            cart_key = f'cart_session_{session_key}'
             
             # tries to get data for anonymous user session
             cart = Cart.objects.get(session_key=session_key)
@@ -38,7 +38,7 @@ def cart_list(request):
             total_cart_price = cart.total_price()
             # getting cart item for the session cart
         
-        cart_items = cache.get(cache_key)
+        cart_items = cache.get(cart_key)
         
         if not cart_items:
             # then filters cart item for user cart
@@ -48,7 +48,7 @@ def cart_list(request):
                 )[:2]
             )
             # stores in cache for 5 min
-            cache.set(cache_key, cart_items, 300)
+            cache.set(cart_key, cart_items, 300)
 
     # if cart does not exist
     except (Cart.DoesNotExist):
@@ -60,7 +60,7 @@ def cart_list(request):
 
     # returns the cart item for use.
     return {
-        'cart_items': cart_items, 
+        'cart_items': cart_items,
         'total_cart_price': total_cart_price, 
         'nav_cart_count': nav_cart_count
     }

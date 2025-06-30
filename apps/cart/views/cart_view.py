@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View
 from django.utils import timezone
+from django.core.cache import cache
 
 class SessionMixin:
     def get_or_create_session_key(self, request):
@@ -85,9 +86,11 @@ class RemoveItemFromCart(View, SessionMixin):
 
         if user.is_authenticated:
             cart = Cart.objects.get(user=user)
+            cart_key = f'cart_user_{request.user.id}'
 
         else:
             session_key = self.get_or_create_session_key(request)
+            cart_key = f'cart_session_{session_key}'
             cart = Cart.objects.get(session_key=session_key)
 
         if not cart:
@@ -97,6 +100,7 @@ class RemoveItemFromCart(View, SessionMixin):
             
         cart_item = get_object_or_404(CartItem, cart=cart, id=cart_id)
         cart_item.delete()
+        cache.delete(cart_key)
 
         return JsonResponse({
             'status': 'success',
@@ -139,11 +143,21 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
 
         return cart_total_price
     
+    # check if cart item exist
+    def cart_exist(self, request):
+        cart_item_exist = False
+        cart_count = self.cart_item_count(self.request)
+        if cart_count > 0:
+            cart_item_exist = True
+
+        return cart_item_exist
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['breadcrumbs'] = self.get_breadcrumbs()
         context['total_price'] = self.get_total_price(self.request)
         context['cart_shipping_sub_total'] = self.calculate_cart_tax(self.request)
+        context['cart_item_exist'] = self.cart_exist(self.request)
         return context
 
 # update cart product quantity view create
@@ -156,9 +170,11 @@ def update_cart_quantities(request):
     try:
         if user.is_authenticated:
             cart = Cart.objects.get(user=user)
+            cart_key = f'cart_user_{request.user.id}'
         else:
             session_key = session_mixin.get_or_create_session_key(request)
             cart = Cart.objects.get(session_key=session_key)
+            cart_key = f'cart_session_{session_key}'
     except Cart.DoesNotExist:
         return redirect('cart_list')
 
@@ -181,6 +197,8 @@ def update_cart_quantities(request):
             cart_item.quantity = quantity
             cart_item.updated_at = timezone.now()
             cart_item.save()
+            cache.set(cart_key, cart_item,timeout=300)
+            cache.delete(cart_key)
         except (ValueError, CartItem.DoesNotExist):
             # skip invalid entries silently
             continue

@@ -268,14 +268,18 @@ Production DB: PostgreSQL on Render
 
 7. Payment gateway
 
-- implemented a payment gateway using PayStack
-  - This payment gateway is used for paying for orders and also verify reference number
+- implemented a **payment** gateway using PayStack
+  - This **payment gateway** is used for paying for orders and also verify reference number
 
 8. Added product ads and banners
 
 9. implemented a newsletter sign-up
 
 10. Django's try and exception for error/null handling
+
+11. How to use **cache** to store items for at least 300s (5 min) to optimize querying
+
+- complete CRUD operation
 
 **etc...**
 

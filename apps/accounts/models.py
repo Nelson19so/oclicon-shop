@@ -46,7 +46,7 @@ class ProfilePicture(models.Model):
     profile = models.ImageField(
         upload_to='profile', 
         blank=False, null=False,
-        default='profile/default_profile_pic/icon-avatar.png'
+        default='default_profile_pic/icon-avatar.png'
     )
     updated_at = models.DateTimeField(auto_now=True)
 

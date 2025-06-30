@@ -193,16 +193,18 @@
             </div>
 
             <div class="container-right-visit-home-cart">
+              {% if cart_item_exist %}
               <button type="submit">Update cart</button>
-
-              <!-- <button
+              {% else %}
+              <button
                 type="submit"
                 class="opacity-40"
                 style="cursor: auto"
                 disabled
               >
                 Update cart
-              </button> -->
+              </button>
+              {% endif %}
             </div>
           </div>
         </div>
