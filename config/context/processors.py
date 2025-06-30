@@ -7,7 +7,6 @@ def navbar_categories_list(request):
     # returns the category for use.
     return {"categories": categories}
 
-
 # breadcrumbs
 # not yet in settings.py context processor
 def breadcrumbs_processor(request):

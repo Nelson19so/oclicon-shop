@@ -57,7 +57,6 @@ class CreateCartItem(CartMixin, SessionMixin, View):
 
         if user.is_authenticated:
             cart, _ = Cart.objects.get_or_create(user=user)
-
         else:
             session_key = self.get_or_create_session_key(request)
             cart, _ = Cart.objects.get_or_create(session_key=session_key)
@@ -127,6 +126,7 @@ class CartItemListView(CartMixin, ListView, SessionMixin):
 
     # get total price
     def get_total_price(self, request):
+        cart_total_price = 0.00
         try:
             if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)

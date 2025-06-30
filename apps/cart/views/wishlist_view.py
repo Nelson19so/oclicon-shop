@@ -86,48 +86,36 @@ def wish_list_view(request):
     mixin = SessionMixin()
     session_key = mixin.get_or_create_session_key(request)
     
-    # if user is authenticated
-    if user.is_authenticated:
-        # filters wishlist product for user
-        wishlists = WishlistProduct.objects.filter(user=user).select_related('product')
+    try:
+        # if user is authenticated
+        if user.is_authenticated:
+            # filters wishlist product for user
+            wishlists = WishlistProduct.objects.filter(user=user).select_related('product')
 
-    # else if not authenticated and no session id for anonymous user 
-    else:
-        # filtering wishlist for anonymous user
-        wishlists = WishlistProduct.objects.filter(session_key=session_key)
+        # else if not authenticated and no session id for anonymous user 
+        else:
+            # filtering wishlist for anonymous user
+            wishlists = WishlistProduct.objects.filter(session_key=session_key)
 
-
-    # if user is authenticated
-    if user.is_authenticated:
-        try:
+        # if user is authenticated
+        if user.is_authenticated:
             cart = Cart.objects.get(user=user) 
 
-            for wishlist in wishlists:
-                wishlist.in_cart = False
-
-                if cart and CartItem.objects.filter(
-                    cart=cart,
-                    product=wishlist.product
-                ).exists():
-                    wishlist.in_cart = True
-        except (Cart.DoesNotExist or CartItem.DoesNotExist):
-            pass
-
-    # anonymous users
-    else:
-        try:
+        # anonymous users
+        else:
             cart = Cart.objects.get(session_key=session_key) 
 
-            for wishlist in wishlists:
-                wishlist.in_cart = False
+        for wishlist in wishlists:
+            wishlist.in_cart = False
 
-                if cart and CartItem.objects.filter(
-                    cart=cart,
-                    product=wishlist.product
-                ).exists():
-                    wishlist.in_cart = True
-        except (Cart.DoesNotExist or CartItem.DoesNotExist):
-            pass
+        # cart item filter
+        if cart and CartItem.objects.filter(
+            cart=cart,
+            product=wishlist.product
+        ).exists():
+            wishlist.in_cart = True
+    except (Cart.DoesNotExist or CartItem.DoesNotExist or WishlistProduct.DoesNotExist):
+        pass
     
     # builds breadcrumbs for user
     breadcrumbs = [

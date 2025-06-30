@@ -38,7 +38,7 @@ def Home_page(request):
             is_active=True,
             product_feature__features='best_deal',
             product_feature__is_active=True
-        ).prefetch_related('product_feature')
+        ).prefetch_related('product_feature', 'category')
 
         # best hot deals for best deals product
         best_hot_deals_badge = Badge.objects.filter(bade_type='hot').first()
@@ -60,7 +60,7 @@ def Home_page(request):
             is_active=True,
             product_feature__features='featured_product',
             product_feature__is_active=True
-        ).prefetch_related('product_feature')[:8]
+        ).prefetch_related('product_feature', 'category')[:8]
 
         # Filter products that belong to the child categories only
         computer_accessories = Product.objects.filter(
@@ -79,7 +79,7 @@ def Home_page(request):
             flash_sales = Product.objects.filter(
                 is_active=True,
                 product_feature=flash_sales_filter
-            )
+            ).prefetch_related('category')
 
             flash_sales = flash_sales.order_by('?')[:3]
 
@@ -94,7 +94,7 @@ def Home_page(request):
             top_rated = Product.objects.filter(
                 is_active=True,
                 product_feature=top_rated_filter
-            )
+            ).prefetch_related('category')
 
             top_rated = top_rated.order_by('?')[:3]
 
@@ -109,7 +109,7 @@ def Home_page(request):
             new_arrivals = Product.objects.filter(
                 is_active=True,
                 product_feature=new_arrival_filter
-            )[:3]
+            ).prefetch_related('category')[:3]
 
         if queryset_computer_acc:
             computer_accessories = computer_accessories.filter(

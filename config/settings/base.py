@@ -69,8 +69,6 @@ TEMPLATES = [
                 'config.context.ads_processor.active_product_ads',
                 # cart processor
                 'config.context.cart_processor.cart_list',
-                # ads processor
-                'config.context.ads_processor.active_product_ads',
 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -94,9 +92,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
-DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -119,11 +117,11 @@ SITE_ID = 1
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Social Account Providers
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<google-client-id>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<google-client-secret>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('GOOGLE_CLIENT_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
 
-SOCIAL_AUTH_APPLE_ID_KEY = '<apple-client-id>'
-SOCIAL_AUTH_APPLE_ID_SECRET = '<apple-client-secret>'
+SOCIAL_AUTH_APPLE_ID_KEY = os.getenv('APPLE_CLIENT_KEY')
+SOCIAL_AUTH_APPLE_ID_SECRET = os.getenv('APPLE_CLIENT_SECRET')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
