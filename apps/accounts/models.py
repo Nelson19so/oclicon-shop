@@ -21,13 +21,12 @@ class BaseUserManager(BaseUserManager):
 
 # Custom user model
 class CustomUser(AbstractUser):
-    username = None
-    Name = models.CharField(max_length=20, unique=True)
+    username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(unique=True, max_length=200)
     terms_accepted = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['Name', 'terms_accepted']
+    REQUIRED_FIELDS = ['username', 'terms_accepted']
 
     objects = BaseUserManager()
 
@@ -36,7 +35,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'users'
 
     def __str__(self):
-        return self.Name
+        return self.username
     
 # user profile
 class ProfilePicture(models.Model):
@@ -51,7 +50,7 @@ class ProfilePicture(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.Name}"
+        return f"{self.user.username}"
 
 class UserStatus(models.Model):
     user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
@@ -61,7 +60,7 @@ class UserStatus(models.Model):
     date_status = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.Name}"
+        return f"{self.user.username}"
 
 # vendor modal
 class UserVendor(models.Model):
@@ -70,7 +69,7 @@ class UserVendor(models.Model):
     is_vendor = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.user.Name}"
+        return f"{self.user.username}"
 
 # vendor information
 class VendorInformation():
@@ -85,7 +84,7 @@ class TermsPrivacy(models.Model):
     terms_privacy = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.user.Name}"
+        return f"{self.user.username}"
 
 class AdditionalUserInfo(models.Model):
     user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='additional_user')
@@ -98,7 +97,7 @@ class AdditionalUserInfo(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.Name}"
+        return f"{self.user.username}"
     
     def is_complete(self):
         return all([

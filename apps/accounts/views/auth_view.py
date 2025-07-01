@@ -32,7 +32,7 @@ def user_registration_view_create(request):
             # Store session data temporarily
             request.session['confirm_session'] = True
             request.session['user_id'] = user.id
-            request.session['name'] = user.Name
+            request.session['name'] = user.username
 
             return redirect('welcome_user', user.id)
     else:
@@ -113,7 +113,7 @@ def login_view(request):
 @login_required(login_url='login')
 def logout_view(request):
     # getting the user name of the user logging out
-    request.session['logged-out-username'] = request.user.Name
+    request.session['logged-out-username'] = request.user.username
 
     # logs out user
     logout(request)

@@ -74,11 +74,11 @@ Clicon is a fully functional eCommerce platform built with a robust Django backe
 
 ## 💳 Payment Integration
 
-- Integrated with **Paystack**
+- Integrated with (**Paystack**)[https://paystack.com]
 - Secure payment flow:
   - Payment page generated with cart total
-  - Redirect to Paystack
-  - Verified via Paystack API
+  - Redirect to (PayStack)[https://paystack.com]
+  - Verified via (PayStack)[https://paystack.com] API
   - ✅ Order only created **after successful payment**
 
 ---
@@ -220,12 +220,36 @@ Edit
 
 python manage.py makemigrations accounts
 python manage.py makemigrations
-python manage.py migrate
 ```
 
 ### **NOTE**: you migrate the accounts app first before any other app
 
-6. Run Development Server
+6. Make migrations for all apps
+
+```bash
+bash
+Copy
+Edit
+
+python manage.py makemigrations products
+python manage.py makemigrations orders
+python manage.py makemigrations cart
+python manage.py makemigrations public
+python manage.py makemigrations payments
+
+```
+
+- after miking migrations for all apps, then migrate all
+
+```bash
+bash
+Copy
+Edit
+
+python manage.py migrate
+```
+
+7. Run Development Server
 
 ```bash
 bash
@@ -235,12 +259,46 @@ Edit
 python manage.py runserver
 ```
 
+### To make use of the django test
+
+1. Make sure you are on the project root folder
+
+```bash
+bash
+copy
+Edit
+
+cd oclicon-shop
+```
+
+2 To test the models run
+
+```bash
+bash
+copy
+Edit
+
+python manage.py test apps.app_name.tests.test_model
+```
+
+- **NOTE**: change the '**app_name**' based on the app model you want to test
+
+2 To test the view run
+
+```bash
+bash
+copy
+Edit
+
+python manage.py test apps.app_name.tests.test_view
+```
+
 🌍 Deployment
-Hosted backend on Render
+(oclicon-shop)[https://oclicon-shop.onrender.com] backend hosted on (Render)[https://render.com]
 
 Static and media files served via WhiteNoise
 
-Production DB: PostgreSQL on Render
+Production DB: PostgreSQL on (Render)[https://render.com]
 
 📸 Screenshots
 🖼️ Coming soon...
@@ -280,6 +338,8 @@ Production DB: PostgreSQL on Render
 11. How to use **cache** to store items for at least 300s (5 min) to optimize querying
 
 - complete CRUD operation
+
+12. How to use test.py for view and model
 
 **etc...**
 

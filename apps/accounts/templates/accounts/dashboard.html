@@ -11,7 +11,7 @@
 {% block content %}
 <div class="container-user_dashboard-">
   <div class="container-user-dashboard-padding-">
-    <h3 class="user-hello">Hello, {{ user.Name|title }}</h3>
+    <h3 class="user-hello">Hello, {{ user.username|title }}</h3>
 
     <div class="container-articles-dashboard-txt w-[100%] md:w-[60%] mt-3">
       <p class="articles-dashboard-txt">
@@ -34,13 +34,13 @@
               <div class="container-img-profile">
                 <img
                   src="{{ user.profile.profile.url }}"
-                  alt="{{ user.Name }}-profile"
+                  alt="{{ user.username }}-profile"
                   width="40"
                   style="border-radius: 100px; height: 40px; min-width: 40px"
                 />
               </div>
               <div class="container-user-info flex justify-center flex-col">
-                <p>{{ user.Name|title }}</p>
+                <p>{{ user.username|title }}</p>
                 <span
                   >{% if user.additional_user.city %} {{
                   user.additional_user.city }} - {% endif %}

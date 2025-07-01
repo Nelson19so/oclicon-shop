@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from apps.orders.models import Order, ShippingAddress
 from apps.orders.forms import ShippingAddressForm
-from apps.products.models import SearchHistory
+from apps.products.models import ProductSearchHistory
 from apps.accounts.models import (
     AdditionalUserInfo, 
     ProfilePicture, BillingAddress
@@ -37,7 +37,7 @@ def account_dashboard(request):
         completed_order = orders.filter(status='DELIVERED').count()
 
         # recent searched
-        search_product = SearchHistory.objects.filter(user=user).order_by('-searched_at')[:4]
+        search_product = ProductSearchHistory.objects.filter(user=user).order_by('-searched_at')[:4]
 
         # latest 7 orders
         latest_orders = Order.objects.filter(user=user).order_by('-created_at')[:7]
@@ -48,8 +48,8 @@ def account_dashboard(request):
         # billing information
         billing_info = BillingAddress.objects.filter(user=user)
     except (
-        Order.DoesNotExist or AdditionalUserInfo.DoesNotExist or 
-        BillingAddress.DoesNotExist, SearchHistory.DoesNotExist
+        Order.DoesNotExist or AdditionalUserInfo.DoesNotExist or
+        BillingAddress.DoesNotExist, ProductSearchHistory.DoesNotExist
     ):
         pass
     
@@ -105,10 +105,10 @@ def card_address(request):
 def search_history(request):
     try:
         searched_products = (
-            SearchHistory.objects.filter(user=request.user)
+            ProductSearchHistory.objects.filter(user=request.user)
             .order_by('-searched_at')
         )
-    except SearchHistory.DoesNotExist:
+    except ProductSearchHistory.DoesNotExist:
         pass
 
     breadcrumbs = [

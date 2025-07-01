@@ -206,12 +206,6 @@ class Ad(models.Model):
     def __str__(self):
         return self.title
 
-# product features
-# class ProductFeature(models.Model):
-#     variant = models.OneToOneField(
-#         ProductVariant, on_delete=models.CASCADE, related_name='product_features'
-#     )
-
 # product rating
 class ProductRating(models.Model):
     user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
@@ -224,13 +218,13 @@ class ProductRating(models.Model):
         unique_together =  ['product', 'user']
 
 # product search history for users
-class SearchHistory(models.Model):
+class ProductSearchHistory(models.Model):
     user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    searched_at = models.DateTimeField(auto_now_add=True)
+    searched_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.user.Name
+        return self.user.username
 
 # product comparison
 class ProductComparison(models.Model):

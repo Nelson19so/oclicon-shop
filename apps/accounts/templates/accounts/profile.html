@@ -27,7 +27,7 @@
           <div class="container-user-profile-image">
             <img
               src="{{ user.profile.profile.url }}"
-              alt="{{ user.Name }}"
+              alt="{{ user.username }}"
               class="cursor-pointer"
               id="profile-img"
             />
@@ -52,7 +52,7 @@
                   <label for="displayname">Display name</label>
                   <input
                     type="text"
-                    value="{{ user_form.Name.value }}"
+                    value="{{ user_form.username.value }}"
                     class="disabled-input"
                     disabled
                   />
@@ -95,7 +95,7 @@
               >
                 <div class="input-container">
                   <label for="Name">User Name</label>
-                  {{ user_form.Name }}
+                  {{ user_form.username }}
 
                   <div class="container-error-msg mt-1">
                     <p class="error-msg"></p>

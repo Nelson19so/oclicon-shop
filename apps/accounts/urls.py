@@ -3,7 +3,7 @@ from .views.auth_view import (
     user_registration_view_create, reset_user_password,
     logout_view, welcome_registration_view, 
     login_view, reset_password_view, 
-    reset_password_request_view, 
+    reset_password_request_view,
     registration_email_verification, 
     user_successfully_logged_out,
 )

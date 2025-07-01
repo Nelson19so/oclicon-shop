@@ -205,10 +205,13 @@ def customer_support(request):
 
 # blog page
 def blog(request):
-    blogs = BlogPost.objects.all().prefetch_related('blog_post_comment')
+    try:
+        blogs = BlogPost.objects.all().prefetch_related('blog_post_comment')
 
-    for blog in blogs:
-        blog.comment_count = blog.blog_post_comment.count()
+        for blog in blogs:
+            blog.comment_count = blog.blog_post_comment.count()
+    except BlogPost.DoesNotExist:
+        pass
 
     breadcrumbs = [
         ('Pages', '#/'),

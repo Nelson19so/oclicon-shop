@@ -1,6 +1,5 @@
-from django.forms import Form
 from django import forms
-from .models import CustomUser, AdditionalUserInfo, ProfilePicture, BillingAddress
+from .models import AdditionalUserInfo, ProfilePicture, BillingAddress
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.password_validation import validate_password
 
@@ -13,7 +12,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['Name', 'email', 'terms_accepted', 'password1', 'password2']
+        fields = ['username', 'email', 'terms_accepted', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get("email").lower()
@@ -96,12 +95,12 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('Name', 'email',)
+        fields = ('username', 'email',)
         labels = {
-            'Name': 'Name'
+            'username': 'username'
         }
         widget = {
-            'Name': forms.TextInput(attrs={'class': 'profile-input'}),
+            'username': forms.TextInput(attrs={'class': 'profile-input'}),
             'email': forms.EmailInput(attrs={'class': 'profile-input'}),
         }
 
