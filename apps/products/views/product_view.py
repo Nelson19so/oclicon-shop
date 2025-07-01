@@ -194,7 +194,7 @@ class FilteredProductListView(ListView, SessionMixin):
             cache.set(product_cache_key, product_ids, 72000)
         
         queryset = Product.objects.filter(id__in=product_ids).prefetch_related(
-            'brand', 
+            'brand',
             'category',
             'images',
             'product_badge'
@@ -267,9 +267,6 @@ class FilteredProductListView(ListView, SessionMixin):
         if category_slug:
             return Category.objects.get(slug=category_slug)
         return None
-    
-    # def product_wishlist_cart_compare_exist(self, request):
-    #     pass
 
     # additional context being passed for rendering product and it items to the template
     def get_context_data(self, **kwargs):
