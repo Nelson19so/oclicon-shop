@@ -7,7 +7,6 @@ from django.views.decorators.http import require_POST
 from .models import Order, OrderItem, OrderMessage, OrderStatusHistory
 from apps.cart.models import Cart, CartItem
 from django.urls import reverse
-from datetime import timezone
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.utils.timezone import now

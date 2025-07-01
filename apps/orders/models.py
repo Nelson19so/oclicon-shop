@@ -50,8 +50,13 @@ class Order(models.Model):
         for item in self.items.all():
             total_product += item.quantity
         return f'{total_product} Product'
+    
+    def save(self, *args, **kwargs):
+        if not self.email:
+            self.email = self.user.email
+        super().save(*args, **kwargs)
 
-# order items
+# order items model
 class OrderItem(models.Model):
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')

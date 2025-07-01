@@ -552,6 +552,14 @@
                   cancel order
                 </button>
               </form>
+              {% else %}
+              <p style="font-size: 14px; color: #939393">
+                Order Canceled by
+                <span style="font-size: 14px; color: #668fbd"
+                  >'{{order.canceled_by}}'</span
+                >
+                at {{ order.canceled_at }}
+              </p>
               {% endif %}
 
               <div class="mt-3">{% include 'error/message.html' %}</div>
