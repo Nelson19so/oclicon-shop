@@ -5,6 +5,8 @@ from django.views.generic import ListView, DetailView
 from django.urls import reverse
 from django.db.models import Q
 from apps.cart.models import WishlistProduct, CartItem, Cart
+from django.core.cache import cache
+from random import shuffle
 
 class SessionMixin:
     def get_or_create_session_key(self, request):
@@ -161,7 +163,7 @@ class ProductDetailView(DetailView, SessionMixin):
         return context
 
 # shop page for filtering and searching all kinds of product that exist in shop
-class FilteredProductListView(ListView):
+class FilteredProductListView(ListView, SessionMixin):
     model = Product
     template_name = 'products/shop.html'
     context_object_name = 'products'
@@ -169,8 +171,35 @@ class FilteredProductListView(ListView):
 
     # query set for listing many product
     def get_queryset(self):
-        # filtering active product
-        queryset = Product.objects.filter(is_active=True)
+        '''''
+        creating cache key for product shuffle for better UX
+        this avoids querying the db frequently and stores shuffle for every 2 hr for eah
+        authenticated user and anonymous user
+        '''''
+        session_key = self.get_or_create_session_key
+        # stores the cache key
+        product_cache_key = f'product_shuffle_cache_{
+            self.request.user.id if self.request.user.is_authenticated else session_key
+        }'
+        # getting the product in cache
+        product_ids = cache.get(product_cache_key)
+        
+        # if no product_ids exist
+        if not product_ids:
+            # filtering active product
+            product_ids = list(Product.objects.filter(is_active=True).values_list('id', flat=True))
+            # orders product product_ids randomly
+            shuffle(product_ids)
+            # setting the product to cache
+            cache.set(product_cache_key, product_ids, 72000)
+        
+        queryset = Product.objects.filter(id__in=product_ids).prefetch_related(
+            'brand', 
+            'category',
+            'images',
+            'product_badge'
+        )
+
         # setting category, child category, brand to None to be able to filter all product
         self.category = None
         self.child_category = None
@@ -206,16 +235,8 @@ class FilteredProductListView(ListView):
                 Q(description__icontains=query)
             )
 
-        # orders product queryset randomly
-        queryset = queryset.order_by('?')
-
         # returns the product queryset and it related items
-        return queryset.prefetch_related(
-            'brand', 
-            'category',
-            'images',
-            'product_badge'
-        )
+        return queryset
 
     # builds breadcrumb for product list
     def get_breadcrumbs(self):
@@ -261,6 +282,6 @@ class FilteredProductListView(ListView):
         context['brand_slug'] = self.kwargs.get('brand_slug')
         context['breadcrumbs'] = self.get_breadcrumbs()
         context['category_name'] = self.show_category()
-        context['product_count'] = product.count()
+        context['product_count'] = len(product)
         context['query'] = self.request.GET.get('q', '')
         return context
