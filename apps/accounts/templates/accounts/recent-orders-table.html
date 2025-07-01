@@ -60,7 +60,13 @@
             <p class="order-id">#{{ order.order_id }}</p>
           </td>
           <td>
+            {% if order.status == 'CANCELLED' %}
+            <p class="status status-cancelled" style="color: rgb(255, 34, 34)">
+              {{ order.get_status_display }}
+            </p>
+            {% else %}
             <p class="status status-progress">{{ order.get_status_display }}</p>
+            {% endif %}
           </td>
           <td><p class="date">{{ order.created_at }}</p></td>
           <td>

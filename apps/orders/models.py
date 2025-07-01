@@ -5,7 +5,7 @@ import random
 def create_random_order_id():
     return ''.join(random.choices('0123456789', k=10))
 
-# order
+# user order model
 class Order(models.Model):
     ORDER_STATUS = (
         ('ORDER_PLACED', 'Order Placed'),

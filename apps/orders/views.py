@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TrackOrderForm
 from django.contrib import messages
-from django.views.generic import ListView, DeleteView, View, DetailView
+from django.views.generic import View, DetailView
 from django.utils.decorators import method_decorator
-from django.views.decorators.http import require_POST, require_http_methods
+from django.views.decorators.http import require_POST
 from .models import Order, OrderItem, OrderMessage, OrderStatusHistory
 from apps.cart.models import Cart, CartItem
-from apps.products.models import Product
 from django.urls import reverse
 from datetime import timezone
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
+from django.utils.timezone import now
 
 # track user order page
 def track_order(request):
@@ -53,24 +54,24 @@ def cancel_order(request, order_id):
     # checks if user is authenticated
     if request.user.is_authenticated:
         # getting order and renders 404 if none is found
-        order = get_object_or_404(Order, id=order_id)
+        order = get_object_or_404(Order, user=request.user, order_id=order_id)
         
         # makes sure the order is not yet shipped or not yet late
-        if order.status in ['SHIPPED', 'DELIVERED', 'ON_THE_ROAD', 'SHIPPED']:
+        if order.status in ['SHIPPED', 'DELIVERED', 'ON_THE_ROAD', 'SHIPPED', 'CANCELLED']:
             # sends user massage if order cant be canceled
             messages.error(request, 'Order cannot be canceled with current status')
-            return redirect('order-list')
+            return redirect('order_details', order_id)
 
         # if order status test passes then the order is canceled
-        order.status == 'CANCELLED'
-        order.canceled_at = timezone.now()
+        order.status = 'CANCELLED'
+        order.canceled_at = now()
         order.canceled_by = request.user
         order.save()
     
         messages.success(request, "Your order has been cancelled.")
-        return redirect('order-list')
-        
-    return redirect('order-list')
+        return redirect('order-history')
+
+    return redirect('order-history')
 
 # order details
 class OrderDetails(DetailView):
@@ -134,7 +135,9 @@ class CheckoutOrderViewCreate(View):
         order = order.save()
 
         # delete all cart item after order is placed
-        cart_items.delete() 
+        cart_items.delete()
+        cart_key = f'cart_user_{request.user.id}'
+        cache.delete(cart_key)
 
         # request.session['order_id'] = order.id
         # request.session['order_placed_success'] = True
