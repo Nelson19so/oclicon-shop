@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.sessions.models import Session
+from apps.products.models import ProductSpecification
 from decimal import Decimal
 
 # cart model
@@ -21,13 +21,18 @@ class Cart(models.Model):
 # cart items model
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey('products.Product', on_delete=models.PROTECT, related_name='product_cart')
+    product = models.ForeignKey(
+        'products.Product', on_delete=models.PROTECT, related_name='product_cart'
+    )
+    specification = models.ForeignKey(
+        ProductSpecification, on_delete=models.CASCADE, null=True, blank=True
+    )
     quantity = models.IntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        unique_together = ('cart', 'product')
+        unique_together = ('cart', 'product', 'specification')
 
     def __str__(self):
         return f"{self.product.name} in Cart {self.cart.id}"

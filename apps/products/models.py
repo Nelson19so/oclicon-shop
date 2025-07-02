@@ -99,8 +99,12 @@ class ProductSpecification(models.Model):
     size = models.CharField(blank=True, null=True)
     storage = models.CharField(blank=True, null=True)
 
+    class Meta:
+        unique_together = ('product', 'memory', 'size', 'storage')
+
     def __str__(self):
         return self.product.name
+    
 
 # product badge
 class Badge(models.Model):

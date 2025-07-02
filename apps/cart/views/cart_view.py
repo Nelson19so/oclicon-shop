@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect
-from apps.products.models import Product
+from apps.products.models import Product, ProductSpecification
 from apps.cart.models import Cart, CartItem
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -54,7 +54,14 @@ class CreateCartItem(CartMixin, SessionMixin, View):
     def post(self, request, *args, **kwargs):
         # filters product for renders 404 if the id does not exist
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
+        spec_id = request.POST.get('product_spec_id')
+        specification = get_object_or_404(ProductSpecification, id=spec_id, product=product)
         user = request.user
+
+        try:
+            product_quantity = int(request.POST.get('quantity'))
+        except (TabError, ValueError):
+            product_quantity = 1
 
         if user.is_authenticated:
             cart, _ = Cart.objects.get_or_create(user=user)
@@ -62,11 +69,16 @@ class CreateCartItem(CartMixin, SessionMixin, View):
             session_key = self.get_or_create_session_key(request)
             cart, _ = Cart.objects.get_or_create(session_key=session_key)
 
-        cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+        cart_item, created = CartItem.objects.get_or_create(
+            product=product, cart=cart,
+            specification=specification
+        )
 
         if not created:
-            cart_item.quantity = 1
-            cart_item.save()
+            cart_item.quantity = product_quantity
+        else:
+            cart_item.quantity = product_quantity
+        cart_item.save()
 
         cart_count = self.cart_item_count(request)
         
