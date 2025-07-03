@@ -14,7 +14,12 @@ DATABASES = {
 }
 
 # allowed host
-ALLOWED_HOSTS = ["production-domain.com", "oclicon-shop.onrender.com"]
+ALLOWED_HOSTS = ["production-domain.com"]
 
 # Static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+"""
+Prod.py file is the main oclicon ecommerce website settings conf for live and rea time operation
+this is the main ecommerce setup for ready to use
+"""
