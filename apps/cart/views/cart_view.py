@@ -18,6 +18,7 @@ class SessionMixin:
 class CartMixin(SessionMixin):
     def cart_item_count(self, request):
         user = request.user
+        cart_count = 0
 
         try:
             if user.is_authenticated:
@@ -28,7 +29,7 @@ class CartMixin(SessionMixin):
                 session_key = request.session.session_key
                 cart = Cart.objects.filter(session_key=session_key).first()
             cart_count = CartItem.objects.filter(cart=cart).count()
-        except Cart.DoesNotExist:
+        except (Cart.DoesNotExist or CartItem):
             pass
 
         return cart_count

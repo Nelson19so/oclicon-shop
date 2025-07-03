@@ -19,7 +19,10 @@ class TrackOrderForm(forms.Form):
                 Order.objects.get(user=self.user, email=email, order_id=order_id)
             except Order.DoesNotExist:
                 raise forms.ValidationError("No order was found for this user with the " \
-                "provided email and order IDS")       
+                "provided email and order id")
+        else:
+            raise forms.ValidationError('Make sure order and email input is valid')
+        return cleaned_data
 
 # shipping address model form
 class ShippingAddressForm(forms.ModelForm):
