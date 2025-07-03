@@ -192,7 +192,7 @@ class Ad(models.Model):
         ('middle_banner', 'Middle Banner'),
     ]
 
-    badge = models.OneToOneField(Badge, on_delete=models.PROTECT, null=True, blank=True)
+    # badge = models.OneToOneField(Badge, on_delete=models.PROTECT, null=True, blank=True)
     highlight = models.OneToOneField(
         ProductHighlight, on_delete=models.PROTECT, related_name='product_highlight',
         null=True, blank=True

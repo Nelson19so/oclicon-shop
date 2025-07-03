@@ -155,7 +155,6 @@ a strong {
   padding-left: 10px;
   background-color: #ee5858;
   color: #ffffff;
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 10px;
   line-height: 16px;
@@ -171,7 +170,6 @@ a strong {
   padding-left: 10px;
   background-color: #2e4053;
   color: #ffffff;
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 10px;
   line-height: 16px;
@@ -305,18 +303,65 @@ a strong {
   }
 }
 
+.huge-price {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  border-radius: 100px;
+  border-width: 4px;
+  gap: 10px;
+  font-weight: 600;
+  background-color: #2da5f3;
+  color: #ffffff;
+  border: 4px solid #ffffff;
+  text-align: center;
+}
+@media only screen and (min-width: 542px) {
+  .huge-price {
+    font-size: 22px;
+    line-height: 100px;
+    letter-spacing: 0%;
+    padding-right: 21px;
+    padding-left: 21px;
+    width: 101px;
+    height: 100px;
+  }
+}
+@media only screen and (max-width: 541px) {
+  .huge-price {
+    font-size: 16px;
+    padding: 10px 15px;
+    width: 71px;
+    height: 73px;
+  }
+}
+
 .-container-articles h1 {
   color: #191c1f;
   font-weight: 600;
   font-size: 48px;
-  line-height: 56px;
-  letter-spacing: 0%;
+}
+@media only screen and (min-width: 1216px) {
+  .-container-articles h1 {
+    font-size: 33px;
+    margin: 0;
+    padding: 0;
+    line-height: 56px;
+    letter-spacing: 0%;
+  }
 }
 @media only screen and (max-width: 1216px) {
   .-container-articles h1 {
     font-size: 35px;
     margin: 0;
     padding: 0;
+  }
+}
+@media only screen and (max-width: 1116px) {
+  .-container-articles h1 {
+    font-size: 20px;
   }
 }
 .-container-articles h3 {
@@ -326,12 +371,41 @@ a strong {
   line-height: 20px;
   letter-spacing: 0%;
 }
+@media only screen and (max-width: 541px) {
+  .-container-articles h3 {
+    font-size: 10px;
+  }
+}
 .-container-articles p {
   color: #475156;
   font-weight: 400;
   font-size: 15px;
-  line-height: 24px;
-  letter-spacing: 0%;
+}
+@media only screen and (min-width: 1116px) {
+  .-container-articles p {
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+}
+@media only screen and (max-width: 1116px) {
+  .-container-articles p {
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .-container-articles p {
+    font-size: 19px;
+  }
+}
+@media only screen and (max-width: 541px) {
+  .-container-articles p {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 483px) {
+  .-container-articles p {
+    font-size: 11px;
+  }
 }
 
 .star-span p {
@@ -357,7 +431,6 @@ a strong {
   color: #191c1f;
 }
 .container-benner-1 .banner-product-description {
-  font-family: Public Sans;
   font-weight: 400;
   font-size: 14px;
   color: #475156;
@@ -381,7 +454,6 @@ a strong {
   color: #ffffff;
 }
 .container-benner-2 .container-articles .banner-product-description {
-  font-family: Public Sans;
   font-weight: 400;
   font-size: 14px;
   color: #adb7bc;
@@ -422,13 +494,11 @@ a strong {
   padding-bottom: 6px;
   padding-left: 4px;
   background: #ffffff;
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 10px;
   color: #191c1f;
 }
 .container-main-content .container-- span {
-  font-family: Public Sans;
   font-weight: 500;
   font-size: 14px;
   color: #191c1f;
@@ -436,14 +506,12 @@ a strong {
   padding-bottom: 6px;
 }
 .container-main-content span {
-  font-family: Public Sans;
   font-weight: 400;
   font-size: 12px;
   text-align: center;
   color: #475156;
 }
 .container-main-content h1 {
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 18px;
   text-align: center;
@@ -452,7 +520,6 @@ a strong {
   margin: 0;
 }
 .container-main-content p {
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 12px;
   text-align: center;
@@ -469,13 +536,11 @@ a strong {
   padding-bottom: 6px;
   padding-left: 4px;
   background: #ffffff;
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 10px;
   color: #191c1f;
 }
 .container-main-content .container-- span {
-  font-family: Public Sans;
   font-weight: 500;
   font-size: 14px;
   color: #191c1f;
@@ -483,21 +548,18 @@ a strong {
   padding-bottom: 6px;
 }
 .container-main-content span {
-  font-family: Public Sans;
   font-weight: 400;
   font-size: 12px;
   text-align: center;
   color: #475156;
 }
 .container-main-content h1 {
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 20px;
   text-align: center;
   color: #191c1f;
 }
 .container-main-content p {
-  font-family: Public Sans;
   font-weight: 600;
   font-size: 12px;
   line-height: 20px;
@@ -667,28 +729,6 @@ a strong {
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0%;
-}
-
-.huge-price {
-  position: absolute;
-  right: 30px;
-  width: 101px;
-  height: 100px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  border-radius: 100px;
-  border-width: 4px;
-  gap: 10px;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 100px;
-  letter-spacing: 0%;
-  padding-right: 21px;
-  padding-left: 21px;
-  background-color: #2da5f3;
-  color: #ffffff;
-  border: 4px solid #ffffff;
 }
 
 .huge-price-banner {
@@ -4313,6 +4353,12 @@ label span {
   height: 70vh;
   max-height: 500px;
 }
+@media only screen and (max-width: 1116px) {
+  .container--adds-one .container-add-padder .container-top-padder {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+}
 @media only screen and (max-width: 768px) {
   .container--adds-one .container-add-padder .container-top-padder {
     height: fit-content;
@@ -4324,8 +4370,18 @@ label span {
   height: 100%;
   border-radius: 6px;
 }
+@media only screen and (max-width: 1116px) {
+  .container--adds-one .container-add-padder .container-top-padder .container-big-add-left {
+    width: 100%;
+  }
+}
 .container--adds-one .container-add-padder .container-top-padder .container-big-add-left .container-inner-sm {
   position: relative;
+}
+@media only screen and (max-width: 1116px) {
+  .container--adds-one .container-add-padder .container-top-padder .container-big-add-left .container-inner-sm {
+    width: 90vw;
+  }
 }
 @media only screen and (max-width: 1216px) {
   .container--adds-one .container-add-padder .container-top-padder .container-big-add-left {
@@ -4358,7 +4414,7 @@ label span {
 }
 @media only screen and (max-width: 1116px) {
   .container--adds-one .container-add-padder .container-top-padder .container-small-add-right {
-    width: 100%;
+    display: none;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -4370,6 +4426,11 @@ label span {
   background-color: #f2f4f5;
   height: 50%;
   border-radius: 6px;
+}
+@media only screen and (max-width: 1116px) {
+  .container--adds-one .container-add-padder .container-top-padder .container-small-add-right .container-sm-add-sm {
+    width: 90vw;
+  }
 }
 .container--adds-one .container-add-padder .container-top-padder .container-small-add-right .container-sm-add-sm:first-child {
   background-color: #191c1f;

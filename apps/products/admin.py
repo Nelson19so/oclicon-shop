@@ -76,13 +76,13 @@ class BrandAdmin(admin.ModelAdmin):
     exclude = ['slug']
 
 @admin.register(Ad)
-class AdAdmin(admin.ModelAdmin):
+class ProductAdAdmin(admin.ModelAdmin):
     fields = (
         'title', 'name', 
         'description', 'image', 
         'url', 'position', 
         'is_active', 'price', 
-        'badge', 'highlight'
+        'highlight'
     )
     list_display = ('name', 'title', 'position', 'is_active')
     list_filter = ('name', 'title', 'position', 'is_active')

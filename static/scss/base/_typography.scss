@@ -121,7 +121,6 @@
     padding-left: 10px;
     background-color: variables.$Danger-500;
     color: variables.$White-100;
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 10px;
     line-height: 16px;
@@ -138,7 +137,6 @@
     padding-left: 10px;
     background-color: #2e4053;
     color: variables.$White-100;
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 10px;
     line-height: 16px;
@@ -287,18 +285,62 @@
   }
 }
 
+// for big ads
+.huge-price {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  border-radius: 100px;
+  border-width: 4px;
+  gap: 10px;
+  font-weight: 600;
+  background-color: variables.$Secondary-500;
+  color: variables.$White-100;
+  border: 4px solid #ffffff;
+  text-align: center;
+
+  @media only screen and (min-width: 542px) {
+    font-size: 22px;
+    line-height: 100px;
+    letter-spacing: 0%;
+    padding-right: 21px;
+    padding-left: 21px;
+    width: 101px;
+    height: 100px;
+  }
+
+  @media only screen and (max-width: 541px) {
+    font-size: 16px;
+    padding: 10px 15px;
+    width: 71px;
+    height: 73px;
+  }
+}
+
 .-container-articles {
   h1 {
     color: variables.$Gray-900;
     font-weight: 600;
     font-size: 48px;
-    line-height: 56px;
-    letter-spacing: 0%;
+
+    @media only screen and (min-width: 1216px) {
+      font-size: 33px;
+      margin: 0;
+      padding: 0;
+      line-height: 56px;
+      letter-spacing: 0%;
+    }
 
     @media only screen and (max-width: 1216px) {
       font-size: 35px;
       margin: 0;
       padding: 0;
+    }
+
+    @media only screen and (max-width: 1116px) {
+      font-size: 20px;
     }
   }
 
@@ -308,14 +350,37 @@
     font-size: 13px;
     line-height: 20px;
     letter-spacing: 0%;
+
+    @media only screen and (max-width: 541px) {
+      font-size: 10px;
+    }
   }
 
   p {
     color: variables.$Gray-700;
     font-weight: 400;
     font-size: 15px;
-    line-height: 24px;
-    letter-spacing: 0%;
+
+    @media only screen and (min-width: 1116px) {
+      line-height: 24px;
+      letter-spacing: 0%;
+    }
+
+    @media only screen and (max-width: 1116px) {
+      font-size: 25px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      font-size: 19px;
+    }
+
+    @media only screen and (max-width: 541px) {
+      font-size: 15px;
+    }
+
+    @media only screen and (max-width: 483px) {
+      font-size: 11px;
+    }
   }
 }
 
@@ -348,7 +413,6 @@
   }
 
   .banner-product-description {
-    font-family: Public Sans;
     font-weight: 400;
     font-size: 14px;
     color: variables.$Gray-700;
@@ -376,7 +440,6 @@
     }
 
     .banner-product-description {
-      font-family: Public Sans;
       font-weight: 400;
       font-size: 14px;
       color: variables.$Gray-300;
@@ -422,14 +485,13 @@
       padding-bottom: 6px;
       padding-left: 4px;
       background: variables.$White-100;
-      font-family: Public Sans;
+
       font-weight: 600;
       font-size: 10px;
       color: variables.$Gray-900;
     }
 
     span {
-      font-family: Public Sans;
       font-weight: 500;
       font-size: 14px;
       color: variables.$Gray-900;
@@ -439,7 +501,6 @@
   }
 
   span {
-    font-family: Public Sans;
     font-weight: 400;
     font-size: 12px;
     text-align: center;
@@ -447,7 +508,6 @@
   }
 
   h1 {
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 18px;
     text-align: center;
@@ -457,7 +517,6 @@
   }
 
   p {
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 12px;
     text-align: center;
@@ -477,14 +536,13 @@
       padding-bottom: 6px;
       padding-left: 4px;
       background: variables.$White-100;
-      font-family: Public Sans;
+
       font-weight: 600;
       font-size: 10px;
       color: variables.$Gray-900;
     }
 
     span {
-      font-family: Public Sans;
       font-weight: 500;
       font-size: 14px;
       color: variables.$Gray-900;
@@ -494,7 +552,6 @@
   }
 
   span {
-    font-family: Public Sans;
     font-weight: 400;
     font-size: 12px;
     text-align: center;
@@ -502,7 +559,6 @@
   }
 
   h1 {
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 20px;
     text-align: center;
@@ -510,7 +566,6 @@
   }
 
   p {
-    font-family: Public Sans;
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
@@ -710,28 +765,6 @@
 }
 
 // --
-.huge-price {
-  position: absolute;
-  right: 30px;
-  width: 101px;
-  height: 100px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  border-radius: 100px;
-  border-width: 4px;
-  gap: 10px;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 100px;
-  letter-spacing: 0%;
-  padding-right: 21px;
-  padding-left: 21px;
-  background-color: variables.$Secondary-500;
-  color: variables.$White-100;
-  border: 4px solid #ffffff;
-}
-
 .huge-price-banner {
   position: absolute;
   left: 0;

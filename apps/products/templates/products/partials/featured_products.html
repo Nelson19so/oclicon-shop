@@ -2,13 +2,11 @@
 
 <!-- main content -->
 {% block content %}
-<!--  -->
-{% if featured_sidebar_ad %}
 <div class="conainer-left-container-items">
   <div class="container-main-content w-full text-center">
-    <p>{{ featured_sidebar_ad.title }}</p>
-    <h1>{{ featured_sidebar_ad.name }}</h1>
-    <span>{{ featured_sidebar_ad.description }}</span>
+    <p>COMPUTER & ACCESSORIES</p>
+    <h1>32% Discount</h1>
+    <span>For all ellectronics products</span>
 
     <div class="container-- flex justify-center w-full gap-3">
       <span>Offers ends in:</span>
@@ -19,7 +17,6 @@
   </div>
   <img src="{% static 'images/Image.jpg' %}" alt="featured-img" />
 </div>
-{% endif %}
 
 <!-- products -->
 <div class="container-featured-products">

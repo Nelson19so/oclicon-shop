@@ -17,13 +17,13 @@ def active_product_ads(request):
                 is_active=True, position='top-right-two-banner'
             ).first()
 
-            featured_ad_highlight = ProductHighlight.objects.filter(features='featured_product').first()
+            # featured_ad_highlight = ProductHighlight.objects.filter(features='featured_product').first()
 
-            featured_sidebar_ad = Ad.objects.filter(
-                is_active=True,
-                position='Sidebar',
-                highlight=featured_ad_highlight,
-            ).first()
+            # featured_sidebar_ad = Ad.objects.filter(
+            #     is_active=True,
+            #     position='Sidebar',
+            #     highlight=featured_ad_highlight,
+            # ).first()
 
             # getting the middle banner ad
             first_middle_banner_ads = Ad.objects.filter(

@@ -16,6 +16,11 @@
       height: 70vh;
       max-height: 500px;
 
+      @media only screen and (max-width: 1116px) {
+        overflow: hidden;
+        overflow-x: scroll;
+      }
+
       @media only screen and (max-width: 768px) {
         height: fit-content;
       }
@@ -26,8 +31,16 @@
         height: 100%;
         border-radius: 6px;
 
+        @media only screen and (max-width: 1116px) {
+          width: 100%;
+        }
+
         .container-inner-sm {
           position: relative;
+
+          @media only screen and (max-width: 1116px) {
+            width: 90vw;
+          }
         }
 
         @media only screen and (max-width: 1216px) {
@@ -59,7 +72,7 @@
         }
 
         @media only screen and (max-width: 1116px) {
-          width: 100%;
+          display: none;
         }
 
         @media only screen and (max-width: 767px) {
@@ -74,6 +87,10 @@
           background-color: variables.$Gray-50;
           height: 50%;
           border-radius: 6px;
+
+          @media only screen and (max-width: 1116px) {
+            width: 90vw;
+          }
         }
 
         .container-sm-add-sm:first-child {

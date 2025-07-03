@@ -17,9 +17,7 @@
     <!-- ecommerce adds -->
     <div class="container-top-padder w-full flex justify-betwen gap-7">
       {% if top_ad %}
-      <div
-        class="container-big-add-left w-full md:flex justify-between overflow-hidden hidden"
-      >
+      <div class="container-big-add-left w-full flex justify-between">
         <div
           class="container-inner-sm -container-articles w-1/2 h-full p-6 pt-25 xl:pl-10"
         >
@@ -296,6 +294,7 @@
     </section>
 
     <!-- banner -->
+    {% if first_middle_banner_ad and second_middle_banner_ads %}
     <div class="container-banner mt-10 w-full flex justify-between gap-4">
       {% if first_middle_banner_ad %}
       <div class="container-benner-1 w-1/2 flex justify-between">
@@ -341,6 +340,7 @@
       {% endif %}
 
       <!-- banner 2 -->
+      {% if second_middle_banner_ads %}
       <div class="container-benner-2 w-1/2 flex justify-between">
         <div class="container-articles w-1/2">
           <article>
@@ -384,7 +384,9 @@
           />
         </div>
       </div>
+      {% endif %}
     </div>
+    {% endif %}
 
     <!-- computer accessories -->
     <section
