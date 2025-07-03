@@ -148,13 +148,23 @@ class CheckoutOrderViewCreate(View):
 # checkout view
 @login_required(login_url='login')
 def checkout_view(request):
-    breadcrumbs = [
-        ('Shopping Cart', reverse('cart_list')),
-        ('Checkout', request.path)
-    ]
+    cart_item = []
+    
+    try:
+        cart = Cart.objects.get(user=request.user)
+        cart_item = CartItem.objects.filter(cart=cart).exists
+    except (Cart.DoesNotExist or CartItem.DoesNotExist):
+        pass
+    
+    if cart_item:
+        breadcrumbs = [
+            ('Shopping Cart', reverse('cart_list')),
+            ('Checkout', request.path)
+        ]
 
-    context = {'breadcrumbs': breadcrumbs}
-    return render(request, 'orders/checkout.html', context)
+        context = {'breadcrumbs': breadcrumbs}
+        return render(request, 'orders/checkout.html', context)
+    return redirect('cart_list')
 
 # successfully placed order view
 def successfully_placed_order_view_create(request, order_id):

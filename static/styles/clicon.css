@@ -359,7 +359,7 @@ a strong {
     padding: 0;
   }
 }
-@media only screen and (max-width: 1116px) {
+@media only screen and (max-width: 786px) {
   .-container-articles h1 {
     font-size: 20px;
   }
@@ -5025,8 +5025,8 @@ label span {
 .container-mini-cart {
   position: absolute;
   right: 0;
-  z-index: 22;
   box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.1215686275);
+  z-index: 6666;
 }
 @media only screen and (max-width: 386px) {
   .container-mini-cart {
@@ -6368,8 +6368,8 @@ label span {
 }
 .container-compare- .container-compare-padding- {
   width: 100%;
-  padding-top: 3% !important;
-  padding-bottom: 3% !important;
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
   overflow-y: scroll;
   padding-top: 12px;
   padding-right: 150px;

@@ -316,6 +316,9 @@
   .h-\[10px\] {
     height: 10px;
   }
+  .h-\[40px\] {
+    height: 40px;
+  }
   .h-\[40vh\] {
     height: 40vh;
   }
@@ -327,6 +330,12 @@
   }
   .h-\[100vh\] {
     height: 100vh;
+  }
+  .h-\[150px\] {
+    height: 150px;
+  }
+  .h-\[200px\] {
+    height: 200px;
   }
   .h-fit {
     height: fit-content;
@@ -529,6 +538,9 @@
   }
   .pb-7 {
     padding-bottom: calc(var(--spacing) * 7);
+  }
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
   }
   .pl-1 {
     padding-left: calc(var(--spacing) * 1);
