@@ -240,22 +240,11 @@
   overflow-y: scroll;
   width: 350px;
   transition: left 0.5s ease-in-out;
-
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
+  border-top-right-radius: 20px;
 
   @media only screen and (min-width: 1045px) {
     display: none;
   }
-
-  // @media only screen and (max-width: 1044px) {
-
-  // }
-
-  // @media only screen and (max-width: 497px) {
-  //   width: 100vw;
-  // }
 
   .container-padding {
     width: 100%;

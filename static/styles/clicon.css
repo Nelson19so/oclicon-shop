@@ -2012,6 +2012,7 @@ a strong {
   overflow-y: scroll;
   width: 350px;
   transition: left 0.5s ease-in-out;
+  border-top-right-radius: 20px;
 }
 @media only screen and (min-width: 1045px) {
   .sidebar-for-all-page {
