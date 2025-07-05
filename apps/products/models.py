@@ -25,6 +25,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    image = models.ImageField(upload_to='category/', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -33,7 +34,16 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name  
-  
+
+# top categories model
+class TopCategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='top_category')
+    created_at = models.DateField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.category.name} - Top Category'
+
 # random skull for product
 def create_product_random_skull():
     return ''.join(random.choices('0123456789abcdefghijklmnopqrstuvwxyz', k=10))
@@ -200,11 +210,15 @@ class Ad(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='ads/')
+    image = models.ImageField(upload_to='ads/', null=True, blank=True)
     price = models.DecimalField(decimal_places=0, max_digits=10, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     position = models.CharField(max_length=20, choices=POSITION_CHOICES)
     is_active = models.BooleanField(default=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.PROTECT, related_name='product_ad_category', 
+        null=True, blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

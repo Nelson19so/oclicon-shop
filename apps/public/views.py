@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from apps.products.models import Category, Product, ProductHighlight, Badge, Ad
-from django.core.exceptions import PermissionDenied
+from apps.products.models import Category, Product, ProductHighlight, Badge, TopCategory
 from .models import OcliconTeamMembers, FrequentlyAskedQuestions, BlogPost
-from .forms import FrequentlyAskedQuestionsForms
+from .forms import FrequentlyAskedQuestionsForms, NewsLetterSubscriberForm
 from django.http import JsonResponse
 from django.urls import reverse
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 # home page view
 def Home_page(request):
@@ -116,8 +116,12 @@ def Home_page(request):
                 category__name__icontains=queryset_computer_acc
             )[:8]
 
+        top_categories = TopCategory.objects.filter(
+            is_active=True,
+        ).order_by('-created_at')
+       
     # except category and product does not exist and passes it
-    except (Category.DoesNotExist, Product.DoesNotExist):
+    except (Category.DoesNotExist or Product.DoesNotExist or TopCategory.DoesNotExist):
         pass
 
     # AJAX handling for computer accessories
@@ -153,7 +157,8 @@ def Home_page(request):
         'blogs': blogs,
         'flash_sales': flash_sales,
         'top_rated': top_rated,
-        'new_arrivals': new_arrivals
+        'new_arrivals': new_arrivals,
+        'top_categories': top_categories,
     }
     return render(request, 'public/home.html', context)
 
@@ -238,3 +243,12 @@ def blog_details(request, id):
         'blog_details': blog_details,
         'blog_details_count': blog_details_count,
     })
+
+@require_POST
+def sign_up_newsletter(request):
+    if request.method == 'POST':
+        form = NewsLetterSubscriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else: 
+        return redirect('home')

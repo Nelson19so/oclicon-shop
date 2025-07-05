@@ -25,12 +25,19 @@
 
         <div class="container-main-fields flex justify-between gap-[30px]">
           <div class="container-user-profile-image">
+            {% if user.profile.url %}
             <img
               src="{{ user.profile.profile.url }}"
-              alt="{{ user.username }}"
-              class="cursor-pointer"
-              id="profile-img"
+              alt="{{ user.username }}-profile"
+              width="40"
+              style="border-radius: 100px; height: 40px; min-width: 40px"
             />
+            {% else %}
+            <img
+              src="{% static 'images/default_profile_pic/icon-avatar.png' %}"
+              alt="{{ user.username }}"
+            />
+            {% endif %}
 
             <input
               type="file"
@@ -170,7 +177,10 @@
     </form>
   </div>
 
-  <div class="container-billing-shipping-info flex justify-between gap-5 mt-5">
+  <div
+    class="container-billing-shipping-info flex justify-between gap-5 mt-5"
+    id="billing-shipping"
+  >
     <form action="{% url 'profile' %}" method="post" class="billing-form">
       {% csrf_token %}
 

@@ -18,24 +18,31 @@ class Cart(models.Model):
             total += item.product.base_price * item.quantity
         return total
 
+# cart product spec
+class CartProductSpec(models.Model):
+    memory = models.CharField(blank=True, null=True)
+    size = models.CharField(blank=True, null=True)
+    storage = models.CharField(blank=True, null=True)
+
+    class Meta:
+        unique_together = ('memory', 'size', 'storage')
+
 # cart items model
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(
         'products.Product', on_delete=models.PROTECT, related_name='product_cart'
     )
-    specification = models.ForeignKey(
-        ProductSpecification, on_delete=models.CASCADE, null=True, blank=True
-    )
     quantity = models.IntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True)
+    cart_product_spec = models.OneToOneField(CartProductSpec, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('cart', 'product', 'specification')
+        unique_together = ('cart', 'product',)
 
     def __str__(self):
-        return f"{self.product.name} in Cart {self.cart.id}"
+        return f"{self.product.name}"
     
     # sub total price
     @property

@@ -7,13 +7,13 @@ from django.contrib.auth.models import User
 import os
 from django.core.files import File
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_default_profile_picture(sender, instance, created, **kwargs):
-    if created:
-        ProfilePicture.objects.create(
-            user=instance,
-            profile='default_profile_pic/icon-avatar.png'
-        )
+# @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+# def create_default_profile_picture(sender, instance, created, **kwargs):
+#     if created:
+#         ProfilePicture.objects.create(
+#             user=instance,
+#             profile='default_profile_pic/icon-avatar.png'
+#         )
         # if not avatar.profile:
         #     default_img_path = os.path.join(
         #         settings.BASE_DIR, 'static/default_profile_pic/icon-avatar.png'
@@ -28,13 +28,3 @@ def create_default_profile_picture(sender, instance, created, **kwargs):
         #     avatar.profile.save('icon-avatar.png', File(open(media_img_path, 'rb')))
         #     avatar.save()
 
-@receiver(user_logged_in)
-def create_profile(sender, user, request, **kwargs):
-    try:
-        user.profile
-    except ProfilePicture.DoesNotExist:
-        profile = ProfilePicture.objects.create(
-            user=user,
-            profile='profile/default_profile_pic/icon-avatar.png'
-        )
-        profile.save()

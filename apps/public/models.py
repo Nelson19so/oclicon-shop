@@ -64,6 +64,11 @@ class BlogPostComment(models.Model):
     def __str__(self):
         return self.user
 
+# news letter model
+class NewsLetterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    date_subscribed = models.DateTimeField(auto_now_add=True)
 
-    
-    
+    def __str__(self):
+        return self.email

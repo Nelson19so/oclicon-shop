@@ -232,6 +232,7 @@
     </div>
 
     <!-- Best deals -->
+    {% if best_deals_products %}
     <section class="section-best deals" id="section-best deals">
       <div class="container-best-deals mt-10">
         <div class="wrapper-best-deals">
@@ -278,13 +279,17 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <!-- shop category  -->
+    {% if top_categories %}
     <div class="container-shopping-category w-full">
       {% include 'products/shop_category.html' %}
     </div>
+    {% endif %}
 
     <!-- featured product -->
+    {% if featured_products %}
     <section class="featured-product" id="featured-product">
       <div class="container-featured-product w-full mt-10">
         <div class="container-featured-padder-product w-full">
@@ -292,6 +297,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <!-- banner -->
     {% if first_middle_banner_ad and second_middle_banner_ads %}
@@ -389,6 +395,7 @@
     {% endif %}
 
     <!-- computer accessories -->
+    {% if computer_accessories %}
     <section
       class="section-computer-accessories"
       id="section-computer-accessories"
@@ -402,6 +409,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <!-- bottom banner -->
     {% if first_bottom_banner %}

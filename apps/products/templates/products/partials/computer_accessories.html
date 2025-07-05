@@ -310,31 +310,38 @@
 </div>
 
 <div class="conainer-right-container-items">
+  {% if filter_computer_acc_ad %}
   <div class="top-container">
-    <img src="{% static 'images/product/earpod.png' %}" alt="earpod" />
+    {% if filter_computer_acc_ad.image %}
+    <img
+      src="{{ filter_computer_acc_ad.image.url }}"
+      alt="{{ filter_computer_acc_ad.name }}"
+    />
+    {% endif %}
 
     <div class="container-main-content w-full text-center">
-      <h1>Xiaomi True Wireless Earbuds</h1>
-      <span
-        >Escape the noise, It’s time to hear the magic with Xiaomi
-        Earbuds.</span
-      >
+      <h1>{{ filter_computer_acc_ad.name }}</h1>
+      <span>{{ filter_computer_acc_ad.description }}</span>
 
       <div class="container-- flex justify-center w-full gap-3">
         <span>Only for:</span>
-        <p>$299 USD</p>
+        <p>${{ filter_computer_acc_ad.price }} USD</p>
       </div>
 
       <button class="mt-3">Shop now</button>
     </div>
   </div>
+  {% endif %}
 
+  <!--  -->
+  {% if filter_computer_acc_ad_second %}
   <div class="bottom-container-computer-acc text-center">
-    <p class="title">SUMMER SALES</p>
-    <h2>37% DISCOUNT</h2>
+    <p class="title">{{ filter_computer_acc_ad_second.title }}</p>
+    <h2>{{ filter_computer_acc_ad_second.name }}</h2>
     <p>only for <span>SmartPhone</span> product.</p>
 
     <button class="btn-acc mt-3">Shop now</button>
   </div>
-  {% endblock %}
+  {% endif %}
 </div>
+{% endblock %}

@@ -55,39 +55,48 @@ class CreateCartItem(CartMixin, SessionMixin, View):
     def post(self, request, *args, **kwargs):
         # filters product for renders 404 if the id does not exist
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
-        spec_id = request.POST.get('product_spec_id')
-        specification = get_object_or_404(ProductSpecification, id=spec_id, product=product)
+        product_storage = request.POST.get('storage')
+        product_size = request.POST.get('size')
+        product_memory = request.POST.get('memory')
+        _quantity = request.POST.get('product_quantity')
         user = request.user
 
         try:
-            product_quantity = int(request.POST.get('quantity'))
-        except (TabError, ValueError):
-            product_quantity = 1
+            try:
+                product_quantity = int(request.POST.get('quantity'))
+            except (TabError, ValueError):
+                product_quantity = 1
 
-        if user.is_authenticated:
-            cart, _ = Cart.objects.get_or_create(user=user)
-        else:
-            session_key = self.get_or_create_session_key(request)
-            cart, _ = Cart.objects.get_or_create(session_key=session_key)
+            if user.is_authenticated:
+                cart, _ = Cart.objects.get_or_create(user=user)
+            else:
+                session_key = self.get_or_create_session_key(request)
+                cart, _ = Cart.objects.get_or_create(session_key=session_key)
 
-        cart_item, created = CartItem.objects.get_or_create(
-            product=product, cart=cart,
-            specification=specification
-        )
+            cart_item, created = CartItem.objects.get_or_create(
+                product=product, cart=cart,
+                cart_product_spec__size=product_size,
+                cart_product_spec__memory=product_memory,
+                cart_product_spec__storage=product_storage,
+            )
 
-        if not created:
-            cart_item.quantity = product_quantity
-        else:
-            cart_item.quantity = product_quantity
-        cart_item.save()
+            if not created:
+                cart_item.quantity = product_quantity
+            else:
+                cart_item.quantity = product_quantity
+            if _quantity:
+                    cart_item.quantity = _quantity
+            cart_item.save()
 
-        cart_count = self.cart_item_count(request)
-        
-        return JsonResponse({
-            'status': 'success',
-            'count': cart_count
-        })
-
+            cart_count = self.cart_item_count(request)
+            
+            return JsonResponse({
+                'status': True,
+                'count': cart_count
+            })
+        except CartItem.DoesNotExist:
+            return JsonResponse({'status': False})
+            
 # view form removing items from cart list
 class RemoveItemFromCart(View, SessionMixin):
     @method_decorator(require_POST)

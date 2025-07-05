@@ -131,10 +131,20 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#add-to-cart_btn").click(function () {
     const productId = $(this).data("product-id");
+    const productQuantity = $("#quantity-input").val();
+    const memory = $("#memory").val();
+    const size = $("#size").val();
+    const storage = $("#storage").val();
 
     $.ajax({
       url: `/home/cart/add/${productId}/`,
       type: "POST",
+      data: {
+        product_quantity: productQuantity,
+        size: size,
+        storage: storage,
+        memory: memory,
+      },
       headers: {
         "X-CSRFToken": getCSRFToken(),
       },

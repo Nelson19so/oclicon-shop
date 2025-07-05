@@ -352,3 +352,23 @@ label {
 .invalid-field {
   border: 1px solid variables.$Danger-500 !important;
 }
+
+// search input
+.search-input {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e4e7e9;
+  background-color: variables.$White-100;
+  border-radius: 2px;
+  align-items: center;
+
+  input {
+    border: none;
+  }
+
+  button {
+    padding: 7px 10px;
+    cursor: pointer;
+    height: 100%;
+  }
+}

@@ -32,12 +32,19 @@
           <div class="container-articles-account-info-box">
             <div class="container-profile flex justify-start gap-[10px]">
               <div class="container-img-profile">
+                {% if user.profile.url %}
                 <img
                   src="{{ user.profile.profile.url }}"
                   alt="{{ user.username }}-profile"
                   width="40"
                   style="border-radius: 100px; height: 40px; min-width: 40px"
                 />
+                {% else %}
+                <img
+                  src="{% static 'images/default_profile_pic/icon-avatar.png' %}"
+                  alt="{{ user.username }}"
+                />
+                {% endif %}
               </div>
               <div class="container-user-info flex justify-center flex-col">
                 <p>{{ user.username|title }}</p>
@@ -116,7 +123,7 @@
               <p>Email: <span>No email provided for billing</span></p>
               {% endif %}
 
-              <a href="{% url 'profile' %}"
+              <a href="{% url 'profile' %}#billing-shipping"
                 ><button class="btn-outline-secondary">Edit Address</button></a
               >
             </div>

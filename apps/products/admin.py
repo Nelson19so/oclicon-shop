@@ -63,8 +63,8 @@ class ProductColorAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
-    fields = ('id', 'name', 'parent', 'slug')
-    list_display = ('name', 'parent')
+    fields = ('id', 'name', 'parent', 'slug', 'image')
+    list_display = ('name', 'parent', 'image')
     list_filter = ['name', 'parent']
     readonly_fields = ('slug', 'id')
 
@@ -78,14 +78,14 @@ class BrandAdmin(admin.ModelAdmin):
 @admin.register(Ad)
 class ProductAdAdmin(admin.ModelAdmin):
     fields = (
-        'title', 'name', 
-        'description', 'image', 
-        'url', 'position', 
+        'title', 'name',
+        'description', 'image',
+        'url', 'position',
         'is_active', 'price', 
-        'highlight'
+        'highlight', 'category'
     )
-    list_display = ('name', 'title', 'position', 'is_active')
-    list_filter = ('name', 'title', 'position', 'is_active')
+    list_display = ('name', 'title', 'position', 'is_active', 'category')
+    list_filter = ('name', 'title', 'position', 'is_active', 'category')
     readonly_fields = ['created_at']
 
 @admin.register(ProductHighlight)
@@ -103,3 +103,10 @@ class ProductRateAdmin(admin.ModelAdmin):
     list_display = ('user', 'product', 'stars', 'date_created')
     list_filter = ('user', 'stars', 'date_created')
     readonly_fields = ('id', 'date_created')
+
+@admin.register(TopCategory)
+class TopCategoryAdmin(admin.ModelAdmin):
+    fields = ('category', 'is_active')
+    list_display = ('category', 'created_at', 'is_active')
+    list_filter = ('category', 'created_at', 'is_active')
+    search_fields = ['category']

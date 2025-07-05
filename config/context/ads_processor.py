@@ -3,7 +3,7 @@ from apps.products.models import Category, Product, Ad, ProductHighlight
 # product active ads
 def active_product_ads(request):
     context = {}
-    
+
     try:
         if request.resolver_match and request.resolver_match.url_name == 'home': 
             # getting top ad for home page
@@ -42,6 +42,18 @@ def active_product_ads(request):
                 position='bottom'
             ).order_by('-created_at').first()
 
+            filter_computer_acc_ad_ = Ad.objects.filter(
+                category__name='Computer Accessories',
+                position='sidebar',
+                is_active=True
+            ).first()
+
+            filter_computer_acc_ad_second = Ad.objects.filter(
+                category__name='Computer Accessories',
+                position='sidebar',
+                is_active=True
+            ).last()
+
             context = {
                 'top_ad': top_ad,
                 'top_right_ad': top_right_ad,
@@ -50,6 +62,8 @@ def active_product_ads(request):
                 'first_bottom_banner': first_bottom_banner,
                 'second_middle_banner_ads': second_middle_banner_ads,
                 # 'featured_sidebar_ad': featured_sidebar_ad,
+                'filter_computer_acc_ad': filter_computer_acc_ad_,
+                'filter_computer_acc_ad_second': filter_computer_acc_ad_second,
             }
     except Ad.DoesNotExist:
         pass
