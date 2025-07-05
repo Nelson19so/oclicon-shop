@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     OcliconTeamMembers, FrequentlyAskedQuestions, 
     BlogPost, BlogPostImage, 
-    BlogPostLink
+    BlogPostLink, NewsLetterSubscriber
 )
 
 @admin.register(OcliconTeamMembers)
@@ -31,4 +31,9 @@ class BlogPostAdmin(admin.ModelAdmin):
     readonly_fields = ('id', 'date_posted')
     inlines = [BlogPostImageInline, BlogPostLinkInline]
 
-
+@admin.register(NewsLetterSubscriber)
+class NewsLetterSubscriber(admin.ModelAdmin):
+    fields = ['email']
+    list_display = ('email', 'is_active', 'date_subscribed')
+    list_filter = ('email', 'is_active', 'date_subscribed')
+    search_fields = ['email']

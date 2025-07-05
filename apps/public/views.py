@@ -246,9 +246,14 @@ def blog_details(request, id):
 
 @require_POST
 def sign_up_newsletter(request):
+    previous_url = request.META.get('HTTP_REFERRER')
+    
     if request.method == 'POST':
         form = NewsLetterSubscriberForm(request.POST)
         if form.is_valid():
             form.save()
     else: 
-        return redirect('home')
+        if previous_url:
+            return redirect(previous_url)
+        else:
+            return redirect('fallback_url_name')
