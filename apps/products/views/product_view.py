@@ -1,17 +1,19 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts     import get_object_or_404
 from apps.products.models import Product, Brand, Category, ProductComparison, ProductHighlight
-from apps.products.forms import ReadOnlyProductSpecificationForm
+from apps.products.forms  import ReadOnlyProductSpecificationForm
 from django.views.generic import ListView, DetailView
-from django.urls import reverse
-from django.db.models import Q
-from apps.cart.models import WishlistProduct, CartItem, Cart
-from django.core.cache import cache
-from random import shuffle
+from django.urls          import reverse
+from django.db.models     import Q
+from apps.cart.models     import WishlistProduct, CartItem, Cart
+from django.core.cache    import cache
+from random               import shuffle
 
 class SessionMixin:
+
     def get_or_create_session_key(self, request):
         if not request.session.session_key:
             request.session.create()
+
         return request.session.session_key
 
 # product details view page
@@ -58,20 +60,25 @@ class ProductDetailView(DetailView, SessionMixin):
     def get_related_product(self):
         # getting the product details visited
         product = self.get_object()
+
         # getting category slug
         category = self.kwargs.get('child_slug')
+
         # filtering with this information and exclude this product from the filtering
         related_product = Product.objects.filter(
             category__slug=category
         ).order_by('?').exclude(id=product.id)[:3]
+
         return related_product
     
     # product specification
     def get_product_specification(self):
         # getting the product visited
         product = self.get_object()
+        
         # filtering the first product specification
         specification = product.specification.first()
+    
         return ReadOnlyProductSpecificationForm(instance=specification)
     
     # filter for featured product
@@ -80,16 +87,23 @@ class ProductDetailView(DetailView, SessionMixin):
         feature_product = ProductHighlight.objects.filter(
             is_active=True, product__is_active=True
         ).order_by('?')[:3]
+        
         return feature_product
     
     def product_accessories(self):
         product_accessories = []
         
-        # filters product for product accessories
-        product_accessories = Product.objects.filter(
-            is_active=True,
-            category__name__in=['Mobile Accessories', 'Computer Accessories']
-        ).order_by('?')[:3]
+        try:
+
+            # filters product for product accessories
+            product_accessories = Product.objects.filter(
+                is_active=True,
+                category__name__in=['Mobile Accessories', 'Computer Accessories']
+            ).order_by('?')[:3]
+        
+        except Product.DoesNotExist:
+            pass
+
         return product_accessories
     
     def check_wishlist(self, request):
@@ -98,12 +112,15 @@ class ProductDetailView(DetailView, SessionMixin):
         session_key = self.get_or_create_session_key(request)
         
         try:
+            
             if request.user.is_authenticated:
                 if WishlistProduct.objects.filter(user=request.user, product=product).exists():
                     exist_in_wish = True
+
             else:
                 if WishlistProduct.objects.filter(session_key=session_key, product=product).exists():
                     exist_in_wish = True
+
         except WishlistProduct.DoesNotExist:
             pass
         
@@ -116,14 +133,19 @@ class ProductDetailView(DetailView, SessionMixin):
         session_key = self.get_or_create_session_key(request)
 
         try:
+            
             if request.user.is_authenticated:
                 cart = Cart.objects.get(user=request.user)
+
                 if cart and CartItem.objects.filter(cart=cart, product=product).exists():
                     cart_exist = True
+
             else:
                 cart = Cart.objects.get(session_key=session_key)
+                
                 if cart and CartItem.objects.filter(cart=cart, product=product).exists():
                     cart_exist = True
+
         except Cart.DoesNotExist or CartItem.DoesNotExist:
             pass
 
@@ -135,12 +157,15 @@ class ProductDetailView(DetailView, SessionMixin):
         session_key = self.get_or_create_session_key(request)
 
         try:
+
             if request.user.is_authenticated:
                 if ProductComparison.objects.filter(user=request.user, product=product).exists():
                     compare_exist = True
+
             else:
                 if ProductComparison.objects.filter(session_key=session_key, product=product).exists():
                     compare_exist = True
+
         except ProductComparison.DoesNotExist:
             pass
 
@@ -148,6 +173,7 @@ class ProductDetailView(DetailView, SessionMixin):
             
     # getting additional information for product to use in the template
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
         product = self.get_object() # getting returned object to query data
         context['variant'] = product.variant.first()
@@ -160,6 +186,7 @@ class ProductDetailView(DetailView, SessionMixin):
         context['exist_in_wish'] = self.check_wishlist(self.request)
         context['cart_exist'] = self.check_cart(self.request)
         context['compare_exist'] = self.check_compare(self.request)
+
         return context
 
 # shop page for filtering and searching all kinds of product that exist in shop
@@ -177,10 +204,12 @@ class FilteredProductListView(ListView, SessionMixin):
         authenticated user and anonymous user
         '''''
         session_key = self.get_or_create_session_key
+        
         # stores the cache key
         product_cache_key = f'product_shuffle_cache_{
             self.request.user.id if self.request.user.is_authenticated else session_key
         }'
+
         # getting the product in cache
         product_ids = cache.get(product_cache_key)
         
@@ -188,8 +217,10 @@ class FilteredProductListView(ListView, SessionMixin):
         if not product_ids:
             # filtering active product
             product_ids = list(Product.objects.filter(is_active=True).values_list('id', flat=True))
+            
             # orders product product_ids randomly
             shuffle(product_ids)
+
             # setting the product to cache
             cache.set(product_cache_key, product_ids, 72000)
         
@@ -270,6 +301,7 @@ class FilteredProductListView(ListView, SessionMixin):
 
     # additional context being passed for rendering product and it items to the template
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
         product = self.get_queryset()
         context['products'] = product
@@ -281,4 +313,5 @@ class FilteredProductListView(ListView, SessionMixin):
         context['category_name'] = self.show_category()
         context['product_count'] = len(product)
         context['query'] = self.request.GET.get('q', '')
+        
         return context

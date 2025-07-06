@@ -1,12 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts     import render, redirect, get_object_or_404
 from apps.products.models import Category, Product, ProductHighlight, Badge, TopCategory
-from .models import OcliconTeamMembers, FrequentlyAskedQuestions, BlogPost
-from .forms import FrequentlyAskedQuestionsForms, NewsLetterSubscriberForm
-from django.http import JsonResponse
-from django.urls import reverse
-from django.db.models import Q
+from .models              import OcliconTeamMembers, FrequentlyAskedQuestions, BlogPost
+from .forms               import FrequentlyAskedQuestionsForms, NewsLetterSubscriberForm
+from django.http          import JsonResponse
+from django.urls          import reverse
+from django.db.models     import Q
 from django.template.loader import render_to_string
-from django.http import JsonResponse
+from django.http          import JsonResponse
 from django.views.decorators.http import require_POST
 
 # home page view
@@ -27,6 +27,7 @@ def Home_page(request):
     new_arrivals = []
 
     try:
+        
         # Get the "Computer Accessories category
         computer_category = Category.objects.prefetch_related('children').get(name='Computer Accessories')
 
@@ -131,6 +132,7 @@ def Home_page(request):
             'child_categories': child_categories,
             'computer_category': computer_category
         })
+        
         return JsonResponse({'html': html})
 
     # AJAX handling for featured product
@@ -138,6 +140,7 @@ def Home_page(request):
         html = render_to_string('products/partials/computer_accessories.html',{
             'featured_product': featured_products
         })
+
         return JsonResponse({'html': html})
 
     blogs = BlogPost.objects.all().prefetch_related('blog_post_comment')[:3]
@@ -146,19 +149,19 @@ def Home_page(request):
         blog.comment_count = blog.blog_post_comment.count()
 
     context = {
-        'show_newsletter': True, 'show_navbar_ads': True,
-        'computer_accessories': computer_accessories, 
-        'computer_category': computer_category,
+        'show_newsletter':       True, 'show_navbar_ads': True,
+        'computer_accessories':  computer_accessories, 
+        'computer_category':     computer_category,
         'queryset_computer_acc': queryset_computer_acc,
-        'best_deals_products': best_deals_products,
-        'featured_products': featured_products,
-        'best_hot_deals': best_hot_deals,
-        'child_categories': child_categories,
-        'blogs': blogs,
-        'flash_sales': flash_sales,
-        'top_rated': top_rated,
-        'new_arrivals': new_arrivals,
-        'top_categories': top_categories,
+        'best_deals_products':   best_deals_products,
+        'featured_products':     featured_products,
+        'best_hot_deals':        best_hot_deals,
+        'child_categories':      child_categories,
+        'blogs':                 blogs,
+        'flash_sales':           flash_sales,
+        'top_rated':             top_rated,
+        'new_arrivals':          new_arrivals,
+        'top_categories':        top_categories,
     }
     return render(request, 'public/home.html', context)
 
@@ -166,6 +169,7 @@ def Home_page(request):
 def about_page(request):
     teams = OcliconTeamMembers.objects.all()
     context = {'show_newsletter': True, 'teams': teams}
+    
     return render(request, 'public/about.html', context)
 
 # community page view
@@ -180,9 +184,11 @@ def frequently_asked_question(request):
     # handling post request
     if request.method == 'POST':
         form = FrequentlyAskedQuestionsForms(request.POST)
+
         if form.is_valid(): # validates whether form is valid or not
             form.save() # saves the form
             return redirect('faqs')
+        
     else:
         form = FrequentlyAskedQuestionsForms()
     
@@ -198,6 +204,7 @@ def frequently_asked_question(request):
 
 # renders 404 page
 def page_not_found(request, exceptions):
+
     # renders a 404 page to the server in production mode
     return render(request, '404.html', status=404)
 
@@ -206,6 +213,7 @@ def customer_support(request):
     breadcrumbs = [
         ('Customer Support', request.path)
     ]
+
     return render(request, 'public/customersupport.html', {'breadcrumbs': breadcrumbs})
 
 # blog page
@@ -222,9 +230,10 @@ def blog(request):
         ('Pages', '#/'),
         ('Blog', request.path),
     ]
+
     return render(request, 'public/blog.html', {
         'breadcrumbs': breadcrumbs, 
-        'blogs': blogs,
+        'blogs':       blogs,
     })
 
 # blog details page
@@ -239,8 +248,8 @@ def blog_details(request, id):
     ]
 
     return render(request, 'public/blog_details.html', {
-        'breadcrumbs': breadcrumbs, 
-        'blog_details': blog_details,
+        'breadcrumbs':        breadcrumbs, 
+        'blog_details':       blog_details,
         'blog_details_count': blog_details_count,
     })
 
@@ -250,10 +259,13 @@ def sign_up_newsletter(request):
     
     if request.method == 'POST':
         form = NewsLetterSubscriberForm(request.POST)
+        
         if form.is_valid():
             form.save()
+
     else: 
         if previous_url:
             return redirect(previous_url)
+        
         else:
             return redirect('fallback_url_name')

@@ -5,6 +5,7 @@ def active_product_ads(request):
     context = {}
 
     try:
+        
         if request.resolver_match and request.resolver_match.url_name == 'home': 
             # getting top ad for home page
             top_ad = Ad.objects.filter(is_active=True, position='top').first()
@@ -55,16 +56,17 @@ def active_product_ads(request):
             ).last()
 
             context = {
-                'top_ad': top_ad,
-                'top_right_ad': top_right_ad,
-                'top_right_bottom_ad': top_right_bottom_ad,
-                'first_middle_banner_ad': first_middle_banner_ads,
-                'first_bottom_banner': first_bottom_banner,
-                'second_middle_banner_ads': second_middle_banner_ads,
-                # 'featured_sidebar_ad': featured_sidebar_ad,
-                'filter_computer_acc_ad': filter_computer_acc_ad_,
+                'top_ad':                        top_ad,
+                'top_right_ad':                  top_right_ad,
+                'top_right_bottom_ad':           top_right_bottom_ad,
+                'first_middle_banner_ad':        first_middle_banner_ads,
+                'first_bottom_banner':           first_bottom_banner,
+                'second_middle_banner_ads':      second_middle_banner_ads,
+                # 'featured_sidebar_ad':         featured_sidebar_ad,
+                'filter_computer_acc_ad':        filter_computer_acc_ad_,
                 'filter_computer_acc_ad_second': filter_computer_acc_ad_second,
             }
+
     except Ad.DoesNotExist:
         pass
 

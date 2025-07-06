@@ -1,15 +1,17 @@
-from django.shortcuts import render, get_object_or_404
-from apps.products.models import Product, ProductComparison
-from django.views.generic import ListView, View
-from django.urls import reverse
+from django.shortcuts      import render, get_object_or_404
+from apps.products.models  import Product, ProductComparison
+from django.views.generic  import ListView, View
+from django.urls           import reverse
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_POST, require_http_methods
-from django.http import JsonResponse
+from django.http           import JsonResponse
 
 class SessionMixin:
+
     def get_or_create_session_key(self, request):
         if not request.session.session_key:
             request.session.create()
+            
         return request.session.session_key
 
 # compare page for items. for re-usable view for count and compare listing
@@ -191,10 +193,12 @@ class ComparisonPageView(CompareMixin, ListView):
     
     # context for using additional queryset in the html template
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
         compare_count = self.get_compare_counts(self.request)
         context['comparison_count'] = compare_count
         context['breadcrumbs'] = self.get_breadcrumbs()
+
         return context
     
 

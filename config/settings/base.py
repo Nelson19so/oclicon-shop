@@ -2,6 +2,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
 import os
+from apps.config import Apps
 
 load_dotenv()
 
@@ -28,15 +29,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.apple',
-
-    # Local apps
-    'apps.accounts.apps.AccountsConfig',
-    'apps.cart.apps.CartConfig',
-    'apps.orders.apps.OrdersConfig',
-    'apps.products.apps.ProductsConfig',
-    'apps.public.apps.PublicConfig',
-    'apps.payments'
 ]
+
+INSTALLED_APPS += [app['name'] for app in Apps]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -112,7 +109,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SITE_ID = 1
-AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Social Account Providers
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('GOOGLE_CLIENT_KEY')

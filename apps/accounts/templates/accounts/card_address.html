@@ -39,6 +39,7 @@
             <p>
               Phone Number: <span> {{ user.shipping_info.phone_number }}</span>
             </p>
+
             {% else %}
             <p>Phone Number: <span>No billing phone number provided</span></p>
             {% endif %}
@@ -46,6 +47,7 @@
             <!-- shipping email -->
             {% if user.shipping_info.email %}
             <p>Email: <span>{{ user.shipping_info.email }}</span></p>
+
             {% else %}
             <p>Email: <span>No email provided for billing</span></p>
             {% endif %}

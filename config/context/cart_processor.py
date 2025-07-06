@@ -1,4 +1,4 @@
-from apps.cart.models import CartItem, Cart
+from apps.cart.models  import CartItem, Cart
 from django.core.cache import cache
 
 # navbar cart view
@@ -12,6 +12,7 @@ def cart_list(request):
 
     # checks if user is authenticated
     try:
+
         if user.is_authenticated:
             # filters cart item for authenticated user
             cart = Cart.objects.get(user=user)
@@ -60,7 +61,7 @@ def cart_list(request):
 
     # returns the cart item for use.
     return {
-        'cart_items': cart_items,
+        'cart_items':       cart_items,
         'total_cart_price': total_cart_price, 
-        'nav_cart_count': nav_cart_count
+        'nav_cart_count':   nav_cart_count
     }

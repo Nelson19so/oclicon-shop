@@ -1,15 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts     import render, get_object_or_404
 from apps.products.models import Product
-from apps.cart.models import Cart, CartItem, WishlistProduct
-from django.http import JsonResponse
+from apps.cart.models     import Cart, CartItem, WishlistProduct
+from django.http          import JsonResponse
 from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 
 class SessionMixin:
+
     def get_or_create_session_key(self, request):
         if not request.session.session_key:
             request.session.create()
+
         return request.session.session_key
 
 # product wishlist view create
@@ -27,15 +29,18 @@ class WishListProductCreate(View):
            
             if not WishlistProduct.objects.filter(user=user, product=product).exists():
                 WishlistProduct.objects.create(user=user, product=product)
+    
         else:
             session_key = request.session.session_key
+
             if not session_key:
                 request.session.create()
 
             session_key = request.session.session_key
+        
             if not session_key:
                 return JsonResponse({
-                    'status': 'error',
+                    'status':  'error',
                     'message': 'No session found',
                 }, status=201)
 
@@ -44,7 +49,7 @@ class WishListProductCreate(View):
                 WishlistProduct.objects.create(session_key=session_key, product=product)
            
         return JsonResponse({
-            'status': 'success',
+            'status':  'success',
             'message': 'Added item to wishlist',
         }, status=201)
 
@@ -74,7 +79,7 @@ class RemoveItemFromWishlist(View):
 
         # returns Json message if success
         return JsonResponse({
-            'status': 'success',
+            'status':  'success',
             'message': 'Product removed from wishlist'
         })
 
@@ -87,10 +92,13 @@ def wish_list_view(request):
     session_key = mixin.get_or_create_session_key(request)
     
     try:
+
         # if user is authenticated
         if user.is_authenticated:
             # filters wishlist product for user
-            wishlists = WishlistProduct.objects.filter(user=user).select_related('product')
+            wishlists = WishlistProduct.objects.filter(
+                user=user
+            ).select_related('product')
 
         # else if not authenticated and no session id for anonymous user 
         else:
@@ -114,6 +122,7 @@ def wish_list_view(request):
             product=wishlist.product
         ).exists():
             wishlist.in_cart = True
+
     except (Cart.DoesNotExist or CartItem.DoesNotExist or WishlistProduct.DoesNotExist):
         pass
     
@@ -124,8 +133,9 @@ def wish_list_view(request):
     
     # renders context processor for use in the UI
     context = {
-        "wishlists": wishlists,
-        "user": user, 
+        "wishlists":   wishlists,
+        "user":        user, 
         'breadcrumbs': breadcrumbs,
     }
+
     return render(request, 'cart/wishlist.html', context)

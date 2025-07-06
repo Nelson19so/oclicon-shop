@@ -17,6 +17,7 @@ class StartOrderPayment(View):
         reference = f"TXN{user.id}{timezone.now().strftime('%Y%m%d%H%M%S')}"
 
         try:
+            
             order = Order.objects.filter(user=user)
             order_total_amount = order.total_amount
 
@@ -39,6 +40,7 @@ class StartOrderPayment(View):
             auth_url = res.json()['data']['authorization_url']
 
             return redirect(auth_url)
+            
         except Order.DoesNotExist:
             return redirect('home')
 

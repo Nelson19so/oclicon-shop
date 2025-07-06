@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.urls import reverse
+from django.contrib   import messages
+from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
-from apps.orders.models import Order, ShippingAddress
-from apps.orders.forms import ShippingAddressForm
+from django.contrib.auth  import get_user_model
+from apps.orders.models   import Order, ShippingAddress
+from apps.orders.forms    import ShippingAddressForm
 from apps.products.models import ProductSearchHistory
 from apps.accounts.models import (
     AdditionalUserInfo, 
     ProfilePicture, BillingAddress
 )
-from apps.accounts.forms import (
+from apps.accounts.forms  import (
     UserProfileForm, UserAdditionalInformation,
     UserForm, BillingAddressForm, 
     UserPasswordChange

@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts    import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from django.urls import reverse
+from django.urls         import reverse
 from django.contrib.auth.decorators import login_required
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http   import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model, update_session_auth_hash
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail    import EmailMultiAlternatives
 from django.utils.encoding import force_bytes
 from django.template.loader import render_to_string
-from apps.accounts.forms import (
+from apps.accounts.forms  import (
     UserRegistrationForm, UserLoginForm, 
     ResetPasswordEmailForm, PasswordResetForm,
     UserPasswordChange
@@ -54,6 +54,7 @@ def welcome_registration_view(request, user_id):
 
         # Ensure user_id matches the session for security
         if request.user.id != user_id:
+            
             return redirect('home')
 
         # getting the user name and email for use in  the template
@@ -66,8 +67,8 @@ def welcome_registration_view(request, user_id):
         request.session.pop('name', None)
 
         return render(request, 'accounts/welcome_registration.html', {
-            "name": user_name,
-            "email": user_email,
+            "name":          user_name,
+            "email":         user_email,
         })
 
     return redirect('home')
@@ -83,8 +84,10 @@ def login_view(request):
 
     # handling post request for logging in users in
     if request.method == 'POST':
+
         # checks if form is valid
         if form.is_valid():
+            
             # getting user email and password since the user fields are valid
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
@@ -127,6 +130,7 @@ def logout_view(request):
 def user_successfully_logged_out(request):
     # checks if there's session for logged out user
     if request.session.get('logged-out'):
+
         # checks if user is authenticated
         if not request.user.is_authenticated:
             # getting logged out user name session
