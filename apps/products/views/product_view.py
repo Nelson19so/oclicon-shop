@@ -61,13 +61,24 @@ class ProductDetailView(DetailView, SessionMixin):
         # getting the product details visited
         product = self.get_object()
 
+        session_key = self.get_or_create_session_key
+        
+        related_product_key = f'related_product_{
+            self.request.user if self.request.user.is_authenticated else session_key
+        }'
+
         # getting category slug
         category = self.kwargs.get('child_slug')
 
         # filtering with this information and exclude this product from the filtering
-        related_product = Product.objects.filter(
-            category__slug=category
-        ).order_by('?').exclude(id=product.id)[:3]
+        related_product = cache.get(related_product_key)
+ 
+        if not related_product:
+            related_product = Product.objects.filter(
+                category__slug=category
+            ).order_by('?').exclude(id=product.id)[:3]
+
+            cache.set(related_product_key, related_product, 300)
 
         return related_product
     
@@ -90,7 +101,7 @@ class ProductDetailView(DetailView, SessionMixin):
         
         return feature_product
     
-    def product_accessories(self):
+    def product_accessories(self): 
         product_accessories = []
         
         try:
@@ -100,7 +111,7 @@ class ProductDetailView(DetailView, SessionMixin):
                 is_active=True,
                 category__name__in=['Mobile Accessories', 'Computer Accessories']
             ).order_by('?')[:3]
-        
+
         except Product.DoesNotExist:
             pass
 
