@@ -227,6 +227,10 @@ function showToast(message) {
   if (toast.classList.contains("disabled")) {
     toast.classList.remove("disabled");
     document.getElementById("toast_msg").textContent = message;
+
+    setTimeout(() => {
+      closeToast();
+    }, 7000);
   }
 }
 
@@ -234,4 +238,4 @@ function closeToast() {
   toast.classList.add("disabled");
 }
 
-// showToast("Item added to comparison successfully");
+showToast("Item added to comparison successfully");
