@@ -1,0 +1,26 @@
+{% block content %}
+<div
+  class="toast flex justify-between gap-5"
+  style="align-items: center"
+  id="toast"
+>
+  <p id="toast_msg"></p>
+
+  <button class="cursor-pointer" id="close_toast" onclick="closeToast()">
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M10 8.6L8.6 10L5 6.4L1.4 10L0 8.6L3.6 5L0 1.4L1.4 0L5 3.6L8.6 0L10 1.4L6.4 5L10 8.6Z"
+        fill="black"
+      />
+    </svg>
+  </button>
+</div>
+{% endblock %}

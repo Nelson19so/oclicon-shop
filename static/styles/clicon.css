@@ -55,6 +55,23 @@ a strong {
   pointer-events: auto;
 }
 
+.toast.disabled {
+  display: none !important;
+}
+
+.toast {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  border-left: 7px solid rgb(63, 255, 63);
+  z-index: 8888;
+  box-shadow: 0px 8px 24px 0px rgba(25, 28, 31, 0.1215686275);
+}
+
 .container-right-bottom-nav p {
   font-weight: 400;
   font-size: 14px;

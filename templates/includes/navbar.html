@@ -309,7 +309,11 @@
 
         <!-- account -->
         <div class="container-login">
-          <a class="cursor-pointer">
+          {% if request.user.is_authenticated%}
+          <a href="{% url 'dashboard' %}" class="cursor-pointer">
+          {% else %}
+          <a  class="cursor-pointer">
+          {% endif %}
             <svg
               id="container-signin-dropdown"
               width="24"
@@ -336,14 +340,17 @@
 
           {% if not request.user.is_authenticated %}
           <div class="container-login-navbar-drop-down" id="dropItem">
-            <header class="container- text-center">
-              <p>Sign in to your account</p>
-            </header>
+            <div class="container-others">
+              <button
+                class="btn-primary cursor-pointer"
+                onclick="window.location.assign(`{% url 'login' %}`)"
+                style="width: 100%"
+              >
+                Login into account
+              </button>
+            </div>
 
             <div class="container-others">
-              <!-- <div class="divider"></div>
-              <p>Don’t have account</p> -->
-
               <button
                 class="container-btn-create-account cursor-pointer"
                 onclick="window.location.assign(`{% url 'register' %}`)"
@@ -352,10 +359,29 @@
               </button>
             </div>
           </div>
-          {% else %}
-          <div class="container-login-navbar-drop-down" id="dropItem">
-            Hello {{ request.user.Name }}
-          </div>
+          <!-- else -->
+          <!-- <div class="container-login-navbar-drop-down" id="dropItem">
+            <div class="container-user-drop-down pl-3 pr-3">
+              <div class="flex justify-start gap-3" style="align-items: center">
+                <div class="container-img-profile">
+                  {% if user.profile.url %}
+                  <img
+                    src="{{ request.user.profile.profile.url }}"
+                    alt="{{ request.user.username }}-profile"
+                    width="30"
+                  />
+                  {% else %}
+                  <img
+                    src="{% static 'images/default_profile_pic/icon-avatar.png' %}"
+                    alt="{{ request.user.username }}"
+                    width="30"
+                  />
+                  {% endif %}
+                </div>
+                <p class="text-sm">Hello, {{ request.user.username }}</p>
+              </div>
+            </div>
+          </div> -->
           {% endif %}
         </div>
       </div>

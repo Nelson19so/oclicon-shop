@@ -52,7 +52,7 @@ $(document).ready(function () {
         // location.reload();
 
         // display message from the server to th UI
-        showToast(data);
+        showToast("Item removed from comparison");
       },
 
       error: function (xhr, status, error) {
@@ -151,8 +151,7 @@ $(document).ready(function () {
 
       // if the process went successful
       success: function (data) {
-        // $(".compare-count").text(data.count);
-        // showToast("Item added to wishlist");
+        showToast("Item added to cart list");
       },
 
       // if the process didn't go successful
@@ -167,7 +166,7 @@ $(document).ready(function () {
   });
 });
 
-// removing product to cart list ---
+// removing product from cart list ---
 $(document).ready(function () {
   $("#remove-cart_btn").click(function () {
     const productId = $(this).data("product-id");
@@ -182,6 +181,7 @@ $(document).ready(function () {
       // if the process went successful
       success: function (data) {
         window.location.reload();
+        showToast("Item removed from cart list");
       },
 
       // if the process didn't go successful
@@ -220,6 +220,18 @@ $(document).ready(function () {
   });
 });
 
+const toast = document.getElementById("toast");
+toast.classList.add("disabled");
+
 function showToast(message) {
-  // toast notification here
+  if (toast.classList.contains("disabled")) {
+    toast.classList.remove("disabled");
+    document.getElementById("toast_msg").textContent = message;
+  }
 }
+
+function closeToast() {
+  toast.classList.add("disabled");
+}
+
+// showToast("Item added to comparison successfully");
