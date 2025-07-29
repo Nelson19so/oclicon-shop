@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ShippingAddress, Order, OrderItem, OrderMessage, OrderStatusHistory
+from .models import ShippingAddress, Order, OrderItem, OrderMessage, OrderStatusHistory, OrderProductSpec
 
 @admin.register(ShippingAddress)
 class BillingAddress(admin.ModelAdmin):
@@ -31,10 +31,16 @@ class OrderAdmin(admin.ModelAdmin):
     exclude = ('canceled_at', 'canceled_by', 'order_id')
     readonly_fields = ('order_id', 'id')
 
+admin.site.register(OrderProductSpec)
+class OrderItemSpecInline(admin.TabularInline):
+    model = OrderProductSpec
+    fields = ('memory', 'size', 'storage')
+
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
     fields = ('product', 'order', 'quantity', 'price')
     list_display = ('product', 'order', 'quantity', 'price')
+    inlines = [OrderItemSpecInline]
 
 @admin.register(OrderMessage)
 class OrderMessageAdmin(admin.ModelAdmin):

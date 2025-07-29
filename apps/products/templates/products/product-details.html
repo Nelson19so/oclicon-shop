@@ -241,6 +241,22 @@
             >
               <!-- for cart product quantity -->
               <div class="container-product-amount flex justify-center">
+                {% if cart_exist %}
+                <button class="btn-decrement" id="btn-decrement" disabled>
+                  -
+                </button>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity-input"
+                  class="input-number outline-none"
+                  value="{{ product.product_cart.quantity|default:1 }}"
+                  disabled
+                />
+                <button class="btn-increment" id="btn-increment" disabled>
+                  +
+                </button>
+                {% else %}
                 <button class="btn-decrement" id="btn-decrement">-</button>
                 <input
                   type="text"
@@ -251,6 +267,7 @@
                   disabled
                 />
                 <button class="btn-increment" id="btn-increment">+</button>
+                {% endif %}
               </div>
 
               <!-- button for adding items to cart -->

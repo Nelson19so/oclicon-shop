@@ -51,7 +51,7 @@ def Home_page(request):
             )
 
             # excludes best hot deals from the filtering
-            best_deals_products = best_deals_products.exclude(id=best_hot_deals.id)
+            best_deals_products = best_deals_products.exclude(id=best_hot_deals)
         
         # filtering 8 product from best hot deals
         best_deals_products = best_deals_products[:8]

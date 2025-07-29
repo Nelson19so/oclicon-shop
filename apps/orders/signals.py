@@ -4,7 +4,7 @@ from .models import Order, OrderStatusHistory
 
 # tracks changes in order status
 @receiver(pre_save, sender=Order)
-def track_order_status_changes(sender, instance, **kwargs):
+def track_order_status_changes(sender, instance, created, **kwargs):
     # checks for changes in order
     if not instance.pk:
         # returns nothing if no changes were made

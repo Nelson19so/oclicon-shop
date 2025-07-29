@@ -1,6 +1,6 @@
 from django.shortcuts     import get_object_or_404, redirect
-from apps.products.models import Product, ProductSpecification
-from apps.cart.models     import Cart, CartItem
+from apps.products.models import Product
+from apps.cart.models     import Cart, CartItem, CartProductSpec
 from django.http          import JsonResponse
 from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
@@ -66,14 +66,13 @@ class CreateCartItem(CartMixin, SessionMixin, View):
         product_storage = request.POST.get('storage')
         product_size = request.POST.get('size')
         product_memory = request.POST.get('memory')
-        _quantity = request.POST.get('product_quantity')
         user = request.user
 
         try:
 
             try:
                 
-                product_quantity = int(request.POST.get('quantity'))
+                product_quantity = int(request.POST.get('product_quantity'))
                 
             except (TabError, ValueError):
                 product_quantity = 1
@@ -87,9 +86,11 @@ class CreateCartItem(CartMixin, SessionMixin, View):
 
             cart_item, created = CartItem.objects.get_or_create(
                 product=product, cart=cart,
-                cart_product_spec__size=product_size,
-                cart_product_spec__memory=product_memory,
-                cart_product_spec__storage=product_storage,
+            )
+
+            CartProductSpec.objects.create(
+                cart_item=cart_item, size=product_size,
+                memory=product_memory, storage=product_storage
             )
 
             if not created:
@@ -98,8 +99,8 @@ class CreateCartItem(CartMixin, SessionMixin, View):
             else:
                 cart_item.quantity = product_quantity
                 
-            if _quantity:
-                    cart_item.quantity = _quantity
+            if product_quantity:
+                    cart_item.quantity = product_quantity
             cart_item.save()
 
             cart_count = self.cart_item_count(request)

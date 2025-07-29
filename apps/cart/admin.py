@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Cart, CartItem, WishlistProduct
+from .models import Cart, CartItem, WishlistProduct, CartProductSpec
+
 
 # Cart admin
 @admin.register(Cart)
@@ -9,6 +10,13 @@ class CartAdmin(admin.ModelAdmin):
     list_filter = ('user', 'created_at',)
     readonly_fields = ('id', 'created_at',)
 
+
+admin.site.register(CartProductSpec)
+class CartProductSpecInline(admin.TabularInline):
+    model = CartProductSpec
+    fields = ('memory', 'size', 'storage')
+
+
 # Cart item admin
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
@@ -16,6 +24,8 @@ class CartItemAdmin(admin.ModelAdmin):
     list_display = ('cart', 'product', 'quantity', 'added_at', 'updated_at')
     list_filter = ('cart', 'added_at')
     readonly_fields = ['added_at', 'updated_at']
+    inlines = [CartProductSpecInline]
+
 
 @admin.register(WishlistProduct)
 class WishlistProductAdmin(admin.ModelAdmin):

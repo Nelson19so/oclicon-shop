@@ -17,15 +17,7 @@ class Cart(models.Model):
         for item in self.cartitem_set.all():
             total += item.product.base_price * item.quantity
         return total
-
-# cart product spec
-class CartProductSpec(models.Model):
-    memory = models.CharField(blank=True, null=True)
-    size = models.CharField(blank=True, null=True)
-    storage = models.CharField(blank=True, null=True)
-
-    class Meta:
-        unique_together = ('memory', 'size', 'storage')
+    
 
 # cart items model
 class CartItem(models.Model):
@@ -36,7 +28,6 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True)
-    cart_product_spec = models.OneToOneField(CartProductSpec, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('cart', 'product',)
@@ -48,6 +39,23 @@ class CartItem(models.Model):
     @property
     def sub_total_price(self):
         return self.product.base_price * self.quantity
+
+
+# cart product specification model
+class CartProductSpec(models.Model):
+    cart_item = models.OneToOneField(
+        CartItem, on_delete=models.CASCADE, related_name='cart_prod_spec'
+    )
+    memory = models.CharField(blank=True, null=True)
+    size = models.CharField(blank=True, null=True)
+    storage = models.CharField(blank=True, null=True)
+
+    class Meta:
+        unique_together = ('memory', 'size', 'storage')
+
+    def __str__(self):
+        return f'{self.cart_item.product.name} - product cart specification'
+        
 
 # wishlist product model
 class WishlistProduct(models.Model):

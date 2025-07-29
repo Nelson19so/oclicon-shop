@@ -220,6 +220,8 @@ $(document).ready(function () {
   });
 });
 
+// toast config for dynamic changes and update
+
 const toast = document.getElementById("toast");
 toast.classList.add("disabled");
 
@@ -230,7 +232,7 @@ function showToast(message) {
 
     setTimeout(() => {
       closeToast();
-    }, 7000);
+    }, 7000); // seconds to collapse the toast
   }
 }
 
@@ -238,4 +240,4 @@ function closeToast() {
   toast.classList.add("disabled");
 }
 
-showToast("Item added to comparison successfully");
+// showToast("Item added to comparison successfully");

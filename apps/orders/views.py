@@ -119,6 +119,7 @@ class CheckoutOrderViewCreate(View):
             return redirect('cart_list')  # or some cart view name
 
         cart_items = CartItem.objects.filter(cart=cart)
+
         # if cart item doesn't exist
         if not cart_items.exists():
             return redirect('cart_list')
@@ -131,7 +132,10 @@ class CheckoutOrderViewCreate(View):
                 order=order,
                 product=item.product,
                 quantity=item.quantity,
-                price=item.product.base_price
+                price=item.product.base_price,
+                order_item__memory=item.cart_prod_spec.memory,
+                order_item__size=item.cart_prod_spec.size,
+                order_item__storage=item.cart_prod_spec.storage,
             )
             total_amount += item.quantity * item.product.base_price
 
@@ -143,12 +147,12 @@ class CheckoutOrderViewCreate(View):
         cart_key = f'cart_user_{request.user.id}'
         cache.delete(cart_key)
 
-        # request.session['order_id'] = order.id
-        # request.session['order_placed_success'] = True
+        request.session['order_id'] = order.order_id
+        request.session['order_placed_success'] = True
         
-        # return redirect('success_checkout', order.id)
+        return redirect('success_checkout', order.order_id)
 
-        return redirect('checkout')
+        # return redirect('checkout')
 
 # checkout view
 @login_required(login_url='login')

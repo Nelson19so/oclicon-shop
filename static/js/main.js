@@ -80,29 +80,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return;
   });
-});
 
-// Faq_ page
-const faqItem = document.querySelectorAll(".container-main-faqs--");
-const otherFaq = document.querySelectorAll(".container-main-faqs--");
+  // Faq_ page
+  const faqItem = document.querySelectorAll(".container-main-faqs--");
+  const otherFaq = document.querySelectorAll(".container-main-faqs--");
 
-faqItem.forEach((faq) => {
-  const faqToggle = faq.querySelector(".show-faq-description");
-  const faqSubject = faq.querySelector(".faq-subject-container-");
+  faqItem.forEach((faq) => {
+    const faqToggle = faq.querySelector(".show-faq-description");
+    const faqSubject = faq.querySelector(".faq-subject-container-");
 
-  faqToggle.addEventListener("click", function () {
-    otherFaq.forEach((otherfaqs) => {
-      if (otherfaqs != faq) {
-        otherfaqs.classList.remove("active-faq-container");
-        otherfaqs
-          .querySelector(".faq-subject-container-")
-          .classList.remove("active-faq");
-      } else {
-        if (!faq.classList.contains(".active-faq-container")) {
-          faq.classList.toggle("active-faq-container");
-          faqSubject.classList.toggle("active-faq");
+    faqToggle.addEventListener("click", function () {
+      otherFaq.forEach((otherfaqs) => {
+        if (otherfaqs != faq) {
+          otherfaqs.classList.remove("active-faq-container");
+          otherfaqs
+            .querySelector(".faq-subject-container-")
+            .classList.remove("active-faq");
+        } else {
+          if (!faq.classList.contains(".active-faq-container")) {
+            faq.classList.toggle("active-faq-container");
+            faqSubject.classList.toggle("active-faq");
+          }
         }
-      }
+      });
     });
   });
 });
