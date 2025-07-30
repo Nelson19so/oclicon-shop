@@ -64,8 +64,10 @@
             <p class="status status-cancelled" style="color: rgb(255, 34, 34)">
               {{ order.get_status_display }}
             </p>
+            {% elif order.status == 'DELIVERED' %}
+            <p class="status status-completed">COMPLETED</p>
             {% else %}
-            <p class="status status-progress">{{ order.get_status_display }}</p>
+            <p class="status status-progress">IN PROGRESS</p>
             {% endif %}
           </td>
           <td><p class="date">{{ order.created_at }}</p></td>

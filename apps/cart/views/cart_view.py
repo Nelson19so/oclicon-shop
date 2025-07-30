@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View
 from django.utils         import timezone
 from django.core.cache    import cache
+from django.db import     IntegrityError 
 
 class SessionMixin:
 
@@ -74,7 +75,7 @@ class CreateCartItem(CartMixin, SessionMixin, View):
                 
                 product_quantity = int(request.POST.get('product_quantity'))
                 
-            except (TabError, ValueError):
+            except (TabError, ValueError, TypeError):
                 product_quantity = 1
 
             if user.is_authenticated:
@@ -88,10 +89,16 @@ class CreateCartItem(CartMixin, SessionMixin, View):
                 product=product, cart=cart,
             )
 
-            CartProductSpec.objects.create(
-                cart_item=cart_item, size=product_size,
-                memory=product_memory, storage=product_storage
-            )
+            try:
+            
+                CartProductSpec.objects.create(
+                    cart_item=cart_item, size=product_size,
+                    memory=product_memory, storage=product_storage
+                )
+
+            except IntegrityError:
+                cart_item.delete()
+                return redirect('cart_list')
 
             if not created:
                 cart_item.quantity = product_quantity
@@ -100,7 +107,7 @@ class CreateCartItem(CartMixin, SessionMixin, View):
                 cart_item.quantity = product_quantity
                 
             if product_quantity:
-                    cart_item.quantity = product_quantity
+                cart_item.quantity = product_quantity
             cart_item.save()
 
             cart_count = self.cart_item_count(request)

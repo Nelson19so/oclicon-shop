@@ -116,12 +116,12 @@ def wish_list_view(request):
         for wishlist in wishlists:
             wishlist.in_cart = False
 
-        # cart item filter
-        if cart and CartItem.objects.filter(
-            cart=cart,
-            product=wishlist.product
-        ).exists():
-            wishlist.in_cart = True
+            # cart item filter
+            if cart and CartItem.objects.filter(
+                cart=cart,
+                product=wishlist.product
+            ).exists():
+                wishlist.in_cart = True
 
     except (Cart.DoesNotExist or CartItem.DoesNotExist or WishlistProduct.DoesNotExist):
         pass

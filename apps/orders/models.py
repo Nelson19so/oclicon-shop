@@ -14,12 +14,11 @@ class Order(models.Model):
         ('PACKAGING', 'Packaging'),
         ('ON_THE_ROAD', 'On the Road'),
         ('CANCELLED', 'Cancelled'),
-        ('SHIPPED', 'Shipped'),
         ('PENDING', 'Pending'),
         ('DELIVERED', 'Delivered'),
     )
 
-    order_id = models.CharField(max_length=10, unique=True, default=create_random_order_id)
+    order_id = models.CharField(max_length=20, unique=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders'
     )
@@ -56,13 +55,24 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         if not self.email:
             self.email = self.user.email
-        super().save(*args, **kwargs)
+        
+        if not self.order_id:
+            super().save(*args, **kwargs)  # Save to get an `id`
+            prefix = "033"
+            self.order_id = f"{prefix}{str(self.id).zfill(7)}"
+            kwargs['force_insert'] = False  # Prevent insert error
+
+        return super().save(*args, **kwargs)
 
 
-# order items model
+# order items model for product
 class OrderItem(models.Model):
-    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(
+        'products.Product', on_delete=models.CASCADE, null=False, blank=False
+    )
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, related_name='items', null=False, blank=False
+    )
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -81,7 +91,7 @@ class OrderProductSpec(models.Model):
 
     class Meta:
         unique_together = ('memory', 'size', 'storage')
-        
+
 
 class OrderStatusHistory(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='status_history')

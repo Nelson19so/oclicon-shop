@@ -7,10 +7,10 @@ class ReadOnlyProductSpecificationForm(forms.ModelForm):
     class Meta:
         model = ProductSpecification
         fields = ['memory', 'size', 'storage']
-        widget = {
-            'memory': forms.TextInput(attrs={'id': 'memory'}),
-            'size': forms.TextInput(attrs={'id': 'size'}),
-            'storage': forms.TextInput(attrs={'id': 'storage'})
+        widgets = {
+            'memory': forms.TextInput(attrs={'id': 'memory', 'name': 'memory'}),
+            'size': forms.TextInput(attrs={'id': 'size', 'name': 'size'}),
+            'storage': forms.TextInput(attrs={'id': 'storage', 'name': 'storage'}),
         }
 
     def __init__(self, *args, **kwargs):

@@ -135,11 +135,19 @@
 
           .container-order-road-map- {
             .container-main-roadmap {
+              // &:not(:first-child) {
+              //   display: none;
+              // }
+
               @media only screen and (max-width: 733px) {
                 justify-items: flex-start;
                 flex-direction: row;
                 display: flex;
                 gap: 30px;
+              }
+
+              .road-map-holder {
+                width: 100%;
               }
             }
 

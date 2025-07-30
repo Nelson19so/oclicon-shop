@@ -94,7 +94,8 @@
         Go to Dashboard
       </button>
 
-      <button class="visit-order flex justify-center">
+      <a href="{% url 'order_details' order_id_ %}">
+        <button class="visit-order flex justify-center" >
         View Order
         <svg
           class="ml-2"
@@ -112,6 +113,7 @@
           </g>
         </svg>
       </button>
+      </a>
     </div>
   </div>
 </div>

@@ -4,18 +4,22 @@ from django.contrib   import messages
 from django.views.generic import View, DetailView
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_POST
-from .models          import Order, OrderItem, OrderMessage, OrderStatusHistory
+from .models          import (
+    Order, OrderItem, OrderMessage, OrderStatusHistory, OrderProductSpec
+)
 from apps.cart.models import Cart, CartItem
 from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.utils.timezone import now
+from django.db import IntegrityError
 
-# track user order page
+
+# track user order page view
 def track_order(request):
-    # request for the authenticated user 
+    # request for the authenticated user
     user = request.user
-    
+
     # Handles post request from users
     if request.method == "POST":
 
@@ -35,6 +39,7 @@ def track_order(request):
         else:
             # redirect users to login
             return redirect('login')
+        
     else:
         form = TrackOrderForm()
 
@@ -53,15 +58,16 @@ def track_order(request):
     # renders template with context
     return render(request, 'orders/track_order.html', context)
 
+
 # cancel user order
 def cancel_order(request, order_id):
     # checks if user is authenticated
     if request.user.is_authenticated:
         # getting order and renders 404 if none is found
         order = get_object_or_404(Order, user=request.user, order_id=order_id)
-        
+
         # makes sure the order is not yet shipped or not yet late
-        if order.status in ['SHIPPED', 'DELIVERED', 'ON_THE_ROAD', 'SHIPPED', 'CANCELLED']:
+        if order.status in ['DELIVERED', 'ON_THE_ROAD', 'CANCELLED']:
             # sends user massage if order cant be canceled
             messages.error(request, 'Order cannot be canceled with current status')
             return redirect('order_details', order_id)
@@ -77,17 +83,57 @@ def cancel_order(request, order_id):
 
     return redirect('order-history')
 
-# order details
+
+# order details page view 
 class OrderDetails(DetailView):
     template_name = 'orders/order_details.html'
     context_object_name = 'order'
 
     def get_object(self, queryset=None):
-        # getting order id
+        # getting the user order-id
         order_id = self.kwargs.get('order_id')
 
+        try:
+
+            order = get_object_or_404(
+                Order, user=self.request.user, order_id=order_id
+            )
+
+        except Order.DoesNotExist:
+            return redirect('order-history')
+
         # returning order with the id
-        return get_object_or_404(Order, order_id=order_id)
+        return order
+
+    # filters all order status history by order id
+    def get_order_status(self, order):
+        
+        try:
+
+            # Get all the history records for the given order, sorted by time
+            history_qs = OrderStatusHistory.objects.filter(order=order).order_by('changed_at')
+
+            if not history_qs.exists():
+                return [order.status]  # fallback if there's no history
+
+            status_chain = []
+
+            # Add the initial old_status of the first record (first known status)
+            first_status = history_qs.first().old_status
+
+            if first_status:
+                status_chain.append(first_status)
+
+            # Then add all new_status in order
+            for history in history_qs:
+                if history.new_status and history.new_status not in status_chain:
+                    status_chain.append(history.new_status)
+
+            return status_chain[:1]
+
+        except Exception as e:
+            print("Error:", e)
+            return []
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -97,12 +143,14 @@ class OrderDetails(DetailView):
          # Get the order items
         context['order_items'] = OrderItem.objects.filter(order=order)
 
-        # order history status
-        context['order_history'] = OrderStatusHistory.objects.filter(order=order)
-        
         # Get all messages related to the order
         context['order_messages'] = OrderMessage.objects.filter(order=order)
+
+        # Get all order status
+        context['order_status'] = self.get_order_status(order)
+        
         return context
+
 
 # adding items to order | place order for user
 class CheckoutOrderViewCreate(View):
@@ -128,19 +176,30 @@ class CheckoutOrderViewCreate(View):
         total_amount = 0
 
         for item in cart_items:
-            OrderItem.objects.create(
+            order_item = OrderItem.objects.create(
                 order=order,
+                price=item.product.base_price,
                 product=item.product,
                 quantity=item.quantity,
-                price=item.product.base_price,
-                order_item__memory=item.cart_prod_spec.memory,
-                order_item__size=item.cart_prod_spec.size,
-                order_item__storage=item.cart_prod_spec.storage,
             )
+            
+            try:
+                
+                OrderProductSpec.objects.create(
+                    order_item=order_item,
+                    memory=item.cart_prod_spec.memory,
+                    size=item.cart_prod_spec.size,
+                    storage=item.cart_prod_spec.storage,
+                )
+                
+            except IntegrityError:
+                order.delete()
+                return redirect('cart_list')
+
             total_amount += item.quantity * item.product.base_price
 
         order.total_amount = total_amount
-        order = order.save()
+        order.save()
 
         # delete all cart item after order is placed
         cart_items.delete()
@@ -150,9 +209,8 @@ class CheckoutOrderViewCreate(View):
         request.session['order_id'] = order.order_id
         request.session['order_placed_success'] = True
         
-        return redirect('success_checkout', order.order_id)
+        return redirect('order_successfully_placed', order.order_id)
 
-        # return redirect('checkout')
 
 # checkout view
 @login_required(login_url='login')
@@ -175,13 +233,14 @@ def checkout_view(request):
         return render(request, 'orders/checkout.html', context)
     return redirect('cart_list')
 
+
 # successfully placed order view
 def successfully_placed_order_view_create(request, order_id):
     if request.user.is_authenticated:
         if request.session.get('order_placed_success'):
 
             # checks if the session order id matches with the session id
-            if request.session.order_id != order_id:
+            if request.session.get('order_id') != str(order_id):
                 return redirect('home')
             
             order_id_ = request.session.get('order_id')

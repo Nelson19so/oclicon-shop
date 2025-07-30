@@ -6216,6 +6216,9 @@ label span {
     gap: 30px;
   }
 }
+.container-order-details-page .container-order-details-page-padding-wrapper .container-items-order-details .container-items-order-details-padding .wrapper-order-details-roadmap- .container-order-road-map- .container-main-roadmap .road-map-holder {
+  width: 100%;
+}
 .container-order-details-page .container-order-details-page-padding-wrapper .container-items-order-details .container-items-order-details-padding .wrapper-order-details-roadmap- .container-order-road-map- p {
   color: #5f6c72;
   font-weight: 400;
