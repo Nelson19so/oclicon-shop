@@ -1,7 +1,7 @@
 @use "../abstracts/variables" as variables;
 @use "../abstracts/mixins" as mixin;
 
-// catgory list
+// category list
 .container-shopping-category {
   margin: 10% 0;
 
@@ -547,13 +547,19 @@
 
   .container-main-account-info {
     @media only screen and (max-width: 517px) {
-      flex-direction: column;
+      // flex-direction: column;
+      overflow-x: scroll;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
     }
 
     .container-account-info,
     .container-billing-info {
       border: 1px solid #e4e7e9;
       width: 250px;
+      min-width: 250px;
       border-width: 1px;
       padding-bottom: 10px;
       gap: 22px;

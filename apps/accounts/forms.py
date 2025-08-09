@@ -105,16 +105,16 @@ class UserForm(forms.ModelForm):
         }
 
 # additional information
-class UserAdditionalInformation(forms.ModelForm):
+class UserAdditionalInformationForm(forms.ModelForm):
     
     class Meta:
         model = AdditionalUserInfo
-        fields = ('username', 'email', 'phone_number', 'city', 'zip_code', 'country_region')
+        fields = ('related_username', 'second_email', 'phone_number', 'city', 'zip_code', 'country_region')
         widget = {
-            'username': forms.TextInput(attrs={
-                'class': 'profile-input', 'placeholder': 'Enter second username'
+            'related_username': forms.TextInput(attrs={
+                'class': 'profile-input', 'placeholder': 'Enter your related username'
             }),
-            'email': forms.EmailInput(attrs={
+            'second_email': forms.EmailInput(attrs={
                 'class': 'profile-input', 'placeholder': 'Enter second email'
             }),
             'phone_number': forms.TextInput(attrs={

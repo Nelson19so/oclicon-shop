@@ -105,4 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  // profile picture handler
+  const profileInput = document.getElementById("profile-img-input");
+  const imageHandler = document.getElementById("upload_profile");
+
+  imageHandler.addEventListener("click", () => {
+    profileInput.click();
+  });
 });

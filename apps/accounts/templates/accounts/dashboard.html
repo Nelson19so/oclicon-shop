@@ -32,7 +32,7 @@
           <div class="container-articles-account-info-box">
             <div class="container-profile flex justify-start gap-[10px]">
               <div class="container-img-profile">
-                {% if user.profile.url %}
+                {% if user.profile %}
                 <img
                   src="{{ user.profile.profile.url }}"
                   alt="{{ user.username }}-profile"
@@ -49,12 +49,14 @@
               <div class="container-user-info flex justify-center flex-col">
                 <p>{{ user.username|title }}</p>
                 <span
-                  >{% if user.additional_user.city %} {{
-                  user.additional_user.city }} - {% endif %}
+                  >{% if user.additional_user.city %}
+                  <!--  -->
+                  {{ user.additional_user.city }} - {% endif %}
 
                   <!-- zip code -->
-                  {% if user.additional_user.zip_code %} {{
-                  user.additional_user.zip_code }}, {% endif %}
+                  {% if user.additional_user.zip_code %}
+                  <!--  -->
+                  {{ user.additional_user.zip_code }}, {% endif %}
                   <!-- country region -->
                   {{ user.additional_user.country_region }}</span
                 >
@@ -68,7 +70,7 @@
 
               <!-- additional email -->
               {% if user.additional_user.email %}
-              <p>Sec Email: <span>{{ user.additional_user.email }}</span></p>
+              <p>Sec Email: <span>{{ user.additional_user.second_email }}</span></p>
               {% else %}
               <p>Sec Email: <span>No additional email</span></p>
               {% endif %}

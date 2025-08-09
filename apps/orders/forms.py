@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order, OrderItem, ShippingAddress
+from .models import Order, ShippingAddress
 
 class TrackOrderForm(forms.Form):
     email = forms.EmailField()
@@ -20,8 +20,10 @@ class TrackOrderForm(forms.Form):
             except Order.DoesNotExist:
                 raise forms.ValidationError("No order was found for this user with the " \
                 "provided email and order id")
+            
         else:
-            raise forms.ValidationError('Make sure order and email input is valid')
+            raise forms.ValidationError('Make sure order id and email input are valid')
+
         return cleaned_data
 
 # shipping address model form

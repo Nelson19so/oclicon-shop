@@ -88,8 +88,8 @@ class TermsPrivacy(models.Model):
 
 class AdditionalUserInfo(models.Model):
     user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='additional_user')
-    username = models.CharField(max_length=200, null=True, blank=True)
-    email = models.EmailField(max_length=200)
+    related_username = models.CharField(max_length=200, null=True, blank=True)
+    second_email = models.EmailField(max_length=200)
     phone_number = models.CharField(max_length=12, null=True, blank=True)
     city = models.CharField(max_length=200, null=True, blank=True)
     zip_code = models.IntegerField(null=True, blank=True)
@@ -101,12 +101,12 @@ class AdditionalUserInfo(models.Model):
     
     def is_complete(self):
         return all([
-            self.email,
+            self.second_email,
             self.phone_number,
             self.city,
             self.zip_code,
             self.country_region,
-            self.username
+            self.related_username
         ])
 
 # billing information

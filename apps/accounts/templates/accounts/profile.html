@@ -25,19 +25,91 @@
 
         <div class="container-main-fields flex justify-between gap-[30px]">
           <div class="container-user-profile-image">
-            {% if user.profile.url %}
+            {% if user.profile %}
             <img
               src="{{ user.profile.profile.url }}"
               alt="{{ user.username }}-profile"
               width="40"
-              style="border-radius: 100px; height: 40px; min-width: 40px"
+              style="
+                border-radius: 100px;
+                height: 40px;
+                min-height: 100px;
+                min-width: 40px;
+              "
             />
             {% else %}
             <img
               src="{% static 'images/default_profile_pic/icon-avatar.png' %}"
               alt="{{ user.username }}"
+              width="40"
             />
             {% endif %}
+
+            <div class="flex justify-center gap-3" style="align-items: center">
+              <button id="upload_profile" class="cursor-pointer" type="button">
+                <svg
+                  fill="#000000"
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 124 124"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <path
+                      d="M18.1,54.5H0v51.4c0,3.1,2.5,5.6,5.6,5.6h112c3.5,0,6.4-2.9,6.4-6.4V35.6c0-3.4-2.7-6.1-6.1-6.1H89.1
+		c-3,0-5.5-2.2-5.899-5.1l-1-6.6c-0.5-2.9-3-5.3-5.9-5.3H47.5c-3,0-5.5,2.3-5.9,5.3l-1,6.6c-0.4,2.9-3,5.1-5.9,5.1H6
+		c-3.3,0-6,2.7-6,6v5h18.1c3.8,0,6.9,3.1,6.9,6.9v0.1C25,51.4,21.9,54.5,18.1,54.5z M108,40.7c3.9,0,7,3.1,7,7c0,3.9-3.1,7-7,7
+		s-7-3.1-7-7C101,43.9,104.1,40.7,108,40.7z M62.3,43.2c16.601,0,30,13.4,30,30c0,16.6-13.399,30-30,30c-16.6,0-30-13.4-30-30
+		C32.3,56.6,45.8,43.2,62.3,43.2z"
+                    />
+                    <circle cx="62" cy="73.2" r="15" />
+                  </g>
+                </svg>
+                <span>Upload</span>
+              </button>
+
+              {% if user.profile %}
+              <button
+                class="cursor-pointer"
+                id="remove"
+                type="submit"
+                name="remove_profile"
+              >
+                <svg
+                  fill="#000000"
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="15px"
+                  height="15px"
+                  viewBox="0 0 408.483 408.483"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <g>
+                      <path
+                        d="M87.748,388.784c0.461,11.01,9.521,19.699,20.539,19.699h191.911c11.018,0,20.078-8.689,20.539-19.699l13.705-289.316
+			H74.043L87.748,388.784z M247.655,171.329c0-4.61,3.738-8.349,8.35-8.349h13.355c4.609,0,8.35,3.738,8.35,8.349v165.293
+			c0,4.611-3.738,8.349-8.35,8.349h-13.355c-4.61,0-8.35-3.736-8.35-8.349V171.329z M189.216,171.329
+			c0-4.61,3.738-8.349,8.349-8.349h13.355c4.609,0,8.349,3.738,8.349,8.349v165.293c0,4.611-3.737,8.349-8.349,8.349h-13.355
+			c-4.61,0-8.349-3.736-8.349-8.349V171.329L189.216,171.329z M130.775,171.329c0-4.61,3.738-8.349,8.349-8.349h13.356
+			c4.61,0,8.349,3.738,8.349,8.349v165.293c0,4.611-3.738,8.349-8.349,8.349h-13.356c-4.61,0-8.349-3.736-8.349-8.349V171.329z"
+                      />
+                      <path
+                        d="M343.567,21.043h-88.535V4.305c0-2.377-1.927-4.305-4.305-4.305h-92.971c-2.377,0-4.304,1.928-4.304,4.305v16.737H64.916
+			c-7.125,0-12.9,5.776-12.9,12.901V74.47h304.451V33.944C356.467,26.819,350.692,21.043,343.567,21.043z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </button>
+              {% endif %}
+            </div>
 
             <input
               type="file"
@@ -70,8 +142,8 @@
                 </div>
 
                 <div class="input-container">
-                  <label for="username">Full Name</label>
-                  {{ additional_info_form.username }}
+                  <label for="username">Second Name</label>
+                  {{ additional_user.related_username }}
 
                   <div class="container-error-msg mt-1">
                     <p class="error-msg"></p>
@@ -80,7 +152,7 @@
 
                 <div class="input-container">
                   <label for="email">Secondary Email</label>
-                  {{ additional_info_form.email }}
+                  {{ additional_user.second_email }}
 
                   <div class="container-error-msg mt-1">
                     <p class="error-msg"></p>
@@ -89,7 +161,7 @@
 
                 <div class="input-container">
                   <label for="country_region">Country/Region</label>
-                  {{ additional_info_form.country_region }}
+                  {{ additional_user.country_region }}
 
                   <div class="container-error-msg mt-1">
                     <p class="error-msg"></p>
@@ -120,7 +192,7 @@
 
                 <div class="input-container">
                   <label for="phone_number">Phone Number</label>
-                  {{ additional_info_form.phone_number }}
+                  {{ additional_user.phone_number }}
 
                   <div class="container-error-msg mt-1">
                     <p class="error-msg"></p>
@@ -132,7 +204,7 @@
                 >
                   <div class="input-container">
                     <label for="state">State</label>
-                    {{ additional_info_form.city }}
+                    {{ additional_user.city }}
 
                     <div class="container-error-msg mt-1">
                       <p class="error-msg"></p>
@@ -141,7 +213,7 @@
 
                   <div class="input-container">
                     <label for="state">Zip Code</label>
-                    {{ additional_info_form.zip_code }}
+                    {{ additional_user.zip_code }}
 
                     <div class="container-error-msg mt-1">
                       <p class="error-msg"></p>

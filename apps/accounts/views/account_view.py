@@ -11,7 +11,7 @@ from apps.accounts.models import (
     ProfilePicture, BillingAddress
 )
 from apps.accounts.forms  import (
-    UserProfileForm, UserAdditionalInformation,
+    UserProfileForm, UserAdditionalInformationForm,
     UserForm, BillingAddressForm, 
     UserPasswordChange
 )
@@ -126,50 +126,30 @@ def search_history(request):
 def user_settings_profile(request):
     user = request.user
 
-    try:
-        additional_info = user.additional_user
-    except AdditionalUserInfo.DoesNotExist:
-        additional_info = None
+    # Get related instances or None
+    additional_info = getattr(user, 'additional_user', None)
+    profile = getattr(user, 'profile', None)
+    billing = getattr(user, 'billing_info', None)
+    shipping = getattr(user, 'shipping_info', None)
 
-    try:
-        profile = user.profile
-    except ProfilePicture.DoesNotExist:
-        profile = None
-
-    try:
-        billing = user.billing_info
-    except BillingAddress.DoesNotExist:
-        billing = None
-
-    try:
-        shipping = user.shipping_info
-    except ShippingAddress.DoesNotExist:
-        shipping = None
-
+    # Initialize forms with existing instances
     user_form = UserForm(instance=user)
-    additional_info_form = UserAdditionalInformation(instance=additional_info)
+    additional_info_form = UserAdditionalInformationForm(instance=additional_info)
     profile_form = UserProfileForm(instance=profile)
     billing_information = BillingAddressForm(instance=billing)
     shipping_information = ShippingAddressForm(instance=shipping)
     reset_user_password = UserPasswordChange()
 
+    # --- Handle User info Submit ---
     if request.method == 'POST' and 'submit_user_info' in request.POST:
         user_form = UserForm(request.POST, instance=user)
-        additional_info_form = UserAdditionalInformation(request.POST, instance=additional_info)
+        additional_info_form = UserAdditionalInformationForm(request.POST, instance=additional_info)
         profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
 
-        # form validation
-        if user_form.is_valid() and additional_info_form.is_valid() and profile_form.is_valid():
+        # Handle user form validation
+        if all([user_form.is_valid(), additional_info_form.is_valid(), profile_form.is_valid()]):
             user_form.save()
-
-            # additional info
-            additional_info = additional_info_form.save(commit=False)
-            additional_info.user = user
             additional_info_form.save()
-
-            # profile
-            profile_instance = profile_form.save(commit=False)
-            profile_instance.user = user
             profile_form.save()
             return redirect('profile')
 
@@ -190,6 +170,13 @@ def user_settings_profile(request):
             shipping_instance.user = user
             shipping_information_form.save()
             return redirect('profile')
+    
+    # remove user profile picture
+    if request.method == 'POST' and 'remove_profile' in request.POST:
+        try:
+            ProfilePicture.objects.filter(user=user).delete()
+        except ProfilePicture.DoesNotExist:
+            pass
 
     if additional_info and additional_info.is_complete():
         pass # passes this condition if all fields are filled up
@@ -199,13 +186,13 @@ def user_settings_profile(request):
     breadcrumbs = [
         ('User Account', '#/'),
         ('Dashboard', reverse('dashboard')),
-        ('Search History', reverse('search-history'))
+        ('Search History', reverse('profile'))
     ]
 
     context = {
         'user_form': user_form,
         'breadcrumbs': breadcrumbs,
-        'additional_info_form': additional_info_form,
+        'additional_user': additional_info_form,
         'profile_form': profile_form,
         'billing_information': billing_information,
         'shipping_information': shipping_information,
@@ -213,6 +200,7 @@ def user_settings_profile(request):
     }
 
     return render(request, 'accounts/profile.html', context)
+
 
 # Delete user account function
 def delete_user_account(request):

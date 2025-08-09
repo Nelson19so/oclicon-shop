@@ -36,15 +36,15 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(AdditionalUserInfo)
 class AdditionalUserInfoAdmin(admin.ModelAdmin):
     fields = (
-        'user', 'username', 
-        'email', 'phone_number', 
+        'user', 'related_username', 
+        'second_email', 'phone_number', 
         'city', 'zip_code', 
         'country_region'
     )
-    list_display = ('user', 'username', 'email', 'phone_number',)
-    list_filter = ('username', 'email', 'phone_number',)
+    list_display = ('user', 'related_username', 'second_email', 'phone_number',)
+    list_filter = ('related_username', 'second_email', 'phone_number',)
     readonly_fields = ['updated_at']
-    search_fields = ('username', 'email')
+    search_fields = ('related_username', 'second_email')
 
 # user profile picture/avatar
 @admin.register(ProfilePicture)
