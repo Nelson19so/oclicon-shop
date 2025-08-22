@@ -217,8 +217,10 @@ def checkout_view(request):
     cart_item = []
     
     try:
+        
         cart = Cart.objects.get(user=request.user)
         cart_item = CartItem.objects.filter(cart=cart).exists
+        
     except (Cart.DoesNotExist or CartItem.DoesNotExist):
         pass
     
@@ -248,7 +250,9 @@ def successfully_placed_order_view_create(request, order_id):
             request.session.pop('order_id', None)
             request.session.pop('order_placed_success', None)
             
-            return render(request, 'orders/order_successfully_Placed.html', {"order_id_": order_id_})
+            return render(request, 'orders/order_successfully_Placed.html', {
+                "order_id_": order_id_
+            })
         return redirect('dashboard')
     return redirect('home')
 

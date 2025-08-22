@@ -14,12 +14,12 @@
       {% csrf_token %}
 
       <div class="input-container w-full">
-        <label for="name">Name</label>
+        <label for="name">User Name</label>
         <input
           type="text"
-          name="Name"
+          name="username"
           id="name"
-          value="{{ form.Name.value|default_if_none:'' }}"
+          value="{{ form.username.value|default_if_none:'' }}"
         />
 
         <div class="container-error-msg mt-1">
