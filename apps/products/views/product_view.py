@@ -63,9 +63,11 @@ class ProductDetailView(DetailView, SessionMixin):
 
         session_key = self.get_or_create_session_key
         
-        related_product_key = f'related_product_{
-            self.request.user.id if self.request.user.is_authenticated else session_key
-        }'
+        related_product_key = (
+            f'related_product_{'
+            f'{self.request.user.id if self.request.user.is_authenticated else session_key}'
+            f'}'
+        )
 
         # getting category slug
         category = self.kwargs.get('child_slug')
