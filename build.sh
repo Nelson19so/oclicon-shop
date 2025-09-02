@@ -6,7 +6,7 @@ set -ex  # Print commands as they run and exit on failure
 pip install -r requirements.txt
 
 # Apply DB migrations (apply)
-python manage.py migrate --no-input --settings=settings.settings.prod
+python manage.py migrate --no-input --settings=config.settings.staging
 
 # Collect static files
-python manage.py collectstatic --no-input --settings=settings.settings.prod
+python manage.py collectstatic --no-input --settings=config.settings.staging
