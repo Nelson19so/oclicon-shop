@@ -63,11 +63,7 @@ class ProductDetailView(DetailView, SessionMixin):
 
         session_key = self.get_or_create_session_key
         
-        related_product_key = (
-            f'related_product_{'
-            f'{self.request.user.id if self.request.user.is_authenticated else session_key}'
-            f'}'
-        )
+        related_product_key = f'related_product_{self.request.user.id if self.request.user.is_authenticated else session_key}'
 
         # getting category slug
         category = self.kwargs.get('child_slug')
@@ -219,11 +215,7 @@ class FilteredProductListView(ListView, SessionMixin):
         session_key = self.get_or_create_session_key
         
         # stores the cache key
-        product_cache_key = (
-            f'product_shuffle_cache_{'
-            f'{self.request.user.id if self.request.user.is_authenticated else session_key}'
-            f'}'
-        )
+        product_cache_key = f'product_shuffle_cache_{self.request.user.id if self.request.user.is_authenticated else session_key}'
 
         # getting the product in cache
         product_ids = cache.get(product_cache_key)
