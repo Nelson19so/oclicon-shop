@@ -12,7 +12,7 @@ from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.utils.timezone import now
-from django.db import IntegrityError
+from django.db        import IntegrityError
 
 
 # track user order page view
@@ -31,7 +31,7 @@ def track_order(request):
             if form.is_valid():
                 # getting the order id from the data submit by the user
                 order_id = form.cleaned_data["order_id"]
-                
+
                 # redirect user to the order details page with the order id provided by user
                 return redirect('order_details', order_id=order_id)
 
@@ -39,7 +39,7 @@ def track_order(request):
         else:
             # redirect users to login
             return redirect('login')
-        
+
     else:
         form = TrackOrderForm()
 
@@ -76,7 +76,7 @@ def cancel_order(request, order_id):
         order.canceled_at = now()
         order.canceled_by = request.user
         order.save()
-    
+
         messages.success(request, "Your order has been cancelled.")
         return redirect('order-history')
 
@@ -106,7 +106,7 @@ class OrderDetails(DetailView):
 
     # filters all order status history by order id
     def get_order_status(self, order):
-        
+
         try:
 
             # Get all the history records for the given order, sorted by time
@@ -160,7 +160,13 @@ class CheckoutOrderViewCreate(View):
         if not user.is_authenticated:
             return redirect('login')
 
-        cart = Cart.objects.get(user=user)
+        try:
+
+            cart = Cart.objects.get(user=user)
+
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(user=user)
+        
         # if the cart doesn't exist
         if not cart:
             return redirect('cart_list')  # or some cart view name

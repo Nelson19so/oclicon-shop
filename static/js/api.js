@@ -223,7 +223,7 @@ $(document).ready(function () {
 // toast config for dynamic changes and update
 
 const toast = document.getElementById("toast");
-toast.classList.add("disabled");
+// toast.classList.add("disabled");
 
 function showToast(message) {
   if (toast.classList.contains("disabled")) {

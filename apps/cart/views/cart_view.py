@@ -97,7 +97,6 @@ class CreateCartItem(CartMixin, SessionMixin, View):
                 )
 
             except IntegrityError:
-                cart_item.delete()
                 return redirect('cart_list')
 
             if not created:
@@ -256,7 +255,7 @@ def update_cart_quantities(request):
             cart_item.quantity = quantity
             cart_item.updated_at = timezone.now()
             cart_item.save()
-            cache.set(cart_key, cart_item,timeout=300)
+            cache.set(cart_key, cart_item, timeout=300)
             cache.delete(cart_key)
             
         except (ValueError, CartItem.DoesNotExist):
