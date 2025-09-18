@@ -206,10 +206,11 @@ def reset_password_request_view(request):
     breadcrumbs = [
         ('User Account', '/home/user_account'),
         ('Sign In', reverse('login')),
-        ('Forget Password', request.path)
+        ('Forgot Password', request.path)
     ]
     context = {'form': form, 'breadcrumbs': breadcrumbs}
     return render(request, 'accounts/authentication/password_reset_request.html', context)
+
 
 # View for resetting the password (Step 2)
 def reset_password_view(request, uidb64, token):
@@ -250,6 +251,7 @@ def reset_password_view(request, uidb64, token):
         return render(request, 'accounts/authentication/password_reset_page.html', context)
     else:
         return redirect('password_reset_invalid')  # Redirect if token is invalid or expired
+
 
 # email verification code for user registration confirmation 
 def registration_email_verification(request):
