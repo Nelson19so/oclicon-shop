@@ -149,8 +149,14 @@ def user_settings_profile(request):
         # Handle user form validation
         if all([user_form.is_valid(), additional_info_form.is_valid(), profile_form.is_valid()]):
             user_form.save()
-            additional_info_form.save()
-            profile_form.save()
+
+            add_info = additional_info_form.save(commit=False)
+            add_info.user = user
+            add_info.save()
+
+            prof = profile_form.save(commit=False)
+            prof.user = user
+            prof.save()
             return redirect('profile')
 
     if request.method == 'POST' and 'submit_billing_info' in request.POST:

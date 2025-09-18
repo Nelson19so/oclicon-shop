@@ -162,9 +162,14 @@ def reset_password_request_view(request):
             # getting user field email from the db
             email = form.cleaned_data['email']
 
-            # getting user with this email
-            user = User.objects.get(email=email)
+            try:
 
+                # getting user with this email
+                user = User.objects.get(email=email)
+            
+            except User.DoesNotExist:
+                return redirect('reset_password_request')
+            
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
     
@@ -176,18 +181,24 @@ def reset_password_request_view(request):
                 'reset_url': reset_url,
             })
     
-            # send the password reset link to the user's email
-            send__message = EmailMultiAlternatives(
-                subject='Password Reset Request',
-                body=html_content,
-                from_email='no-reply@clickon.com',
-                to=[email]
-            )
-            send__message.attach_alternative(html_content, "text/html")
-            send__message.send()
-    
+            try:
+
+                # send the password reset link to the user's email
+                send__message = EmailMultiAlternatives(
+                    subject='Password Reset Request',
+                    body=html_content,
+                    from_email='no-reply@clickon.com',
+                    to=[email]
+                )
+                send__message.attach_alternative(html_content, "text/html")
+                send__message.send()
+        
+            except Exception as e:
+                return redirect('reset_password_request')  
+
             # Redirect to a page saying email has been sent
             return redirect('password_reset_email_sent')  
+
     else:
         form = ResetPasswordEmailForm()
 

@@ -96,11 +96,9 @@ class ResetPasswordEmailForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get('email')
-        user = User.objects.filter(email=email)
 
-        if email:
-            if not user:
-                raise forms.ValidationError('This email is not register')
+        if email and not User.objects.filter(email=email).exists():
+            raise forms.ValidationError('This email is not register')
         return cleaned_data
 
 # password reset input
