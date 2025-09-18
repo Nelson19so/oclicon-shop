@@ -11,11 +11,15 @@ load_dotenv()
 def create_superuser(apps, scheme_editor):
     User = apps.get_model("accounts", "CustomUser")
 
-    if not User.objects.filter(email=os.getenv('email')):
-        User.objects.create_superuser(
+    if not User.objects.filter(email=os.getenv('email')).exists():
+
+        User.objects.create(
             username=os.getenv('username'),
             email=os.getenv('email'),
-            password=os.getenv('password'),
+            password=make_password(os.getenv('password')),
+            is_superuser=True,
+            is_staff=True,
+            is_active=True,
         )
 
 class Migration(migrations.Migration):
