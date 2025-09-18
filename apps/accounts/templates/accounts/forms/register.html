@@ -20,10 +20,15 @@
           name="username"
           id="name"
           value="{{ form.username.value|default_if_none:'' }}"
+          class="{% if form.username.errors %}wrong_input_field{% endif %}"
         />
 
         <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
+          {% for error in form.username.errors %}
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
+          {% endfor %}
         </div>
       </div>
 
@@ -34,21 +39,16 @@
           name="email"
           id="email"
           value="{{ form.email.value|default_if_none:'' }}"
+          class="{% if form.email.errors %}wrong_input_field{% endif %}"
         />
 
-        <!-- js error -->
-        <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
-        </div>
-
-        <!-- server error -->
-        {% if form.errors %}
         <div class="container-error-msg mt-1">
           {% for error in form.email.errors %}
-          <p class="error-msg">{{ error }}</p>
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
           {% endfor %}
         </div>
-        {% endif %}
       </div>
 
       <div class="input-container w-full">
@@ -61,6 +61,7 @@
           id="password1"
           placeholder="8+ characters"
           value="{{ form.password1.value|default_if_none:'' }}"
+          class="{% if form.password1.errors %}wrong_input_field{% endif %}"
         />
         <a class="svg-eye cursor-pointer" id="register-svg-eye1">
           <svg
@@ -77,20 +78,27 @@
         </a>
 
         <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
+          {% for error in form.password1.errors %}
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
+          {% endfor %}
         </div>
       </div>
 
-      <div class="input-container w-full">
+      <div class="input-container w-full password2">
         <div class="container-password-forgot-pass flex justify-between">
           <label for="password2">Confirm Password</label>
         </div>
+
         <input
           type="password"
           name="password2"
           id="password2"
           value="{{ form.password2.value|default_if_none:'' }}"
+          class="{% if form.password2.errors %}wrong_input_field{% endif %}"
         />
+
         <a class="svg-eye cursor-pointer" id="register-svg-eye2">
           <svg
             fill="#000000"
@@ -106,7 +114,11 @@
         </a>
 
         <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
+          {% for error in form.password2.errors %}
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
+          {% endfor %}
         </div>
       </div>
 
@@ -128,7 +140,11 @@
       </div>
       {% endif %}
 
-      <button class="bton-login--sign-up flex justify-center">
+      <button
+        class="bton-login--sign-up flex justify-center"
+        type="submit"
+        id="register_btn"
+      >
         Sign up
         <svg
           class="ml-2"

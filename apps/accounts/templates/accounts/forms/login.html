@@ -19,12 +19,16 @@
           type="email"
           name="email"
           id="email"
-          class="login-email"
           value="{{ form.email.value|default_if_none:'' }}"
+          class="{% if form.email.errors %}wrong_input_field{% endif %} login-email"
         />
 
         <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
+          {% for error in form.email.errors %}
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
+          {% endfor %}
         </div>
       </div>
 
@@ -37,8 +41,8 @@
           type="password"
           name="password"
           id="password"
-          class="login-password"
           value="{{ form.password.value|default_if_none:'' }}"
+          class="{% if form.password.errors %}wrong_input_field{% endif %} login-password"
         />
 
         <div class="svg-eye" id="login-svg-eye">
@@ -57,7 +61,11 @@
         </div>
 
         <div class="container-error-msg mt-1">
-          <p class="error-msg"></p>
+          {% for error in form.password.errors %}
+            <p class="error-msg">{{ error }}</p>
+          {% empty %}
+            <p class="error-msg"></p>
+          {% endfor %}
         </div>
       </div>
 

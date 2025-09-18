@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ✅ Handle register form (if it exists)
   const registerForm = document.querySelector("#register_form");
+
   if (registerForm) {
     const registerPassword1 = registerForm.querySelector("#password1");
     const toggleRegisterPassword1 =

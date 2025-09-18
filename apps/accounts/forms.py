@@ -2,32 +2,50 @@ from django import forms
 from .models import AdditionalUserInfo, ProfilePicture, BillingAddress
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.password_validation import validate_password
+from django.utils.translation import gettext_lazy as _
 
 # user registration form
 User = get_user_model()
 
 class UserRegistrationForm(forms.ModelForm):
-    password1 = forms.CharField(widget=forms.PasswordInput, label="Password")
-    password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+    password1 = forms.CharField(widget=forms.PasswordInput, required=True, label="Password",
+    error_messages={
+        'required': 'Password field is required' 
+    })
+    password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password", 
+    error_messages={
+        'required': 'Confirm password field is required'
+    })
+    username = forms.CharField(max_length=100, required=True, error_messages={
+        'required': 'Username field is required'
+    })
+    email = forms.EmailField(max_length=100, required=True, error_messages={
+        'required': 'Email field is required'
+    })
 
     class Meta:
         model = User
         fields = ['username', 'email', 'terms_accepted', 'password1', 'password2']
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        
+        if len(username) <= 3:
+            raise forms.ValidationError('Username field is too short*')
+        
+        return username
+
     def clean_email(self):
         email = self.cleaned_data.get("email").lower()
 
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("A user with this email already exists.")
+            raise forms.ValidationError("A user with this email already exists*")
         return email
 
     def clean(self):
         cleaned_data = super().clean()
         password1 = cleaned_data.get("password1")
         password2 = cleaned_data.get("password2")
-
-        if not password1:
-            raise forms.ValidationError("Password fields are required")
 
         if password1 != password2:
             raise forms.ValidationError("Passwords do not match.")
@@ -43,8 +61,14 @@ class UserRegistrationForm(forms.ModelForm):
 
 # user login form
 class UserLoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'login-email'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'login-password'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'login-email'}),
+    required=True, error_messages={
+        'required': 'Email field is required'
+    })
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'login-password'}),
+    required=True, error_messages={
+        'required': 'Password field is required'
+    })
 
     def __init__(self, *args, **kwargs):
         self.user = None  # Store authenticated user
@@ -65,15 +89,18 @@ class UserLoginForm(forms.Form):
 
 # reset password user email
 class ResetPasswordEmailForm(forms.Form):
-    email = forms.EmailField()
+    email = forms.EmailField(max_length=100, required=True, error_messages={
+        'required': 'Email field is required'
+    })
 
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get('email')
         user = User.objects.filter(email=email)
 
-        if not user:
-            raise forms.ValidationError('This email is not register')
+        if email:
+            if not user:
+                raise forms.ValidationError('This email is not register')
         return cleaned_data
 
 # password reset input

@@ -156,6 +156,7 @@ def reset_password_request_view(request):
     # handles post request for forgotten password
     if request.method == 'POST':
         form = ResetPasswordEmailForm(request.POST)
+        
         # checks if form is valid
         if form.is_valid():
             # getting user field email from the db
