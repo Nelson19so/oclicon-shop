@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 # allowed url
 ALLOWED_HOSTS = ["oclicon-shop.onrender.com"]
