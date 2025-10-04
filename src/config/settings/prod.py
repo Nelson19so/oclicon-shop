@@ -10,10 +10,10 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
-        'OPTION': {
+        'OPTIONS': {
             'sslomode': 'require'
         },
-        'CONN_MAX_AGE': 60,
+        'CONN_MAX_AGE': 600,
     }
 }
 
