@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 DATABASES = {
     'default': {
@@ -28,7 +28,7 @@ AWS_S3_ENDPOINT_URL = ''
 AWS_QUERYSTRING_AUTH = False
 
 # allowed host
-ALLOWED_HOSTS = ["production-domain.com"]
+ALLOWED_HOSTS = ["oclicon-shop.onrender.com"]
 
 # Static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
