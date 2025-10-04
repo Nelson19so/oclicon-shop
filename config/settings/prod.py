@@ -10,8 +10,22 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
+        'OPTION': {
+            'sslomode': 'require'
+        },
+        'CONN_MAX_AGE': 60,
     }
 }
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.getenv('SUPABASE_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('SUPABASE_SECRET_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('SUPABASE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = ''
+
+# Makes url public
+AWS_QUERYSTRING_AUTH = False
 
 # allowed host
 ALLOWED_HOSTS = ["production-domain.com"]

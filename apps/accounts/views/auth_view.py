@@ -216,9 +216,11 @@ def reset_password_request_view(request):
 def reset_password_view(request, uidb64, token):
     # validating if the uidb64 exist for the user
     try:
+
         # Decode the user ID
         uid = urlsafe_base64_decode(uidb64).decode() 
         user = User.objects.get(pk=uid)
+
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
 
@@ -249,6 +251,7 @@ def reset_password_view(request, uidb64, token):
         ]
         context = {'form': form, 'breadcrumbs': breadcrumbs}
         return render(request, 'accounts/authentication/password_reset_page.html', context)
+    
     else:
         return redirect('password_reset_invalid')  # Redirect if token is invalid or expired
 
