@@ -6,7 +6,11 @@ from src.apps.config import Apps
 
 load_dotenv()
 
+# point to project root /src/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+# Project root /src/
+ROOT_DIR=BASE_DIR.parent
 
 # Secret Key
 SECRET_KEY = os.getenv('django-secret-key')
@@ -29,6 +33,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.apple',
+
+    # Supabase storage app
+    'storages',
 ]
 
 INSTALLED_APPS += [app['name'] for app in Apps]
@@ -98,11 +105,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = ROOT_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = ROOT_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
