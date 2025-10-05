@@ -33,9 +33,6 @@ AWS_S3_VERIFY = True
 # Makes URLs public
 AWS_QUERYSTRING_AUTH = False
 
-# Optional - custom domain for files
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}"
-
 # Static files (use WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
