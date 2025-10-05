@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False 
 
 DATABASES = {
     'default': {
@@ -10,10 +10,10 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
-        'OPTION': {
-            'sslomode': 'require'
+        'OPTIONS': {
+            'sslmode': 'require'
         },
-        'CONN_MAX_AGE': 60,
+        'CONN_MAX_AGE': 600,
     }
 }
 
