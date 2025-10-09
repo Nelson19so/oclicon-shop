@@ -4,10 +4,10 @@ from django.core.exceptions import ImproperlyConfigured
 import os
 from src.apps.config import Apps
 
-load_dotenv()
-
 # point to project root /src/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 # Project root /src/
 ROOT_DIR=BASE_DIR.parent

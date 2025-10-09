@@ -18,20 +18,17 @@ DATABASES = {
 }
 
 # === Storage ===
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
 
-AWS_ACCESS_KEY_ID = os.getenv("SUPABASE_ACCESS_KEY")
-AWS_SECRET_ACCESS_KEY = os.getenv("SUPABASE_SECRET_KEY")
-AWS_STORAGE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
+# Use custom Supabase storage backend
+DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.SupabaseStorage"
 
-# Supabase S3 endpoint
-AWS_S3_ENDPOINT_URL = os.getenv("SUPABASE_S3_ENDPOINT")
-AWS_S3_REGION_NAME = None  # Supabase doesn’t require region
-AWS_S3_USE_SSL = True
-AWS_S3_VERIFY = True
+# Construct media URL dynamically from Supabase env
+MEDIA_URL = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_BUCKET_NAME}/"
 
-# Makes URLs public
-AWS_QUERYSTRING_AUTH = False
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Static files (use WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
