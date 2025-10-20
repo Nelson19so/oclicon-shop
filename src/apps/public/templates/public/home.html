@@ -58,13 +58,13 @@
         >
           {% if top_ad.price %}
           <p class="huge-price">${{ top_ad.price }}</p>
-          {% endif %}
-
+          {% endif %} {% if top_ad.image %}
           <img
             src="{{ top_ad.image.url }}"
             alt="playstation-5"
             class="bottom-0"
           />
+          {% endif %}
         </div>
       </div>
       {% else %}
@@ -119,11 +119,13 @@
             class="container-inner-sm w-1/2 h-full flex justify-items-end pt-10"
           >
             <!-- <p class="off-percentage">29% OFF</p> -->
+            {% if top_right_ad.image %}
             <img
               src="{{ top_right_ad.image.url }}"
               alt="phone"
               class="bottom-0"
             />
+            {% endif %}
           </div>
         </div>
         {% else %}
@@ -138,11 +140,13 @@
           class="container-sm-add-sm w-full flex justify-between overflow-hidden"
         >
           <div class="container-inner-sm w-1/2 h-ful pt-5">
+            {% if top_right_bottom_ad.image %}
             <img
               src="{{ top_right_bottom_ad.image.url }}"
               alt="phone"
               class="bottom-0"
             />
+            {% endif %}
           </div>
 
           <div class="container-inner-sm w-1/2 h-full p-6">
