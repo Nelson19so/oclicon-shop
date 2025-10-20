@@ -17,16 +17,9 @@ DATABASES = {
     }
 }
 
-# === Storage ===
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
+DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.BytescaleStorage"
 
-# Use custom Supabase storage backend
-DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.SupabaseStorage"
-
-# Construct media URL dynamically from Supabase env
-MEDIA_URL = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_BUCKET_NAME}/"
+MEDIA_URL = ""
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 

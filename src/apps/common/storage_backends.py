@@ -1,28 +1,29 @@
-import io
+import os
+import requests
 from django.core.files.storage import Storage
-from django.conf import settings
-from supabase import create_client, Client
 
-class SupabaseStorage(Storage):
-    def __init__(self):
-        self.supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
-        self.bucket_name = settings.SUPABASE_BUCKET_NAME
+BYTESCALE_API_KEY = os.getenv("BYTESCALE_API_KEY")
+ACCOUNT_ID = os.getenv("BYTESCALE_ACCOUNT_ID")
 
+class BytescaleStorage(Storage):
     def _save(self, name, content):
-        # Read file into bytes
-        file_data = content.read()
-        res = self.supabase.storage.from_(self.bucket_name).upload(name, file_data)
-        if res.get("error"):
-            raise Exception(res["error"]["message"])
-        return name
+        """Upload file to Bytescale via REST API"""
+        upload_url = f"https://api.bytescale.com/v2/accounts/{ACCOUNT_ID}/uploads/form_data"
 
-    def exists(self, name):
-        try:
-            self.supabase.storage.from_(self.bucket_name).list(path=name)
-            return False
-        except Exception:
-            return False
+        headers = {
+            "Authorization": f"Bearer {BYTESCALE_API_KEY}",
+        }
+
+        files = {
+            "file": (name, content.read()),
+        }
+
+        response = requests.post(upload_url, headers=headers, files=files)
+        response.raise_for_status()
+
+        data = response.json()
+        return data["fileUrl"]  # e.g. https://upcdn.io/k12345/filename.jpg
 
     def url(self, name):
-        # Generate public URL (if bucket is public)
-        return self.supabase.storage.from_(self.bucket_name).get_public_url(name)
+        """Return stored CDN URL"""
+        return name
