@@ -21,6 +21,7 @@ DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.BytescaleStorage"
 
 MEDIA_URL = "https://upcdn.io/"  # optional, just a reference
 MEDIA_ROOT = ""  # not used for Bytescale
+MEDIA_ROOT = ROOT_DIR / 'media'
 
 # Static files (using WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
