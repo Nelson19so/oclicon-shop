@@ -22,10 +22,10 @@ DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.BytescaleStorage"
 MEDIA_URL = "https://upcdn.io/"  # optional, just a reference
 MEDIA_ROOT = ""  # not used for Bytescale
 
-# Static files (use WhiteNoise)
+# Static files (using WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# allowed host
+# Allowed host
 ALLOWED_HOSTS = ["oclicon-shop.onrender.com"]
 
 """
