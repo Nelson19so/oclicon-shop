@@ -11,3 +11,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Media files config for development
+MEDIA_URL = '/media/'
+MEDIA_ROOT = ROOT_DIR / 'media'
+
+# Static files config for development
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = ROOT_DIR / 'staticfiles'
