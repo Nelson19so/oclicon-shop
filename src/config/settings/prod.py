@@ -19,9 +19,8 @@ DATABASES = {
 
 DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.BytescaleStorage"
 
-MEDIA_URL = ""
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "https://upcdn.io/"  # optional, just a reference
+MEDIA_ROOT = ""  # not used for Bytescale
 
 # Static files (use WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
