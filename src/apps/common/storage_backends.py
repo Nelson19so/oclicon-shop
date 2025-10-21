@@ -1,7 +1,6 @@
 import os
 import requests
 from django.core.files.storage import Storage
-from django.core.files.base import ContentFile
 
 
 BYTESCALE_API_KEY = os.getenv("BYTESCALE_API_KEY")
@@ -9,30 +8,32 @@ ACCOUNT_ID = os.getenv("BYTESCALE_ACCOUNT_ID")
 
 
 class BytescaleStorage(Storage):
-    """
-    Custom Django Storage backend for uploading media files to Bytescale.
-    """
-
     def _save(self, name, content):
-        """Upload file to Bytescale via REST API"""
+        """
+        Upload file to Bytescale via REST API.
+        Fixes 'Invalid path' by stripping all slashes and directories.
+        """
         upload_url = f"https://api.bytescale.com/v2/accounts/{ACCOUNT_ID}/uploads/form_data"
-        headers = {"Authorization": f"Bearer {BYTESCALE_API_KEY}"}
 
-        # Only take the file name, remove directories like '/ads/'
-        file_name = os.path.basename(name)
+        headers = {
+            "Authorization": f"Bearer {BYTESCALE_API_KEY}",
+        }
 
-        files = {"file": (file_name, content.read())}
+        # ✅ Remove any leading "/" and directories like "ads/"
+        cleaned_name = name.lstrip("/").split("/")[-1]
+
+        # ✅ Read file content safely
+        content.open()
+        files = {
+            "file": (cleaned_name, content.read()),
+        }
 
         response = requests.post(upload_url, headers=headers, files=files)
         response.raise_for_status()
 
         data = response.json()
-
-        # Return filePath (Bytescale handles folder internally)
-        return data["filePath"]  # e.g. "/k12345/filename.png"
+        return data["fileUrl"]
 
     def url(self, name):
-        """Return full CDN URL"""
-        if name.startswith("http"):
-            return name
-        return f"https://upcdn.io{str(name)}"
+        # Django expects a URL for displaying the file
+        return name
