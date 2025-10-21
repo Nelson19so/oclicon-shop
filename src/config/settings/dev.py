@@ -15,6 +15,3 @@ DATABASES = {
 # Media files config for development
 MEDIA_URL = '/media/'
 MEDIA_ROOT = ROOT_DIR / 'media'
-
-# Static files config for development
-STATICFILES_DIRS = [BASE_DIR / 'static']
