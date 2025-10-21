@@ -23,6 +23,7 @@ MEDIA_URL = "https://upcdn.io/"  # optional, just a reference
 MEDIA_ROOT = ""  # not used for Bytescale
 
 # Static files (using WhiteNoise)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Allowed host
