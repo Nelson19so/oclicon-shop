@@ -27,7 +27,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # --- MEDIA & STATIC ---
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media' 
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # --- ALLOWED HOSTS ---
 ALLOWED_HOSTS = ['oclicon-shop.onrender.com']

@@ -2,7 +2,7 @@
 
 <!-- main content -->
 {% block content %}
-<div class="container-main-product-list">
+<div class="container-main-product-list min-h-[80vh]">
   <div class="product-list-main-padding">
     <header class="product-list-header--">
       <div class="container-left-header-product-list">
@@ -51,7 +51,7 @@
           >
             Sort by:
             <select name="select" id="select">
-              <option value="Most Popular">Most Popular</option>
+              <option value="Most Popular">All products</option>
             </select>
           </div>
 
@@ -70,10 +70,10 @@
       <div class="container-items-product--y w-full flex justify-between">
         <div class="container-left-container flex justify-start gap-3">
           <span>Active Filters:</span>
+          <p>All products</p>
           {% if category_name %}
           <p>{{ category_name }}</p>
           {% endif %}
-          <p>5 Star Rating</p>
         </div>
 
         <div class="container-right-container md:flex justify-end hidden">
@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <div class="container-products-container-- h-full mt-5">
+      <div class="container-products-container-- h-full min-h-[35vh] mt-5">
         {% if products %}
         <div class="product-grid gap-3">
           {% for product in products %}

@@ -9,9 +9,9 @@
 
 <!-- main content goes here -->
 {% block content %}
-<div class="container-wishlist-items-list">
+<div class="container-wishlist-items-list min-h-[80vh]">
   <div class="container-wishlist-items-list-padding w-full">
-    <div class="container-items-in-wishlist w-full">
+    <div class="container-items-in-wishlist w-full min-h-[50vh]">
       <div class="header-wishlist w-full">
         <p>Wishlist</p>
       </div>
@@ -159,7 +159,7 @@
         <!-- product wishlist ends -->
       </div>
       {% else %}
-      <div class="container-doest-not-exist">
+      <div class="container-doest-not-exist mt-20">
         <p>No wishlist product found</p>
       </div>
       {% endif %}

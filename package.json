@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwindcss": "npx tailwindcss -i ./static/styles/input.css -o ./static/styles/output.css --watch",
-    "scss": "sass --watch ./static/scss/main.scss:static/styles/clicon.css"
+    "tailwindcss": "npx tailwindcss -i ./src/static/styles/input.css -o ./src/static/styles/output.css --watch",
+    "scss": "sass --watch ./src/static/scss/main.scss:src/static/styles/clicon.css"
   },
   "repository": {
     "type": "git",
