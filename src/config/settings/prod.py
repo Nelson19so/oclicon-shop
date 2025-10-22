@@ -1,7 +1,9 @@
 from .base import *
+import os
 
-DEBUG = True
+DEBUG = False 
 
+# --- DATABASE CONFIGURATION ---
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -10,26 +12,27 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
-        'OPTIONS': {
-            'sslmode': 'require'
-        },
+        'OPTIONS': {'sslmode': 'require'},
         'CONN_MAX_AGE': 600,
     }
 }
 
-DEFAULT_FILE_STORAGE = "src.apps.common.storage_backends.BytescaleStorage"
+# --- CLOUDINARY CONFIGURATION ---
+CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 
-MEDIA_URL = "https://upcdn.io/"  # optional, just a reference
-MEDIA_ROOT = ""  # not used for Bytescale
-MEDIA_ROOT = ROOT_DIR / 'media'
+# Use Cloudinary for media uploads
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Static files (using WhiteNoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Allowed host
-ALLOWED_HOSTS = ["oclicon-shop.onrender.com"]
+# --- MEDIA & STATIC ---
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media' 
+
+# --- ALLOWED HOSTS ---
+ALLOWED_HOSTS = ['oclicon-shop.onrender.com']
 
 """
-Prod.py file is the main oclicon ecommerce website settings conf for live and rea time operation
-this is the main ecommerce setup for ready to use
+This prod.py config connects Django media uploads to Cloudinary CDN for production.
+Uploaded images will appear in your Cloudinary dashboard automatically.
 """

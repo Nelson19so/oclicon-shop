@@ -34,8 +34,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.apple',
 
-    # Supabase storage app
-    'storages',
+    # Cloudinary storage for storing media files
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 INSTALLED_APPS += [app['name'] for app in Apps]
