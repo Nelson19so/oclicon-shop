@@ -24,7 +24,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # --- MEDIA & STATIC ---
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = ROOT_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # --- ALLOWED HOSTS ---
