@@ -19,14 +19,12 @@ DATABASES = {
 
 # --- CLOUDINARY CONFIGURATION ---
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
-
 # Use Cloudinary for media uploads
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # --- MEDIA & STATIC ---
-MEDIA_URL = '/media/'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = ROOT_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # --- ALLOWED HOSTS ---
