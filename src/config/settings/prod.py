@@ -31,7 +31,7 @@ cloudinary.config(
 # Use Cloudinary for media uploads
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = 'https://res.cloudinary.com/%s/' % os.getenv('CLOUD_NAME')
+# MEDIA_URL = 'https://res.cloudinary.com/%s/' % os.getenv('CLOUD_NAME')
 
 # --- MEDIA & STATIC ---
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
