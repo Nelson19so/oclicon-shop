@@ -15,13 +15,13 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
-        'OPTIONS': {'sslmode': 'require'},
-        'CONN_MAX_AGE': 600,
+        #'OPTIONS': {'sslmode': 'require'},
+        #'CONN_MAX_AGE': 600,
     }
 }
 
 # --- CLOUDINARY CONFIGURATION ---
-CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+# CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
@@ -30,7 +30,7 @@ cloudinary.config(
 )
 # Use Cloudinary for media uploads
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+MEDIA_URL = '/media/'
 # --- MEDIA & STATIC ---
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
