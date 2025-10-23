@@ -33,7 +33,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # --- MEDIA & STATIC ---
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-MEDIA_ROOT = BASE_DIR / 'media'
 
 # --- ALLOWED HOSTS ---
 ALLOWED_HOSTS = ['oclicon-shop.onrender.com']
