@@ -1,5 +1,8 @@
 from .base import *
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 DEBUG = False 
 
@@ -19,6 +22,12 @@ DATABASES = {
 
 # --- CLOUDINARY CONFIGURATION ---
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+
+cloudinary.config(
+    cloud_name=os.getenv('CLOUD_NAME'),
+    api_key=os.getenv('CLOUD_API_KEY'),
+    api_secret=os.getenv('CLOUD_API_SECRET'),
+)
 # Use Cloudinary for media uploads
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
