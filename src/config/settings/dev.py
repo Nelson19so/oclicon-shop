@@ -14,3 +14,4 @@ DATABASES = {
 
 # Media files config for development
 MEDIA_ROOT = BASE_DIR / 'media' 
+MEDIA_URL = '/media/'
