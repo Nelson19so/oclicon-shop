@@ -32,8 +32,6 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUD_API_SECRET'),
 }
 
-CLOUDINARY_URL=f'cloudinary://{os.getenv('CLOUD_API_KEY')}:{os.getenv('CLOUD_API_SECRET')}@{os.getenv('CLOUD_NAME')}'
-
 # Use Cloudinary for media uploads
 # MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
