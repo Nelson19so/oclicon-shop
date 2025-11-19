@@ -2,13 +2,15 @@ from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 import random
 
 # brand model
 class Brand(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True, blank=True)
-    logo = models.ImageField(upload_to='brands/', null=True, blank=True)
+    # logo = models.ImageField(upload_to='brands/', null=True, blank=True)
+    logo = CloudinaryField('image', folder='brands', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -23,7 +25,8 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
-    image = models.ImageField(upload_to='category/', null=True, blank=True)
+    # image = models.ImageField(upload_to='category/', null=True, blank=True)
+    image = CloudinaryField('image', folder='category', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -158,7 +161,8 @@ class ProductImage(models.Model):
     variant = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     is_featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products/')
+    # image = models.ImageField(upload_to='products/')
+    image = CloudinaryField('image', folder='products')
 
     class Meta:
         ordering = ['order']
@@ -208,7 +212,8 @@ class Ad(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='ads/', null=True, blank=True)
+    # image = models.ImageField(upload_to='ads/', null=True, blank=True)
+    image = CloudinaryField('image', folder='ads', null=True, blank=True)
     price = models.DecimalField(decimal_places=0, max_digits=10, blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     position = models.CharField(max_length=20, choices=POSITION_CHOICES)

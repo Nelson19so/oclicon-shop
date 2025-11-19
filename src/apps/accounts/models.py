@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # base user model
 class BaseUserManager(BaseUserManager):
@@ -40,11 +41,12 @@ class ProfilePicture(models.Model):
     user = models.OneToOneField(
         'CustomUser', on_delete=models.CASCADE, related_name='profile', 
     )
-    profile = models.ImageField(
-        upload_to='profile', 
-        blank=False, null=False,
-        default='default_profile_pic/icon-avatar.png'
-    )
+    # profile = models.ImageField(
+    #     upload_to='profile', 
+    #     blank=False, null=False,
+    #     default='default_profile_pic/icon-avatar.png'
+    # )
+    profile = CloudinaryField('profile', folder='profile', blank=False, null=False)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
