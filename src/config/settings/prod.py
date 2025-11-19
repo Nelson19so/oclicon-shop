@@ -6,7 +6,7 @@ import cloudinary.api
 
 DEBUG = False 
 
-# --- DATABASE CONFIGURATION ---
+# DATABASE CONFIGURATION
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -36,9 +36,9 @@ CLOUDINARY_STORAGE = {
 # MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# --- STATIC ---
+# STATIC
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# --- ALLOWED HOSTS ---
+# ALLOWED HOSTS
 ALLOWED_HOSTS = ['oclicon-shop.onrender.com']
 
