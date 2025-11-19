@@ -22,7 +22,6 @@ DATABASES = {
 
 # --- CLOUDINARY CONFIGURATION ---
 # CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
-MEDIA_URL = '/media/'
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
@@ -30,7 +29,16 @@ cloudinary.config(
     api_secret=os.getenv('CLOUD_API_SECRET'),
 )
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUD_API_KEY'),
+    'API_SECRET': os.getenv('CLOUD_API_SECRET'),
+}
+
+CLOUDINARY_URL=f'cloudinary://{os.getenv('CLOUD_API_KEY')}:{os.getenv('CLOUD_API_SECRET')}@{os.getenv('CLOUD_NAME')}'
+
 # Use Cloudinary for media uploads
+MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # --- STATIC ---
