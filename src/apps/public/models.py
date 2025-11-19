@@ -40,7 +40,7 @@ class BlogPost(models.Model):
 class BlogPostImage(models.Model):
     post = models.OneToOneField(BlogPost, on_delete=models.CASCADE, related_name='blog_post_images')
     # image = models.ImageField(upload_to='blogpost/blog-img/%Y/%m/%d/')
-    image = CloudinaryField('image', folder='blogpost/blog-img/%Y/%m/%d/')
+    image = CloudinaryField('image', folder='blogpost/%Y/%m/%d/')
 
     def __str__(self):
         return self.post.title
