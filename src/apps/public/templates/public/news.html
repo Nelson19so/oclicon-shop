@@ -8,7 +8,10 @@
   {% for blog in blogs %}
   <div class="container-news-main">
     <div class="container-img-top">
-      <img src="{{ blog.blog_post_images.image.url }}" alt="news-1" />
+      <img
+        src="{{ blog.blog_post_images.first.image.url }}"
+        alt="{{ blog.author }}-image"
+      />
     </div>
 
     <div class="articles--">
