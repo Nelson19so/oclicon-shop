@@ -11,7 +11,9 @@
 {% block content %}
 <div class="container-about-page-">
   <div class="container-about-page-container-padding">
-    <div class="container-items-display-about flex justify-between gap-[50px]">
+    <div
+      class="container-items-display-about flex justify-between flex-col lg:flex-row gap-[50px]"
+    >
       <div class="container-articles-left">
         <span class="seconadary-badge">WHO WE ARE</span>
         <h1 class="mt-2">
@@ -155,7 +157,7 @@
         <h2>Our core team member</h2>
       </div>
 
-      <div class="container-main-teams-grid- mt-5">
+      <div class="container-main-teams-grid- mt-5 w-full">
         {% if teams %} {% for team in teams %}
         <div class="container-grid-container-main">
           <div
@@ -175,13 +177,19 @@
             </div>
           </div>
         </div>
-        {% endfor %} {% endif %}
+        {% endfor %} {% else %}
+        <div class="w-full p-5 text-center">
+          <p class="text-center text-stone-400 text-sm">
+            No team member added yet
+          </p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
 
   <div class="container-banner-about-page flex justify-start">
-    <div class="container-left-- w-1/2">
+    <div class="container-left-- w-full lg:w-1/2">
       <strong>Your trusted and reliable retail shop</strong>
       <p>
         Praesent sed semper metus. Nunc aliquet dolor mauris, et fringilla elit

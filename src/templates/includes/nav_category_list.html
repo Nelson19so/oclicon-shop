@@ -70,7 +70,7 @@
                 <div class="container-ads-navbar-padder p-5">
                   {% if filter_computer_acc_ad.image %}
                   <img
-                    src="{{ filter_computer_acc_ad.image.url }}"
+                    src="{{ filter_computer_acc_ad.first.image.url }}"
                     alt="{{ filter_computer_acc_ad.name }}"
                   />
                   {% endif %}

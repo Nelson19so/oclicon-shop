@@ -13,10 +13,6 @@
     .wrapper-blog-page-main {
       width: 100%;
       gap: 30px;
-
-      .container-blogs {
-        width: 60vw;
-      }
     }
   }
 }
@@ -25,7 +21,6 @@
 aside {
   width: 26vw;
   height: fit-content;
-  display: flex;
   justify-content: space-between;
   flex-direction: column;
   gap: 30px;

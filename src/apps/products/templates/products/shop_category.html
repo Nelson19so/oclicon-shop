@@ -15,7 +15,7 @@
           <div class="container-category flex justify-between flex-col">
             {% if top_category.category.image %}
             <img
-              src="{{ top_category.category.image.url }}"
+              src="{{ top_category.category.first.image.url }}"
               alt="category-computer"
             />
             {% endif %}

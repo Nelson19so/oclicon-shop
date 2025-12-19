@@ -110,7 +110,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const profileInput = document.getElementById("profile-img-input");
   const imageHandler = document.getElementById("upload_profile");
 
-  imageHandler.addEventListener("click", () => {
-    profileInput.click();
-  });
+  if (imageHandler) {
+    imageHandler.addEventListener("click", () => {
+      profileInput.click();
+    });
+  }
+
+  const cartBox = document.querySelector(".container-cart-box");
+  const miniCart = document.querySelector(".container-mini-cart");
+
+  if (cartBox && miniCart) {
+    cartBox.addEventListener("click", (e) => {
+      miniCart.classList.toggle("open");
+    });
+
+    // Prevent clicks inside the cart body from closing it
+    miniCart.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  }
 });

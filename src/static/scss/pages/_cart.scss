@@ -1,6 +1,14 @@
 @use "../abstracts/variables" as variables;
 @use "../abstracts/mixins" as mixin;
 
+.container-mini-cart {
+  display: none;
+}
+
+.container-mini-cart.open {
+  display: block;
+}
+
 .nav_mini_cart_count {
   position: absolute;
   border: 1.5px solid #1b6392;
@@ -19,24 +27,29 @@
 }
 
 .container-mini-cart {
-  position: absolute;
-  right: 0;
   box-shadow: 0px 8px 40px 0px #0000001f;
-  z-index: 6666;
-  // overflow: hidden;
+  position: absolute;
+  top: calc(50% + 12px); // below cart icon
+  right: 0;
+  z-index: 200;
+  display: none;
 
-  @media only screen and (max-width: 386px) {
-    right: -20px;
-  }
-
-  @media only screen and (max-width: 344px) {
-    right: -50px;
+  @media only screen and (max-width: 768px) {
+    .container-mini-cart {
+      position: fixed;
+      top: 104px; // height of top + middle nav
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      width: 92vw;
+      max-width: 360px;
+      z-index: 300;
+    }
   }
 }
 
 .container-product-mini-cart {
   width: 286px;
-  top: 204px;
   // left: 1129px;
   border-radius: 4px;
   border-width: 1px;

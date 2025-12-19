@@ -122,11 +122,15 @@ document.querySelectorAll(".filter-price").forEach((filterBtn) => {
   });
 });
 
-document
-  .getElementById("reset_price-filter")
-  .addEventListener("click", function () {
+const resetBtn = document.getElementById("reset_price-filter");
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", function () {
     const allProduct = document.querySelectorAll(".container-product");
-    allProduct.forEach((product) => {
-      product.style.display = "block";
-    });
+    if (allProduct) {
+      allProduct.forEach((product) => {
+        product.style.display = "block";
+      });
+    }
   });
+}

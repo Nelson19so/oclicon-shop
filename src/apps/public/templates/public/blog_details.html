@@ -18,9 +18,9 @@
     </div>
 
     <div
-      class="container-blog-descriptions- flex justify-between gap-[20px] mt-[20px]"
+      class="container-blog-descriptions- flex lg:flex-row justify-between flex-col gap-[20px] mt-[20px]"
     >
-      <div class="container-left-articles">
+      <div class="container-left-articles w-full">
         <div class="container-news-details- flex justify-start gap-2.5 mb-2">
           <div class="container-main-news-details flex justify-start gap-1">
             <svg
@@ -517,7 +517,8 @@
         </div>
       </div>
 
-      <div class="container-rigt-articles-blog_details">
+      <!--  -->
+      <div class="container-rigt-articles-blog_details hidden lg:flex">
         <aside>
           <div class="container-search-box-blog-details">
             <p>Search</p>
@@ -634,43 +635,31 @@
 
           <!-- latest blogs -->
           <div class="container-product-order flex justify-between flex-col">
-            <a href="#">
+            {% if latest_blogs %} {% for latest_blogs in latest_blog %}
+            <a href="{% url 'blog_details' latest_blog.id %}">
               <div class="container-product-main flex justify-between">
                 <div class="container-img min-w-[70px]">
                   <img
-                    src="{% static 'images/blog/unsplash_FO7JIlwjOtU.png' %}"
+                    src="{{ latest_blog.blog_post_images.first.image.url }}"
                     alt="p5Image"
                     width="80"
                   />
                 </div>
                 <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
-                    Sport Earbuds Wireless Earphones Bluetooth In Ear
-                  </p>
-                  <span class="blog-post-date">28 Nov, 2015</span>
+                  <p class="h-[10px]">{{ latest_blog.title }}</p>
+                  <span class="blog-post-date"
+                    >{{ latest_blog.date_posted|date:"d, M Y" }}</span
+                  >
                 </div>
               </div>
             </a>
-
-            <a href="#">
-              <div class="container-product-main flex justify-between">
-                <div class="container-img min-w-[70px]">
-                  <img
-                    src="{% static 'images/blog/unsplash_6MNmDi1hc_Y.png' %}"
-                    alt="p5Image"
-                    width="80"
-                  />
-                </div>
-                <div class="articles-main">
-                  <p class="h-[10px]">
-                    Bose Sport Earbuds Wireless Earphones Bluetooth In Ear Bose
-                    Sport Earbuds Wireless Earphones Bluetooth In Ear
-                  </p>
-                  <span class="blog-post-date">28 Nov, 2015</span>
-                </div>
-              </div>
-            </a>
+            {% endfor %} {% else %}
+            <div class="text-center w-full h-[40px]">
+              <span class="text-gray-600 text-sm"
+                >No latest blog was fount</span
+              >
+            </div>
+            {% endif %}
           </div>
 
           <!-- popular tags -->

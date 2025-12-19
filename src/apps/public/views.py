@@ -8,6 +8,7 @@ from django.db.models     import Q
 from django.template.loader import render_to_string
 from django.http          import JsonResponse
 from django.views.decorators.http import require_POST
+from datetime             import datetime, timedelta
 
 # home page view
 def Home_page(request):
@@ -223,6 +224,9 @@ def blog(request):
 
         for blog in blogs:
             blog.comment_count = blog.blog_post_comment.count()
+        
+        last_week = datetime.now() - timedelta(days=7)
+        latest_blogs = blogs.filter(date_posted=last_week)[:3]
     except BlogPost.DoesNotExist:
         pass
 
@@ -234,12 +238,19 @@ def blog(request):
     return render(request, 'public/blog.html', {
         'breadcrumbs': breadcrumbs, 
         'blogs':       blogs,
+        'latest_blogs': latest_blogs,
     })
 
 # blog details page
 def blog_details(request, id):
     blog_details = get_object_or_404(BlogPost, id=id)
     blog_details_count = blog_details.blog_post_comment.count()
+
+    try:
+        last_week = datetime.now() - timedelta(days=7)
+        latest_blogs = BlogPost.objects.filter(date_posted=last_week)[:3]
+    except BlogPost.DoesNotExist:
+        pass
     
     breadcrumbs = [
         ('Pages', '#/'),
@@ -251,6 +262,7 @@ def blog_details(request, id):
         'breadcrumbs':        breadcrumbs, 
         'blog_details':       blog_details,
         'blog_details_count': blog_details_count,
+        'latest_blogs':       latest_blogs
     })
 
 @require_POST
