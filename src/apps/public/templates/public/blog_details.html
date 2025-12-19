@@ -18,9 +18,9 @@
     </div>
 
     <div
-      class="container-blog-descriptions- flex lg:flex-row justify-between flex-col gap-[20px] mt-[20px]"
+      class="container-blog-descriptions- w-full flex lg:flex-row justify-between flex-col gap-[20px] mt-[20px]"
     >
-      <div class="container-left-articles w-full">
+      <div class="container-left-articles min-w-full w-full">
         <div class="container-news-details- flex justify-start gap-2.5 mb-2">
           <div class="container-main-news-details flex justify-start gap-1">
             <svg
@@ -178,8 +178,8 @@
           >
             <div class="container-blog-details-post-article flex justify-start">
               <img
-                src="{% static 'images/blog/profile-blog-post-user.png' %}"
-                alt="profile-blog-post-user"
+                src="{{ blog_details.author.profile.profile }}"
+                alt="{{ blog_details.author }}"
                 width="40"
                 style="border-radius: 100px"
               />

@@ -1,4 +1,9 @@
 from .base import *
+# 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+# 
 
 DEBUG = True
 
@@ -11,13 +16,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-# 
-
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
