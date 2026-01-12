@@ -168,7 +168,7 @@ $(document).ready(function () {
 
 // removing product from cart list ---
 $(document).ready(function () {
-  $("#remove-cart_btn").click(function () {
+  $(".remove-cart-btn").click(function () {
     const productId = $(this).data("product-id");
 
     $.ajax({
