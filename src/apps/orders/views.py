@@ -12,7 +12,9 @@ from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.utils.timezone import now
-from django.db        import IntegrityError
+from django.db        import IntegrityError,transaction
+from src.apps.products.models import Product, ProductVariant
+from django.db.models import F
 
 
 # track user order page view
@@ -128,7 +130,7 @@ class OrderDetails(DetailView):
                 if history.new_status and history.new_status not in status_chain:
                     status_chain.append(history.new_status)
 
-            return status_chain[:1]
+            return status_chain
 
         except Exception as e:
             print("Error:", e)
@@ -159,62 +161,56 @@ class CheckoutOrderViewCreate(View):
 
         if not user.is_authenticated:
             return redirect('login')
-
+    
         try:
+            with transaction.atomic():
+                cart, created = Cart.objects.get_or_create(user=user)
 
-            cart = Cart.objects.get(user=user)
+                cart_items = CartItem.objects.filter(cart=cart)
 
-        except Cart.DoesNotExist:
-            cart = Cart.objects.create(user=user)
-        
-        # if the cart doesn't exist
-        if not cart:
-            return redirect('cart_list')  # or some cart view name
+                # if cart item doesn't exist
+                if not cart_items.exists():
+                    return redirect('cart_list')
 
-        cart_items = CartItem.objects.filter(cart=cart)
+                order = Order.objects.create(user=user, total_amount=0)
+                total_amount = 0
 
-        # if cart item doesn't exist
-        if not cart_items.exists():
-            return redirect('cart_list')
+                
+                for item in cart_items:
+                    order_item = OrderItem.objects.create(
+                        order=order,
+                        price=item.product.base_price,
+                        product=item.product,
+                        quantity=item.quantity,
+                    )
 
-        order = Order.objects.create(user=user, total_amount=0)
-        total_amount = 0
+                    ProductVariant.objects.filter(
+                        product=item.product,
+                    ).update(stock=F("stock") - item.quantity)
+                        
+                    OrderProductSpec.objects.create(
+                        order_item=order_item,
+                        memory=item.cart_prod_spec.memory,
+                        size=item.cart_prod_spec.size,
+                        storage=item.cart_prod_spec.storage,
+                    )   
 
-        for item in cart_items:
-            order_item = OrderItem.objects.create(
-                order=order,
-                price=item.product.base_price,
-                product=item.product,
-                quantity=item.quantity,
-            )
+                    total_amount += item.quantity * item.product.base_price
             
-            try:
+                order.total_amount = total_amount
+                order.save()
+
+                # delete all cart item after order is placed
+                cart_items.delete()
+                cart_key = f'cart_user_{request.user.id}'
+                cache.delete(cart_key)
+
+                request.session['order_id'] = order.order_id
+                request.session['order_placed_success'] = True
                 
-                OrderProductSpec.objects.create(
-                    order_item=order_item,
-                    memory=item.cart_prod_spec.memory,
-                    size=item.cart_prod_spec.size,
-                    storage=item.cart_prod_spec.storage,
-                )
-                
-            except IntegrityError:
-                order.delete()
-                return redirect('cart_list')
-
-            total_amount += item.quantity * item.product.base_price
-
-        order.total_amount = total_amount
-        order.save()
-
-        # delete all cart item after order is placed
-        cart_items.delete()
-        cart_key = f'cart_user_{request.user.id}'
-        cache.delete(cart_key)
-
-        request.session['order_id'] = order.order_id
-        request.session['order_placed_success'] = True
-        
-        return redirect('order_successfully_placed', order.order_id)
+                return redirect('order_successfully_placed', order.order_id)
+        except IntegrityError:
+            return redirect('cart_list')
 
 
 # checkout view

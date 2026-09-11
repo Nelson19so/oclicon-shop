@@ -21,7 +21,7 @@ urlpatterns = [
     path('home/', include('src.apps.products.urls')),
 
     # order url conf
-    path('home/user_account/', include('src.apps.orders.urls')),
+    path('home/user_account/order/', include('src.apps.orders.urls')),
 
     # cart url conf
     path('home/', include('src.apps.cart.urls')),

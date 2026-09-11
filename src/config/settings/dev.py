@@ -1,9 +1,5 @@
 from .base import *
-# 
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-# 
 
 DEBUG = True
 
