@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -o errexit
-set -ex
+set -ex  # Print commands as they run and exit on failure
 
-# Install project dependencies
-python3 -m pip install -r requirements.txt
+# Install dependencies using the required serverless bypass flag
+python3 -m pip install -r requirements.txt --break-system-packages
 
-# Create the folder explicitly so Vercel doesn't think it's missing
+# Create static directory explicitly
 mkdir -p staticfiles
 
-# Collect files using your exact nested settings route
+# Collect static files targeting your specific production configuration path
 python3 manage.py collectstatic --no-input --settings=src.confi.settings.prod
 
 echo "Build phase complete."
