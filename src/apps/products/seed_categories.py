@@ -1,7 +1,7 @@
 # apps/product/seed_categories
 # this python file automatically creates categories if they don't exist
 from django.core.management.base import BaseCommand
-from src.apps.products.models import Category
+from apps.products.models import Category
 
 def seed_categories():
     # Category.objects.all().delete()

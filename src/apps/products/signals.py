@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from src.apps.products.models import Category
+from apps.products.models import Category
 from .seed_categories import seed_categories
 
 @receiver(post_save, sender=Category)

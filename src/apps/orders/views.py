@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.utils.timezone import now
 from django.db        import IntegrityError,transaction
-from src.apps.products.models import Product, ProductVariant
+from apps.products.models import ProductVariant
 from django.db.models import F
 
 
