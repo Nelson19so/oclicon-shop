@@ -1,6 +1,6 @@
 from django.shortcuts     import render, get_object_or_404
-from src.apps.products.models import Product
-from src.apps.cart.models     import Cart, CartItem, WishlistProduct
+from apps.products.models import Product
+from apps.cart.models     import Cart, CartItem, WishlistProduct
 from django.http          import JsonResponse
 from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator

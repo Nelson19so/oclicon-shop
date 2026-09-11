@@ -1,10 +1,10 @@
 from django.shortcuts     import get_object_or_404
-from src.apps.products.models import Product, Brand, Category, ProductComparison, ProductHighlight
-from src.apps.products.forms  import ReadOnlyProductSpecificationForm
+from apps.products.models import Product, Brand, Category, ProductComparison, ProductHighlight
+from apps.products.forms  import ReadOnlyProductSpecificationForm
 from django.views.generic import ListView, DetailView
 from django.urls          import reverse
 from django.db.models     import Q
-from src.apps.cart.models     import WishlistProduct, CartItem, Cart
+from apps.cart.models     import WishlistProduct, CartItem, Cart
 from django.core.cache    import cache
 from random               import shuffle
 

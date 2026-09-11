@@ -3,14 +3,14 @@ from django.contrib   import messages
 from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth  import get_user_model
-from src.apps.orders.models   import Order, ShippingAddress
-from src.apps.orders.forms    import ShippingAddressForm
-from src.apps.products.models import ProductSearchHistory
-from src.apps.accounts.models import (
+from apps.orders.models   import Order, ShippingAddress
+from apps.orders.forms    import ShippingAddressForm
+from apps.products.models import ProductSearchHistory
+from apps.accounts.models import (
     AdditionalUserInfo, 
     ProfilePicture, BillingAddress
 )
-from src.apps.accounts.forms  import (
+from apps.accounts.forms  import (
     UserProfileForm, UserAdditionalInformationForm,
     UserForm, BillingAddressForm, 
     UserPasswordChange

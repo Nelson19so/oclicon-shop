@@ -1,5 +1,5 @@
 from django.shortcuts      import render, get_object_or_404
-from src.apps.products.models  import Product, ProductComparison
+from apps.products.models  import Product, ProductComparison
 from django.views.generic  import ListView, View
 from django.urls           import reverse
 from django.utils.decorators import method_decorator

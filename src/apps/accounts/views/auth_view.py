@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.core.mail    import EmailMultiAlternatives
 from django.utils.encoding import force_bytes
 from django.template.loader import render_to_string
-from src.apps.accounts.forms  import (
+from apps.accounts.forms  import (
     UserRegistrationForm, UserLoginForm, 
     ResetPasswordEmailForm, PasswordResetForm,
     UserPasswordChange
