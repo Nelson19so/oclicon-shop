@@ -9,18 +9,18 @@
       }
     },
     {
-      "src": "src/confi/wsgi.py",
+      "src": "src/config/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1"
+      "dest": "staticfiles/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "src/confi/wsgi.py"
+      "dest": "src/config/wsgi.py"
     }
   ]
 }
