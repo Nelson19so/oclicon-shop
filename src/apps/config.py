@@ -1,33 +1,33 @@
-# apps/config.py
+# src/apps/config.py
 
 Apps = [
     {
-        "name": "apps.accounts",
+        "name": "src.apps.accounts",
         "verbose": "user accounts"
     },
     {
         "label": "cart",
-        "name": "apps.cart",
+        "name": "src.apps.cart",
         "verbose": "product cart item"
     },
     {
         "label": "orders",
-        "name": "apps.orders",
+        "name": "src.apps.orders",
         "verbose": "user order items"
     },
     {
         "label": "payments",
-        "name": "apps.payments",
+        "name": "src.apps.payments",
         "verbose": "payment app"
     },
     {
         "label": "products",
-        "name": "apps.products",
+        "name": "src.apps.products",
         "verbose": "shop product"
     },
     {
         "label": "public",
-        "name": "apps.public",
+        "name": "src.apps.public",
         "verbose": "public app"
     }
 ]
