@@ -2,32 +2,27 @@
 
 Apps = [
     {
-        "name": "apps.accounts",
+        "name": "apps.accounts.apps.AccountsConfig",
         "verbose": "user accounts"
     },
     {
-        "label": "cart",
-        "name": "apps.cart",
+        "name": "apps.cart.apps.CartConfig",
         "verbose": "product cart item"
     },
     {
-        "label": "orders",
-        "name": "apps.orders",
+        "name": "apps.orders.apps.OrdersConfig",
         "verbose": "user order items"
     },
     {
-        "label": "payments",
-        "name": "apps.payments",
+        "name": "apps.payments.apps.PaymentsConfig",
         "verbose": "payment app"
     },
     {
-        # "label": "products",
-        "name": "apps.products",
+        "name": "apps.products.apps.ProductsConfig",
         "verbose": "shop product"
     },
     {
-        "label": "public",
-        "name": "apps.public",
+        "name": "apps.public.apps.PublicConfig",
         "verbose": "public app"
-    }
+    },
 ]
