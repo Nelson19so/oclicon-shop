@@ -2,17 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/config/wsgi.py",
+      "src": "config/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": ["src/apps/**"]
+        "includeFiles": ["apps/**"]
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/config/wsgi.py"
+      "dest": "config/wsgi.py"
     }
   ]
 }

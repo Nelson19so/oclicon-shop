@@ -6,18 +6,7 @@ import os, sys
 # Point to project root /src/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# VERCEL SYSTEM PATH HOOK:
-# Dynamically insert 'src' and the project root into Python's registry 
-# before any sub-modules are evaluated.
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
-
 ROOT_DIR = BASE_DIR.parent
-
-if str(ROOT_DIR) not in sys.path:
-    sys.path.insert(0, str(ROOT_DIR))
-
-from apps.config import Apps
 
 load_dotenv()
 
@@ -45,9 +34,14 @@ INSTALLED_APPS = [
     # Cloudinary storage for storing media files
     'cloudinary',
     'cloudinary_storage',
-]
 
-INSTALLED_APPS += [app['name'] for app in Apps]
+    'apps.accounts',
+    'apps.cart',
+    'apps.orders',
+    'apps.payments',
+    'apps.products',
+    'apps.public',
+]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -63,7 +57,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'src.config.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -75,11 +69,11 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 # categories navbar list
-                'src.config.context.processors.navbar_categories_list',
+                'config.context.processors.navbar_categories_list',
                 # active product ads
-                'src.config.context.ads_processor.active_product_ads',
+                'config.context.ads_processor.active_product_ads',
                 # cart processor
-                'src.config.context.cart_processor.cart_list',
+                'config.context.cart_processor.cart_list',
 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -90,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'src.config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},

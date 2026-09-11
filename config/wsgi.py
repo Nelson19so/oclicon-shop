@@ -9,7 +9,7 @@ if str(SRC_DIR) not in sys.path:
 
 os.environ.setdefault(
     "DJANGO_SETTINGS_MODULE",
-    "src.config.settings.prod"
+    "config.settings.prod"
 )
 
 from django.core.wsgi import get_wsgi_application
