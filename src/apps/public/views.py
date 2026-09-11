@@ -1,5 +1,5 @@
 from django.shortcuts     import render, redirect, get_object_or_404
-from src.apps.products.models import Category, Product, ProductHighlight, Badge, TopCategory
+from apps.products.models import Category, Product, ProductHighlight, Badge, TopCategory
 from .models              import OcliconTeamMembers, FrequentlyAskedQuestions, BlogPost
 from .forms               import FrequentlyAskedQuestionsForms, NewsLetterSubscriberForm
 from django.http          import JsonResponse
