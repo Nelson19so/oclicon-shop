@@ -11,23 +11,23 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # for allauth URLs
 
     # User account
-    path('home/user_account/', include('apps.accounts.urls')),
+    path('home/user_account/', include('src.apps.accounts.urls')),
 
     # public url conf
-    path('', include('apps.public.urls')),
-    path('home/', include('apps.public.urls')),
+    path('', include('src.apps.public.urls')),
+    path('home/', include('src.apps.public.urls')),
 
     # product url conf
-    path('home/', include('apps.products.urls')),
+    path('home/', include('src.apps.products.urls')),
 
     # order url conf
-    path('home/user_account/order/', include('apps.orders.urls')),
+    path('home/user_account/order/', include('src.apps.orders.urls')),
 
     # cart url conf
-    path('home/', include('apps.cart.urls')),
+    path('home/', include('src.apps.cart.urls')),
 
     # PayStack payment gateway url configuration
-    path('home/payment', include('apps.payments.urls'))
+    path('home/payment', include('src.apps.payments.urls'))
 ]
 
 # Add Debug Toolbar URLs in debug mode
