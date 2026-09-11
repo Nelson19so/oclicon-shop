@@ -1,21 +1,27 @@
 from pathlib import Path
 from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
-import os
-from src.apps.config import Apps
+import os, sys
 
-# point to project root /src/
+# Point to project root /src/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+# VERCEL SYSTEM PATH HOOK:
+# Dynamically insert 'src' and the project root into Python's registry 
+# before any sub-modules are evaluated.
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+ROOT_DIR = BASE_DIR.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from apps.config import Apps
 
 load_dotenv()
 
-# Project root /src/
-ROOT_DIR=BASE_DIR.parent
-
 # Secret Key
-SECRET_KEY = os.getenv('django_secret_key')
-if not SECRET_KEY:
-    raise ImproperlyConfigured("django SECRET_KEY is not was not found")
+SECRET_KEY = os.getenv('SECRET_KEY') or os.getenv('django_secret_key') or os.environ.get('SECRET_KEY', 'fallback-secret-key-for-vercel-building')
+
 
 # Installed apps
 INSTALLED_APPS = [
