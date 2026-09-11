@@ -10,9 +10,15 @@
     },
     {
       "src": "src/config/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "src/**"
+      }
     }
   ],
+  "env": {
+    "PYTHONPATH": ".:src"
+  },
   "routes": [
     {
       "src": "/static/(.*)",
