@@ -7,7 +7,7 @@ from django.views import View
 from django.utils import timezone
 from django.conf import settings
 from django.http import HttpResponse
-from src.apps.orders.models import Order
+from apps.orders.models import Order
 
 class StartOrderPayment(View):
     @method_decorator(require_POST)

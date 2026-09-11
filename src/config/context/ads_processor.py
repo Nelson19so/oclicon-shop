@@ -1,4 +1,4 @@
-from src.apps.products.models import Category, Product, Ad, ProductHighlight
+from apps.products.models import Category, Product, Ad, ProductHighlight
 
 # product active ads
 def active_product_ads(request):

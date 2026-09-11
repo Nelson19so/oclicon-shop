@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST
 from .models          import (
     Order, OrderItem, OrderMessage, OrderStatusHistory, OrderProductSpec
 )
-from src.apps.cart.models import Cart, CartItem
+from apps.cart.models import Cart, CartItem
 from django.urls      import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache

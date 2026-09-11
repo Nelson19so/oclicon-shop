@@ -1,4 +1,4 @@
-from src.apps.cart.models  import CartItem, Cart
+from apps.cart.models  import CartItem, Cart
 from django.core.cache import cache
 
 # navbar cart view

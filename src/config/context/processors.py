@@ -1,4 +1,4 @@
-from src.apps.products.models import Category, Product, Ad, ProductHighlight
+from apps.products.models import Category, Product, Ad, ProductHighlight
 
 # context processor for category list for navbar
 def navbar_categories_list(request):
