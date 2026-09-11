@@ -13,9 +13,6 @@
       "use": "@vercel/python"
     }
   ],
-  "env": {
-    "PYTHONPATH": "src"
-  },
   "routes": [
     {
       "src": "/static/(.*)",
