@@ -13,7 +13,7 @@ load_dotenv()
 ROOT_DIR=BASE_DIR.parent
 
 # Secret Key
-SECRET_KEY = os.getenv('django-secret-key')
+SECRET_KEY = os.getenv('django_secret_key')
 if not SECRET_KEY:
     raise ImproperlyConfigured("django SECRET_KEY is not was not found")
 
