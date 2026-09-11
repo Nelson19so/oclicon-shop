@@ -38,5 +38,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # ALLOWED HOSTS
-ALLOWED_HOSTS = ['oclicon-shop.onrender.com']
+ALLOWED_HOSTS = ['oclicon-shop.onrender.com', '.vercel.app', 'now.sh', 'localhost', '127.0.0.1']
 

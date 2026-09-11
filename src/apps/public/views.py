@@ -43,18 +43,14 @@ def Home_page(request):
         ).prefetch_related('product_feature', 'category')
 
         # best hot deals for best deals product
-        best_hot_deals_badge = Badge.objects.filter(bade_type='hot').first()
+        if Badge.objects.filter(badge_type='hot').exists():
+            # Fetch the first product that has this hot badge
+            best_hot_deals = best_deals_products.filter(product_badge__badge_type='hot').first()
 
-        # checks if there is best hot deal
-        if best_hot_deals_badge:
-            best_hot_deals = (
-                best_deals_products.filter(product_badge=best_hot_deals_badge).first()
-            )
+        if best_hot_deals:
+            best_deals_products = best_deals_products.exclude(id=best_hot_deals.id)
 
-            # excludes best hot deals from the filtering
-            best_deals_products = best_deals_products.exclude(id=best_hot_deals)
-        
-        # filtering 8 product from best hot deals
+        # Limit the final QuerySet to 8 products
         best_deals_products = best_deals_products[:8]
 
         # featured product
@@ -138,7 +134,7 @@ def Home_page(request):
 
     # AJAX handling for featured product
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        html = render_to_string('products/partials/computer_accessories.html',{
+        html = render_to_string('products/partials/featured_products.html',{
             'featured_product': featured_products
         })
 
