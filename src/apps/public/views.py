@@ -43,9 +43,9 @@ def Home_page(request):
         ).prefetch_related('product_feature', 'category')
 
         # best hot deals for best deals product
-        if Badge.objects.filter(badge_type='hot').exists():
+        if Badge.objects.filter(bade_type='hot').exists():
             # Fetch the first product that has this hot badge
-            best_hot_deals = best_deals_products.filter(product_badge__badge_type='hot').first()
+            best_hot_deals = best_deals_products.filter(product_badge__bade_type='hot').first()
 
         if best_hot_deals:
             best_deals_products = best_deals_products.exclude(id=best_hot_deals.id)
