@@ -9,6 +9,6 @@ python3 -m pip install -r requirements.txt --break-system-packages
 mkdir -p staticfiles
 
 # Collect static files targeting your specific production configuration path
-python3 manage.py collectstatic --no-input --settings=config.settings.prod
+python3 manage.py collectstatic --no-input --settings=src.config.settings.prod
 
 echo "Build phase complete."
