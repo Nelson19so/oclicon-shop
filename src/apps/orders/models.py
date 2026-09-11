@@ -31,6 +31,9 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     canceled_at = models.DateTimeField(null=True, blank=True)
 
+    class Meta:
+        app_label = 'orders'
+
     def __str__(self):
         return f"Order {self.order_id} - {self.get_status_display()}"
     
