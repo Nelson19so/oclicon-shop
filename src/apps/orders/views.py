@@ -15,6 +15,7 @@ from django.utils.timezone import now
 from django.db        import IntegrityError,transaction
 from apps.products.models import ProductVariant
 from django.db.models import F
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # track user order page view
@@ -186,12 +187,21 @@ class CheckoutOrderViewCreate(View):
                     ProductVariant.objects.filter(
                         product=item.product,
                     ).update(stock=F("stock") - item.quantity)
-                        
+
+                    try:
+                        spec_memory = item.cart_prod_spec.memory
+                        spec_size = item.cart_prod_spec.size
+                        spec_storage = item.cart_prod_spec.storage
+                    except ObjectDoesNotExist:
+                        spec_memory = None
+                        spec_size = None
+                        spec_storage = None
+
                     OrderProductSpec.objects.create(
                         order_item=order_item,
-                        memory=item.cart_prod_spec.memory,
-                        size=item.cart_prod_spec.size,
-                        storage=item.cart_prod_spec.storage,
+                        memory=spec_memory,
+                        size=spec_size,
+                        storage=spec_storage,
                     )   
 
                     total_amount += item.quantity * item.product.base_price
