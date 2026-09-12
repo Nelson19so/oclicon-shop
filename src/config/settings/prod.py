@@ -17,7 +17,7 @@ DATABASES = {
         'PASSWORD': 'k@UM?*s.X*64/hY',
         'HOST': 'aws-1-us-west-1.pooler.supabase.com',
         'PORT': '6543',
-        # 'OPTIONS': {'sslmode': 'require'},
+        'OPTIONS': {'sslmode': 'require'},
         # 'CONN_MAX_AGE': 600,
     }
 }
