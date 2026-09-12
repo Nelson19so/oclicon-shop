@@ -34,36 +34,56 @@
           <div class="container-order-road-map-">
             <p>Order expected arrival <span>23 Jan, 2021</span></p>
 
-              <!-- road map for order details -->
+            <!-- road map for order details -->
 
-              <div class="container-main-roadmap w-full flex justify-start flex-col mt-3">
+            <div
+              class="container-main-roadmap w-full flex justify-start flex-col mt-3"
+            >
+              <!-- -->
+                <div class="roadmap-wrapper-">
+                  
+                  <!-- Step 1: Order Placed -->
+                  {% if order_status.new_status == 'ORDER_PLACED' or order_status.old_status == 'ORDER_PLACED' or order_status.new_status == 'PACKAGING' or order_status.new_status == 'ON_THE_ROAD' or order_status.new_status == 'DELIVERED' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" checked disabled />
+                    <div class="roadmap-finished roadmap-indicator"></div>
+                  {% else %}
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <div class="roadmap-indicator"></div>
+                  {% endif %}
 
-                <!-- Step 1: Order Placed -->
-                <div class="roadmap-wrapper">
-                    <input type="checkbox" name="roadmap" id="roadmap" {% if 'ORDER_PLACED' in order_status %}checked{% endif %} disabled />
-                    <div class="{% if 'ORDER_PLACED' in order_status %}roadmap-finished{% endif %} roadmap-indicator"></div>
-                    <span>Order Placed</span>
-                </div>
+                  <!-- Step 2: Packaging -->
+                  {% if order_status.new_status == 'PACKAGING' or order_status.old_status == 'PACKAGING' or order_status.new_status == 'ON_THE_ROAD' or order_status.new_status == 'DELIVERED' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" checked disabled />
+                    <div class="roadmap-finished roadmap-indicator"></div>
+                  {% elif order_status.new_status == 'ORDER_PLACED' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" class="processing" disabled />
+                    <div class="roadmap-indicator"></div>
+                  {% else %}
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <div class="roadmap-indicator"></div>
+                  {% endif %}
 
-                <!-- Step 2: Packaging -->
-                <div class="roadmap-wrapper">
-                    <input type="checkbox" name="roadmap" id="roadmap" {% if 'PACKAGING' in order_status %}checked{% endif %} disabled />
-                    <div class="{% if 'PACKAGING' in order_status %}roadmap-finished{% endif %} roadmap-indicator"></div>
-                    <span>Packaging</span>
-                </div>
+                  <!-- Step 3: On The Road -->
+                  {% if order_status.new_status == 'ON_THE_ROAD' or order_status.old_status == 'ON_THE_ROAD' or order_status.new_status == 'DELIVERED' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" checked disabled />
+                    <div class="roadmap-finished roadmap-indicator"></div>
+                  {% elif order_status.new_status == 'PACKAGING' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" class="processing" disabled />
+                    <div class="roadmap-indicator"></div>
+                  {% else %}
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <div class="roadmap-indicator"></div>
+                  {% endif %}
 
-                <!-- Step 3: On The Road -->
-                <div class="roadmap-wrapper">
-                    <input type="checkbox" name="roadmap" id="roadmap" {% if 'ON_THE_ROAD' in order_status %}checked{% endif %} disabled />
-                    <div class="{% if 'ON_THE_ROAD' in order_status %}roadmap-finished{% endif %} roadmap-indicator"></div>
-                    <span>On The Road</span>
-                </div>
+                  <!-- Step 4: Delivered -->
+                  {% if order_status.new_status == 'DELIVERED' or order_status.old_status == 'DELIVERED' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" checked disabled />
+                  {% elif order_status.new_status == 'ON_THE_ROAD' %}
+                    <input type="checkbox" name="roadmap" id="roadmap" class="processing" disabled />
+                  {% else %}
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                  {% endif %}
 
-                <!-- Step 4: Delivered -->
-                <div class="roadmap-wrapper">
-                    <input type="checkbox" name="roadmap" id="roadmap" {% if 'DELIVERED' in order_status %}checked{% endif %} disabled />
-                    <div class="{% if 'DELIVERED' in order_status %}roadmap-finished{% endif %} roadmap-indicator"></div>
-                    <span>Delivered</span>
                 </div>
 
                 <div class="container-labels-order-roadmap mt-5 gap-1 pr-3">
