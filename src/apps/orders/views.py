@@ -175,7 +175,6 @@ class CheckoutOrderViewCreate(View):
                 order = Order.objects.create(user=user, total_amount=0)
                 total_amount = 0
 
-                
                 for item in cart_items:
                     order_item = OrderItem.objects.create(
                         order=order,
@@ -184,9 +183,9 @@ class CheckoutOrderViewCreate(View):
                         quantity=item.quantity,
                     )
 
-                    ProductVariant.objects.filter(
-                        product=item.product,
-                    ).update(stock=F("stock") - item.quantity)
+                    # ProductVariant.objects.filter(
+                    #     product=item.product,
+                    # ).update(stock=F("stock") - item.quantity)
                         
                     OrderProductSpec.objects.create(
                         order_item=order_item,
