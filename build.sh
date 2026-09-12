@@ -10,6 +10,6 @@ mkdir -p staticfiles
 
 # Collect static files targeting your specific production configuration path
 python3 manage.py collectstatic --no-input --settings=src.config.settings.prod
-python manage.py migrate
+python3 manage.py migrate
 
 echo "Build phase complete."
