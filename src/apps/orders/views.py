@@ -183,9 +183,9 @@ class CheckoutOrderViewCreate(View):
                         quantity=item.quantity,
                     )
 
-                    # ProductVariant.objects.filter(
-                    #     product=item.product,
-                    # ).update(stock=F("stock") - item.quantity)
+                    ProductVariant.objects.filter(
+                        product=item.product,
+                    ).update(stock=F("stock") - item.quantity)
                         
                     OrderProductSpec.objects.create(
                         order_item=order_item,
@@ -204,12 +204,10 @@ class CheckoutOrderViewCreate(View):
                 cart_key = f'cart_user_{request.user.id}'
                 cache.delete(cart_key)
 
-                # request.session['order_id'] = order.order_id
-                # request.session['order_placed_success'] = True
+                request.session['order_id'] = order.order_id
+                request.session['order_placed_success'] = True
                 
-                # return redirect('order_successfully_placed', order.order_id)
-
-                return redirect('cart_list')
+                return redirect('order_successfully_placed', order.order_id)
         except IntegrityError:
             return redirect('cart_list')
 
