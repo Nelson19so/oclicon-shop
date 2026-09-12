@@ -66,6 +66,10 @@
             </p>
             {% elif order.status == 'DELIVERED' %}
             <p class="status status-completed">COMPLETED</p>
+            {% elif order.status == 'PACKAGING' %}
+            <p class="status" style="color: rgb(34, 45, 255)">PACKAGING</p>
+            {% elif order.status == 'ORDER_PLACED' %}
+            <p class="status" style="color: rgb(31, 255, 95)">ORDER PLACED</p>
             {% else %}
             <p class="status status-progress">IN PROGRESS</p>
             {% endif %}

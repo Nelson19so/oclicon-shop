@@ -39,9 +39,9 @@
             <div
               class="container-main-roadmap w-full flex justify-start flex-col mt-3"
             >
-              {% for status_ in order_status %}
+              <!-- FOR -->
                 <div class="roadmap-wrapper-">
-                  {% if status_.new_status == 'ORDER_PLACED' or status_.old_status == 'ORDER_PLACED' %}
+                  {% if order_status.new_status == 'ORDER_PLACED' or order_status.old_status == 'ORDER_PLACED' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -56,7 +56,7 @@
                   {% endif %}
 
                   <!--  -->
-                  {% if status_.new_status == 'PACKAGING' or status_.old_status == 'PACKAGING' %}
+                  {% if order_status.new_status == 'PACKAGING' or order_status.old_status == 'PACKAGING' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -65,7 +65,7 @@
                       disabled
                     />
                     <div class="roadmap-finished roadmap-indicator"></div>
-                  {% elif status_.new_status == 'ORDER_PLACED' %}
+                  {% elif order_status.new_status == 'ORDER_PLACED' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -80,7 +80,7 @@
                   {% endif %}
 
                   <!--  -->
-                  {% if status_.new_status == 'ON_THE_ROAD' or status_.old_status == 'ON_THE_ROAD' %}
+                  {% if order_status.new_status == 'ON_THE_ROAD' or order_status.old_status == 'ON_THE_ROAD' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -89,7 +89,7 @@
                       disabled
                     />
                     <div class="roadmap-finished roadmap-indicator"></div>
-                  {% elif status_.new_status == 'PACKAGING' %}
+                  {% elif order_status.new_status == 'PACKAGING' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -104,7 +104,7 @@
                   {% endif %}
 
                   <!--  -->
-                  {% if status_.new_status == 'DELIVERED' or status_.old_status == 'DELIVERED' %}
+                  {% if order_status.new_status == 'DELIVERED' or order_status.old_status == 'DELIVERED' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -112,7 +112,7 @@
                       checked
                       disabled
                     />
-                  {% elif status_.new_status == 'ON_THE_ROAD' %}
+                  {% elif order_status.new_status == 'ON_THE_ROAD' %}
                     <input
                       type="checkbox"
                       name="roadmap"
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="container-labels-order-roadmap mt-5 gap-1 pr-3">
-                  {% if status_.new_status == 'ORDER_PLACED' or status_.old_status == 'ORDER_PLACED' %}
+                  {% if order_status.new_status == 'ORDER_PLACED' or order_status.old_status == 'ORDER_PLACED' %}
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
@@ -198,7 +198,7 @@
 
                   <div class="roadmap-indicator-hidden"></div>
 
-                  {% if status_.status == 'PACKAGING' %}
+                  {% if order_status.status == 'PACKAGING' %}
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
@@ -251,7 +251,7 @@
 
                   <div class="roadmap-indicator-hidden"></div>
 
-                  {% if status_.new_status == 'ON_THE_ROAD' or status_.old_status == 'ON_THE_ROAD' %}
+                  {% if order_status.new_status == 'ON_THE_ROAD' or order_status.old_status == 'ON_THE_ROAD' %}
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
@@ -334,7 +334,7 @@
 
                   <div class="roadmap-indicator-hidden"></div>
 
-                  {% if status_.new_status == 'DELIVERED' or status_.old_status == 'DELIVERED' %}
+                  {% if order_status.new_status == 'DELIVERED' or order_status.old_status == 'DELIVERED' %}
                     <p
                       class="flex justify-between flex-col gap-2"
                       style="color: #191c1f; opacity: 1"
@@ -406,7 +406,7 @@
                   </p>
                   {% endif %}
                 </div>
-              {% endfor %}
+             
             </div>
           </div>
         </div>
