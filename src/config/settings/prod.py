@@ -7,32 +7,18 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-vercel-buildi
 
 DEBUG = False 
 
-# db_from_env = dj_database_url.config(conn_max_age=600)
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.dyh5dzke6',
-        'PASSWORD': 'k@UM?*s.X*64/hY',
-        'HOST': 'db.hqrjqvpogizggxmttopx.supabase.co',
-        'PORT': '6543',
-        'OPTIONS': {'sslmode': 'require'},
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        # 'OPTIONS': {'sslmode': 'require'},
         # 'CONN_MAX_AGE': 600,
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#         # 'OPTIONS': {'sslmode': 'require'},
-#         # 'CONN_MAX_AGE': 600,
-#     }
-# }
 
 
 cloudinary.config(
