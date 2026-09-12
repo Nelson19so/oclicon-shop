@@ -57,72 +57,71 @@
 
                   <!--  -->
                   {% if status_.new_status == 'PACKAGING' or status_.old_status == 'PACKAGING' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    checked
-                    disabled
-                  />
-                  <div class="roadmap-finished roadmap-indicator"></div>
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      checked
+                      disabled
+                    />
+                    <div class="roadmap-finished roadmap-indicator"></div>
                   {% elif status_.new_status == 'ORDER_PLACED' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    class="processing"
-                    disabled
-                  />
-                  <div class="roadmap-indicator"></div>
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      class="processing"
+                      disabled
+                    />
+                    <div class="roadmap-indicator"></div>
                   {% else %}
-                  <input type="checkbox" name="roadmap" id="roadmap" disabled />
-                  <div class="roadmap-indicator"></div>
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <div class="roadmap-indicator"></div>
                   {% endif %}
 
                   <!--  -->
                   {% if status_.new_status == 'ON_THE_ROAD' or status_.old_status == 'ON_THE_ROAD' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    checked
-                    disabled
-                  />
-                  <div class="roadmap-finished roadmap-indicator"></div>
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      checked
+                      disabled
+                    />
+                    <div class="roadmap-finished roadmap-indicator"></div>
                   {% elif status_.new_status == 'PACKAGING' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    class="processing"
-                    disabled
-                  />
-                  <div class="roadmap-indicator"></div>
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      class="processing"
+                      disabled
+                    />
+                    <div class="roadmap-indicator"></div>
                   {% else %}
-                  <input type="checkbox" name="roadmap" id="roadmap" disabled />
-                  <div class="roadmap-indicator"></div>
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <div class="roadmap-indicator"></div>
                   {% endif %}
 
                   <!--  -->
-                  {% if status_.new_status == 'DELIVERED' or status_.old_status ==
-                  'DELIVERED' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    checked
-                    disabled
-                  />
+                  {% if status_.new_status == 'DELIVERED' or status_.old_status == 'DELIVERED' %}
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      checked
+                      disabled
+                    />
                   {% elif status_.new_status == 'ON_THE_ROAD' %}
-                  <input
-                    type="checkbox"
-                    name="roadmap"
-                    id="roadmap"
-                    class="processing"
-                    disabled
-                  />
+                    <input
+                      type="checkbox"
+                      name="roadmap"
+                      id="roadmap"
+                      class="processing"
+                      disabled
+                    />
                   {% else %}
-                  <input type="checkbox" name="roadmap" id="roadmap" disabled />
+                    <input type="checkbox" name="roadmap" id="roadmap" disabled />
                   {% endif %}
 
                   <!-- <input
@@ -144,14 +143,13 @@
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
                   >
-                    {% else %}
                   </p>
-
+                  {% else %}
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f"
                   >
-                    {% endif %}
+                    
                     <svg
                       width="25"
                       height="25"
@@ -196,6 +194,7 @@
 
                     Order Placed
                   </p>
+                  {% endif %}
 
                   <div class="roadmap-indicator-hidden"></div>
 
@@ -203,15 +202,14 @@
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
-                  >
-                    {% else %}
+                  >  
                   </p>
+                  {% else %}
 
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f"
                   >
-                    {% endif %}
                     <svg
                       width="25"
                       height="25"
@@ -249,6 +247,7 @@
                       /></svg
                     >Packaging
                   </p>
+                  {% endif %}
 
                   <div class="roadmap-indicator-hidden"></div>
 
@@ -257,14 +256,12 @@
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f; opacity: 1"
                   >
-                    {% else %}
                   </p>
-
+                  {% else %}
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f"
                   >
-                    {% endif %}
                     <svg
                       width="30"
                       height="30"
@@ -333,6 +330,7 @@
 
                     On The Road
                   </p>
+                  {% endif %}
 
                   <div class="roadmap-indicator-hidden"></div>
 
@@ -343,8 +341,6 @@
                     >
                     </p>
                   {% else %}
-                  {% endif %}
-
                   <p
                     class="flex justify-between flex-col gap-2"
                     style="color: #191c1f"
@@ -408,6 +404,7 @@
 
                     Delivered
                   </p>
+                  {% endif %}
                 </div>
               {% endfor %}
             </div>
