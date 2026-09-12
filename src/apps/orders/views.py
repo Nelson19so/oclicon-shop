@@ -95,17 +95,7 @@ class OrderDetails(DetailView):
         # getting the user order-id
         order_id = self.kwargs.get('order_id')
 
-        try:
-
-            order = get_object_or_404(
-                Order, user=self.request.user, order_id=order_id
-            )
-
-        except Order.DoesNotExist:
-            return redirect('order-history')
-
-        # returning order with the id
-        return order
+        return get_object_or_404(Order, user=self.request.user, order_id=order_id)
 
     # filters all order status history by order id
     def get_order_status(self, order):
