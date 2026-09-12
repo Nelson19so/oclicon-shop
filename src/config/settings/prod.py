@@ -16,7 +16,7 @@ DATABASES = {
         'USER': 'postgres.dyh5dzke6',
         'PASSWORD': 'k@UM?*s.X*64/hY',
         'HOST': 'db.hqrjqvpogizggxmttopx.supabase.co',
-        'PORT': '5432',
+        'PORT': '6543',
         'OPTIONS': {'sslmode': 'require'},
         # 'CONN_MAX_AGE': 600,
     }
