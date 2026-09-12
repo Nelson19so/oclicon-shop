@@ -197,6 +197,7 @@ class CheckoutOrderViewCreate(View):
                     total_amount += item.quantity * item.product.base_price
             
                 order.total_amount = total_amount
+                order.status = "ORDER_PLACED"
                 order.save()
 
                 # delete all cart item after order is placed
