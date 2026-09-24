@@ -12,4 +12,4 @@ mkdir -p staticfiles
 python3 manage.py collectstatic --no-input --settings=src.config.settings.prod
 python3 manage.py migrate
 
-echo "Build phase complete."
+echo "Build phase complete!"
