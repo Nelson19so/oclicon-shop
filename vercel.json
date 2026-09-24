@@ -13,6 +13,11 @@
             }
         }
     ],
+    "functions": {
+        "src/config/wsgi.py": {
+            "includeFiles": "src/apps/**"
+        }
+    },
     "routes": [
         {
             "src": "/static/(.*)",
