@@ -522,57 +522,59 @@
       </div>
     </div>
 
-    <div class="container-product-description-- w-full mt-13 overflow-x-scroll">
-      <div class="container-product-description-padding- w-full">
-        <header
-          class="container-product-description-header w-full flex justify-center gap-8"
-        >
-          <a href="#">Description</a>
-          <a href="#">Additional information</a>
-          <a href="#">Specification</a>
-          <a href="#">Review</a>
-        </header>
+    <div class="overflow-x-scroll w-full">
+      <div class="container-product-description-- w-full mt-13 min-w-[926px]">
+        <div class="container-product-description-padding- w-full">
+          <header
+            class="container-product-description-header w-full flex justify-center gap-8"
+          >
+            <a href="#">Description</a>
+            <a href="#">Additional information</a>
+            <a href="#">Specification</a>
+            <a href="#">Review</a>
+          </header>
 
-        <div class="articles-product-description min-w-[500px]: flex justify-between">
-          <div class="articles-wrapper">
-            <strong>Description</strong>
-            {% if product.description %}
-            <p>{{ product.description }}</p>
-            {% endif %}
-          </div>
-
-          <div class="articles-wrapper">
-            <strong>Feature</strong>
-
-            <div class="flex justify-between flex-col gap-2 mt-2">
-              <span>Free 1 Year Warranty</span>
-              <span>Free Shipping & Fasted Delivery</span>
-              <span>100% Money-back guarantee</span>
-              <span>24/7 Customer support</span>
-              <span>Secure payment method</span>
+          <div class="articles-product-description min-w-[500px]: flex justify-between">
+            <div class="articles-wrapper">
+              <strong>Description</strong>
+              {% if product.description %}
+              <p>{{ product.description }}</p>
+              {% endif %}
             </div>
-          </div>
 
-          <div class="articles-wrapper">
-            <strong>Shipping Information</strong>
+            <div class="articles-wrapper">
+              <strong>Feature</strong>
 
-            <div class="flex justify-between flex-col gap-2 mt-2">
-              <span
-                >Courier:
-                <p>2 - 4 days, free shipping</p></span
-              >
-              <span
-                >Local Shipping:
-                <p>up to one week, $19.00</p></span
-              >
-              <span
-                >UPS Ground Shipping:
-                <p>4 - 6 days, $29.00</p></span
-              >
-              <span
-                >Unishop Global Export:
-                <p>3 - 4 days, $39.00</p></span
-              >
+              <div class="flex justify-between flex-col gap-2 mt-2">
+                <span>Free 1 Year Warranty</span>
+                <span>Free Shipping & Fasted Delivery</span>
+                <span>100% Money-back guarantee</span>
+                <span>24/7 Customer support</span>
+                <span>Secure payment method</span>
+              </div>
+            </div>
+
+            <div class="articles-wrapper">
+              <strong>Shipping Information</strong>
+
+              <div class="flex justify-between flex-col gap-2 mt-2">
+                <span
+                  >Courier:
+                  <p>2 - 4 days, free shipping</p></span
+                >
+                <span
+                  >Local Shipping:
+                  <p>up to one week, $19.00</p></span
+                >
+                <span
+                  >UPS Ground Shipping:
+                  <p>4 - 6 days, $29.00</p></span
+                >
+                <span
+                  >Unishop Global Export:
+                  <p>3 - 4 days, $39.00</p></span
+                >
+              </div>
             </div>
           </div>
         </div>
