@@ -349,7 +349,6 @@ Production DB: PostgreSQL on (Render)[https://render.com]
 
 - Name: Nelson Junior
 - Role: Full Stack Developer (Django, Frontend, Deployment)
-- Country: Nigeria 🇳🇬
 - Email: nelsonsomto19@email.com
 - GitHub: github.com/Nelson19so
 - LinkedIn: linkedin.com/in/nelson-junior-700b67363
