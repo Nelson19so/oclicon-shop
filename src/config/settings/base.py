@@ -1,10 +1,14 @@
 from pathlib import Path
 from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
-import os, sys
+import os,sys
 
-# Point to project root /src/
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+# Build paths inside the project: BASE_DIR points to 'src/'
+BASE_DIR = Path(__file__).resolve().parent.parent  # Adjust depending on file depth to hit 'src'
+
+# Ensure 'src' is in sys.path so Python can find 'apps'
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
 from apps.config import Apps
 
