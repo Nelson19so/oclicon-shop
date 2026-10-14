@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent  # Adjust depending on file de
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from apps.config import Apps
+from src.apps.config import Apps
 
 load_dotenv()
 
