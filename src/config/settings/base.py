@@ -6,17 +6,6 @@ import os, sys
 # Point to project root /src/
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# VERCEL SYSTEM PATH HOOK:
-# Dynamically insert 'src' and the project root into Python's registry 
-# before any sub-modules are evaluated.
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
-
-ROOT_DIR = BASE_DIR.parent
-
-if str(ROOT_DIR) not in sys.path:
-    sys.path.insert(0, str(ROOT_DIR))
-
 from apps.config import Apps
 
 load_dotenv()
